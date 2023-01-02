@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "copyright": "Copyright 2020 Last10K.com All Rights Reserverd",
+    "terms": "https://dev.last10k.com/terms"
+  },
+  "data": {
+    "attributes": {
+      "status": 0,
+      "company": {
+        "name": "MICROSOFT CORP",
+        "cik": "789019",
+        "ticker": "msft"
+      },
+      "filing": {
+        "name": "Balance Sheets",
+        "accessionNumber": "0001564590-19-027952",
+        "filingDate": "2019-08-01T00:00:00",
+        "period": "2019-06-30T00:00:00",
+        "source": "10-K",
+        "filingCount": 16
+      },
+      "count": 33,
+      "result": {
+        "CashAndCashEquivalentsAtCarryingValue": 11356000000,
+        "ShortTermInvestments": 122463000000,
+        "CashCashEquivalentsAndShortTermInvestments": 133819000000,
+        "AccountsReceivableNetCurrent": 29524000000,
+        "InventoryNet": 2063000000,
+        "OtherAssetsCurrent": 10146000000,
+        "AssetsCurrent": 175552000000,
+        "PropertyPlantAndEquipmentNet": 36477000000,
+        "OperatingLeaseRightOfUseAsset": 7379000000,
+        "LongTermInvestments": 2649000000,
+        "Goodwill": 42026000000,
+        "FiniteLivedIntangibleAssetsNet": 7750000000,
+        "OtherAssetsNoncurrent": 14723000000,
+        "Assets": 286556000000,
+        "AccountsPayableCurrent": 9382000000,
+        "LongTermDebtCurrent": 5516000000,
+        "EmployeeRelatedLiabilitiesCurrent": 6830000000,
+        "AccruedIncomeTaxesCurrent": 5665000000,
+        "ContractWithCustomerLiabilityCurrent": 32676000000,
+        "OtherLiabilitiesCurrent": 9351000000,
+        "LiabilitiesCurrent": 69420000000,
+        "LongTermDebtNoncurrent": 66662000000,
+        "AccruedIncomeTaxesNoncurrent": 29612000000,
+        "ContractWithCustomerLiabilityNoncurrent": 4530000000,
+        "DeferredTaxLiabilitiesNoncurrent": 233000000,
+        "OperatingLeaseLiabilityNoncurrent": 6188000000,
+        "OtherLiabilitiesNoncurrent": 7581000000,
+        "Liabilities": 184226000000,
+        "CommonStocksIncludingAdditionalPaidInCapital": 78520000000,
+        "RetainedEarningsAccumulatedDeficit": 24150000000,
+        "AccumulatedOtherComprehensiveIncomeLossNetOfTax": -340000000,
+        "StockholdersEquity": 102330000000,
+        "LiabilitiesAndStockholdersEquity": 286556000000
+      }
+    },
+    "type": "statement",
+    "id": "d58ae67c-b687-455d-bcfc-7863e982a416"
+  }
+}

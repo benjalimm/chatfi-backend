@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "copyright": "Copyright 2020 Last10K.com All Rights Reserverd",
+    "terms": "https://dev.last10k.com/terms"
+  },
+  "data": {
+    "attributes": {
+      "status": 0,
+      "company": {
+        "name": "Apple Inc.",
+        "cik": "320193",
+        "ticker": "aapl"
+      },
+      "filing": {
+        "name": "Consolidated Statements Of Operations",
+        "accessionNumber": "0000320193-19-000119",
+        "filingDate": "2019-10-31T00:00:00",
+        "period": "2019-09-28T00:00:00",
+        "source": "10-K",
+        "filingCount": 16
+      },
+      "count": 15,
+      "result": {
+        "RevenueFromContractWithCustomerExcludingAssessedTax": 260174000000,
+        "CostOfGoodsAndServicesSold": 161782000000,
+        "GrossProfit": 98392000000,
+        "ResearchAndDevelopmentExpense": 16217000000,
+        "SellingGeneralAndAdministrativeExpense": 18245000000,
+        "OperatingExpenses": 34462000000,
+        "OperatingIncomeLoss": 63930000000,
+        "NonoperatingIncomeExpense": 1807000000,
+        "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest": 65737000000,
+        "IncomeTaxExpenseBenefit": 10481000000,
+        "NetIncomeLoss": 55256000000,
+        "EarningsPerShareBasic": 11.97,
+        "EarningsPerShareDiluted": 11.89,
+        "WeightedAverageNumberOfSharesOutstandingBasic": 4617834000,
+        "WeightedAverageNumberOfDilutedSharesOutstanding": 4648913000
+      }
+    },
+    "type": "statement",
+    "id": "ebf06eaf-5d18-47ed-8404-812ac7132da9"
+  }
+}

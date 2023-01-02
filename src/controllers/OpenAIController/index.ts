@@ -1,7 +1,8 @@
 import { Configuration, OpenAIApi } from "openai";
+import LLMController from "../../schema/controllers/LLMController";
 
 
-export default class OpenAIController {
+export default class OpenAIController implements LLMController {
   private api: OpenAIApi;
 
   constructor() {
@@ -14,9 +15,12 @@ export default class OpenAIController {
   async executePrompt(text: string): Promise<string> {
     const completion = await this.api.createCompletion({
         model: "text-davinci-003",
-        prompt: text
+        prompt: text,
+        temperature: 0.6,
+        max_tokens: 100,
     });
 
+    console.log(completion.data.choices)
     return completion.data.choices[0].text ?? "";
   }
 }

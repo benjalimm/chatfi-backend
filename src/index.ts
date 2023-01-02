@@ -3,6 +3,8 @@ import * as bodyParser from 'body-parser';
 
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/OpenAIController';
+import MockFinancialStatementManager from './controllers/MockFinancialStatementManager';
+import { INFER_ANSWER_PROMPT } from './prompts';
 
 dotenv.config();
 
@@ -11,6 +13,9 @@ const port = 3000;
 
 // Inject controllers
 const openAIController = new OpenAIController();
+
+const mockFinancialStatementManager = 
+new MockFinancialStatementManager(openAIController);
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,8 +31,18 @@ app.post('/', async (req: Request, res: Response) => {
   console.log(`KEY: ${process.env.OPENAI_API_KEY}`)
 
   try {
-    const text = await openAIController.executePrompt(query)
-    res.json({ success: true, text})
+
+    // 1. This here is a large string of financial statement(s) as stringified JSON
+    const documentJsonStrings = await mockFinancialStatementManager.getDocumentStringsFromQuery(query);
+
+    console.log(`DOCUMENT JSON STRINGS: ${documentJsonStrings}`)
+
+    // 2. Get LLM to infer answer
+    const prompt = documentJsonStrings + INFER_ANSWER_PROMPT + query;
+    console.log(`FINAL PROMPT: ${prompt}`)
+    const answer = await openAIController.executePrompt(prompt);
+
+    res.json({ success: true, answer})
   } catch (e) {
     res.json({ success: false, error: e})
   }

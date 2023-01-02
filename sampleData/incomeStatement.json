@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "copyright": "Copyright 2020 Last10K.com All Rights Reserverd",
+    "terms": "https://dev.last10k.com/terms"
+  },
+  "data": {
+    "attributes": {
+      "status": 0,
+      "company": {
+        "name": "MICROSOFT CORP",
+        "cik": "789019",
+        "ticker": "msft"
+      },
+      "filing": {
+        "name": "Income Statements",
+        "accessionNumber": "0001564590-19-027952",
+        "filingDate": "2019-08-01T00:00:00",
+        "period": "2019-06-30T00:00:00",
+        "source": "10-K",
+        "filingCount": 16
+      },
+      "count": 16,
+      "result": {
+        "RevenueFromContractWithCustomerExcludingAssessedTax": 125843000000,
+        "CostOfGoodsAndServicesSold": 42910000000,
+        "GrossProfit": 82933000000,
+        "ResearchAndDevelopmentExpense": 16876000000,
+        "SellingAndMarketingExpense": 18213000000,
+        "GeneralAndAdministrativeExpense": 4885000000,
+        "RestructuringCharges": 0,
+        "OperatingIncomeLoss": 42959000000,
+        "NonoperatingIncomeExpense": 729000000,
+        "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments": 43688000000,
+        "IncomeTaxExpenseBenefit": 4448000000,
+        "NetIncomeLoss": 39240000000,
+        "EarningsPerShareBasic": 5.11,
+        "EarningsPerShareDiluted": 5.06,
+        "WeightedAverageNumberOfSharesOutstandingBasic": 7673000000,
+        "WeightedAverageNumberOfDilutedSharesOutstanding": 7753000000
+      }
+    },
+    "type": "statement",
+    "id": "1b5efd7f-626c-4157-9663-dc7ba43e1026"
+  }
+}

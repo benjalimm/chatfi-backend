@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "copyright": "Copyright 2020 Last10K.com All Rights Reserverd",
+    "terms": "https://dev.last10k.com/terms"
+  },
+  "data": {
+    "attributes": {
+      "status": 0,
+      "company": {
+        "name": "MICROSOFT CORP",
+        "cik": "789019",
+        "ticker": "msft"
+      },
+      "filing": {
+        "name": "Cash Flows Statements",
+        "accessionNumber": "0001564590-19-027952",
+        "filingDate": "2019-08-01T00:00:00",
+        "period": "2019-06-30T00:00:00",
+        "source": "10-K",
+        "filingCount": 16
+      },
+      "count": 29,
+      "result": {
+        "NetIncomeLoss": 39240000000,
+        "ShareBasedCompensation": 4652000000,
+        "DeferredIncomeTaxExpenseBenefit": -6463000000,
+        "IncreaseDecreaseInAccountsReceivable": -2812000000,
+        "IncreaseDecreaseInInventories": 597000000,
+        "IncreaseDecreaseInOtherCurrentAssets": -1718000000,
+        "IncreaseDecreaseInOtherNoncurrentAssets": -1834000000,
+        "IncreaseDecreaseInAccountsPayable": 232000000,
+        "IncreaseDecreaseInContractWithCustomerLiability": 4462000000,
+        "IncreaseDecreaseInAccruedIncomeTaxesPayable": 2929000000,
+        "IncreaseDecreaseInOtherCurrentLiabilities": 1419000000,
+        "IncreaseDecreaseInOtherNoncurrentLiabilities": 591000000,
+        "NetCashProvidedByUsedInOperatingActivities": 52185000000,
+        "ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess": 0,
+        "ProceedsFromDebtMaturingInMoreThanThreeMonths": 0,
+        "RepaymentsOfDebtMaturingInMoreThanThreeMonths": -4000000000,
+        "ProceedsFromIssuanceOfCommonStock": 1142000000,
+        "PaymentsForRepurchaseOfCommonStock": -19543000000,
+        "PaymentsOfDividendsCommonStock": -13811000000,
+        "ProceedsFromPaymentsForOtherFinancingActivities": -675000000,
+        "NetCashProvidedByUsedInFinancingActivities": -36887000000,
+        "PaymentsToAcquirePropertyPlantAndEquipment": -13925000000,
+        "PaymentsToAcquireInvestments": -57697000000,
+        "ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities": 20043000000,
+        "IncreaseDecreaseInCollateralHeldUnderSecuritiesLending": 0,
+        "NetCashProvidedByUsedInInvestingActivities": -15773000000,
+        "EffectOfExchangeRateOnCashAndCashEquivalents": -115000000,
+        "CashAndCashEquivalentsPeriodIncreaseDecrease": -590000000,
+        "CashAndCashEquivalentsAtCarryingValue": 11946000000
+      }
+    },
+    "type": "statement",
+    "id": "09576aa6-5f73-4a18-909c-00ded429f49e"
+  }
+}
