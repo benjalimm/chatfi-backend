@@ -1,8 +1,9 @@
-import { LanguageController } from "./LanguageController";
 
-class GPTLanguageController {
+export default class GPTLanguageController {
   constructor() {
+
   }
+
   postQuery(query: string) {
 
   }
