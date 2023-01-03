@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/OpenAIController';
 import MockFinancialStatementManager from './controllers/MockFinancialStatementManager';
-import { INFER_ANSWER_PROMPT } from './prompts';
+import { INFER_ANSWER_PROMPT, PRECAUTIONS_PROMPT } from './prompts';
 
 dotenv.config();
 
@@ -38,7 +38,7 @@ app.post('/', async (req: Request, res: Response) => {
     console.log(`DOCUMENT JSON STRINGS: ${documentJsonStrings}`)
 
     // 2. Get LLM to infer answer
-    const prompt = documentJsonStrings + INFER_ANSWER_PROMPT + query;
+    const prompt = documentJsonStrings + INFER_ANSWER_PROMPT + query + PRECAUTIONS_PROMPT;
     console.log(`FINAL PROMPT: ${prompt}`)
     const answer = await openAIController.executePrompt(prompt);
 

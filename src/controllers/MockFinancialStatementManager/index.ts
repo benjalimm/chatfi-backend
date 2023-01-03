@@ -10,6 +10,7 @@ const cashFlowStatement = require("../../../sampleData/coinbase10Q/cashFlowState
 const shareholdersEquityStatement = require("../../../sampleData/coinbase10Q/shareholdersEquity.json");
 const statementOfOperations = require("../../../sampleData/coinbase10Q/statementOfOperations.json");
 const revenueNotes = require("../../../sampleData/coinbase10Q/revenueNotes.json");
+const acquisitionNotes = require("../../../sampleData/coinbase10Q/acquisitionNotes.json");
 
 export default class MockFinancialStatementManager implements FinancialStatementManager {
 
@@ -39,6 +40,7 @@ export default class MockFinancialStatementManager implements FinancialStatement
 
     // Load Secondary document type
     this.loadStatement("REVENUE_NOTES", revenueNotes);
+    this.loadStatement("ACQUISITION_NOTES", acquisitionNotes);
 
   }
 
@@ -58,6 +60,8 @@ export default class MockFinancialStatementManager implements FinancialStatement
       documentString = `${documentString} \n${type}: \n${JSON.stringify(statementString)}\n`;
     })
 
+    console.log("DOCUMENT STRING: ")
+    console.log(documentString)
     return documentString;
   }
 }

@@ -5,6 +5,7 @@ export const GET_DOCUMENT_TYPE_PROMPT = `
     Shareholder equity / stockholder equiter = SHAREHOLDERS_EQUITY_STATEMENT
     Statement of operations = STATEMENT_OPERATIONS
     Revenue in notes to financial statement = REVENUE_NOTES
+    Info on acquisitions in notes to financial statement = ACQUISITION_NOTES
     
 
     Above are the financial statements that are available for company X. Based on the following query, which financial statement should be queried?
@@ -21,4 +22,14 @@ export const GET_DOCUMENT_TYPE_PROMPT = `
 
   Query: 
 
+  `
+
+  export const PRECAUTIONS_PROMPT = 
+  `
+
+  Attempt to be detailed when providing an answer. 
+  Specify numbers and dates if possible. Do not answer with a SQL query unless explicitly asked to do so.
+
+  If the query is not possible given the provided information, list what information is required to answer the query.
+  
   `
