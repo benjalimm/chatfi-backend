@@ -9,7 +9,7 @@ import { INFER_ANSWER_PROMPT, PRECAUTIONS_PROMPT } from './prompts';
 dotenv.config();
 
 const app: Express = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Inject controllers
 const openAIController = new OpenAIController();
