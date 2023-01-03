@@ -57,7 +57,7 @@ export default class MockFinancialStatementManager implements FinancialStatement
 
     await documentTypeResponse.documentTypes.forEach(async type => {
       const statementString = await this.getFinancialStatement(type);
-      documentString = `${documentString} \n${type}: \n${JSON.stringify(statementString)}\n`;
+      documentString = `START OF ${documentString} \n${type}: \n${JSON.stringify(statementString)}\n END OF ${documentString}`;
     })
 
     console.log("DOCUMENT STRING: ")

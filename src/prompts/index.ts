@@ -31,5 +31,7 @@ export const GET_DOCUMENT_TYPE_PROMPT = `
   Specify numbers and dates if possible. Do not answer with a SQL query unless explicitly asked to do so.
 
   If the query is not possible given the provided information, list what information is required to answer the query.
+
+  Simply extract the pertinent values, display them and tell us which document you extracted them from. When referring to the documents, do not refer to them as JSONs, but simply refer to them as the title of the document.
   
   `
