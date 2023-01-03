@@ -1,0 +1,147 @@
+{
+  "cashFlowStatement": {
+    "period": "9 months ended Sep. 30, 2022",
+    "operatingActivities": {
+      "netLossIncome": -2067948,
+      "adjustments": [
+        {
+          "type": "depreciationAndAmortization",
+          "amount": 113721
+        },
+        {
+          "type": "cryptoAssetImpairmentExpense",
+          "amount": 689077
+        },
+        {
+          "type": "investmentImpairmentExpense",
+          "amount": 70866
+        },
+        {
+          "type": "otherImpairmentExpense",
+          "amount": 9071
+        },
+        {
+          "type": "stockBasedCompensationExpense",
+          "amount": 1135078
+        },
+        {
+          "type": "provisionForTransactionLossesAndDoubtfulAccounts",
+          "amount": -7599
+        },
+        {
+          "type": "lossOnDisposalOfPropertyAndEquipment",
+          "amount": 0
+        },
+        {
+          "type": "deferredIncomeTaxes",
+          "amount": -444225
+        },
+        {
+          "type": "unrealizedLossOnForeignExchange",
+          "amount": 192253
+        },
+        {
+          "type": "fairValueGainOnForeignExchangeDerivatives",
+          "amount": -22935
+        },
+        {
+          "type": "nonCashLeaseExpense",
+          "amount": 23374
+        },
+        {
+          "type": "changeInFairValueOfContingentConsideration",
+          "amount": -7175
+        },
+        {
+          "type": "realizedGainOnCryptoAssets",
+          "amount": -34274
+        },
+        {
+          "type": "cryptoAssetsReceivedAsRevenue",
+          "amount": -376990
+        },
+        {
+          "type": "cryptoAssetPaymentsForExpenses",
+          "amount": 332897
+        },
+        {
+          "type": "fairValueLossOnDerivatives",
+          "amount": 3351
+        },
+        {
+          "type": "amortizationOfDebtDiscountAndIssuanceCosts",
+          "amount": 7042
+        },
+        {
+          "type": "lossOnInvestments",
+          "amount": 1118
+        }
+      ],
+      "changesInAssetsAndLiabilities": [
+        {
+          "type": "USDC",
+          "amount": -298236
+        },
+        {
+          "type": "accountsAndLoansReceivable",
+          "amount": 32211
+        },
+        {
+          "type": "incomeTaxes",
+          "amount": 4785
+        },
+        {
+          "type": "otherCurrentAndNonCurrentAssets",
+          "amount": -104801
+        },
+        {
+          "type": "customerCustodialCashLiabilities",
+          "amount": -3977293
+        },
+        {
+          "type": "accountsPayable",
+          "amount": 24667
+        },
+        {
+          "type": "leaseLiabilities",
+          "amount": -7758
+        },
+        {
+          "type": "otherCurrentAndNonCurrentLiabilities",
+          "amount": -107553
+        }
+      ],
+      "netCashUsedInOperatingActivities": -4817276
+    },
+    "investingActivities": {
+      "purchaseOfPropertyAndEquipment": -3747,
+      "proceedsFromSaleOfPropertyAndEquipment": 0,
+      "capitalizedInternalUseSoftwareDevelopmentCosts": -47831,
+      "businessCombinations": -186150,
+      "purchaseOfInvestments": -57716,
+      "purchaseOfAssembledWorkforce": 0,
+      "proceedsFromSettlementOfInvestments": 1497,
+      "purchaseOfCryptoAssetsHeld": -1339689,
+      "disposalOfCryptoAssetsHeld": 894147,
+      "loansOriginated": -189137,
+      "proceedsFromRepaymentOfLoans": 290928,
+      "netCashUsedInInvestingActivities": -637698
+    },
+    "financingActivities": {
+      "issuanceOfCommonStockUponExerciseOfStockOptions": 40978,
+      "taxesPaidRelatedToNetShareSettlementOfEquityAwards": -268746,
+      "proceedsReceivedUnderTheESPP": 16064,
+      "otherFinancingActivities": 3679,
+      "issuanceOfSharesFromExerciseOfWarrants": 0,
+      "issuanceOfConvertibleSeniorNotes": 0,
+      "issuanceOfSeniorNotes": 0,
+      "purchaseOfCappedCalls": 0,
+      "proceedsFromShortTermBorrowings": 149400,
+      "repaymentOfShortTermBorrowings": -170000,
+      "netCashUsedInFinancingActivities": -228625
+    },
+    "netDecreaseInCashCashEquivalentsAndRestrictedCash": -5236199,
+    "cashCashEquivalentsAndRestrictedCashAtBeginningOfPeriod": 8974590,
+    "cashCashEquivalentsAndRestrictedCashAtEndOfPeriod": 3738391
+  }
+}

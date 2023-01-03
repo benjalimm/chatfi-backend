@@ -1,0 +1,93 @@
+{
+  "statementOfChangesInEquity": {
+    "period": "9 months ended Sep. 30, 2022",
+    "preferredStock": {
+      "beginningShares": 112878,
+      "beginningBalance": 562467,
+      "endingShares": 0,
+      "endingBalance": 0,
+      "changes": [
+        {
+          "type": "conversion",
+          "shares": 112878,
+          "amount": 562467
+        }
+      ]
+    },
+    "commonStock": {
+      "beginningShares": 73108,
+      "beginningBalance": 963584,
+      "endingShares": 213662,
+      "endingBalance": 5360497,
+      "changes": [
+        {
+          "type": "issuanceUponExerciseOfStockOptions",
+          "shares": 22257,
+          "amount": 181025
+        },
+        {
+          "type": "issuanceAsConsiderationForBusinessCombination",
+          "shares": 3891,
+          "amount": 509379
+        },
+        {
+          "type": "issuanceFromExerciseOfWarrants",
+          "shares": 412,
+          "amount": 433
+        },
+        {
+          "type": "issuanceUponSettlementOfRSUsAndRestrictedCommonStock",
+          "shares": 1116,
+          "amount": -103136
+        },
+        {
+          "type": "issuanceUponSettlementOfEquityInstruments",
+          "shares": 1420,
+          "amount": 182682
+        }
+      ]
+    },
+    "additionalPaidInCapital": {
+      "beginningBalance": 231024,
+      "endingBalance": 1850711,
+      "changes": [
+        {
+          "type": "issuanceUponExerciseOfStockOptions",
+          "amount": 181025
+        },
+        {
+          "type": "stockBasedCompensationExpense",
+          "amount": 559652
+        },
+        {
+          "type": "issuanceAsConsiderationForBusinessCombination",
+          "amount": 509379
+        },
+        {
+          "type": "issuanceUponSettlementOfEquityInstruments",
+          "amount": 182682
+        }
+      ]
+    },
+    "accumulatedOtherComprehensiveLoss": {
+      "beginningBalance": 6256,
+      "endingBalance": -432,
+      "changes": [
+        {
+          "type": "otherComprehensiveLoss",
+          "amount": -6920
+        }
+      ]
+    },
+    "retainedEarnings": {
+      "beginningBalance": 726304,
+      "endingBalance": 3510216,
+      "changes": [
+        {
+          "type": "netIncome",
+          "amount": 278312
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "3 Months Ended Sep 30, 2022": {
+    "Revenue": {
+      "Revenue": 590339
+    },
+    "Operating expenses": {
+      "Transaction expense": 101876,
+      "Technology and development": 556338,
+      "Sales and marketing": 75888,
+      "General and administrative": 339157,
+      "Restructuring": -1232,
+      "Other operating expense, net": 74796,
+      "Total operating expenses": 1146823
+    },
+    "Operating (loss) income": -556484,
+    "Interest expense": 21507,
+    "Other expense, net": 65699,
+    "(Loss) income before income taxes": -643690,
+    "Benefit from income taxes": -99055,
+    "Net (loss) income": -544635,
+    "Net (loss) income attributable to common stockholders": {
+      "Basic": -544635,
+      "Diluted": -544635
+    },
+    "Net (loss) income per share attributable to common stockholders": {
+      "Basic (in dollars per share)": -2.43,
+      "Diluted (in dollars per share)": -2.43
+    },
+    "Weighted-average shares of common stock used to compute net (loss) income per share attributable to common stockholders": {
+      "Basic (in shares)": 223916,
+      "Diluted (in shares)": 223916
+    },
+    "Net revenue": {
+      "Revenue": 576375,
+      "Other revenue": {
+        "Revenue": 13964
+      }
+    }
+  },
+  "3 Months Ended Sep 30, 2021": {
+    "Revenue": {
+      "Revenue": 1311908
+    },
+    "Operating expenses": {
+      "Transaction expense": 197251,
+      "Technology and development": 356264,
+      "Sales and marketing": 105395,
+      "General and administrative": 242642,
+      "Restructuring": 0,
+      "Other operating expense, net": 118548,
+      "Total operating expenses": 1020100
+    },
+    "Operating (loss) income": 291808,
+    "Interest expense": 6972,
+    "Other expense, net": 13976,
+    "(Loss) income before income taxes": 270860,
+    "Benefit from income taxes": -135240,
+    "Net (loss) income": 406100,
+    "Net (loss) income attributable to common stockholders": {
+      "Basic": 402343,
+      "Diluted": 405340
+    },
+    "Net (loss) income per share attributable to common stockholders": {
+      "Basic (in dollars per share)": 1.92,
+      "Diluted (in dollars per share)": 1.62
+    },
+    "Weighted-average shares of common stock used to compute net (loss) income per share attributable to common stockholders": {
+      "Basic (in shares)": 209604,
+      "Diluted (in shares)": 250536
+    },
+    "Net revenue": {
+      "Revenue": 1234736
+    }
+  }
+}

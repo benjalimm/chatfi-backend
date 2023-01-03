@@ -1,18 +1,19 @@
 import { GET_DOCUMENT_TYPE_PROMPT } from "../../prompts";
 import FinancialStatementManager from "../../schema/controllers/FinancialStatementManager";
 import LLMController from "../../schema/controllers/LLMController";
-import { DocumentType } from "../../schema/DocumentType";
+import { PrimaryDocumentType, SecondaryDocumentType } from "../../schema/DocumentType";
 import LLMDocumentTypeResponse from "../../schema/LLMDocumentTypeResponse";
 
-const balanceSheet = require("../../../sampleData/balanceSheet.json");
-const incomeStatement = require("../../../sampleData/incomeStatement.json");
-const cashFlowStatement = require("../../../sampleData/cashFlowStatement.json");
-const shareholdersEquityStatement = require("../../../sampleData/shareholdersEquity.json");
-const statementOfOperations = require("../../../sampleData/statementOfOperations.json");
+const balanceSheet = require("../../../sampleData/coinbase10Q/balanceSheet.json");
+const incomeStatement = require("../../../sampleData/coinbase10Q/incomeStatement.json");
+const cashFlowStatement = require("../../../sampleData/coinbase10Q/cashFlowStatement.json");
+const shareholdersEquityStatement = require("../../../sampleData/coinbase10Q/shareholdersEquity.json");
+const statementOfOperations = require("../../../sampleData/coinbase10Q/statementOfOperations.json");
+const revenueNotes = require("../../../sampleData/coinbase10Q/revenueNotes.json");
 
 export default class MockFinancialStatementManager implements FinancialStatementManager {
 
-  private statements: Map<DocumentType, string>
+  private statements: Map<PrimaryDocumentType | SecondaryDocumentType, string>
   private llmController: LLMController;
 
   constructor(llmController: LLMController) {
@@ -21,16 +22,24 @@ export default class MockFinancialStatementManager implements FinancialStatement
     this.loadFinancialStatements();
   }
 
-  async getFinancialStatement(documentType: DocumentType | string): Promise<string> {
-    return this.statements.get(documentType as DocumentType) ?? ""
+  async getFinancialStatement(documentType: PrimaryDocumentType | SecondaryDocumentType): Promise<string> {
+    return this.statements.get(documentType as PrimaryDocumentType) ?? ""
+  }
+
+  private loadStatement(type: PrimaryDocumentType | SecondaryDocumentType, document: any) {
+    this.statements.set(type, JSON.stringify(document));
   }
 
   private loadFinancialStatements() {
-    this.statements.set("INCOME_STATEMENT", JSON.stringify(incomeStatement));
-    this.statements.set("BALANCE_SHEET", JSON.stringify(balanceSheet));
-    this.statements.set("CASH_FLOW_STATEMENT", JSON.stringify(cashFlowStatement));
-    this.statements.set("SHAREHOLDERS_EQUITY_STATEMENT", JSON.stringify(shareholdersEquityStatement));
-    this.statements.set("STATEMENT_OPERATIONS", JSON.stringify(statementOfOperations));
+    this.loadStatement("INCOME_STATEMENT", incomeStatement);
+    this.loadStatement("BALANCE_SHEET", balanceSheet);
+    this.loadStatement("CASH_FLOW_STATEMENT", cashFlowStatement);
+    this.loadStatement("SHAREHOLDERS_EQUITY_STATEMENT", shareholdersEquityStatement);
+    this.loadStatement("STATEMENT_OPERATIONS", statementOfOperations);
+
+    // Load Secondary document type
+    this.loadStatement("REVENUE_NOTES", revenueNotes);
+
   }
 
   private async getDocumentTypeFromQuery(query: string): Promise<LLMDocumentTypeResponse> {

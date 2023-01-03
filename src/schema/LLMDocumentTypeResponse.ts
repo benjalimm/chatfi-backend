@@ -1,5 +1,5 @@
-import { DocumentType } from "./DocumentType";
+import { PrimaryDocumentType } from "./DocumentType";
 
 export default interface LLMDocumentTypeResponse {
-  documentTypes: DocumentType[];
+  documentTypes: PrimaryDocumentType[];
 }

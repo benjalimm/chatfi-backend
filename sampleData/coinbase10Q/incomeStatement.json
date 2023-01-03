@@ -1,0 +1,38 @@
+{
+  "statementOfComprehensiveIncome": {
+    "periods": {
+      "3 months ended": {
+        "Sep. 30, 2022": {
+          "netIncome": -544635,
+          "otherComprehensiveLoss": {
+            "translationAdjustment": -18310
+          },
+          "comprehensiveLoss": -562945
+        },
+        "Sep. 30, 2021": {
+          "netIncome": 406100,
+          "otherComprehensiveLoss": {
+            "translationAdjustment": -3206
+          },
+          "comprehensiveIncome": 402894
+        }
+      },
+      "9 months ended": {
+        "Sep. 30, 2022": {
+          "netIncome": -2067948,
+          "otherComprehensiveLoss": {
+            "translationAdjustment": -33098
+          },
+          "comprehensiveLoss": -2101046
+        },
+        "Sep. 30, 2021": {
+          "netIncome": 278312,
+          "otherComprehensiveLoss": {
+            "translationAdjustment": -6688
+          },
+          "comprehensiveIncome": 2777224
+        }
+      }
+    }
+  }
+}

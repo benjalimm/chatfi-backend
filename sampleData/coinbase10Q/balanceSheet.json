@@ -1,0 +1,72 @@
+{
+  "Sep 30, 2022": {
+    "Current assets": {
+      "Cash and cash equivalents": 5006584,
+      "Restricted cash": 23113,
+      "Customer custodial cash": 6591105,
+      "Customer crypto assets": 95113124,
+      "USDC": 368121,
+      "Accounts and loans receivable, net of allowance": 240354,
+      "Income tax receivable": 60522,
+      "Prepaid expenses and other current assets": 277044,
+      "Total current assets": 107679967,
+      "Crypto assets held": 623073,
+      "Lease right-of-use assets": 76465,
+      "Property and equipment, net": 170922,
+      "Goodwill": 1073906,
+      "Intangible assets, net": 161669,
+      "Other non-current assets": 1382361,
+      "Total assets": 111168363
+    },
+    "Current liabilities": {
+      "Customer custodial cash liabilities": 6357657,
+      "Customer crypto liabilities": 95113124,
+      "Accounts payable": 61514,
+      "Accrued expenses and other current liabilities": 298101,
+      "Crypto asset borrowings": 209678,
+      "Lease liabilities, current": 33025,
+      "Total current liabilities": 102073099
+    },
+    "Non-current liabilities": {
+      "Lease liabilities, non-current": 50167,
+      "Long-term debt": 3391237,
+      "Other non-current liabilities": 27545
+    },
+    "Total liabilities": 105542048,
+    "Stockholders' equity": {
+      "Additional paid-in capital": 3380330,
+      "Accumulated other comprehensive loss": 36493,
+      "Retained earnings": 2282476,
+      "Total stockholders' equity": 5626315
+    }
+  },
+  "Dec 31, 2021": {
+    "Current assets": {
+      "Cash and cash equivalents": 7123478,
+      "Restricted cash": 30951,
+      "Customer custodial cash": 10526233,
+      "Customer crypto assets": 0,
+      "USDC": 100096,
+      "Accounts and loans receivable, net of allowance": 396025,
+      "Income tax receivable": 61231,
+      "Prepaid expenses and other current assets": 135849,
+      "Total current assets": 18373863,
+      "Crypto assets held": 988193,
+      "Lease right-of-use assets": 98385,
+      "Property and equipment, net": 59230,
+      "Goodwill": 625758,
+      "Intangible assets, net": 176689,
+      "Other non-current assets": 952307,
+      "Total assets": 21274425
+    },
+    "Current liabilities": {
+      "Customer custodial cash liabilities": 10480612,
+      "Customer crypto liabilities": 0,
+      "Accounts payable": 39833,
+      "Accrued expenses and other current liabilities": 439559,
+      "Crypto asset borrowings": 426665,
+      "Lease liabilities, current": 32366,
+      "Total current liabilities": 11419035
+    }
+  }
+}

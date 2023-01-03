@@ -1,0 +1,88 @@
+{
+  "revenue": {
+    "periods": {
+      "9 months ended": {
+        "Sep. 30, 2022": {
+          "revenueFromContractWithCustomer": {
+            "scheduleOfDisaggregatedRevenueBySource": {
+              "netRevenue": {
+                "transactionRevenue": {
+                  "retail": {
+                    "net": 1928145
+                  },
+                  "institutional": {
+                    "net": 105973
+                  },
+                  "total": 2034118
+                },
+                "subscriptionAndServicesRevenue": {
+                  "blockchainRewards": 213064,
+                  "custodialFeeRevenue": 68404,
+                  "interestIncome": 144746,
+                  "otherSubscriptionAndServicesRevenue": {
+                    "total": 83537
+                  },
+                  "total": 509751
+                },
+                "totalNetRevenue": 2543869
+              },
+              "otherRevenue": {
+                "cryptoAssetSalesRevenue": 625,
+                "corporateInterestAndOtherIncome": 20606,
+                "total": 21231
+              },
+              "totalRevenue": 2565100
+            },
+            "scheduleOfRevenuesDisaggregatedByGeography": {
+              "unitedStates": 21250010,
+              "restOfWorld": {
+                "total": 440090
+              },
+              "total": 2565100
+            }
+          }
+        },
+        "Sep. 30, 2021": {
+          "revenueFromContractWithCustomer": {
+            "scheduleOfDisaggregatedRevenueBySource": {
+              "netRevenue": {
+                "transactionRevenue": {
+                  "retail": {
+                    "net": 4305088
+                  },
+                  "institutional": {
+                    "net": 255529
+                  },
+                  "total": 4560617
+                },
+                "subscriptionAndServicesRevenue": {
+                  "blockchainRewards": 120712,
+                  "custodialFeeRevenue": 86616,
+                  "interestIncome": 18190,
+                  "otherSubscriptionAndServicesRevenue": {
+                    "total": 78592
+                  },
+                  "total": 304110
+                },
+                "totalNetRevenue": 4864727
+              },
+              "otherRevenue": {
+                "cryptoAssetSalesRevenue": 475065,
+                "corporateInterestAndOtherIncome": 1189,
+                "total": 476254
+              },
+              "totalRevenue": 5340981
+            },
+            "scheduleOfRevenuesDisaggregatedByGeography": {
+              "unitedStates": 4339899,
+              "restOfWorld": {
+                "total": 1001082
+              },
+              "total": 5340981
+            }
+          }
+        }
+      }
+    }
+  }
+}

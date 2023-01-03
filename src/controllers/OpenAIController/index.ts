@@ -17,7 +17,7 @@ export default class OpenAIController implements LLMController {
         model: "text-davinci-003",
         prompt: text,
         temperature: 0.6,
-        max_tokens: 100,
+        max_tokens: 2049,
     });
 
     console.log(completion.data.choices)
