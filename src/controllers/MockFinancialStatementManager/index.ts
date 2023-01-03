@@ -6,7 +6,7 @@ import LLMDocumentTypeResponse from "../../schema/LLMDocumentTypeResponse";
 
 const balanceSheet = require("../../../sampleData/coinbase10Q/balanceSheet.json");
 const incomeStatement = require("../../../sampleData/coinbase10Q/incomeStatement.json");
-const cashFlowStatement = require("../../../sampleData/coinbase10Q/cashFlowStatement.json");
+const cashFlowStatement = require("../../../sampleData/coinbase10Q/cashflowStatement.json");
 const shareholdersEquityStatement = require("../../../sampleData/coinbase10Q/shareholdersEquity.json");
 const statementOfOperations = require("../../../sampleData/coinbase10Q/statementOfOperations.json");
 const revenueNotes = require("../../../sampleData/coinbase10Q/revenueNotes.json");
