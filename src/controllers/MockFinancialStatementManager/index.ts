@@ -47,11 +47,22 @@ export default class MockFinancialStatementManager implements FinancialStatement
   private async getDocumentTypeFromQuery(query: string): Promise<LLMDocumentTypeResponse> {
     const prompt = GET_DOCUMENT_TYPE_PROMPT + query;
     const jsonString = await this.llmController.executePrompt(prompt);
-    return JSON.parse(jsonString.trim()) as LLMDocumentTypeResponse;
+    const trimmedJsonString = jsonString.trim().replace('?',"")
+    console.log(`JSON string: ${trimmedJsonString}`)
+    const response = JSON.parse(trimmedJsonString)
+
+
+    if (response.documentTypes == undefined) {
+      throw new Error('Failed to properly parse LLM document type response')
+    } else {
+      return response as LLMDocumentTypeResponse;
+    }
   }
 
   async getDocumentStringsFromQuery(query: string): Promise<string> {
     const documentTypeResponse = await this.getDocumentTypeFromQuery(query);
+
+    console.log('DOCUMENT TYPE RESPONSE: ')
     console.log(documentTypeResponse);
     let documentString: string = "";
 

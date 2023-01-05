@@ -10,7 +10,7 @@ export const GET_DOCUMENT_TYPE_PROMPT = `
 
     Above are the financial statements that are available for company X. Based on the following query, which financial statement should be queried?
 
-    Format the answers in an array within a JSON with the answer array in a field called documentTypes
+    Format the answers in an array within a JSON with the answer array in a field called documentTypes. In the JSON response, ensure there are no characters that would cause the JSON to be invalid.
 
     Query: 
 
