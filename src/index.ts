@@ -43,8 +43,9 @@ app.post('/', async (req: Request, res: Response) => {
     const answer = await openAIController.executePrompt(prompt);
 
     res.json({ success: true, query, answer})
-  } catch (e) {
-    res.json({ success: false, error: e})
+  } catch (error) {
+    console.log(`ERROR: ${error}`)
+    res.status(500).json({ success: false, error: `${error}`})
   }
 });
 

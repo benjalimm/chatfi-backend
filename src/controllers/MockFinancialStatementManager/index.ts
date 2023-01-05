@@ -31,6 +31,18 @@ export default class MockFinancialStatementManager implements FinancialStatement
     this.statements.set(type, JSON.stringify(document));
   }
 
+  private extractJSONStringFromString(str: string): string {
+    const strings = str.split("{")
+    
+    if (strings.length === 0) {
+      return str;
+    }
+    
+    // Add back opening bracket
+    const jsonString = "{ " + strings[strings.length - 1]
+    return jsonString
+  }
+
   private loadFinancialStatements() {
     this.loadStatement("INCOME_STATEMENT", incomeStatement);
     this.loadStatement("BALANCE_SHEET", balanceSheet);
@@ -47,16 +59,21 @@ export default class MockFinancialStatementManager implements FinancialStatement
   private async getDocumentTypeFromQuery(query: string): Promise<LLMDocumentTypeResponse> {
     const prompt = GET_DOCUMENT_TYPE_PROMPT + query;
     const jsonString = await this.llmController.executePrompt(prompt);
-    const trimmedJsonString = jsonString.trim().replace('?',"")
-    console.log(`JSON string: ${trimmedJsonString}`)
-    const response = JSON.parse(trimmedJsonString)
+    const extractedJSONString = this.extractJSONStringFromString(jsonString).trim()
+    console.log(`ExtractedJSONString: ${extractedJSONString}`)
 
-
-    if (response.documentTypes == undefined) {
+    try {
+      const response = JSON.parse(extractedJSONString)
+      if (response.documentTypes == undefined) {
       throw new Error('Failed to properly parse LLM document type response')
     } else {
       return response as LLMDocumentTypeResponse;
     }
+    } catch (e) {
+      console.log(`Failed to parse JSON string due to erro: ${e}`)
+      throw e
+    }
+    
   }
 
   async getDocumentStringsFromQuery(query: string): Promise<string> {
