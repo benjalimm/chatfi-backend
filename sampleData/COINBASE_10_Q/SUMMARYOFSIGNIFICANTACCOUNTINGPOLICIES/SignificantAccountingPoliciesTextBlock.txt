@@ -1,0 +1,119 @@
+"SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES
+Basis of presentation and principles of consolidation
+The accompanying condensed consolidated financial statements of the Company are unaudited. These unaudited condensed consolidated
+financial statements have been prepared in accordance with United States generally accepted accounting principles (“GAAP”) on the
+same basis as the audited consolidated financial statements, and in management’s opinion, reflect all adjustments, consisting only
+of normal, recurring adjustments, that are necessary for the fair statement of the Company’s condensed consolidated financial
+statements for the periods presented. The unaudited condensed consolidated results of operations for the three and nine months
+ended September 30, 2022 are not necessarily indicative of the results to be expected for the full year or any other period.
+These condensed consolidated financial statements and accompanying notes should be read in conjunction with the audited
+consolidated financial statements and notes included in the Company’s annual report on Form 10-K for the year ended December 31,
+2021 filed with the Securities and Exchange Commission (the “SEC”) on February 25, 2022 (the “Annual Report”).
+These condensed consolidated financial statements include the accounts of the Company and its subsidiaries. The Company’s
+subsidiaries are entities in which the Company holds, directly or indirectly, more than 50% of the voting rights, or where it
+exercises control. Certain subsidiaries of the Company have a basis of presentation different from GAAP. For the purposes of these
+unaudited condensed consolidated financial statements, the basis of presentation of such subsidiaries is converted to GAAP. All
+intercompany accounts and transactions have been eliminated in consolidation.
+There were no changes to the significant accounting policies or recent accounting pronouncements that were disclosed in Note 2.
+Summary of Significant Accounting Policies to the audited consolidated financial statements included in the Annual Report, other
+than as discussed below.
+Reclassifications
+Certain prior period amounts have been reclassified in order to conform with the current period presentation. These
+reclassifications have no impact on the Company’s previously reported consolidated net income.
+Use of estimates
+The preparation of the condensed consolidated financial statements in accordance with GAAP requires management to make estimates
+and assumptions in the Company’s condensed consolidated financial statements and notes thereto.
+Significant estimates and assumptions include the determination of the recognition, measurement, and valuation of current and
+deferred income taxes; the fair value of stock-based awards issued; the useful lives of long-lived assets; the impairment of
+long-lived assets; the valuation of privately-held strategic investments, including impairments; the Company’s incremental
+borrowing rate; the fair value of customer crypto assets and liabilities; the fair value of assets acquired and liabilities
+assumed in business combinations, including contingent consideration arrangements; the fair value of derivatives and related
+hedges; the fair value of long-term debt; assessing the likelihood of adverse outcomes from claims and disputes; and loss
+provisions.
+Actual results and outcomes may differ from management’s estimates and assumptions due to risks and uncertainties. To the extent
+that there are material differences between these estimates and actual results, the Company’s condensed consolidated financial
+statements will be affected. The Company bases its estimates on historical experience and on various other assumptions that are
+believed to be reasonable, the result of which forms the basis for making judgments about the carrying values of assets and
+liabilities.
+Customer custodial cash and customer custodial cash liabilities
+Customer custodial cash represents restricted cash and cash equivalents maintained in segregated Company bank accounts that are
+held for the exclusive benefit of customers. Customer custodial cash liabilities represent cash deposits held by customers in
+their fiat wallets and unsettled deposits and withdrawals. The Company restricts the use of the assets underlying the customer
+custodial cash to meet regulatory requirements and classifies the assets as current based on their purpose and availability to
+fulfill the Company’s direct obligation under customer custodial cash liabilities.
+Certain jurisdictions where the Company operates require the Company to hold eligible liquid assets, as defined by applicable
+regulatory requirements and commercial law in these jurisdictions, equal to at least 100% of the aggregate amount of all customer
+custodial cash liabilities. Depending on the jurisdiction, eligible liquid assets can include cash and cash equivalents, customer
+custodial cash, and in-transit customer receivables. As of September 30, 2022 and December 31, 2021, the Company’s eligible liquid
+assets were greater than the aggregate amount of customer custodial cash liabilities.
+Concentration of credit risk
+The Company’s cash and cash equivalents, restricted cash, customer custodial cash, and accounts and loans receivable are
+potentially subject to concentration of credit risk. Cash and cash equivalents, restricted cash, and customer custodial cash are
+placed with financial institutions which are of high credit quality. The Company invests cash and cash equivalents, and customer
+custodial accounts primarily in highly liquid, highly rated instruments which are uninsured. The Company may also have deposit
+balances with financial institutions which exceed the Federal Deposit Insurance Corporation insurance limit of $250,000. The
+Company also holds cash at crypto trading venues and performs a regular assessment of these crypto trading venues as part of its
+risk management process.
+The Company held $368.1 million and $100.1 million of USD Coin (“USDC”) as of September 30, 2022 and December 31, 2021,
+respectively. The issuer of USDC reported that, as of September 30, 2022, underlying reserves were held in cash and short-duration
+U.S. Treasuries within segregated accounts for the benefit of USDC holders.
+As of September 30, 2022 and December 31, 2021, the Company had one customer and no customers, respectively, who accounted for
+more than 10% of the Company’s accounts and loans receivable, net. As of September 30, 2022 and December 31, 2021, the Company had
+no payment processors or bank partners representing more than 10% of accounts and loans receivable, net.
+During the three and nine months ended September 30, 2022 and September 30, 2021, no customer accounted for more than 10% of total
+revenue.
+Derivative contracts
+Derivative contracts derive their value from underlying asset prices, other inputs or a combination of these factors. Derivative
+contracts are recognized as either assets or liabilities in the condensed consolidated balance sheets at fair value, with changes
+in fair value recognized in other operating expense, net.
+The Company enters into arrangements that result in obtaining the right to receive or obligation to deliver a fixed amount of
+crypto assets in the future. These are hybrid instruments, consisting of a debt host contract that is initially measured at the
+fair value of the underlying crypto assets and is subsequently carried at amortized cost, and an embedded forward feature based on
+the changes in the fair value of the underlying crypto asset. The embedded forward is bifurcated from the host contract, and is
+subsequently measured at fair value.
+The Company also enters into foreign exchange forward contracts that act as economic hedges against the impact of changes in Euro
+on the Company’s intercompany transactions. The Company records changes in fair value of the forward contracts as part of other
+expense, net in the consolidated statements of operations.
+Derivatives designated as hedges
+The Company applies hedge accounting to certain derivatives executed for risk management purposes. To qualify for hedge
+accounting, a derivative must be highly effective at reducing the risk associated with the exposure being hedged. The Company uses
+fair value hedges primarily to hedge the fair value exposure of crypto asset prices. For qualifying fair value hedges, the changes
+in the fair value of the derivative and the fair value of the hedged item are recognized in current-period earnings in other
+operating expense, net in the condensed consolidated statements of operations. Derivative amounts affecting earnings are
+recognized in the same line item as the earnings effect of the hedged item.
+Customer crypto assets and liabilities
+Customer crypto assets and liabilities represent the Company’s obligation to safeguard customers’ crypto assets in digital wallets
+on the Company’s platform. The Company safeguards these assets for customers and is obligated to safeguard them from loss, theft,
+or other misuse. The Company recognizes customer crypto liabilities and corresponding customer crypto assets, on initial
+recognition and at each reporting date, at fair value of the crypto assets. Any loss, theft, or other misuse would impact the
+measurement of customer crypto assets.
+Recent accounting pronouncements
+Recently adopted accounting pronouncements
+On October 28, 2021, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update No. 2021-08, Accounting
+for Contract Assets and Contract Liabilities from Contracts with Customers (“ASU 2021-08”). ASU 2021-08 amends Accounting
+Standards Codification 805 (“ASC 805”) to require acquiring entities to apply Topic 606 - Revenue from Contracts with Customers to
+recognize and measure contract assets and contract liabilities in a business combination. The Company early adopted the standard
+on January 1, 2022. The adoption of the standard did not have a material impact on the Company’s condensed consolidated financial
+statements.
+On March 31, 2022, the SEC issued Staff Accounting Bulletin No. 121 (“SAB 121”). SAB 121 sets out interpretive guidance from the
+staff of the SEC regarding the accounting for obligations to safeguard crypto assets that an entity holds for its customers.
+Safeguarding is defined as taking actions to secure customer crypto assets and the associated cryptographic key information and
+protecting them from loss, theft, or other misuse. The guidance requires an entity to recognize a liability for the obligation to
+safeguard the users’ assets, and recognize an associated asset for the crypto assets safeguarded. Both the liability and asset
+should be measured initially and subsequently at the fair value of the crypto assets being safeguarded. The guidance also requires
+additional disclosures related to the nature and amount of crypto assets that the entity is responsible for holding for its
+customers, with separate disclosure for each significant crypto asset, and the vulnerabilities the entity has due to any
+concentration in such activities. The Company has adopted this guidance as of June 30, 2022 with retrospective application as of
+January 1, 2022. The balances as of January 1, 2022 for the customer crypto assets and customer crypto liabilities were both
+$267.6 billion.
+Accounting pronouncements pending adoption
+On June 30, 2022, FASB issued Accounting Standards Update No. 2022-03, Fair Value Measurement of Equity Securities Subject to
+Contractual Sale Restrictions (“ASU 2022-03”). ASU 2022-03 clarifies that a contractual sale restriction prohibiting the sale of
+an equity security is a characteristic of the reporting entity holding the equity security and is not included in the equity
+security's unit of account. The standard requires specific disclosures related to equity securities that are subject to
+contractual sale restrictions, including (1) the fair value of such equity securities reflected in the balance sheet, (2) the
+nature and remaining duration of the corresponding restrictions, and (3) any circumstances that could cause a lapse in the
+restrictions. The new standard is effective for the Company for its fiscal year beginning January 1, 2024, with early adoption
+permitted. The Company is currently evaluating the impact of adopting the standard on the Company’s consolidated financial
+statements.
+"

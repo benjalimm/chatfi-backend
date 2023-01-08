@@ -1,0 +1,14 @@
+"INCOME TAXES
+The Company calculates the tax provision for interim periods using an estimated annual effective tax rate applied to year-to-date
+ordinary income and adjusts for discrete items in the quarter. In each quarter, the estimate of the annual effective tax rate is
+updated and an adjustment is made in the year-to-date provision. The annual effective tax rate is subject to fluctuation due to
+factors including changing assumptions on forecasted annual pretax income, certain book and tax differences, valuation allowances
+against deferred tax assets, or changes in or interpretation of tax laws.
+The Company’s effective tax rate (“ETR”) for the three months ended September 30, 2022 and September 30, 2021 was 15.4% and
+(49.9)%, respectively. The ETR of 15.4% for the three months ended September 30, 2022 was lower than the U.S. statutory rate of
+21.0% primarily due to lower deductible stock compensation expense during the quarter.
+The Company’s ETR for the nine months ended September 30, 2022 and September 30, 2021 was 17.1% and (30.3)%, respectively. The ETR
+of 17.1% for the nine months ended September 30, 2022 was lower than the U.S. statutory rate of 21.0% primarily due to a valuation
+allowance on deferred tax assets associated with impairment charges and non-deductible compensation, offset by a tax benefit for
+U.S. state taxes and U.S. federal research and development credits.
+"
