@@ -92,7 +92,7 @@ export default class MockFinancialStatementManager implements FinancialStatement
 
       // 5. If JSON, use JSON prompt. If txt, use TXT prompt
 
-      const JSON_SEGMENT_PROMPT
+      const JSON_SEGMENT_PROMPT = ``
 
     })
 
