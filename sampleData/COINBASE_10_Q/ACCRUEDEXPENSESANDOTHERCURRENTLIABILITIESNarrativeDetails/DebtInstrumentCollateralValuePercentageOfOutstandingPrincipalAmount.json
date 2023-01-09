@@ -1,1 +1,0 @@
-{"decimals":"2","unitRef":"number","period":{"instant":"2022-09-30"},"segment":[{"dimension":"us-gaap:DebtInstrumentAxis","value":"coin:DebtSecuredByBitcoinMember"},{"dimension":"us-gaap:ShortTermDebtTypeAxis","value":"us-gaap:SecuredDebtMember"}],"value":"2"}

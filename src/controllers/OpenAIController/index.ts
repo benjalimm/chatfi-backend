@@ -13,14 +13,15 @@ export default class OpenAIController implements LLMController {
   }
 
   async executePrompt(text: string): Promise<string> {
+    console.log(`Executing prompt... \n_____________\nPROMPT: ${text}`)
     const completion = await this.api.createCompletion({
         model: "text-davinci-003",
         prompt: text,
-        temperature: 0.6,
+        temperature: 0.3,
         max_tokens: 2049,
     });
-
-    console.log(completion.data.choices)
-    return completion.data.choices[0].text ?? "";
+    const output = completion.data.choices[0].text ?? "";
+    console.log(`---\nOUTPUT: ${output}\n_____________`)
+    return output;
   }
 }

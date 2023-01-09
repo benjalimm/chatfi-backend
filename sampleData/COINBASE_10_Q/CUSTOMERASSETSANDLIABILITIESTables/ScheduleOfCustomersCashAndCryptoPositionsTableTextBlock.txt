@@ -1,8 +1,0 @@
-"
-The following table presents customers’ cash and crypto positions (in thousands):
-
-September 30,December 31,20222021Customer custodial cash$6,591,105 $10,526,233 Customer crypto assets95,113,124 — Total customer
-assets$101,704,229 $10,526,233 Customer custodial cash liabilities$6,357,657 $10,480,612 Customer crypto
-liabilities95,113,124 — Total customer liabilities$101,470,781 $10,480,612 
-
-"

@@ -3,12 +3,13 @@ import FinancialStatementManager from "../../schema/controllers/FinancialStateme
 import LLMController from "../../schema/controllers/LLMController";
 import { PrimaryDocumentType, SecondaryDocumentType } from "../../schema/DocumentType";
 import LLMDocumentTypeResponse from "../../schema/LLMDocumentTypeResponse";
-import reportMetadata from "../../../sampleData/COINBASE_10_Q/metadata.json";
+import reportMetadata from "../../sampleData/COINBASE_10_Q/metadata.json";
 import { SegmentMetadata } from "../../schema/Metadata";
 import path from 'path';
+import { countReset } from "console";
 
 
-const DATA_FILE_PATH = "../../../sampleData/COINBASE_10_Q";
+const DATA_FILE_PATH = "../../sampleData/COINBASE_10_Q";
 
 export default class MockFinancialStatementManager implements FinancialStatementManager {
 
@@ -34,7 +35,15 @@ export default class MockFinancialStatementManager implements FinancialStatement
   }
 
   private extractJSONStringFromString(str: string): string {
-    return str.trim();
+    const strings = str.split("{")
+    
+    if (strings.length === 0) {
+      return str;
+    }
+    
+    // Add back opening bracket
+    const jsonString = "{ " + strings[strings.length - 1]
+    return jsonString
   }
 
   private loadFinancialStatements() {
@@ -76,8 +85,10 @@ export default class MockFinancialStatementManager implements FinancialStatement
         data: string
       }[] = [];
 
-    await documentTypeResponse.documentTypes.forEach(async statementFile => {
-      // 2. For each document get metadata and ask LLM which segments it would look at 
+    for (const statementFile of documentTypeResponse.documentTypes) {
+
+      try {
+        // 2. For each document get metadata and ask LLM which segments it would look at 
 
       // 2.1 - Get metadata for statement
       const statementMetadata = require(`${DATA_FILE_PATH}/${statementFile}/metadata.json`) as SegmentMetadata;
@@ -86,7 +97,7 @@ export default class MockFinancialStatementManager implements FinancialStatement
       const segments = statementMetadata.segments;
 
       // 3. Ask LLM which segments it would look at
-      const SEGMENT_PROMPT = `${segments}\nListed above are segments within the ${statementFile}. Based on the following query, which segments would you look at? Output the answer in a JSON with the following schema:
+      const SEGMENT_PROMPT = `${segments}\nListed above are files within the ${statementFile}. Based on the following query, which file segments listed above would you look at? You are only allowed to pick a maximum of 5 files, so pick the top 5. Output the exact answer including the file extension with no changes in a JSON with the following schema:
       {
         "segments": string[]
       }
@@ -95,47 +106,78 @@ export default class MockFinancialStatementManager implements FinancialStatement
 
       const segmentPromptJsonString = await this.llmController.executePrompt(SEGMENT_PROMPT)
 
+      const extractedSegmentPromptJsonString = await this.extractJSONStringFromString(segmentPromptJsonString)
+
       // 4. Parse JSON string as data type
-      const segmentPromptJson = JSON.parse(segmentPromptJsonString) as SegmentMetadata;
+      const segmentPromptJson = JSON.parse(extractedSegmentPromptJsonString) as SegmentMetadata;
 
       // 5. For each segment, get the data and ask LLM to extract the pertinent data
-      await segmentPromptJson.segments.forEach(async segment => {
-        const data = require(`${DATA_FILE_PATH}/${statementFile}/${segment}`)
-        const extension = path.extname(segment);
-        let DATA_EXTRACTION_PROMPT = '';
-        
-        // 6. Check if segment is a txt or a json file
-        if (extension === '.json') {
-          // 6.1 - If JSON, use JSON prompt. If txt, use TXT prompt
-          const JSON_SEGMENT_PROMPT = `
-          ${data}
-          \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the pertinent data in a structured JSON?
-          \n Query: ${query}
-          `
-          DATA_EXTRACTION_PROMPT = JSON_SEGMENT_PROMPT;
-        } else {
-          /// We assume it's a .txt file if it's not a JSON file.
-          const TXT_SEGMENT_PROMPT = `
-          ${data}
-          \n Listed above is a txt for the segment ${segment}. It might contain tables that were copy and pasted straight from a pdf file. Based on the following query, extract the pertinent data in a structured JSON
-          \n Query: ${query}
-          `
-          DATA_EXTRACTION_PROMPT = TXT_SEGMENT_PROMPT;
+      for (const segment of segmentPromptJson.segments) {
+        try {
+          const data = require(`${DATA_FILE_PATH}/${statementFile}/${segment}`)
+          const stringifiedData = JSON.stringify(data)
+          const extension = path.extname(segment);
+          let DATA_EXTRACTION_PROMPT = '';
+          
+          // 6. Check if segment is a txt or a json file
+          if (extension === '.json') {
+
+            // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
+            if (stringifiedData.length < 150) {
+              extractedData.push({ 
+              statement: statementFile, 
+              segment, 
+              data: stringifiedData
+              })
+              continue;
+            } 
+            
+            const JSON_SEGMENT_PROMPT = `
+            ${stringifiedData}
+            \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the pertinent data in a structured JSON?
+            \n Query: ${query}
+            `
+            DATA_EXTRACTION_PROMPT = JSON_SEGMENT_PROMPT;
+          } else {
+            /// We assume it's a .txt file if it's not a JSON file.
+            const TXT_SEGMENT_PROMPT = `
+            ${stringifiedData}
+            \n Listed above is a txt for the segment ${segment}. It might contain tables that were copy and pasted straight from a pdf file. Based on the following query, extract the pertinent data in a structured JSON
+            \n Query: ${query}
+            `
+            DATA_EXTRACTION_PROMPT = TXT_SEGMENT_PROMPT;
+          }
+
+          const dataExtractionJsonString = await this.llmController.executePrompt(DATA_EXTRACTION_PROMPT);
+
+          extractedData.push({ 
+            statement: statementFile, 
+            segment, 
+            data: dataExtractionJsonString
+          })
+        } catch (e) {
+          console.log(`Caught error at segment level: ${e}\n...Continuing loop`)
+          continue;
         }
+        
+      }
 
-        const dataExtractionJsonString = await this.llmController.executePrompt(DATA_EXTRACTION_PROMPT);
-
-        extractedData.push({ 
-          statement: statementFile, 
-          segment, 
-          data: dataExtractionJsonString
-        })
-      })
-    })
+      } catch (e) {
+          console.log(`Caught error at statement level: ${e}\n...Continuing loop`)
+      }
+      
+    }
 
     // 7. Combine string, label data and return
+    let combinedString = '';
+    extractedData.forEach(extractedData => {
+      combinedString = combinedString + `
+      \n Info from ${extractedData.statement} in segment ${extractedData.segment}:
+      ${extractedData.data}
+      `
+    })
 
 
-    return "";
+    return combinedString;
   }
 }
