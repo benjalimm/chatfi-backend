@@ -1,3 +1,3 @@
-export default interface LLMController{
+export default interface LLMController {
   executePrompt(text: string): Promise<string>;
 }
