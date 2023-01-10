@@ -1,0 +1,46 @@
+"INDEBTEDNESS
+The components of indebtedness were as follows as of September 30, 2022 (in thousands, except percentages):
+
+IndebtednessEffective Interest RatePrincipal AmountUnamortized Debt Discount and Issuance CostsNet Carrying Amount
+0.50% 2026 Convertible Notes due on June 1, 2026
+0.98 %$1,437,500 $(24,903)$1,412,597 
+3.38% 2028 Senior Notes due on October 1, 2028
+3.57 %1,000,000 (10,413)989,587 
+3.63% 2031 Senior Notes due on October 1, 2031
+3.77 %1,000,000 (10,947)989,053 Total$3,437,500 $(46,263)$3,391,237 
+
+The components of indebtedness were as follows as of December 31, 2021 (in thousands, except percentages):
+
+IndebtednessEffective Interest RatePrincipal AmountUnamortized Debt Discount and Issuance CostsNet Carrying Amount
+0.50% 2026 Convertible Notes due on June 1, 2026
+0.98 %$1,437,500 $(29,436)$1,408,064 
+3.38% 2028 Senior Notes due on October 1, 2028
+3.57 %1,000,000 (11,565)988,435 
+3.63% 2031 Senior Notes due on October 1, 2031
+3.77 %1,000,000 (11,704)988,296 Total$3,437,500 $(52,705)$3,384,795 
+
+Convertible Senior Notes
+In May 2021, the Company issued an aggregate principal amount of $1.44 billion of convertible senior notes due in 2026 (the “2026
+Convertible Notes”) pursuant to an indenture, dated May 18, 2021 (the “Convertible Notes Indenture”), between the Company and U.S.
+Bank National Association, as trustee. The 2026 Convertible Notes were offered and sold in a private offering to qualified
+institutional buyers pursuant to Rule 144A under the Securities Act of 1933, as amended (the “Securities Act”).
+Senior Notes
+In September 2021, the Company completed the issuance of an aggregate principal amount of $1.0 billion of senior notes due on
+October 1, 2028 (the “2028 Senior Notes”) and an aggregate principal amount of $1.0 billion of senior notes due on October 1, 2031
+(the “2031 Senior Notes” and together with the 2028 Senior Notes, the “Senior Notes”). The Senior Notes were issued within the
+United States only to persons reasonably believed to be qualified institutional buyers pursuant to Rule 144A under the Securities
+Act, and outside the United States to non-U.S. persons pursuant to Regulation S under the Securities Act.
+The indenture governing the Senior Notes contains customary covenants that restrict the ability of the Company and certain of its
+subsidiaries to incur debt and liens. The Company is not aware of any instances of non-compliance with the covenants as of
+September 30, 2022.
+Interest
+The following table summarizes the interest expense for the 2026 Convertible Notes, the 2028 Senior Notes and the 2031 Senior
+Notes (in thousands):
+
+Three Months Ended September 30,Nine Months Ended September 30,2022202120222021Coupon
+interest$19,296 $5,300 $57,937 $5,300 Amortization of debt discount and issuance
+costs2,204 1,672 6,442 2,420 Total$21,500 $6,972 $64,379 $7,720 
+
+Debt discounts and debt issuance costs are amortized to interest expense using the effective interest method over the contractual
+term of the respective note.
+"

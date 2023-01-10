@@ -1,0 +1,29 @@
+"ACCOUNTS AND LOANS RECEIVABLE, NET OF ALLOWANCE
+Accounts and loans receivable, net of allowance consisted of the following (in thousands):
+
+September 30,December 31,20222021In-transit customer receivables$42,552 $102,720 Trade finance receivables7,512 1,865 Custodial
+fee revenue receivable11,477 23,727 
+Loans receivable(1)
+116,601 218,461 
+Interest and other receivables(2)
+79,164 73,803 
+Allowance for doubtful accounts(3)
+(16,952)(24,551)Total accounts and loans receivable, net of allowance$240,354 $396,025 
+
+__________________
+(1)The fair value of collateral held as security exceeded the outstanding loans receivable as of September 30, 2022 and December
+31, 2021, so no allowance was recorded.
+(2)Includes accounts receivables denominated in crypto assets of $11.0 million and $26.4 million as of September 30, 2022 and
+December 31, 2021, respectively. See Note 12. Derivatives for additional details.
+(3)Includes provision for transaction losses of $4.2 million and $16.8 million as of September 30, 2022 and December 31, 2021,
+respectively.
+Loans receivable
+The Company issues loans to retail users and institutions. As of September 30, 2022 and December 31, 2021, the Company had issued
+loans with an outstanding balance of $116.6 million and $218.5 million, respectively. The related interest receivable on the loans
+as of September 30, 2022 and December 31, 2021, was $0.8 million and $1.3 million, respectively.
+The amounts loaned are collateralized with the crypto assets held by the borrower in their crypto asset wallet on the Company’s
+platform. The Company does not have the right to use such collateral unless the borrower defaults on the loans. The Company’s
+credit exposure is significantly limited and no allowance was recorded against these loans receivable. Loans receivable are
+measured at amortized cost. The carrying value of the loans approximates their fair value. As of September 30, 2022 and December
+31, 2021, there were no loans receivable past due.
+"

@@ -1,0 +1,16 @@
+"
+Concentration of credit risk
+The Company’s cash and cash equivalents, restricted cash, customer custodial cash, and accounts and loans receivable are
+potentially subject to concentration of credit risk. Cash and cash equivalents, restricted cash, and customer custodial cash are
+placed with financial institutions which are of high credit quality. The Company invests cash and cash equivalents, and customer
+custodial accounts primarily in highly liquid, highly rated instruments which are uninsured. The Company may also have deposit
+balances with financial institutions which exceed the Federal Deposit Insurance Corporation insurance limit of $250,000. The
+Company also holds cash at crypto trading venues and performs a regular assessment of these crypto trading venues as part of its
+risk management process.
+The Company held $368.1 million and $100.1 million of USD Coin (“USDC”) as of September 30, 2022 and December 31, 2021,
+respectively. The issuer of USDC reported that, as of September 30, 2022, underlying reserves were held in cash and short-duration
+U.S. Treasuries within segregated accounts for the benefit of USDC holders.
+As of September 30, 2022 and December 31, 2021, the Company had one customer and no customers, respectively, who accounted for
+more than 10% of the Company’s accounts and loans receivable, net. As of September 30, 2022 and December 31, 2021, the Company had
+no payment processors or bank partners representing more than 10% of accounts and loans receivable, net.During the three and nine
+months ended September 30, 2022 and September 30, 2021, no customer accounted for more than 10% of total revenue."

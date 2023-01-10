@@ -1,40 +1,21 @@
 export const GET_DOCUMENT_TYPE_PROMPT = `
-    Income statement = INCOME_STATEMENT
-    Balance sheet = BALANCE_SHEET
-    Cash flow statement = CASH_FLOW_STATEMENT
-    Shareholder equity / stockholder equiter = SHAREHOLDERS_EQUITY_STATEMENT
-    Statement of operations = STATEMENT_OPERATIONS
-    Revenue in notes to financial statement = REVENUE_NOTES
-    Info on acquisitions in notes to financial statement = ACQUISITION_NOTES
-    
 
     Above are the financial statements that are available for company X. Based on the following query, which financial statement should be queried?
-
     Format the answers with the following JSON format:
-    {
-      "documentTypes": string[]
-    }
-
+    { "documentTypes": string[] }
     Query: 
-
     `
 
-  export const INFER_ANSWER_PROMPT = `
-  
-  Above is a potentially a list of financial statements in JSON. Based on the following information, execute the following query. 
-
+  export const INFER_ANSWER_PROMPT = ` 
+  Above is a potentially a list of segments from financial statements in JSON. Based on the following information, execute the following query. Output the answer in dot points.
   Query: 
-
   `
 
   export const PRECAUTIONS_PROMPT = 
   `
+  Specify numbers and dates if possible. All dollar amount should start with the $ symbol. Extract exact values and do not alter them (e.g. Make sure not $3,000,000 doesn't turn into $300,000)
 
-  Attempt to be detailed when providing an answer. 
-  Specify numbers and dates if possible. Do not answer with a SQL query unless explicitly asked to do so.
+  Always explain how you arrived at a conclusion. (e.g. Which document and segment it was extracted from)
 
   If the query is not possible given the provided information, list what information is required to answer the query.
-
-  Simply extract the pertinent values, display them and tell us which document you extracted them from. When referring to the documents, do not refer to them as JSONs, but simply refer to them as the title of the document.
-  
   `

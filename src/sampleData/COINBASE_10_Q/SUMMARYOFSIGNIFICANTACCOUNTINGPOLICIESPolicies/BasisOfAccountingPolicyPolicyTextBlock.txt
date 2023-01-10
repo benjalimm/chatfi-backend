@@ -1,0 +1,20 @@
+"
+Basis of presentation and principles of consolidation
+The accompanying condensed consolidated financial statements of the Company are unaudited. These unaudited condensed consolidated
+financial statements have been prepared in accordance with United States generally accepted accounting principles (“GAAP”) on the
+same basis as the audited consolidated financial statements, and in management’s opinion, reflect all adjustments, consisting only
+of normal, recurring adjustments, that are necessary for the fair statement of the Company’s condensed consolidated financial
+statements for the periods presented. The unaudited condensed consolidated results of operations for the three and nine months
+ended September 30, 2022 are not necessarily indicative of the results to be expected for the full year or any other period.
+These condensed consolidated financial statements and accompanying notes should be read in conjunction with the audited
+consolidated financial statements and notes included in the Company’s annual report on Form 10-K for the year ended December 31,
+2021 filed with the Securities and Exchange Commission (the “SEC”) on February 25, 2022 (the “Annual Report”).
+These condensed consolidated financial statements include the accounts of the Company and its subsidiaries. The Company’s
+subsidiaries are entities in which the Company holds, directly or indirectly, more than 50% of the voting rights, or where it
+exercises control. Certain subsidiaries of the Company have a basis of presentation different from GAAP. For the purposes of these
+unaudited condensed consolidated financial statements, the basis of presentation of such subsidiaries is converted to GAAP. All
+intercompany accounts and transactions have been eliminated in consolidation.
+There were no changes to the significant accounting policies or recent accounting pronouncements that were disclosed in Note 2.
+Summary of Significant Accounting Policies to the audited consolidated financial statements included in the Annual Report, other
+than as discussed below.
+"

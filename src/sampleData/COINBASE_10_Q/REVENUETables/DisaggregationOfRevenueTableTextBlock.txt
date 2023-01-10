@@ -1,0 +1,20 @@
+"
+The following table presents revenue of the Company disaggregated by revenue source (in thousands):
+
+Three Months Ended September 30,Nine Months Ended September 30,2022202120222021Net revenueTransaction revenueRetail,
+net$346,091  $1,021,967 $1,928,145  $4,305,088 Institutional, net19,777 67,689 105,973 255,529 Total transaction
+revenue365,868 1,089,656 2,034,118 4,560,617 Subscription and services revenueBlockchain
+rewards62,759 77,039 213,064 120,712 Custodial fee revenue14,532 31,468 68,404 86,616 Interest income101,778 8,389 144,746 18,190 
+Other subscription and services revenue(1)
+31,438 28,184 83,537 78,592 Total subscription and services revenue210,507 145,080 509,751 304,110 Total net
+revenue576,375 1,234,736 2,543,869 4,864,727 Other revenueCrypto asset sales revenue8 76,742 625 475,065 Corporate interest and
+other income13,956 430 20,606 1,189 Total other revenue13,964 77,172 21,231 476,254 Total
+revenue$590,339 $1,311,908 $2,565,100 $5,340,981 
+
+__________________
+(1)During the third quarter of 2022, the Company rebranded the “Earn” campaign to the “Learning Rewards” campaign. $7.4 million
+and $15.8 million of Learning Rewards revenue is included within other subscription and services revenue for the three and nine
+months ended September 30, 2022, respectively. $15.2 million and $43.2 million of Learning Rewards revenue has been reclassified
+from its own line item into other subscription and services revenue for the three and nine months ended September 30, 2021,
+respectively, to conform to the current period presentation.
+"

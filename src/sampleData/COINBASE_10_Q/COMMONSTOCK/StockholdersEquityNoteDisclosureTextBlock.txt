@@ -1,0 +1,31 @@
+"COMMON STOCK
+Effective April 1, 2021, the Company amended and restated its certificate of incorporation to authorize 10,000,000,000 shares of
+Class A common stock, 500,000,000 shares of Class B common stock, 500,000,000 shares of undesignated common stock, and 500,000,000
+shares of undesignated preferred stock. Shares of Class A common stock and Class B common stock will be treated equally,
+identically and ratably, on a per share basis, with respect to dividends that may be declared by the Company’s board of directors.
+Holders of Class A common stock are entitled to one vote per share, and holders of Class B common stock are entitled to 20 votes
+per share. Holders of Class A common stock and Class B common stock generally vote together as a single class on all matters
+(including the election of directors) submitted to a vote of the stockholders of the Company. Upon a liquidation, dissolution or
+winding-up of the Company, the assets legally available for distribution to stockholders would be distributed ratably among the
+holders of Class A common stock and Class B common stock and any participating preferred stock or new series of common stock
+outstanding at that time, subject to prior satisfaction of all outstanding debt and liabilities and the preferential rights of and
+the payment of liquidation preferences, if any, on any outstanding shares of preferred stock or new series of common stock. Shares
+of Class B common stock are convertible at any time at the option of the holder into shares of Class A common stock on a
+one-to-one basis. In addition, each share of Class B common stock will automatically convert into a share of Class A common stock
+upon a sale or transfer (other than with respect to certain estate planning and other transfers). Further, upon certain events
+specified in the restated certificate of incorporation, all outstanding shares of Class B common stock will convert automatically
+into shares of Class A common stock.
+The Company has reserved shares of Class A common stock and Class B common stock for issuance for the following purposes (in
+thousands):
+
+September 30,December 31,20222021Class A common stockOptions issued and outstanding under the 2013 Amended and Restated Stock Plan
+(the “2013 Plan”)1,036 1,569 Options issued and outstanding under the 2019 Equity Incentive Plan (the “2019
+Plan”)26,365 29,311 RSUs issued and outstanding under the 2019 Plan3,004 5,851 Options issued and outstanding under the 2021
+Equity Incentive Plan (the “2021 Plan”) 922 — RSUs issued and outstanding under the 2021 Plan3,690 1,402 Shares available for
+future issuance under the 2021 Plan43,794 35,856 Shares available for future issuance under the 2021 ESPP6,941 5,125 Replacement
+options issued and outstanding from the Tagomi acquisition1 4 Replacement options issued and outstanding from the Bison Trails
+acquisition152 223 RSUs issued and outstanding from other acquisitions160 229 Shares available for future issuance of
+warrants2,296 2,296 Total Class A common stock shares reserved88,361 81,866 Class B common stockOptions issued and outstanding
+under the 2013 Plan4,935 6,101 Total Class B common stock shares reserved4,935 6,101 
+
+"

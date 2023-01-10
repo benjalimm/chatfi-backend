@@ -1,0 +1,42 @@
+"
+Gains (losses) on derivative instruments recognized in the Company’s condensed consolidated statements of operations were as
+follows (in thousands):
+
+Three Months Ended September 30, 2022Three Months Ended September 30, 2021DerivativesHedged ItemsIncome Statement
+ImpactDerivativesHedged ItemsIncome Statement ImpactDesignated as fair value hedging instruments
+Crypto asset borrowings with embedded derivatives(1)
+$(211,110)$207,112 $(3,998)$(75,999)$75,143 $(856)
+Crypto asset futures(1)
+225 (77)148 — — — Not designated as hedging instruments
+Accounts receivable denominated in crypto assets(1)
+(4,213)— (4,213)— — — 
+Other payables denominated in crypto assets(1)
+(2,367)— (2,367)— — — 
+Crypto asset futures(1)
+(566)— (566)— — — 
+Foreign currency forward contracts(2)
+22,935 — 22,935 — — — Total$(195,096)$207,035 $11,939 $(75,999)$75,143 $(856)
+
+Nine Months Ended September 30, 2022Nine Months Ended September 30, 2021DerivativesHedged ItemsIncome Statement
+ImpactDerivativesHedged ItemsIncome Statement ImpactDesignated as fair value hedging instruments
+Crypto asset borrowings with embedded derivatives(1)
+$148,959 $(154,228)$(5,269)$105,558 $(93,973)$11,585 
+Crypto asset futures(1)
+13,237 (12,339)898 — — — Not designated as hedging instruments
+Crypto asset borrowings with embedded derivatives(1)
+6,626 — 6,626 — — — 
+Accounts receivable denominated in crypto assets(1)
+(14,476)— (14,476)— — — 
+Other payables denominated in crypto assets(1)
+143 — 143 — — — 
+Crypto asset futures(1)
+(1,077)— (1,077)— — — 
+Foreign currency forward contracts(2)
+22,935 — 22,935 — — — Total$176,347 $(166,567)$9,780 $105,558 $(93,973)$11,585 
+
+__________________
+(1)Changes in fair value are recognized in other operating expense, net in the condensed consolidated statements of operations.
+(2)Changes in fair value are recognized in other expense, net, which partially offset gains and losses due to the remeasurement of
+certain foreign currency denominated assets and liabilities which are also recognized in other expense, net in the condensed
+consolidated statements of operations.
+"
