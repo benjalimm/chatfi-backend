@@ -14,41 +14,42 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 
-const mockFinancialStatementManager = 
-new MockFinancialStatementManager(openAIController);
+const mockFinancialStatementManager = new MockFinancialStatementManager(
+  openAIController
+);
 
 // Body parser middleware
-app.use(cors())
+app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
 });
 
 app.post('/', async (req: Request, res: Response) => {
-  const query = req.body.query
-  console.log("BODY:")
-  console.log(req.body)
+  const query = req.body.query;
+  console.log('BODY:');
+  console.log(req.body);
 
   try {
-
     if (query === undefined) {
-      throw new Error('Query is undefined')
+      throw new Error('Query is undefined');
     }
 
     // 1. This here is a large string of financial statement(s) as stringified JSON
-    const documentJsonStrings = await mockFinancialStatementManager.getDocumentStringsFromQuery(query);
+    const documentJsonStrings =
+      await mockFinancialStatementManager.getDocumentStringsFromQuery(query);
 
     // 2. Get LLM to infer answer
-    const prompt = documentJsonStrings + INFER_ANSWER_PROMPT + query + PRECAUTIONS_PROMPT;
+    const prompt =
+      documentJsonStrings + INFER_ANSWER_PROMPT + query + PRECAUTIONS_PROMPT;
     const answer = await openAIController.executePrompt(prompt);
 
-    res.json({ success: true, query, answer})
+    res.json({ success: true, query, answer });
   } catch (error) {
-    console.log(`ERROR: ${error}`)
-    res.status(500).json({ success: false, error: `${error}`})
+    console.log(`ERROR: ${error}`);
+    res.status(500).json({ success: false, error: `${error}` });
   }
 });
 
