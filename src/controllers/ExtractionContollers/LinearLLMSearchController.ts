@@ -1,45 +1,32 @@
-import FinancialStatementManager from '../../schema/controllers/FinancialStatementManager';
+import LLMExtractionController from '../../schema/controllers/ExtractionController';
 import LLMController from '../../schema/controllers/LLMController';
-import {
-  PrimaryDocumentType,
-  SecondaryDocumentType
-} from '../../schema/DocumentType';
 import LLMDocumentTypeResponse from '../../schema/LLMDocumentTypeResponse';
 import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
 import { SegmentMetadata } from '../../schema/Metadata';
 import path from 'path';
 import * as fs from 'fs';
+import {
+  GEN_STATEMENT_EXTRACTION_PROMPT,
+  GEN_SEGMENT_EXTRACTION_PROMPT
+} from './SharedPrompts';
 
 const DATA_FILE_PATH = '../../sampleData/COINBASE_10_Q';
 
 const MAX_STATEMENTS = 3;
 const MAX_SEGMENTS = 3;
 
-export default class MockFinancialStatementManager
-  implements FinancialStatementManager
+export default class LinearExtractionController
+  implements LLMExtractionController
 {
-  private statements: Map<PrimaryDocumentType | SecondaryDocumentType, string>;
   private llmController: LLMController;
-
-  constructor(llmController: LLMController) {
+  private dataFilePath: string;
+  constructor(llmController: LLMController, dataFilePath: string) {
     this.llmController = llmController;
-    this.statements = new Map();
-    this.loadFinancialStatements();
-  }
-
-  async getFinancialStatement(documentType: string): Promise<string> {
-    return this.statements.get(documentType as PrimaryDocumentType) ?? '';
+    this.dataFilePath = dataFilePath;
   }
 
   getListOfFinancialStatements(): string[] {
     return reportMetadata.statements;
-  }
-
-  private loadStatement(
-    type: PrimaryDocumentType | SecondaryDocumentType,
-    document: any
-  ) {
-    this.statements.set(type, JSON.stringify(document));
   }
 
   private extractJSONStringFromString(str: string): string {
@@ -54,22 +41,16 @@ export default class MockFinancialStatementManager
     return jsonString;
   }
 
-  private loadFinancialStatements() {}
-
   private async getDocumentTypeFromQuery(
     query: string
   ): Promise<LLMDocumentTypeResponse> {
     const listOfStatements = this.getListOfFinancialStatements();
 
-    const DOC_TYPE_PROMPT = `
-    Above are the financial statements that are available for company X. Based on the following query, which financial statement should be queried? You can only select a maximum of ${MAX_STATEMENTS} statements.
-    Format the answers with the following JSON format:
-    { "documentTypes": string[] }
-    The output array should be ordered from most important statement to least important statement.
-
-    Query: 
-    `;
-    const prompt = `${listOfStatements}\n` + DOC_TYPE_PROMPT + query;
+    const prompt = GEN_STATEMENT_EXTRACTION_PROMPT(
+      MAX_STATEMENTS,
+      listOfStatements,
+      query
+    );
     const jsonString = await this.llmController.executePrompt(prompt);
     const extractedJSONString = this.extractJSONStringFromString(jsonString);
     console.log(`ExtractedJSONString: ${extractedJSONString}`);
@@ -87,7 +68,7 @@ export default class MockFinancialStatementManager
     }
   }
 
-  async getDocumentStringsFromQuery(query: string): Promise<string> {
+  async generateFinalPrompt(query: string): Promise<string> {
     // 1. Get list of pertinent statements
     const documentTypeResponse = await this.getDocumentTypeFromQuery(query);
 
@@ -107,18 +88,17 @@ export default class MockFinancialStatementManager
 
         // 2.1 - Get metadata for statement
         const statementMetadata =
-          require(`${DATA_FILE_PATH}/${statementFile}/metadata.json`) as SegmentMetadata;
+          require(`${this.dataFilePath}/${statementFile}/metadata.json`) as SegmentMetadata;
 
         // 2.2 - Get segments for statement
         const segments = statementMetadata.segments;
 
         // 3. Ask LLM which segments it would look at
-        const SEGMENT_PROMPT = `List of segments:\n${segments}\. Based on the following query, which file segments listed above would you look at? Only list files that are listed above and do not invent new ones. You are only allowed to pick a maximum of ${MAX_SEGMENTS} files. Output the exact answer including the file extension with no changes in a JSON with the following schema:
-      {
-        "segments": string[]
-      }
-
-      \n Query: ${query}`;
+        const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(
+          MAX_SEGMENTS,
+          segments,
+          query
+        );
 
         const segmentPromptJsonString = await this.llmController.executePrompt(
           SEGMENT_PROMPT
