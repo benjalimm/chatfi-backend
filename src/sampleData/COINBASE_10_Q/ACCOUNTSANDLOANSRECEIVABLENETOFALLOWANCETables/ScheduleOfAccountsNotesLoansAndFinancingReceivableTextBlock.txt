@@ -1,0 +1,20 @@
+"
+Accounts and loans receivable, net of allowance consisted of the following (in thousands):
+
+September 30,December 31,20222021In-transit customer receivables$42,552 $102,720 Trade finance receivables7,512 1,865 Custodial
+fee revenue receivable11,477 23,727 
+Loans receivable(1)
+116,601 218,461 
+Interest and other receivables(2)
+79,164 73,803 
+Allowance for doubtful accounts(3)
+(16,952)(24,551)Total accounts and loans receivable, net of allowance$240,354 $396,025 
+
+__________________
+(1)The fair value of collateral held as security exceeded the outstanding loans receivable as of September 30, 2022 and December
+31, 2021, so no allowance was recorded.
+(2)Includes accounts receivables denominated in crypto assets of $11.0 million and $26.4 million as of September 30, 2022 and
+December 31, 2021, respectively. See Note 12. Derivatives for additional details.
+(3)Includes provision for transaction losses of $4.2 million and $16.8 million as of September 30, 2022 and December 31, 2021,
+respectively.
+"

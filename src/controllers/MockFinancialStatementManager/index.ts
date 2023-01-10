@@ -6,10 +6,12 @@ import LLMDocumentTypeResponse from "../../schema/LLMDocumentTypeResponse";
 import reportMetadata from "../../sampleData/COINBASE_10_Q/metadata.json";
 import { SegmentMetadata } from "../../schema/Metadata";
 import path from 'path';
-import { countReset } from "console";
-
+import * as fs from 'fs';
 
 const DATA_FILE_PATH = "../../sampleData/COINBASE_10_Q";
+
+const MAX_STATEMENTS = 3
+const MAX_SEGMENTS = 3
 
 export default class MockFinancialStatementManager implements FinancialStatementManager {
 
@@ -51,7 +53,16 @@ export default class MockFinancialStatementManager implements FinancialStatement
 
   private async getDocumentTypeFromQuery(query: string): Promise<LLMDocumentTypeResponse> {
     const listOfStatements = this.getListOfFinancialStatements();
-    const prompt = `${listOfStatements}\n` + GET_DOCUMENT_TYPE_PROMPT + query;
+
+    const DOC_TYPE_PROMPT = `
+    Above are the financial statements that are available for company X. Based on the following query, which financial statement should be queried? You can only select a maximum of ${MAX_STATEMENTS} statements.
+    Format the answers with the following JSON format:
+    { "documentTypes": string[] }
+    The output array should be ordered from most important statement to least important statement.
+
+    Query: 
+    `
+    const prompt = `${listOfStatements}\n` + DOC_TYPE_PROMPT + query;
     const jsonString = await this.llmController.executePrompt(prompt);
     const extractedJSONString = this.extractJSONStringFromString(jsonString)
     console.log(`ExtractedJSONString: ${extractedJSONString}`)
@@ -97,7 +108,7 @@ export default class MockFinancialStatementManager implements FinancialStatement
       const segments = statementMetadata.segments;
 
       // 3. Ask LLM which segments it would look at
-      const SEGMENT_PROMPT = `${segments}\nListed above are files within the ${statementFile}. Based on the following query, which file segments listed above would you look at? You are only allowed to pick a maximum of 5 files, so pick the top 5. Output the exact answer including the file extension with no changes in a JSON with the following schema:
+      const SEGMENT_PROMPT = `List of segments:\n${segments}\. Based on the following query, which file segments listed above would you look at? Only list files that are listed above and do not invent new ones. You are only allowed to pick a maximum of ${MAX_SEGMENTS} files. Output the exact answer including the file extension with no changes in a JSON with the following schema:
       {
         "segments": string[]
       }
@@ -114,16 +125,17 @@ export default class MockFinancialStatementManager implements FinancialStatement
       // 5. For each segment, get the data and ask LLM to extract the pertinent data
       for (const segment of segmentPromptJson.segments) {
         try {
-          const data = require(`${DATA_FILE_PATH}/${statementFile}/${segment}`)
-          const stringifiedData = JSON.stringify(data)
+          const segmentFilePath = `${DATA_FILE_PATH}/${statementFile}/${segment}`
+          const data = require(segmentFilePath)
           const extension = path.extname(segment);
           let DATA_EXTRACTION_PROMPT = '';
           
           // 6. Check if segment is a txt or a json file
           if (extension === '.json') {
+            const stringifiedData = JSON.stringify(data)
 
             // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
-            if (stringifiedData.length < 150) {
+            if (stringifiedData.length < 1500) {
               extractedData.push({ 
               statement: statementFile, 
               segment, 
@@ -134,21 +146,23 @@ export default class MockFinancialStatementManager implements FinancialStatement
             
             const JSON_SEGMENT_PROMPT = `
             ${stringifiedData}
-            \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the pertinent data in a structured JSON?
+            \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the pertinent data from the data listed above and output the data in a structured JSON.
             \n Query: ${query}
             `
             DATA_EXTRACTION_PROMPT = JSON_SEGMENT_PROMPT;
           } else {
+            const txtData = fs.readFileSync(segmentFilePath, 'utf8')
             /// We assume it's a .txt file if it's not a JSON file.
             const TXT_SEGMENT_PROMPT = `
-            ${stringifiedData}
+            ${txtData}
             \n Listed above is a txt for the segment ${segment}. It might contain tables that were copy and pasted straight from a pdf file. Based on the following query, extract the pertinent data in a structured JSON
             \n Query: ${query}
             `
             DATA_EXTRACTION_PROMPT = TXT_SEGMENT_PROMPT;
           }
 
-          const dataExtractionJsonString = await this.llmController.executePrompt(DATA_EXTRACTION_PROMPT);
+          const dataExtractionJsonString = 
+          await this.llmController.executePrompt(DATA_EXTRACTION_PROMPT);
 
           extractedData.push({ 
             statement: statementFile, 
@@ -172,8 +186,8 @@ export default class MockFinancialStatementManager implements FinancialStatement
     let combinedString = '';
     extractedData.forEach(extractedData => {
       combinedString = combinedString + `
-      \n Info from ${extractedData.statement} in segment ${extractedData.segment}:
-      ${extractedData.data}
+      \n----\n Info from ${extractedData.statement} in segment ${extractedData.segment}:
+      ${extractedData.data}\n----
       `
     })
 

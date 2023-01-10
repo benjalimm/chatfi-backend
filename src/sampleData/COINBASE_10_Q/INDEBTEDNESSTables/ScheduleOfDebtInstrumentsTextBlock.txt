@@ -1,0 +1,22 @@
+"
+The components of indebtedness were as follows as of September 30, 2022 (in thousands, except percentages):
+
+IndebtednessEffective Interest RatePrincipal AmountUnamortized Debt Discount and Issuance CostsNet Carrying Amount
+0.50% 2026 Convertible Notes due on June 1, 2026
+0.98 %$1,437,500 $(24,903)$1,412,597 
+3.38% 2028 Senior Notes due on October 1, 2028
+3.57 %1,000,000 (10,413)989,587 
+3.63% 2031 Senior Notes due on October 1, 2031
+3.77 %1,000,000 (10,947)989,053 Total$3,437,500 $(46,263)$3,391,237 
+
+The components of indebtedness were as follows as of December 31, 2021 (in thousands, except percentages):
+
+IndebtednessEffective Interest RatePrincipal AmountUnamortized Debt Discount and Issuance CostsNet Carrying Amount
+0.50% 2026 Convertible Notes due on June 1, 2026
+0.98 %$1,437,500 $(29,436)$1,408,064 
+3.38% 2028 Senior Notes due on October 1, 2028
+3.57 %1,000,000 (11,565)988,435 
+3.63% 2031 Senior Notes due on October 1, 2031
+3.77 %1,000,000 (11,704)988,296 Total$3,437,500 $(52,705)$3,384,795 
+
+"

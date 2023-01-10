@@ -1,0 +1,32 @@
+"The following table summarizes the preliminary fair values of assets acquired and liabilities assumed as of the date of
+acquisition (in thousands):
+
+Cash and cash equivalents$10,560 Restricted cash573 Accounts and loans receivable, net of allowance4,981 Prepaid expenses and
+other current assets4,182 Lease right-of-use assets1,059 Property and equipment, net1,248 Goodwill222,732 Intangible assets,
+net28,500 Other non-current assets3,476 Total assets277,311 Accounts payable719 Accrued expenses and other current
+liabilities11,325 Lease liabilities1,059 Other non-current liabilities6,224 Total liabilities19,327 Net assets acquired$257,984 
+
+The following table summarizes the preliminary fair values of assets acquired and liabilities assumed as of the date of
+acquisition (in thousands):
+
+Cash and cash equivalents$10,867 Accounts and loans receivable, net of allowance411 Prepaid expenses and other current
+assets20 Intangible assets, net41,000 Goodwill231,685 Other non-current assets8,295 Total assets292,278 Accounts
+payable472 Accrued expenses and other current liabilities5,796 Other non-current liabilities10,920 Total liabilities17,188 Net
+assets acquired$275,090 
+
+The following table summarizes the estimated fair values of assets acquired and liabilities assumed using a cost-based approach
+(in thousands):
+
+Cash and cash equivalents$12,201 Crypto assets held5,177 Accounts and loans receivable, net of allowance2,323 Prepaid expenses and
+other current assets122 Intangible assets, net39,100 Goodwill404,167 Other non-current assets1,221 Lease right-of-use
+assets808 Total assets465,119 Accounts payable526 Accrued expenses and other current liabilities1,920 Lease liabilities808 Other
+non-current liabilities4,597 Total liabilities7,851 Net assets acquired$457,268 
+
+The following table summarizes the aggregate estimated fair values of assets acquired and liabilities assumed using a cost-based
+approach (in thousands):
+
+Cash and cash equivalents$4,915 Accounts and loans receivable, net of allowance57 Prepaid expenses and other current
+assets209 Intangible assets, net46,100 Goodwill86,041 Total assets137,322 Accounts payable65 Accrued expenses and other current
+liabilities649 Other non-current liabilities949 Total liabilities1,663 Net assets acquired$135,659 
+
+"

@@ -17,7 +17,7 @@ export default class OpenAIController implements LLMController {
     const completion = await this.api.createCompletion({
         model: "text-davinci-003",
         prompt: text,
-        temperature: 0.3,
+        temperature: 0.4,
         max_tokens: 2049,
     });
     const output = completion.data.choices[0].text ?? "";

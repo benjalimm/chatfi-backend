@@ -41,11 +41,8 @@ app.post('/', async (req: Request, res: Response) => {
     // 1. This here is a large string of financial statement(s) as stringified JSON
     const documentJsonStrings = await mockFinancialStatementManager.getDocumentStringsFromQuery(query);
 
-    console.log(`DOCUMENT JSON STRINGS: ${documentJsonStrings}`)
-
     // 2. Get LLM to infer answer
     const prompt = documentJsonStrings + INFER_ANSWER_PROMPT + query + PRECAUTIONS_PROMPT;
-    console.log(`FINAL PROMPT: ${prompt}`)
     const answer = await openAIController.executePrompt(prompt);
 
     res.json({ success: true, query, answer})
