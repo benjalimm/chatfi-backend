@@ -7,9 +7,9 @@ import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
-} from './SharedPrompts';
+} from './Prompts';
 import { ExtractedData } from '../../schema/ExtractedData';
-import { extractSingularJSONFromString } from './Utils';
+import { extractJSONFromString, readJSON } from './Utils';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 
 const MAX_STATEMENTS = 3;
@@ -37,8 +37,9 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
         // 2. For each document get metadata and ask LLM which segments it would look at
 
         // 2.1 - Get metadata for statement
-        const statementMetadata =
-          require(`${this.dataFilePath}/${statementFile}/metadata.json`) as StatementMetadata;
+        const statementMetadata = readJSON(
+          `${this.dataFilePath}/${statementFile}/metadata.json`
+        ) as StatementMetadata;
 
         // 3. Ask LLM which segments it would look at
         const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(
@@ -50,20 +51,21 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
         const segmentPromptJsonString = await this.llmController.executePrompt(
           SEGMENT_PROMPT
         );
-
-        const extractedSegmentPromptJsonString =
-          await extractSingularJSONFromString(segmentPromptJsonString);
-
         // 4. Parse JSON string as data type
-        const segmentPromptJson = JSON.parse(
-          extractedSegmentPromptJsonString
-        ) as StatementMetadata;
+        const segmentPromptJson =
+          await extractJSONFromString<StatementMetadata>(
+            segmentPromptJsonString
+          );
+
+        if (segmentPromptJson === null) {
+          continue;
+        }
 
         // 5. For each segment, get the data and ask LLM to extract the pertinent data
         for (const segment of segmentPromptJson.segments) {
           try {
             const segmentFilePath = `${this.dataFilePath}/${statementFile}/${segment}`;
-            const data = require(segmentFilePath);
+            const data = readJSON(segmentFilePath);
             const extension = path.extname(segment);
             let DATA_EXTRACTION_PROMPT = '';
 

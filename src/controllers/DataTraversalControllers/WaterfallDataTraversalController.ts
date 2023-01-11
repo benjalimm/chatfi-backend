@@ -9,13 +9,13 @@ import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
-} from './SharedPrompts';
-import { extractSingularJSONFromString } from './Utils';
+} from './Prompts';
+import { extractJSONFromString, readJSON } from './Utils';
 import path from 'path';
 import * as fs from 'fs';
 
-const MAX_STATEMENT_TO_TRAVERSE = 5;
-const MAX_SEGMENTS_TO_TRAVERSE = 5;
+const MAX_STATEMENT_TO_TRAVERSE = 3;
+const MAX_SEGMENTS_TO_TRAVERSE = 3;
 
 type PertinentSegmentsData = { statement: string; segments: string[] };
 
@@ -54,14 +54,18 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
     );
 
     // 4. Parse JSON string as data type
-    const extractedJSONString = extractSingularJSONFromString(llmResponse);
-    const segmentData = JSON.parse(extractedJSONString) as {
-      statementSegments: string[]; // NOTE: This is a list of strings in the form of "statement/segment"
-    };
+
+    const segmentData = extractJSONFromString<{
+      statementSegments: string[];
+    }>(llmResponse);
+
+    if (!segmentData)
+      throw new Error(`Failed to extract statement/segment data`);
 
     const extractedData: ExtractedData[] = []; // Keep reference of extracted data
 
     // 5. Iterate through each statement segment
+    // NOTE: This is a list of strings in the schema of "statement/segment"
     for (const statementSegment of segmentData.statementSegments) {
       const extension = path.extname(statementSegment);
       const fullFilePath = `${this.dataFilePath}/${statementSegment}`;
@@ -72,7 +76,7 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
 
       let DATA_EXTRACTION_PROMPT = ``;
       if (extension === '.json') {
-        const jsonSegment = require(fullFilePath);
+        const jsonSegment = readJSON(fullFilePath);
         stringifiedData = JSON.stringify(jsonSegment);
 
         // 5.1 Set data extraction prompt to JSON data extraction prompt
@@ -115,20 +119,19 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
 
       // 8. Extract result from string
       const result = await awaitingResult;
-      const extractedJSONString = extractSingularJSONFromString(result);
-      const resultJSON = JSON.parse(extractedJSONString);
+      const resultJSON = extractJSONFromString<any>(result);
 
       // 9. We see if LLM added more data or decided to escape
-      if (resultJSON.escape === undefined) {
+      if (resultJSON && resultJSON.escape !== undefined) {
+        // 9.2 - LLM decided to escape, break loop, causing data extracted so far to be returned.
+        break;
+      } else {
         // 9.1 - LLM added more data, keep going with data extracton.
         extractedData.push({
           statement,
           segment,
           data: result
         });
-      } else {
-        // 9.2 - LLM decided to escape, break loop, causing data extracted so far to be returned.
-        break;
       }
     }
     // 10. Combine extracted data into final prompt;
@@ -142,8 +145,9 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
     for (const statementFile of statements) {
       try {
         // 2.1 - Get metadata for statement
-        const statementMetadata =
-          require(`${this.dataFilePath}/${statementFile}/metadata.json`) as StatementMetadata;
+        const statementMetadata = readJSON(
+          `${this.dataFilePath}/${statementFile}/metadata.json`
+        ) as StatementMetadata;
 
         // 3. Ask LLM which segments it would look at
         const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(
@@ -155,13 +159,12 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
           SEGMENT_PROMPT
         );
 
-        const extractedSegmentPromptJsonString =
-          await extractSingularJSONFromString(segmentPromptJsonString);
-
         // 4. Parse JSON string as data type
-        const segmentPromptJson = JSON.parse(
-          extractedSegmentPromptJsonString
-        ) as StatementMetadata;
+        const segmentPromptJson = extractJSONFromString<StatementMetadata>(
+          segmentPromptJsonString
+        );
+
+        if (!segmentPromptJson) continue;
 
         // Push extracted data
         extractedSegments.push({

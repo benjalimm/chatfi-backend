@@ -11,11 +11,11 @@ export const GEN_STATEMENT_EXTRACTION_PROMPT = (
   query: string
 ) => {
   return `
-  List of statements: [ ${statements}]\n
-    Above are the financial statements that are available for company X. Based on the following query, which financial statement should be queried? You can only select a maximum of ${maxStatements} statements.
+  List of statements: ${statements}\n
+    Above are the financial statements that are available for a given company. Which financial statements would you look at if you were to adequately answer the query below? You can only select a maximum of ${maxStatements} statements.
     Format the answers with the following JSON format:
     { "statements": string[] }
-    The output array should be ordered from most important statement to least important statement.
+    The output array should be ordered from most pertinent statement to least pertinent statement. The statement strings should not be altered in any way when outputted. (e.g. Do not capitalize or uncapitalize any characters)\n
     Query: ${query}
     `;
 };
@@ -33,7 +33,7 @@ export const GEN_SEGMENT_EXTRACTION_PROMPT = (
   query: string
 ) => {
   return `
-  List of segments:[${segments}.]\n
+  List of segments:${segments}\n
   Based on the following query, which file segments listed above would you look at? Only list files that are listed above and do not invent new ones. You are only allowed to pick a maximum of ${maxSegments} files. Output the exact answer including the file extension with no changes in a JSON with the following schema:
       { "segments": string[] }
       \n Query: ${query}`;

@@ -1,11 +1,22 @@
-export function extractSingularJSONFromString(str: string): string {
-  const strings = str.split('{');
+import { strict } from 'assert';
+import * as fs from 'fs';
 
-  if (strings.length === 0) {
-    return str;
+export function extractJSONFromString<T>(str: string): T | null {
+  if (!(str.includes('{') && str.includes('}'))) {
+    return null;
   }
 
-  // Add back opening bracket
-  const jsonString = '{ ' + strings[strings.length - 1];
-  return jsonString;
+  const firstIndexOfOpenBracket = str.indexOf('{');
+  const lastIndexOfCloseBracket = str.lastIndexOf('}');
+  const jsonString = str.substring(
+    firstIndexOfOpenBracket,
+    lastIndexOfCloseBracket + 1
+  );
+  const json = JSON.parse(jsonString) as T;
+  return json;
+}
+
+export function readJSON(filePath: string): any {
+  const buffer = fs.readFileSync(filePath);
+  return JSON.parse(buffer.toString());
 }

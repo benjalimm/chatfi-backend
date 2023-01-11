@@ -2,8 +2,9 @@ import LLMController from '../../schema/controllers/LLMController';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import { ExtractedData } from '../../schema/ExtractedData';
 import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse';
-import { GEN_STATEMENT_EXTRACTION_PROMPT } from './SharedPrompts';
-import { extractSingularJSONFromString } from './Utils';
+import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
+import { GEN_STATEMENT_EXTRACTION_PROMPT } from './Prompts';
+import { extractJSONFromString } from './Utils';
 
 export default class BaseDataTraversalContoller
   implements LLMDataTraversalController
@@ -35,11 +36,12 @@ export default class BaseDataTraversalContoller
       query
     );
     const jsonString = await this.llmController.executePrompt(prompt);
-    const extractedJSONString = extractSingularJSONFromString(jsonString);
-    console.log(`ExtractedJSONString: ${extractedJSONString}`);
+    const response = extractJSONFromString<DocumentMetadata>(jsonString);
+
+    if (!response)
+      throw new Error('No JSON data can be extracted from the statements data');
 
     try {
-      const response = JSON.parse(extractedJSONString);
       if (response.statements == undefined) {
         throw new Error('Failed to properly parse LLM document type response');
       } else {
