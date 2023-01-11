@@ -1,6 +1,6 @@
 import LLMController from '../../schema/controllers/LLMController';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
-import LLMDocumentTypeResponse from '../../schema/LLMDocumentTypeResponse';
+import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse';
 import { GEN_STATEMENT_EXTRACTION_PROMPT } from './SharedPrompts';
 import { extractSingularJSONFromString } from './Utils';
 
@@ -27,7 +27,7 @@ export default class BaseDataTraversalContoller
   async extractRelevantStatementsFromQuery(
     maxStatements: number,
     query: string
-  ): Promise<LLMDocumentTypeResponse> {
+  ): Promise<ExtractedStatementsReponse> {
     const prompt = GEN_STATEMENT_EXTRACTION_PROMPT(
       maxStatements,
       this.listOfStatements,
@@ -39,10 +39,10 @@ export default class BaseDataTraversalContoller
 
     try {
       const response = JSON.parse(extractedJSONString);
-      if (response.documentTypes == undefined) {
+      if (response.statements == undefined) {
         throw new Error('Failed to properly parse LLM document type response');
       } else {
-        return response as LLMDocumentTypeResponse;
+        return response as ExtractedStatementsReponse;
       }
     } catch (e) {
       console.log(`Failed to parse JSON string due to erro: ${e}`);

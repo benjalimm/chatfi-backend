@@ -14,7 +14,7 @@ export const GEN_STATEMENT_EXTRACTION_PROMPT = (
   List of statements: [ ${statements}]\n
     Above are the financial statements that are available for company X. Based on the following query, which financial statement should be queried? You can only select a maximum of ${maxStatements} statements.
     Format the answers with the following JSON format:
-    { "documentTypes": string[] }
+    { "statements": string[] }
     The output array should be ordered from most important statement to least important statement.
     Query: ${query}
     `;
@@ -75,4 +75,14 @@ export const GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT = (
     \n Listed above is a txt file from the segment ${segment}. It might contain tables that were copy and pasted straight from a pdf file. Based on the following query, extract the pertinent data in a structured JSON
     \n Query: ${query}
     `;
+};
+
+export const GEN_RANK_SEGMENTS_PROMPT = (
+  listOfSegmentsString: string,
+  query: string
+) => {
+  return ` ${listOfSegmentsString}\n
+  Above is a list of segments from financial statements. Based on the following query, rank the segments from most likely to find the pertinent information to the least likely. Output the exact answer including the file extension with no changes in a JSON with the following schema:
+      { "statementSegments": string[] }
+      \n Query: ${query}`;
 };

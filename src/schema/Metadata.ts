@@ -1,7 +1,7 @@
-export interface StatementMetadata {
+export interface DocumentMetadata {
   statements: string[];
 }
 
-export interface SegmentMetadata {
+export interface StatementMetadata {
   segments: string[];
 }

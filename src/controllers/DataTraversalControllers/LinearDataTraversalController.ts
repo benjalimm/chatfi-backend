@@ -1,6 +1,6 @@
 import LLMController from '../../schema/controllers/LLMController';
 import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
-import { SegmentMetadata } from '../../schema/Metadata';
+import { StatementMetadata } from '../../schema/Metadata';
 import path from 'path';
 import * as fs from 'fs';
 import {
@@ -20,34 +20,30 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
     super(llmController, dataFilePath);
     this.listOfStatements = reportMetadata.statements;
   }
+
   async generateFinalPrompt(query: string): Promise<string> {
     // 1. Get list of pertinent statements
-    const documentTypeResponse = await this.extractRelevantStatementsFromQuery(
-      MAX_STATEMENTS,
-      query
-    );
+    const extractedStatementsResponse =
+      await this.extractRelevantStatementsFromQuery(MAX_STATEMENTS, query);
 
     console.log('DOCUMENT TYPE RESPONSE: ');
-    console.log(documentTypeResponse);
+    console.log(extractedStatementsResponse);
 
     // 1.1 - We store extracted pertinent info in this array
     const extractedData: ExtractedData[] = [];
 
-    for (const statementFile of documentTypeResponse.documentTypes) {
+    for (const statementFile of extractedStatementsResponse.statements) {
       try {
         // 2. For each document get metadata and ask LLM which segments it would look at
 
         // 2.1 - Get metadata for statement
         const statementMetadata =
-          require(`${this.dataFilePath}/${statementFile}/metadata.json`) as SegmentMetadata;
-
-        // 2.2 - Get segments for statement
-        const segments = statementMetadata.segments;
+          require(`${this.dataFilePath}/${statementFile}/metadata.json`) as StatementMetadata;
 
         // 3. Ask LLM which segments it would look at
         const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(
           MAX_SEGMENTS,
-          segments,
+          statementMetadata.segments,
           query
         );
 
@@ -61,7 +57,7 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
         // 4. Parse JSON string as data type
         const segmentPromptJson = JSON.parse(
           extractedSegmentPromptJsonString
-        ) as SegmentMetadata;
+        ) as StatementMetadata;
 
         // 5. For each segment, get the data and ask LLM to extract the pertinent data
         for (const segment of segmentPromptJson.segments) {
