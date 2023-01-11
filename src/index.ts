@@ -3,7 +3,7 @@ import * as bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/OpenAIController';
-import LinearExtractionController from './controllers/ExtractionContollers/LinearLLMSearchController';
+import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearLLMSearchController';
 import { INFER_ANSWER_PROMPT, PRECAUTIONS_PROMPT } from './prompts';
 
 dotenv.config();
@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 
-const linearSearchController = new LinearExtractionController(
+const linearSearchController = new LinearDataTraversalController(
   openAIController,
   '../../sampleData/COINBASE_10_Q' // This file path needs to be subjective to it's folder location
 );

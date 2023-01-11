@@ -1,4 +1,4 @@
-import LLMExtractionController from '../../schema/controllers/ExtractionController';
+import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import LLMController from '../../schema/controllers/LLMController';
 import LLMDocumentTypeResponse from '../../schema/LLMDocumentTypeResponse';
 import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
@@ -7,16 +7,18 @@ import path from 'path';
 import * as fs from 'fs';
 import {
   GEN_STATEMENT_EXTRACTION_PROMPT,
-  GEN_SEGMENT_EXTRACTION_PROMPT
+  GEN_SEGMENT_EXTRACTION_PROMPT,
+  GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
+  GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
 } from './SharedPrompts';
-
-const DATA_FILE_PATH = '../../sampleData/COINBASE_10_Q';
+import { ExtractedData } from '../../schema/ExtractedData';
+import { extractSingularJSONFromString } from './Utils';
 
 const MAX_STATEMENTS = 3;
 const MAX_SEGMENTS = 3;
 
-export default class LinearExtractionController
-  implements LLMExtractionController
+export default class LinearDataTraversalController
+  implements LLMDataTraversalController
 {
   private llmController: LLMController;
   private dataFilePath: string;
@@ -25,20 +27,8 @@ export default class LinearExtractionController
     this.dataFilePath = dataFilePath;
   }
 
-  getListOfFinancialStatements(): string[] {
+  private getListOfFinancialStatements(): string[] {
     return reportMetadata.statements;
-  }
-
-  private extractJSONStringFromString(str: string): string {
-    const strings = str.split('{');
-
-    if (strings.length === 0) {
-      return str;
-    }
-
-    // Add back opening bracket
-    const jsonString = '{ ' + strings[strings.length - 1];
-    return jsonString;
   }
 
   private async getDocumentTypeFromQuery(
@@ -52,7 +42,7 @@ export default class LinearExtractionController
       query
     );
     const jsonString = await this.llmController.executePrompt(prompt);
-    const extractedJSONString = this.extractJSONStringFromString(jsonString);
+    const extractedJSONString = extractSingularJSONFromString(jsonString);
     console.log(`ExtractedJSONString: ${extractedJSONString}`);
 
     try {
@@ -76,11 +66,7 @@ export default class LinearExtractionController
     console.log(documentTypeResponse);
 
     // 1.1 - We store extracted pertinent info in this array
-    const extractedData: {
-      statement: string;
-      segment: string;
-      data: string;
-    }[] = [];
+    const extractedData: ExtractedData[] = [];
 
     for (const statementFile of documentTypeResponse.documentTypes) {
       try {
@@ -105,7 +91,7 @@ export default class LinearExtractionController
         );
 
         const extractedSegmentPromptJsonString =
-          await this.extractJSONStringFromString(segmentPromptJsonString);
+          await extractSingularJSONFromString(segmentPromptJsonString);
 
         // 4. Parse JSON string as data type
         const segmentPromptJson = JSON.parse(
@@ -115,7 +101,7 @@ export default class LinearExtractionController
         // 5. For each segment, get the data and ask LLM to extract the pertinent data
         for (const segment of segmentPromptJson.segments) {
           try {
-            const segmentFilePath = `${DATA_FILE_PATH}/${statementFile}/${segment}`;
+            const segmentFilePath = `${this.dataFilePath}/${statementFile}/${segment}`;
             const data = require(segmentFilePath);
             const extension = path.extname(segment);
             let DATA_EXTRACTION_PROMPT = '';
@@ -134,21 +120,19 @@ export default class LinearExtractionController
                 continue;
               }
 
-              const JSON_SEGMENT_PROMPT = `
-            ${stringifiedData}
-            \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the pertinent data from the data listed above and output the data in a structured JSON.
-            \n Query: ${query}
-            `;
-              DATA_EXTRACTION_PROMPT = JSON_SEGMENT_PROMPT;
+              DATA_EXTRACTION_PROMPT = GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT(
+                segment,
+                stringifiedData,
+                query
+              );
             } else {
-              const txtData = fs.readFileSync(segmentFilePath, 'utf8');
               /// We assume it's a .txt file if it's not a JSON file.
-              const TXT_SEGMENT_PROMPT = `
-            ${txtData}
-            \n Listed above is a txt for the segment ${segment}. It might contain tables that were copy and pasted straight from a pdf file. Based on the following query, extract the pertinent data in a structured JSON
-            \n Query: ${query}
-            `;
-              DATA_EXTRACTION_PROMPT = TXT_SEGMENT_PROMPT;
+              const txtData = fs.readFileSync(segmentFilePath, 'utf8');
+              DATA_EXTRACTION_PROMPT = GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT(
+                segment,
+                txtData,
+                query
+              );
             }
 
             const dataExtractionJsonString =
