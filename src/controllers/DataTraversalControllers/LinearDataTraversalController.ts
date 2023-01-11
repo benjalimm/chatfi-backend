@@ -1,66 +1,31 @@
-import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import LLMController from '../../schema/controllers/LLMController';
-import LLMDocumentTypeResponse from '../../schema/LLMDocumentTypeResponse';
 import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
 import { SegmentMetadata } from '../../schema/Metadata';
 import path from 'path';
 import * as fs from 'fs';
 import {
-  GEN_STATEMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
 } from './SharedPrompts';
 import { ExtractedData } from '../../schema/ExtractedData';
 import { extractSingularJSONFromString } from './Utils';
+import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 
 const MAX_STATEMENTS = 3;
 const MAX_SEGMENTS = 3;
 
-export default class LinearDataTraversalController
-  implements LLMDataTraversalController
-{
-  private llmController: LLMController;
-  private dataFilePath: string;
+export default class LinearDataTraversalController extends BaseDataTraversalContoller {
   constructor(llmController: LLMController, dataFilePath: string) {
-    this.llmController = llmController;
-    this.dataFilePath = dataFilePath;
+    super(llmController, dataFilePath);
+    this.listOfStatements = reportMetadata.statements;
   }
-
-  private getListOfFinancialStatements(): string[] {
-    return reportMetadata.statements;
-  }
-
-  private async getDocumentTypeFromQuery(
-    query: string
-  ): Promise<LLMDocumentTypeResponse> {
-    const listOfStatements = this.getListOfFinancialStatements();
-
-    const prompt = GEN_STATEMENT_EXTRACTION_PROMPT(
-      MAX_STATEMENTS,
-      listOfStatements,
-      query
-    );
-    const jsonString = await this.llmController.executePrompt(prompt);
-    const extractedJSONString = extractSingularJSONFromString(jsonString);
-    console.log(`ExtractedJSONString: ${extractedJSONString}`);
-
-    try {
-      const response = JSON.parse(extractedJSONString);
-      if (response.documentTypes == undefined) {
-        throw new Error('Failed to properly parse LLM document type response');
-      } else {
-        return response as LLMDocumentTypeResponse;
-      }
-    } catch (e) {
-      console.log(`Failed to parse JSON string due to erro: ${e}`);
-      throw e;
-    }
-  }
-
   async generateFinalPrompt(query: string): Promise<string> {
     // 1. Get list of pertinent statements
-    const documentTypeResponse = await this.getDocumentTypeFromQuery(query);
+    const documentTypeResponse = await this.extractRelevantStatementsFromQuery(
+      MAX_STATEMENTS,
+      query
+    );
 
     console.log('DOCUMENT TYPE RESPONSE: ');
     console.log(documentTypeResponse);
