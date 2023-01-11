@@ -1,5 +1,6 @@
 import LLMController from '../../schema/controllers/LLMController';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
+import { ExtractedData } from '../../schema/ExtractedData';
 import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse';
 import { GEN_STATEMENT_EXTRACTION_PROMPT } from './SharedPrompts';
 import { extractSingularJSONFromString } from './Utils';
@@ -48,6 +49,19 @@ export default class BaseDataTraversalContoller
       console.log(`Failed to parse JSON string due to erro: ${e}`);
       throw e;
     }
+  }
+
+  combineExtractedDataToString(extractedData: ExtractedData[]): string {
+    let combinedString = '';
+    extractedData.forEach((extractedData) => {
+      combinedString =
+        combinedString +
+        `
+      \n----\n Info from ${extractedData.statement} in segment ${extractedData.segment}:
+      ${extractedData.data}\n----
+      `;
+    });
+    return combinedString;
   }
 
   async generateFinalPrompt(query: string): Promise<string> {

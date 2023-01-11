@@ -40,7 +40,7 @@ export const GEN_SEGMENT_EXTRACTION_PROMPT = (
 };
 
 /**
- * Extracts information from JSON segment and outputs pertinent info based on the query
+ * Generates propmpt to extracts information from JSON segment and outputs pertinent info based on the query
  * @param segment Segment from statement
  * @param stringifiedJSON JSON data from segment
  * @param query Original query
@@ -59,7 +59,7 @@ export const GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT = (
 };
 
 /**
- * Extracts information from txt segment and outputs pertinent info based on the query
+ * Generate prompt to extract information from txt segment and outputs pertinent info based on the query
  * @param segment Segment from statement
  * @param txtData txt data from segment
  * @param query Original query
@@ -77,6 +77,12 @@ export const GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT = (
     `;
 };
 
+/**
+ * Generates prompt to rank segments from most to least pertinent based on the query
+ * @param listOfSegmentsString List of statement segments in string format (statement/segment)
+ * @param query Original query
+ * @returns Completed prompt
+ */
 export const GEN_RANK_SEGMENTS_PROMPT = (
   listOfSegmentsString: string,
   query: string
@@ -85,4 +91,22 @@ export const GEN_RANK_SEGMENTS_PROMPT = (
   Above is a list of segments from financial statements. Based on the following query, rank the segments from most likely to find the pertinent information to the least likely. Output the exact answer including the file extension with no changes in a JSON with the following schema:
       { "statementSegments": string[] }
       \n Query: ${query}`;
+};
+
+export const GEN_EXTRACT_OR_MOVE_ON_PROMPT = (
+  extractedDataSoFar: string,
+  dataExtractionPrompt: string,
+  query: string
+) => {
+  return `
+  INSTRUCTION 1: \n
+  ${extractedDataSoFar}\n
+  Listed above is some structured data. Based on the query listed below, do we have adequate data to answer the query? If yes, ignore instruction 2 and output the following JSON: { escape: true }. If no, continue to instruction 2.
+
+  INSTRUCTION 2: 
+  ${dataExtractionPrompt}
+  \n
+
+  QUERY: ${query}
+  `;
 };

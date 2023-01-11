@@ -119,16 +119,7 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
     }
 
     // 7. Combine string, label data and return
-    let combinedString = '';
-    extractedData.forEach((extractedData) => {
-      combinedString =
-        combinedString +
-        `
-      \n----\n Info from ${extractedData.statement} in segment ${extractedData.segment}:
-      ${extractedData.data}\n----
-      `;
-    });
-
+    const combinedString = this.combineExtractedDataToString(extractedData);
     return combinedString;
   }
 }

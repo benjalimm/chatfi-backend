@@ -4,8 +4,11 @@ import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import { ExtractedData } from '../../schema/ExtractedData';
 import { StatementMetadata } from '../../schema/Metadata';
 import {
+  GEN_EXTRACT_OR_MOVE_ON_PROMPT,
   GEN_RANK_SEGMENTS_PROMPT,
-  GEN_SEGMENT_EXTRACTION_PROMPT
+  GEN_SEGMENT_EXTRACTION_PROMPT,
+  GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
+  GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
 } from './SharedPrompts';
 import { extractSingularJSONFromString } from './Utils';
 import path from 'path';
@@ -29,9 +32,6 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
         MAX_STATEMENT_TO_TRAVERSE,
         query
       );
-
-    // 1.1 - We store extracted pertinent info in this array
-    const extractedData: ExtractedData[] = [];
 
     // 2. Get list of of segments for each statement
     const listOfRelevantSegments =
@@ -59,16 +59,80 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
       statementSegments: string[]; // NOTE: This is a list of strings in the form of "statement/segment"
     };
 
+    const extractedData: ExtractedData[] = []; // Keep reference of extracted data
+
     // 5. Iterate through each statement segment
     for (const statementSegment of segmentData.statementSegments) {
       const extension = path.extname(statementSegment);
       const fullFilePath = `${this.dataFilePath}/${statementSegment}`;
+      let stringifiedData = ``;
+
+      const statement = statementSegment.split('/')[0];
+      const segment = statementSegment.split('/')[1];
+
+      let DATA_EXTRACTION_PROMPT = ``;
       if (extension === '.json') {
-        const segment = require(fullFilePath);
+        const jsonSegment = require(fullFilePath);
+        stringifiedData = JSON.stringify(jsonSegment);
+
+        // 5.1 Set data extraction prompt to JSON data extraction prompt
+        DATA_EXTRACTION_PROMPT = GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT(
+          segment,
+          stringifiedData,
+          query
+        );
       } else {
-        const txtData = fs.readFileSync(fullFilePath, 'utf8');
+        const txtSegment = fs.readFileSync(fullFilePath, 'utf8');
+        stringifiedData = txtSegment;
+
+        // 5.2 Set data extraction prompt to TXT data extraction prompt
+        DATA_EXTRACTION_PROMPT = GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT(
+          segment,
+          stringifiedData,
+          query
+        );
+      }
+
+      let awaitingResult: Promise<string>;
+      if (extractedData.length > 0) {
+        // 6. If we have extracted data, ask LLM if we should extract more data or move on
+        const stringifiedExtractedDataSoFar =
+          this.combineExtractedDataToString(extractedData);
+
+        awaitingResult = this.llmController.executePrompt(
+          GEN_EXTRACT_OR_MOVE_ON_PROMPT(
+            stringifiedExtractedDataSoFar,
+            DATA_EXTRACTION_PROMPT,
+            query
+          )
+        );
+      } else {
+        // 7. If we do not have extracted data, just extract data
+        awaitingResult = this.llmController.executePrompt(
+          DATA_EXTRACTION_PROMPT
+        );
+      }
+
+      // 8. Extract result from string
+      const result = await awaitingResult;
+      const extractedJSONString = extractSingularJSONFromString(result);
+      const resultJSON = JSON.parse(extractedJSONString);
+
+      // 9. We see if LLM added more data or decided to escape
+      if (resultJSON.escape === undefined) {
+        // 9.1 - LLM added more data, keep going with data extracton.
+        extractedData.push({
+          statement,
+          segment,
+          data: result
+        });
+      } else {
+        // 9.2 - LLM decided to escape, break loop, causing data extracted so far to be returned.
+        break;
       }
     }
+    // 10. Combine extracted data into final prompt;
+    return this.combineExtractedDataToString(extractedData);
   }
   private async extractRelevantSegmentsFromStatements(
     statements: string[],
