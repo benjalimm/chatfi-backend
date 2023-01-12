@@ -2,7 +2,7 @@ import LLMController from '../../schema/controllers/LLMController';
 import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import { ExtractedData } from '../../schema/ExtractedData';
-import { StatementMetadata } from '../../schema/Metadata';
+import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
 import {
   GEN_EXTRACT_OR_MOVE_ON_PROMPT,
   GEN_RANK_SEGMENTS_PROMPT,
@@ -10,9 +10,8 @@ import {
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
 } from './Prompts';
-import { extractJSONFromString, readJSON } from './Utils';
+import { extractJSONFromString, readJSON, readTxt } from './Utils';
 import path from 'path';
-import * as fs from 'fs';
 
 const MAX_STATEMENT_TO_TRAVERSE = 3;
 const MAX_SEGMENTS_TO_TRAVERSE = 3;
@@ -22,7 +21,10 @@ type PertinentSegmentsData = { statement: string; segments: string[] };
 export default class WaterfallDataTraversalController extends BaseDataTraversalContoller {
   constructor(llmController: LLMController, dataFilePath: string) {
     super(llmController, dataFilePath);
-    this.listOfStatements = reportMetadata.statements;
+    const documentMetadata = readJSON(
+      dataFilePath + '/metadata.json'
+    ) as DocumentMetadata;
+    this.listOfStatements = documentMetadata.statements;
   }
 
   async generateFinalPrompt(query: string): Promise<string> {
@@ -42,11 +44,15 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
 
     // 2.1 - Flatten list of segments into list of segments string
     let listOfSegmentsString = ``;
+    let segmentCount = 0;
     listOfRelevantSegments.forEach((segmentsData) => {
       segmentsData.segments.forEach((segment) => {
+        segmentCount += 1;
         listOfSegmentsString += `${segmentsData.statement}/${segment}\n`;
       });
     });
+
+    if (segmentCount === 0) throw new Error(`No segments found`);
 
     // 3. Ask LLM to rank segments from most likely to least likely to find pertinent information
     const llmResponse = await this.llmController.executePrompt(
@@ -54,13 +60,15 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
     );
 
     // 4. Parse JSON string as data type
-
     const segmentData = extractJSONFromString<{
       statementSegments: string[];
     }>(llmResponse);
 
     if (!segmentData)
       throw new Error(`Failed to extract statement/segment data`);
+
+    if (segmentData.statementSegments.length === 0)
+      throw new Error(`Failed to extract any statement segments`);
 
     const extractedData: ExtractedData[] = []; // Keep reference of extracted data
 
@@ -86,7 +94,7 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
           query
         );
       } else {
-        const txtSegment = fs.readFileSync(fullFilePath, 'utf8');
+        const txtSegment = readTxt(fullFilePath);
         stringifiedData = txtSegment;
 
         // 5.2 Set data extraction prompt to TXT data extraction prompt
@@ -137,6 +145,7 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
     // 10. Combine extracted data into final prompt;
     return this.combineExtractedDataToString(extractedData);
   }
+
   private async extractRelevantSegmentsFromStatements(
     statements: string[],
     query: string
@@ -148,6 +157,11 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
         const statementMetadata = readJSON(
           `${this.dataFilePath}/${statementFile}/metadata.json`
         ) as StatementMetadata;
+
+        if (statementMetadata.segments.length === 0) {
+          console.log(`${statementFile} has no segments, continuing loop`);
+          continue;
+        }
 
         // 3. Ask LLM which segments it would look at
         const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(

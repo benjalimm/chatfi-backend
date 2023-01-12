@@ -2,14 +2,13 @@ import LLMController from '../../schema/controllers/LLMController';
 import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
 import { StatementMetadata } from '../../schema/Metadata';
 import path from 'path';
-import * as fs from 'fs';
 import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
 } from './Prompts';
 import { ExtractedData } from '../../schema/ExtractedData';
-import { extractJSONFromString, readJSON } from './Utils';
+import { extractJSONFromString, readJSON, readTxt } from './Utils';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 
 const MAX_STATEMENTS = 3;
@@ -90,7 +89,7 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
               );
             } else {
               /// We assume it's a .txt file if it's not a JSON file.
-              const txtData = fs.readFileSync(segmentFilePath, 'utf8');
+              const txtData = readTxt(segmentFilePath);
               DATA_EXTRACTION_PROMPT = GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT(
                 segment,
                 txtData,
