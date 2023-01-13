@@ -3,8 +3,9 @@ import * as bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/OpenAIController';
-import MockFinancialStatementManager from './controllers/MockFinancialStatementManager';
+import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
 import { INFER_ANSWER_PROMPT, PRECAUTIONS_PROMPT } from './prompts';
+import WaterfallDataTraversalController from './controllers/DataTraversalControllers/WaterfallDataTraversalController';
 
 dotenv.config();
 
@@ -14,8 +15,9 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 
-const mockFinancialStatementManager = new MockFinancialStatementManager(
-  openAIController
+const dataTraversalController = new WaterfallDataTraversalController(
+  openAIController,
+  '../../sampleData/COINBASE_10_Q' // This file path needs to be subjective to it's folder location
 );
 
 // Body parser middleware
@@ -39,7 +41,7 @@ app.post('/', async (req: Request, res: Response) => {
 
     // 1. This here is a large string of financial statement(s) as stringified JSON
     const documentJsonStrings =
-      await mockFinancialStatementManager.getDocumentStringsFromQuery(query);
+      await dataTraversalController.generateFinalPrompt(query);
 
     // 2. Get LLM to infer answer
     const prompt =
