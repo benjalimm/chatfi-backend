@@ -12,7 +12,10 @@ export default class OpenAIController implements LLMController {
   }
 
   async executePrompt(text: string): Promise<string> {
-    console.log(`Executing prompt... \n_____________\nPROMPT: ${text}`);
+    const estimatedTokenCount = text.length / 4;
+    console.log(
+      `Executing prompt with estimated token count ${estimatedTokenCount}... \n_____________\nPROMPT: ${text}`
+    );
     const completion = await this.api.createCompletion({
       model: 'text-davinci-003',
       prompt: text,

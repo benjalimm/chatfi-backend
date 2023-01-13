@@ -52,7 +52,7 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
       });
     });
 
-    if (segmentCount === 0) throw new Error(`No segments found`);
+    if (segmentCount === 0) throw new Error(`Segment count is zero`);
 
     // 3. Ask LLM to rank segments from most likely to least likely to find pertinent information
     const llmResponse = await this.llmController.executePrompt(
@@ -127,14 +127,22 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
 
       // 8. Extract result from string
       const result = await awaitingResult;
-      const resultJSON = extractJSONFromString<any>(result);
 
-      // 9. We see if LLM added more data or decided to escape
-      if (resultJSON && resultJSON.escape !== undefined) {
-        // 9.2 - LLM decided to escape, break loop, causing data extracted so far to be returned.
-        break;
-      } else {
-        // 9.1 - LLM added more data, keep going with data extracton.
+      try {
+        const resultJSON = extractJSONFromString<any>(result);
+        // 9. We see if LLM added more data or decided to escape
+        if (resultJSON && resultJSON.escape !== undefined) {
+          // 9.2 - LLM decided to escape, break loop, causing data extracted so far to be returned.
+          break;
+        } else {
+          // 9.1 - LLM added more data, keep going with data extracton.
+          extractedData.push({
+            statement,
+            segment,
+            data: result
+          });
+        }
+      } catch (e) {
         extractedData.push({
           statement,
           segment,
@@ -159,13 +167,24 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
         ) as StatementMetadata;
 
         if (statementMetadata.segments.length === 0) {
+          // If no segments, continue loop
           console.log(`${statementFile} has no segments, continuing loop`);
+          continue;
+        }
+
+        if (statementMetadata.segments.length === 1) {
+          // If only one segment, just push it
+          extractedSegments.push({
+            statement: statementFile,
+            segments: statementMetadata.segments
+          });
           continue;
         }
 
         // 3. Ask LLM which segments it would look at
         const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(
           MAX_SEGMENTS_TO_TRAVERSE,
+          statementFile,
           statementMetadata.segments,
           query
         );
@@ -180,10 +199,24 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
 
         if (!segmentPromptJson) continue;
 
+        // 4.1 Filter out files that do not exist -> GPT3 often makes up file names
+        const filteredSegments = segmentPromptJson.segments.filter((seg) => {
+          const exist = statementMetadata.segments.includes(seg);
+          if (!exist)
+            console.log(`Segment ${seg} does not exist, filtering out`);
+          return exist;
+        });
+
+        if (filteredSegments.length === 0) {
+          // Check if any segments exist again
+          console.log(`No real segments exist`);
+          continue;
+        }
+
         // Push extracted data
         extractedSegments.push({
           statement: statementFile,
-          segments: segmentPromptJson.segments
+          segments: filteredSegments
         });
       } catch (e) {
         console.log(`Caught error at segment level: ${e}\n...Continuing loop`);

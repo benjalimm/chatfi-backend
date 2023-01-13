@@ -5,6 +5,8 @@ import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse
 import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
 import { GEN_STATEMENT_EXTRACTION_PROMPT } from './Prompts';
 import { extractJSONFromString } from './Utils';
+import path from 'path';
+import * as fs from 'fs';
 
 export default class BaseDataTraversalContoller
   implements LLMDataTraversalController
@@ -68,5 +70,19 @@ export default class BaseDataTraversalContoller
 
   async generateFinalPrompt(query: string): Promise<string> {
     throw new Error('Method not implemented in base class');
+  }
+
+  doesFileExist(filePath: string): boolean {
+    const fullPath = path.join(this.dataFilePath, filePath);
+    return fs.existsSync(fullPath);
+  }
+
+  filterFiles(filePaths: string[]): string[] {
+    return filePaths.filter((filePath) => {
+      const exists = this.doesFileExist(filePath);
+      if (!exists)
+        console.log(`File ${filePath} does not exist, filtering out`);
+      return exists;
+    });
   }
 }

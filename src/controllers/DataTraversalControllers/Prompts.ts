@@ -11,11 +11,11 @@ export const GEN_STATEMENT_EXTRACTION_PROMPT = (
   query: string
 ) => {
   return `
-  List of statements: ${statements}\n
+  List of statements: [${statements}]\n
     Above are the financial statements that are available for a given company. Which financial statements would you look at if you were to adequately answer the query below? You can only select a maximum of ${maxStatements} statements.
     Format the answers with the following JSON format:
     { "statements": string[] }
-    The output array should be ordered from most pertinent statement to least pertinent statement. The statement strings should not be altered in any way when outputted. (e.g. Do not capitalize or uncapitalize any characters)\n
+    The output array should be ordered from most to least relevant statement. The statement strings should not be altered in any way when outputted. (e.g. Do not capitalize, uncapitalize, add or remove any characters)\n
     Query: ${query}
     `;
 };
@@ -29,13 +29,15 @@ export const GEN_STATEMENT_EXTRACTION_PROMPT = (
  */
 export const GEN_SEGMENT_EXTRACTION_PROMPT = (
   maxSegments: number,
+  statement: string,
   segments: string[],
   query: string
 ) => {
   return `
-  List of segments:${segments}\n
-  Based on the following query, which file segments listed above would you look at? Only list files that are listed above and do not invent new ones. You are only allowed to pick a maximum of ${maxSegments} files. Output the exact answer including the file extension with no changes in a JSON with the following schema:
+  [${segments}]\n
+  Above are segments from the financial statement ${statement}. Based on the following query, which segments has over an 80% chance of containing data relevant to the query?  You are only allowed to pick a maximum of ${maxSegments} segments and a minimum of 0. Output the exact answer including the file extension with no changes in a JSON with the following schema:
       { "segments": string[] }
+      The output array should be ordered from most to least relevant statement. The segment strings should not be altered in any way when outputted. (e.g. Do not capitalize, uncapitalize, add or remove any characters). Only output segments that are listed above and do not invent new ones.\n
       \n Query: ${query}`;
 };
 
@@ -53,7 +55,7 @@ export const GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
   ${stringifiedJSON}
-  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the pertinent data from the data listed above and output the data in a structured JSON.
+  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the relevant data from the data listed above and output the data in a structured JSON.
   \n Query: ${query}
   `;
 };
@@ -87,7 +89,7 @@ export const GEN_RANK_SEGMENTS_PROMPT = (
   listOfSegmentsString: string,
   query: string
 ) => {
-  return ` ${listOfSegmentsString}\n
+  return `List of segments: [${listOfSegmentsString}]\n
   Above is a list of segments from financial statements. Based on the following query, rank the segments from most likely to find the pertinent information to the least likely. Output the exact answer including the file extension with no changes in a JSON with the following schema:
       { "statementSegments": string[] }
       \n Query: ${query}`;
@@ -105,8 +107,6 @@ export const GEN_EXTRACT_OR_MOVE_ON_PROMPT = (
 
   INSTRUCTION 2: 
   ${dataExtractionPrompt}
-  \n
 
-  QUERY: ${query}
   `;
 };

@@ -12,7 +12,7 @@ import { extractJSONFromString, readJSON, readTxt } from './Utils';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 
 const MAX_STATEMENTS = 3;
-const MAX_SEGMENTS = 3;
+const MAX_SEGMENTS = 6;
 
 export default class LinearDataTraversalController extends BaseDataTraversalContoller {
   constructor(llmController: LLMController, dataFilePath: string) {
@@ -43,6 +43,7 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
         // 3. Ask LLM which segments it would look at
         const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(
           MAX_SEGMENTS,
+          statementFile,
           statementMetadata.segments,
           query
         );
@@ -63,48 +64,12 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
         // 5. For each segment, get the data and ask LLM to extract the pertinent data
         for (const segment of segmentPromptJson.segments) {
           try {
-            const segmentFilePath = `${this.dataFilePath}/${statementFile}/${segment}`;
-            const data = readJSON(segmentFilePath);
-            const extension = path.extname(segment);
-            let DATA_EXTRACTION_PROMPT = '';
-
-            // 6. Check if segment is a txt or a json file
-            if (extension === '.json') {
-              const stringifiedData = JSON.stringify(data);
-
-              // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
-              if (stringifiedData.length < 1500) {
-                extractedData.push({
-                  statement: statementFile,
-                  segment,
-                  data: stringifiedData
-                });
-                continue;
-              }
-
-              DATA_EXTRACTION_PROMPT = GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT(
-                segment,
-                stringifiedData,
-                query
-              );
-            } else {
-              /// We assume it's a .txt file if it's not a JSON file.
-              const txtData = readTxt(segmentFilePath);
-              DATA_EXTRACTION_PROMPT = GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT(
-                segment,
-                txtData,
-                query
-              );
-            }
-
-            const dataExtractionJsonString =
-              await this.llmController.executePrompt(DATA_EXTRACTION_PROMPT);
-
-            extractedData.push({
-              statement: statementFile,
+            const extractedDataFromSegment = await this.extractDataFromSegment(
               segment,
-              data: dataExtractionJsonString
-            });
+              statementFile,
+              query
+            );
+            extractedData.push(extractedDataFromSegment);
           } catch (e) {
             console.log(
               `Caught error at segment level: ${e}\n...Continuing loop`
@@ -121,6 +86,57 @@ export default class LinearDataTraversalController extends BaseDataTraversalCont
 
     // 7. Combine string, label data and return
     const combinedString = this.combineExtractedDataToString(extractedData);
+
+    if (combinedString.trim() === '') throw new Error(`Final prompt is empty`);
+
     return combinedString;
+  }
+
+  private async extractDataFromSegment(
+    segment: string,
+    statementFile: string,
+    query: string
+  ): Promise<ExtractedData> {
+    const segmentFilePath = `${this.dataFilePath}/${statementFile}/${segment}`;
+    const extension = path.extname(segment);
+    let DATA_EXTRACTION_PROMPT = '';
+
+    // 6. Check if segment is a txt or a json file
+    if (extension === '.json') {
+      const data = readJSON(segmentFilePath);
+      const stringifiedData = JSON.stringify(data);
+
+      // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
+      if (stringifiedData.length < 1500) {
+        return {
+          statement: statementFile,
+          segment,
+          data: stringifiedData
+        };
+      }
+
+      DATA_EXTRACTION_PROMPT = GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT(
+        segment,
+        stringifiedData,
+        query
+      );
+    } else {
+      /// We assume it's a .txt file if it's not a JSON file.
+      const txtData = readTxt(segmentFilePath);
+      DATA_EXTRACTION_PROMPT = GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT(
+        segment,
+        txtData,
+        query
+      );
+    }
+
+    const dataExtractionJsonString = await this.llmController.executePrompt(
+      DATA_EXTRACTION_PROMPT
+    );
+    return {
+      statement: statementFile,
+      segment,
+      data: dataExtractionJsonString
+    };
   }
 }

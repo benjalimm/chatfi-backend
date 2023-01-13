@@ -20,7 +20,13 @@ export function extractJSONFromString<T>(str: string): T | null {
 export function readJSON(filePath: string): any {
   const objectivePath = path.resolve(__dirname, filePath);
   const buffer = fs.readFileSync(objectivePath);
-  return JSON.parse(buffer.toString());
+  const trimmedJsonString = buffer.toString().trim();
+
+  try {
+    return JSON.parse(trimmedJsonString);
+  } catch (e) {
+    throw new Error(`${e} - for JSON string: ${trimmedJsonString}`);
+  }
 }
 
 export function readTxt(filePath: string): string {
