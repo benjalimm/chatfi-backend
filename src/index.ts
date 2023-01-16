@@ -4,8 +4,16 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/OpenAIController';
 import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
-import { INFER_ANSWER_PROMPT, PRECAUTIONS_PROMPT } from './prompts';
+import {
+  GEN_OUTPUT_PROMPT,
+  INFER_ANSWER_PROMPT,
+  PRECAUTIONS_PROMPT
+} from './prompts';
 import WaterfallDataTraversalController from './controllers/DataTraversalControllers/WaterfallDataTraversalController';
+import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
+import { extractJSONFromString } from './controllers/DataTraversalControllers/Utils';
+import convertFinalOutputJSONToString from './utils/convertFinalOutput';
+import { FinalOutputJSON } from './schema/FinalPromptJSON';
 
 dotenv.config();
 
@@ -15,7 +23,7 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 
-const dataTraversalController = new WaterfallDataTraversalController(
+const dataTraversalController = new SimpleDataTraversalController(
   openAIController,
   '../../sampleData/COINBASE_10_Q' // This file path needs to be subjective to it's folder location
 );
@@ -40,15 +48,24 @@ app.post('/', async (req: Request, res: Response) => {
     }
 
     // 1. This here is a large string of financial statement(s) as stringified JSON
-    const documentJsonStrings =
-      await dataTraversalController.generateFinalPrompt(query);
+    const result = await dataTraversalController.generateFinalPrompt(query);
 
     // 2. Get LLM to infer answer
-    const prompt =
-      documentJsonStrings + INFER_ANSWER_PROMPT + query + PRECAUTIONS_PROMPT;
-    const answer = await openAIController.executePrompt(prompt);
+    const prompt = GEN_OUTPUT_PROMPT(result.finalPrompt!, query);
+    const resultString = await openAIController.executePrompt(prompt);
 
-    res.json({ success: true, query, answer });
+    const finalOutputJSON = extractJSONFromString(
+      resultString
+    ) as FinalOutputJSON; // TODO: Do proper type check
+
+    const answer = convertFinalOutputJSONToString(finalOutputJSON);
+
+    res.json({
+      success: true,
+      query,
+      answer,
+      metadata: { values: finalOutputJSON.values }
+    });
   } catch (error) {
     console.log(`ERROR: ${error}`);
     res.status(500).json({ success: false, error: `${error}` });
