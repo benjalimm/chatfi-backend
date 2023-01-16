@@ -26,6 +26,7 @@ export const GEN_OUTPUT_PROMPT = (
         "unit": "$", // e.g. $, %, etc.
         "title": "Cash and cash equivalents"
         "statementSource": "Balance sheets"
+        "date": "2019-12-31 to 2020-12-31"
       }
     ]
   }

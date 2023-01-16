@@ -9,4 +9,5 @@ export type Value = {
   unit: string;
   title: string;
   statementSource: string;
+  date: string;
 };

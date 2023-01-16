@@ -13,6 +13,7 @@ import WaterfallDataTraversalController from './controllers/DataTraversalControl
 import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
 import { extractJSONFromString } from './controllers/DataTraversalControllers/Utils';
 import convertFinalOutputJSONToString from './utils/convertFinalOutput';
+import { FinalOutputJSON } from './schema/FinalPromptJSON';
 
 dotenv.config();
 
