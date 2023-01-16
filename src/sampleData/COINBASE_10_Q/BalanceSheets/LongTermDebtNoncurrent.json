@@ -1,1 +1,18 @@
-[{"decimals":"-3","unitRef":"usd","period":{"instant":"2022-09-30"},"value":"3391237000"},{"decimals":"-3","unitRef":"usd","period":{"instant":"2021-12-31"},"value":"3384795000"}]
+[
+  {
+    "decimals": "-3",
+    "unitRef": "usd",
+    "period": {
+      "instant": "2022-09-30"
+    },
+    "value": "3391237000"
+  },
+  {
+    "decimals": "-3",
+    "unitRef": "usd",
+    "period": {
+      "instant": "2021-12-31"
+    },
+    "value": "3384795000"
+  }
+]

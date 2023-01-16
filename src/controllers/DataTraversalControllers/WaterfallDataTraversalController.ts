@@ -12,13 +12,17 @@ import {
 } from './Prompts';
 import { extractJSONFromString, readJSON, readTxt } from './Utils';
 import path from 'path';
+import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 
 const MAX_STATEMENT_TO_TRAVERSE = 3;
 const MAX_SEGMENTS_TO_TRAVERSE = 3;
 
 type PertinentSegmentsData = { statement: string; segments: string[] };
 
-export default class WaterfallDataTraversalController extends BaseDataTraversalContoller {
+export default class WaterfallDataTraversalController
+  extends BaseDataTraversalContoller
+  implements LLMDataTraversalController
+{
   constructor(llmController: LLMController, dataFilePath: string) {
     super(llmController, dataFilePath);
     const documentMetadata = readJSON(
@@ -27,7 +31,7 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
     this.listOfStatements = documentMetadata.statements;
   }
 
-  async generateFinalPrompt(query: string): Promise<string> {
+  async generateFinalPrompt(query: string): Promise<DataTraversalPromptResult> {
     // 1. Get list of pertinent statements
     const extractedStatementsResponse =
       await this.extractRelevantStatementsFromQuery(
@@ -151,7 +155,10 @@ export default class WaterfallDataTraversalController extends BaseDataTraversalC
       }
     }
     // 10. Combine extracted data into final prompt;
-    return this.combineExtractedDataToString(extractedData);
+    return {
+      finalPrompt: this.combineExtractedDataToString(extractedData),
+      metadata: { extractedData }
+    };
   }
 
   private async extractRelevantSegmentsFromStatements(

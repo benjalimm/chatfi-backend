@@ -1,0 +1,88 @@
+import LLMController from '../../schema/controllers/LLMController';
+import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
+import { ExtractedData } from '../../schema/ExtractedData';
+import { StatementMetadata } from '../../schema/Metadata';
+import BaseDataTraversalContoller from './BaseDataTraversalContoller';
+import {
+  GEN_SEGMENT_EXTRACTION_PROMPT,
+  GEN_STANDARD_STATEMENT_EXTRACTION_PROMPT
+} from './Prompts';
+import { extractJSONFromString, readJSON } from './Utils';
+
+type StandardStatementResponse = {
+  statements: string[];
+  requiresNotes: boolean;
+};
+export default class SimpleDataTraversalController
+  extends BaseDataTraversalContoller
+  implements LLMDataTraversalController
+{
+  private standardStatements = [
+    'BalanceSheets',
+    'StatementsOfCashFlows',
+    'StatementsOfComprehensiveIncome',
+    'StatementsOfIncome',
+    'StatementsOfShareholdersEquity'
+  ];
+  constructor(llmController: LLMController, dataFilePath: string) {
+    super(llmController, dataFilePath);
+  }
+
+  async determineInitialStandardStatements(
+    query: string,
+    standardStatements: string[]
+  ): Promise<StandardStatementResponse> {
+    const data = await this.llmController.executePrompt(
+      GEN_STANDARD_STATEMENT_EXTRACTION_PROMPT(query, standardStatements)
+    );
+
+    const response = extractJSONFromString<StandardStatementResponse>(data);
+
+    if (response) return response;
+    throw new Error(`Can't parse JSON from LLM response: ${data}`);
+  }
+
+  async generateFinalPrompt(query: string): Promise<DataTraversalPromptResult> {
+    // Step 1. Ask LLM which statements it would look at
+    const response = await this.determineInitialStandardStatements(
+      query,
+      this.standardStatements
+    );
+
+    // 1.1 If only requires notes, simply escape and return requires notes;
+    if (response.statements.length === 0) {
+      return { finalPrompt: null, metadata: { requiresNotes: true } };
+    }
+
+    const extractedData: ExtractedData[] = [];
+    // Step 2. Gather list of segments for each relevant statement and ask LLM which one it would look at.
+    console.log(`Statements: ${JSON.stringify(response.statements)}`);
+    for (const statement of response.statements) {
+      // 3. Extract relevant sections from statement
+      console.log(`Statement: ${statement}`);
+      const extractedSectionsMetadata =
+        await this.extractRelevantSectionsFromStatement(3, statement, query);
+
+      // 4. For each statement, extract relevant segments
+      for (const section of extractedSectionsMetadata.segments) {
+        try {
+          const extractedDataFromSection = await this.extractDataFromSegment(
+            section,
+            statement,
+            query
+          );
+          extractedData.push(extractedDataFromSection);
+        } catch (e) {
+          console.log(
+            `Failed to extract data from section ${section} due to error: ${e}. Continuing loop...`
+          );
+          continue;
+        }
+      }
+    }
+
+    const combinedPrompt = this.combineExtractedDataToString(extractedData);
+
+    return { finalPrompt: combinedPrompt, metadata: { requiresNotes: false } };
+  }
+}

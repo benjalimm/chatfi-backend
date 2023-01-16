@@ -12,17 +12,17 @@ export const GEN_STATEMENT_EXTRACTION_PROMPT = (
 ) => {
   return `
   List of statements: [${statements}]\n
-    Above are the financial statements that are available for a given company. Which financial statements would you look at if you were to adequately answer the query below? You can only select a maximum of ${maxStatements} statements.
+    Above are the financial statements that are available for a given company.  Imagine you are an accountant or a banker. Which financial statements would you look at if you were to adequately answer the following query ("${query}")? You can only select a maximum of ${maxStatements} statements.
     Format the answers with the following JSON format:
     { "statements": string[] }
-    The output array should be ordered from most to least relevant statement. The statement strings should not be altered in any way when outputted. (e.g. Do not capitalize, uncapitalize, add or remove any characters)\n
-    Query: ${query}
+    The output array should be ordered from most to least relevant statement. The statement strings should not be altered in any way when outputted. (e.g. Do not capitalize, uncapitalize, add or remove any characters)
     `;
 };
 
 /**
  * Generate a prompt to get the LLM to select pertinent segments based on the query
  * @param maxSegments Max amount of segements it should look at
+ * @param statement Statement from which the segments are from
  * @param segments List of segments
  * @param query The original query
  * @returns Completed prompt
@@ -55,7 +55,7 @@ export const GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
   ${stringifiedJSON}
-  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the relevant data from the data listed above and output the data in a structured JSON.
+  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the relevant data from the data listed above and output the data in a structured JSON. Only extract what you need and no more, do so in the most concise way possible.
   \n Query: ${query}
   `;
 };
@@ -74,7 +74,7 @@ export const GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
     ${txtData}
-    \n Listed above is a txt file from the segment ${segment}. It might contain tables that were copy and pasted straight from a pdf file. Based on the following query, extract the pertinent data in a structured JSON
+    \n Listed above is a txt file from the segment ${segment}. It might contain tables that were copy and pasted straight from a pdf file. Based on the following query, extract the relevant data in a structured JSON
     \n Query: ${query}
     `;
 };
@@ -90,9 +90,8 @@ export const GEN_RANK_SEGMENTS_PROMPT = (
   query: string
 ) => {
   return `List of segments: [${listOfSegmentsString}]\n
-  Above is a list of segments from financial statements. Based on the following query, rank the segments from most likely to find the pertinent information to the least likely. Output the exact answer including the file extension with no changes in a JSON with the following schema:
-      { "statementSegments": string[] }
-      \n Query: ${query}`;
+  Above is a list of segments from financial statements. Imagine you are an accountant or a banker.Based on the following query("${query}"), rank the segments from most likely to find the pertinent information to the least likely. Output the exact answer including the file extension with no changes in a JSON with the following schema:
+      { "statementSegments": string[] }`;
 };
 
 export const GEN_EXTRACT_OR_MOVE_ON_PROMPT = (
@@ -108,5 +107,17 @@ export const GEN_EXTRACT_OR_MOVE_ON_PROMPT = (
   INSTRUCTION 2: 
   ${dataExtractionPrompt}
 
+  `;
+};
+
+export const GEN_STANDARD_STATEMENT_EXTRACTION_PROMPT = (
+  query: string,
+  standardFinancialStatements: string[]
+): string => {
+  return `${query}
+  List of financial statements: [${standardFinancialStatements}]
+
+  Imagine you are an accountant or a banker. Based on the following query("${query}"), what financial statements listed above would you look at in a quarterly report to answer the query. If this query can be answerd with the listed statement, return a JSON with an array of relevant statements.  If additional notes are required to answer the question, return true in a property called "requiresNotes". Output Structure should be:
+  { "statements": string [], "requiresNotes": boolean }
   `;
 };

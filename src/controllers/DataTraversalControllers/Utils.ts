@@ -17,8 +17,8 @@ export function extractJSONFromString<T>(str: string): T | null {
   return json;
 }
 
-export function readJSON(filePath: string): any {
-  const objectivePath = path.resolve(__dirname, filePath);
+export function readJSON(subjFilePath: string): any {
+  const objectivePath = path.resolve(__dirname, subjFilePath);
   const buffer = fs.readFileSync(objectivePath);
   const trimmedJsonString = buffer.toString().trim();
 
