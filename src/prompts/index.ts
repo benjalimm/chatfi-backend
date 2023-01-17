@@ -27,6 +27,7 @@ export const GEN_OUTPUT_PROMPT = (
         "title": "Cash and cash equivalents"
         "statementSource": "Balance sheets"
         "date": "2019-12-31 to 2020-12-31"
+        "multiplier: "NONE" |"IN_THOUSANDS" | "IN_MILLIONS"
       }
     ]
   }
