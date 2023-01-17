@@ -10,4 +10,5 @@ export type Value = {
   title: string;
   statementSource: string;
   date: string;
+  multiplier: 'NONE' | 'IN_THOUSANDS' | 'IN_MILLIONS';
 };

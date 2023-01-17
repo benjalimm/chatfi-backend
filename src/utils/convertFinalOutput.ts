@@ -17,7 +17,8 @@ function outputValueString(value: Value): string {
   switch (value.unit) {
     case '%':
       return `${value.value}%`;
-    default:
+    default: {
       return `${value.unit}${value.value}`;
+    }
   }
 }

@@ -23,7 +23,7 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 
-const dataTraversalController = new SimpleDataTraversalController(
+const dataTraversalController = new LinearDataTraversalController(
   openAIController,
   '../../sampleData/COINBASE_10_Q' // This file path needs to be subjective to it's folder location
 );
