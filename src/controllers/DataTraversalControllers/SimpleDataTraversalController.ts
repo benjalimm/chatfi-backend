@@ -1,5 +1,6 @@
 import LLMController from '../../schema/controllers/LLMController';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
+import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { ExtractedData } from '../../schema/ExtractedData';
 import { StatementMetadata } from '../../schema/Metadata';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
@@ -42,7 +43,7 @@ export default class SimpleDataTraversalController
     throw new Error(`Can't parse JSON from LLM response: ${data}`);
   }
 
-  async generateFinalPrompt(query: string): Promise<DataTraversalPromptResult> {
+  async extractRelevantData(query: string): Promise<DataTraversalResult> {
     // Step 1. Ask LLM which statements it would look at
     const response = await this.determineInitialStandardStatements(
       query,
@@ -51,7 +52,7 @@ export default class SimpleDataTraversalController
 
     // 1.1 If only requires notes, simply escape and return requires notes;
     if (response.statements.length === 0) {
-      return { finalPrompt: null, metadata: { requiresNotes: true } };
+      return { listOfExtractedData: [], metadata: { requiresNotes: true } };
     }
 
     const extractedData: ExtractedData[] = [];
@@ -81,8 +82,9 @@ export default class SimpleDataTraversalController
       }
     }
 
-    const combinedPrompt = this.combineExtractedDataToString(extractedData);
-
-    return { finalPrompt: combinedPrompt, metadata: { requiresNotes: false } };
+    return {
+      listOfExtractedData: extractedData,
+      metadata: { requiresNotes: false }
+    };
   }
 }

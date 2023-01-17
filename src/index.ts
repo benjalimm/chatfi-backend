@@ -4,16 +4,13 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/OpenAIController';
 import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
-import {
-  GEN_OUTPUT_PROMPT,
-  INFER_ANSWER_PROMPT,
-  PRECAUTIONS_PROMPT
-} from './prompts';
+import { GEN_OUTPUT_PROMPT } from './prompts';
 import WaterfallDataTraversalController from './controllers/DataTraversalControllers/WaterfallDataTraversalController';
 import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
 import { extractJSONFromString } from './controllers/DataTraversalControllers/Utils';
 import convertFinalOutputJSONToString from './utils/convertFinalOutput';
 import { FinalOutputJSON } from './schema/FinalPromptJSON';
+import PromptDataProcessor from './controllers/PromptDataProcessor';
 
 dotenv.config();
 
@@ -27,6 +24,8 @@ const dataTraversalController = new LinearDataTraversalController(
   openAIController,
   '../../sampleData/COINBASE_10_Q' // This file path needs to be subjective to it's folder location
 );
+
+const promptDataProcessor = new PromptDataProcessor(openAIController);
 
 // Body parser middleware
 app.use(cors());
@@ -48,15 +47,15 @@ app.post('/', async (req: Request, res: Response) => {
     }
 
     // 1. This here is a large string of financial statement(s) as stringified JSON
-    const result = await dataTraversalController.generateFinalPrompt(query);
+    const result = await dataTraversalController.extractRelevantData(query);
+    if (result.listOfExtractedData.length === 0)
+      throw new Error(`No extracted data`);
 
-    // 2. Get LLM to infer answer
-    const prompt = GEN_OUTPUT_PROMPT(result.finalPrompt!, query);
-    const resultString = await openAIController.executePrompt(prompt);
-
-    const finalOutputJSON = extractJSONFromString(
-      resultString
-    ) as FinalOutputJSON; // TODO: Do proper type check
+    // 2. Get data processor to process the extracted data and output answer
+    const finalOutputJSON = await promptDataProcessor.processExtractedData(
+      result.listOfExtractedData,
+      query
+    );
 
     const answer = convertFinalOutputJSONToString(finalOutputJSON);
 
