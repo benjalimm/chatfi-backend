@@ -1,16 +1,9 @@
 import LLMController from '../../schema/controllers/LLMController';
 import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
-import { StatementMetadata } from '../../schema/Metadata';
-import path from 'path';
-import {
-  GEN_SEGMENT_EXTRACTION_PROMPT,
-  GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
-  GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
-} from './Prompts';
 import { ExtractedData } from '../../schema/ExtractedData';
-import { extractJSONFromString, readJSON, readTxt } from './Utils';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
+import { DataTraversalResult } from '../../schema/DataTraversalResult';
 
 const MAX_STATEMENTS = 3;
 const MAX_SEGMENTS = 6;
@@ -24,7 +17,7 @@ export default class LinearDataTraversalController
     this.listOfStatements = reportMetadata.statements;
   }
 
-  async generateFinalPrompt(query: string): Promise<DataTraversalPromptResult> {
+  async extractRelevantData(query: string): Promise<DataTraversalResult> {
     // 1. Get list of pertinent statements
     const extractedStatementsResponse =
       await this.extractRelevantStatementsFromQuery(MAX_STATEMENTS, query);
@@ -67,11 +60,6 @@ export default class LinearDataTraversalController
       }
     }
 
-    // 7. Combine string, label data and return
-    const combinedString = this.combineExtractedDataToString(extractedData);
-
-    if (combinedString.trim() === '') throw new Error(`Final prompt is empty`);
-
-    return { finalPrompt: combinedString, metadata: null };
+    return { listOfExtractedData: extractedData, metadata: null };
   }
 }

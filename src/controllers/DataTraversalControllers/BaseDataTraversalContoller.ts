@@ -1,5 +1,4 @@
 import LLMController from '../../schema/controllers/LLMController';
-import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import { ExtractedData } from '../../schema/ExtractedData';
 import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse';
 import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';

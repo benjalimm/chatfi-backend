@@ -74,7 +74,7 @@ export const GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
     ${txtData}
-    \n Listed above is text from the section ${segment}. It might contain text that was copy and pasted straight from a table in a PDF. If values are in thousands or in millions, apply the changes directly to the values. If you've noticed this, apply the changes to the values. Based on the following query ("${query}"), extract the relevant data in a structured JSON. The values listed might be (in thousands or millions) or might not be. If so, list the multiplier effect in a property called "multiplier". Be detailed with dates when labelling data. Here is an example output JSON: 
+    \n Listed above is text from the section ${segment}. It might contain text that was copy and pasted straight from a table in a PDF. If values are in thousands or in millions, apply the changes directly to the values. Based on the following query ("${query}"), extract the relevant data in a structured JSON. The values listed might be (in thousands or millions) or might not be. If so, list the multiplier effect in a property called "multiplier". Be detailed with dates when labelling data. Here is an example output JSON: 
     { data: Data // Relevant output data here
       multipler: "IN_HUNDREDS" | "IN_THOUSANDS" | "IN_MILLIONS"
     }

@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from 'openai';
-import LLMController from '../../schema/controllers/LLMController';
+import LLMController from '../schema/controllers/LLMController';
 
 export default class OpenAIController implements LLMController {
   private api: OpenAIApi;
