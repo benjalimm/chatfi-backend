@@ -4,7 +4,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/OpenAIController';
 import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
-import { GEN_OUTPUT_PROMPT } from './prompts';
 import WaterfallDataTraversalController from './controllers/DataTraversalControllers/WaterfallDataTraversalController';
 import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
 import { extractJSONFromString } from './controllers/DataTraversalControllers/Utils';

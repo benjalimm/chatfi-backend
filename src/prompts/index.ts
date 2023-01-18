@@ -24,6 +24,6 @@ export const GEN_SUMMARIZE_DATA_PROMPT = (
   query: string
 ) => {
   return `
-  ${dataPrompt}\n Listed above is some data of financial information. Based on the following query ("${query}"), extract relevant data to query and summarize them in dot points. Be concise to save space. Specify dates, number and where the data was sourced.
+  ${dataPrompt}\n Listed above is some data of financial information. Based on the following query ("${query}"), extract relevant data to query and summarize them in JSON format. Be concise to save space. Specify dates, number and where the data was sourced.
   `;
 };

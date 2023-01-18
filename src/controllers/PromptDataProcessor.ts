@@ -15,6 +15,7 @@ export default class PromptDataProcessor {
     listOfExtractedData: ExtractedData[],
     query: string
   ): Promise<FinalOutputJSON> {
+    console.log(`Processing ${listOfExtractedData.length} extracted data`);
     const dataPrompts: string[] = [];
     let currentPrompt = '';
 
@@ -25,17 +26,30 @@ export default class PromptDataProcessor {
       const extractedDataString =
         this.convertExtractedDataToString(extractedData);
 
-      // 1.2 Check if adding the next data string will exceed 1800 tokens
+      // 1.2 We check if the extracted data is over the max token limit, if so, we just push it into the data prompts as it will fail the proceeding checks.
+      if (extractedDataString.length / 4 >= MAX_TOKENS_PER_PROMPT) {
+        dataPrompts.push(extractedDataString);
+        continue;
+      }
+
+      // 1.3 Check if adding the next data string will exceed 1800 tokens
       const nextPrompt = `${currentPrompt}${extractedDataString}`;
       if (nextPrompt.length / 4 > MAX_TOKENS_PER_PROMPT) {
-        // 1.2.1 - If exceed, we store the current data prompt and start a new one
+        // 1.3.1 - If exceed, we store the current data prompt and start a new one
         dataPrompts.push(currentPrompt);
         currentPrompt = extractedDataString;
       } else {
-        // 1.2.2 - If not exceed, we add the data string to the current prompt
-        currentPrompt = nextPrompt;
+        // 1.3.2 - If not exceed, we add the data string to the current prompt
+        if (i === listOfExtractedData.length - 1) {
+          dataPrompts.push(nextPrompt);
+        } else {
+          currentPrompt = nextPrompt;
+        }
       }
     }
+
+    if (dataPrompts.length === 0)
+      throw new Error(`PromptDataProcessor - Data prompts do not exist`);
 
     // 2. If only one data prompt exist, we process and return it
     if (dataPrompts.length === 1) {
@@ -81,6 +95,7 @@ export default class PromptDataProcessor {
     dataPrompt: string,
     query: string
   ): Promise<string> {
+    console.log(`SUMMARIZING DATA PROMPT: ${dataPrompt}`);
     const summarizeDataPrompt = GEN_SUMMARIZE_DATA_PROMPT(dataPrompt, query);
     return this.llmController.executePrompt(summarizeDataPrompt);
   }
