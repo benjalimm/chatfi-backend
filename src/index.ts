@@ -90,7 +90,7 @@ io.on('connection', async (socket) => {
           case 'FINAL':
             emitMsgOnly(
               socket,
-              `All data extracted. I'm organizing the data and preparing a final the answer for you. The answer will be ready shortly...`
+              `The relevant data has been extracted. I'm organizing the data and preparing a summary for you now...`
             );
             break;
         }

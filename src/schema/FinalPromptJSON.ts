@@ -1,5 +1,5 @@
 export interface FinalOutputJSON {
-  explanation: string;
+  answer: string;
   values: Value[];
 }
 
