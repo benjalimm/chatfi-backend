@@ -4,6 +4,7 @@ import { ExtractedData } from '../../schema/ExtractedData';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import { DataTraversalResult } from '../../schema/DataTraversalResult';
+import { QueryUpdate } from '../../schema/QueryUpdate';
 
 const MAX_STATEMENTS = 3;
 const MAX_SEGMENTS = 6;
@@ -17,7 +18,10 @@ export default class LinearDataTraversalController
     this.listOfStatements = reportMetadata.statements;
   }
 
-  async extractRelevantData(query: string): Promise<DataTraversalResult> {
+  async extractRelevantData(
+    query: string,
+    onExtractionUpdate?: (update: QueryUpdate) => void
+  ): Promise<DataTraversalResult> {
     // 1. Get list of pertinent statements
     const extractedStatementsResponse =
       await this.extractRelevantStatementsFromQuery(MAX_STATEMENTS, query);
@@ -29,6 +33,7 @@ export default class LinearDataTraversalController
     const extractedData: ExtractedData[] = [];
 
     for (const statementFile of extractedStatementsResponse.statements) {
+      onExtractionUpdate?.({ type: 'STATEMENT', name: statementFile });
       try {
         const extractedSegmentsMetadata =
           await this.extractRelevantSectionsFromStatement(
@@ -39,6 +44,8 @@ export default class LinearDataTraversalController
 
         // 5. For each segment, get the data and ask LLM to extract the pertinent data
         for (const segment of extractedSegmentsMetadata.segments) {
+          onExtractionUpdate?.({ type: 'SECTION', name: segment });
+
           try {
             const extractedDataFromSegment = await this.extractDataFromSegment(
               segment,

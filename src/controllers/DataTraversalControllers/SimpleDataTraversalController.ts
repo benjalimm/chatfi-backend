@@ -3,6 +3,7 @@ import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversa
 import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { ExtractedData } from '../../schema/ExtractedData';
 import { StatementMetadata } from '../../schema/Metadata';
+import { QueryUpdate } from '../../schema/QueryUpdate';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
@@ -43,7 +44,10 @@ export default class SimpleDataTraversalController
     throw new Error(`Can't parse JSON from LLM response: ${data}`);
   }
 
-  async extractRelevantData(query: string): Promise<DataTraversalResult> {
+  async extractRelevantData(
+    query: string,
+    onExtractionUpdate?: (update: QueryUpdate) => void
+  ): Promise<DataTraversalResult> {
     // Step 1. Ask LLM which statements it would look at
     const response = await this.determineInitialStandardStatements(
       query,
@@ -51,7 +55,7 @@ export default class SimpleDataTraversalController
     );
 
     // 1.1 If only requires notes, simply escape and return requires notes;
-    if (response.statements.length === 0) {
+    if (response.statements.length === 0 || response.requiresNotes) {
       return { listOfExtractedData: [], metadata: { requiresNotes: true } };
     }
 
@@ -59,6 +63,7 @@ export default class SimpleDataTraversalController
     // Step 2. Gather list of segments for each relevant statement and ask LLM which one it would look at.
     console.log(`Statements: ${JSON.stringify(response.statements)}`);
     for (const statement of response.statements) {
+      onExtractionUpdate?.({ type: 'STATEMENT', name: statement });
       // 3. Extract relevant sections from statement
       console.log(`Statement: ${statement}`);
       const extractedSectionsMetadata =
@@ -66,6 +71,7 @@ export default class SimpleDataTraversalController
 
       // 4. For each statement, extract relevant segments
       for (const section of extractedSectionsMetadata.segments) {
+        onExtractionUpdate?.({ type: 'SECTION', name: section });
         try {
           const extractedDataFromSection = await this.extractDataFromSegment(
             section,

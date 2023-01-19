@@ -72,7 +72,7 @@ export default class PromptDataProcessor {
     return this.processDataPrompt(finalDataPrompt, query);
   }
   private convertExtractedDataToString(extractedData: ExtractedData): string {
-    return ` ----\n Info from statement ${extractedData.statement} in section ${extractedData.segment}:
+    return ` ----\n INFO - statementSource: ${extractedData.statement} // sectionSource: ${extractedData.segment}:
       ${extractedData.data}\n----
       `;
   }
