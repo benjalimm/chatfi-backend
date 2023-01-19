@@ -1,6 +1,6 @@
 export const GEN_OUTPUT_PROMPT = (dataPrompt: string, query: string) => {
   return `
-  ${dataPrompt}\n Listed above is some data of financial information. Based on this data, execute the following query("${query}"). Output the answer in a structured JSON, where the property "explanation" contains a summary of the answers, while the values are interpolataed within the string and can be referenced in array called "values". Within the explanation, be detailed with dates, where the data was sourced and how the answer was calculated. All interopolated values should be preceded with an @ symbol and camel cased. The following is an example of the output format:
+  ${dataPrompt}\n Listed above is some data of financial information. Based on this data, execute the following query("${query}"). Output the answer in a structured JSON, where the property "explanation" contains a dot point summary of an answer to the query, while the values are interpolated within the string and can be referenced in array called "values". Within the explanation, be detailed with dates, where the data was sourced and how the answer was calculated. All interopolated values should be preceded with an @ symbol and camel cased. The following is an example of the output format:
   { 
     "explanation": "Company X has @cashOnHand dollars on hand",
     "values": [
