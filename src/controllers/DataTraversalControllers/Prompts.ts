@@ -55,7 +55,7 @@ export const GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
   ${stringifiedJSON}
-  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the relevant data from the data listed above and output the data in a structured JSON. Only extract what you need and no more, do so in the most concise way possible.
+  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the relevant data from the data listed above and output the data in a structured JSON. Throw away unnecessary data that is not needed. Only extract what you need and no more, do so in the most concise way possible.
   \n Query: ${query}
   `;
 };
@@ -74,7 +74,7 @@ export const GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
     ${txtData}
-    \n Listed above is text from the section ${segment}. It might contain text that was copy and pasted straight from a table in a PDF. If values are in thousands or in millions, apply the changes directly to the values. Based on the following query ("${query}"), extract the relevant data in a structured JSON. The values listed might be (in thousands or millions) or might not be. If so, list the multiplier effect in a property called "multiplier". Be detailed with dates when labelling data. Here is an example output JSON: 
+    \n Listed above is text from the segment ${segment}. It likely contains numbers and text that was copy and pasted straight from a table in a PDF. Based on the following query ("${query}"), extract the relevant data in a structured JSON. Numeric values listed might be in thousands, which means that the number stated is 1/1000th of the actual value. If so, list the multiplier effect in a property called "multiplier". When extracting values, simply extract the string and do not manipulate it at all (e.g. Don't remove commas). DO NOT REPLACE COMMAS WITH FULL STOPS). Throw away unnecessary data that is not needed. Be detailed with dates when labelling data. Here is an example output JSON: 
     { data: Data // Relevant output data here
       multipler: "IN_HUNDREDS" | "IN_THOUSANDS" | "IN_MILLIONS"
     }
@@ -119,7 +119,7 @@ export const GEN_STANDARD_STATEMENT_EXTRACTION_PROMPT = (
   return `${query}
   List of financial statements: [${standardFinancialStatements}]
 
-  Imagine you are an accountant or a banker. Based on the following query("${query}"), what financial statements listed above would you look at in a quarterly report to answer the query. If this query can be answerd with the listed statement, return a JSON with an array of relevant statements.  If additional notes are required to answer the question, return true in a property called "requiresNotes". Output Structure should be:
+  Imagine you are an accountant or a banker. Based on the following query("${query}"), what financial statements listed above would you look at in a quarterly report to answer the query. If this query can be answered with the listed statements, return a JSON with an array of relevant statements ordered from most relevant to least relevant.  If additional notes are required to answer the question, return true in a property called "requiresNotes". Output Structure should be:
   { "statements": string [], "requiresNotes": boolean }
   `;
 };

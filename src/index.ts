@@ -81,7 +81,7 @@ io.on('connection', async (socket) => {
       const response = await executeQuery(query, (update) => {
         switch (update.type) {
           case 'STATEMENT':
-            emitMsgOnly(socket, `Scanning through document "${update.name}"`);
+            emitMsgOnly(socket, `Looking through document "${update.name}"`);
             break;
           case 'SECTION': {
             break;
@@ -90,7 +90,7 @@ io.on('connection', async (socket) => {
           case 'FINAL':
             emitMsgOnly(
               socket,
-              `The relevant data has been extracted. I'm organizing the data and preparing a summary for you now...`
+              `I've gathered the relevant information. Organizing the data and preparing a summary for you now...`
             );
             break;
         }
