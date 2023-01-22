@@ -1,10 +1,16 @@
 import { GEN_OUTPUT_PROMPT, GEN_SUMMARIZE_DATA_PROMPT } from '../prompts';
 import LLMController from '../schema/controllers/LLMController';
 import { ExtractedData } from '../schema/ExtractedData';
-import { FinalOutputJSON } from '../schema/FinalPromptJSON';
+import {
+  FinalOutputJSON,
+  FinalOutputJSON_EXAMPLE,
+  Value,
+  Value_EXAMPLE
+} from '../schema/FinalPromptJSON';
+import { validateBody } from '../utils/validateObject';
 import { extractJSONFromString } from './DataTraversalControllers/Utils';
 
-const MAX_TOKENS_PER_PROMPT = 1300;
+const MAX_TOKENS_PER_PROMPT = 1000;
 export default class PromptDataProcessor {
   private llmController: LLMController;
 
@@ -85,9 +91,7 @@ export default class PromptDataProcessor {
     const resultString = await this.llmController.executePrompt(
       finalOutputPrompt
     );
-    const finalOutputJSON = extractJSONFromString(
-      resultString
-    ) as FinalOutputJSON; // TODO: Do proper type check
+    const finalOutputJSON = this.extractAndValidateFinalOutput(resultString);
     return finalOutputJSON;
   }
 
@@ -98,5 +102,34 @@ export default class PromptDataProcessor {
     console.log(`SUMMARIZING DATA PROMPT: ${dataPrompt}`);
     const summarizeDataPrompt = GEN_SUMMARIZE_DATA_PROMPT(dataPrompt, query);
     return this.llmController.executePrompt(summarizeDataPrompt);
+  }
+
+  private extractAndValidateFinalOutput(result: string): FinalOutputJSON {
+    const extractedFinalOutput = extractJSONFromString(result);
+    const isValidBody = validateBody(
+      extractedFinalOutput,
+      FinalOutputJSON_EXAMPLE
+    );
+
+    if (isValidBody) {
+      const values = extractedFinalOutput.values;
+
+      if (values.length > 0) {
+        values.forEach((value) => {
+          const validated = validateBody<Value>(value, Value_EXAMPLE);
+
+          if (!validated) {
+            throw new Error(
+              `Failed to validate value: ${JSON.stringify(value)}`
+            );
+          }
+        });
+        return extractedFinalOutput;
+      }
+      return extractedFinalOutput;
+    }
+    throw new Error(
+      `Failed to validate final output JSON: ${JSON.stringify(result)}`
+    );
   }
 }

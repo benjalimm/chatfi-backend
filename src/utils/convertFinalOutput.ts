@@ -14,12 +14,34 @@ export default function convertFinalOutputJSONToString(
   return explanation;
 }
 
-function outputValueString(value: Value): string {
+function sanitizeNumberString(number: string): string {
+  return number.replace(/,/g, '');
+}
+
+export function outputValueString(value: Value): string {
+  function formatCurrency() {
+    const numericValue = parseFloat(sanitizeNumberString(value.value));
+    let multiplier = 1;
+
+    if (value.sectionSource.toLowerCase().includes('.txt')) {
+      switch (value.multiplier) {
+        case 'IN_MILLIONS':
+          multiplier = 1000000;
+          break;
+        case 'IN_THOUSANDS':
+          multiplier = 1000;
+          break;
+      }
+    }
+    return formatCurrencyNumber(numericValue * multiplier);
+  }
+  console.log(value.unit);
   switch (value.unit) {
-    case 'PERCENTAGE':
-      return `${value.value}%`;
     case 'DOLLARS':
-      return formatCurrencyNumber(value.value);
+      return formatCurrency();
+    case 'USD':
+      return formatCurrency();
+
     default: {
       return `${value.value}`;
     }
