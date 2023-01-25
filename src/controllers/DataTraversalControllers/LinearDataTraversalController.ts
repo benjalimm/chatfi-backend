@@ -6,7 +6,7 @@ import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversa
 import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { QueryUpdate } from '../../schema/QueryUpdate';
 
-const MAX_STATEMENTS = 3;
+const MAX_STATEMENTS = 6;
 const MAX_SEGMENTS = 6;
 
 export default class LinearDataTraversalController
