@@ -1,15 +1,15 @@
-import { ExtractedValue } from '../schema/ExtractedValue';
+import { ExtractedValue } from '../../schema/ExtractedValue';
 import * as ss from 'string-similarity';
 export default class ExtractedValueMatchService {
   private matchThreshold = 0.95;
   private extractedValues: ExtractedValue[] = [];
 
-  matchPropertyWithValue(propertyName: string): ExtractedValue | null {
+  matchEntityWithValue(entityName: string): ExtractedValue | null {
     const matches: { value: ExtractedValue; similarity: number }[] = [];
 
     // Find properties with similarity over threshold;
     this.extractedValues.forEach((value) => {
-      const similarity = ss.compareTwoStrings(value.name, propertyName);
+      const similarity = ss.compareTwoStrings(value.name, entityName);
       if (similarity >= this.matchThreshold) {
         matches.push({ value, similarity });
       }
@@ -22,10 +22,10 @@ export default class ExtractedValueMatchService {
     return matches[0].value;
   }
 
-  matchPropertiesWithValues(properties: string[]): (ExtractedValue | null)[] {
+  matchEntitiesWithValues(entities: string[]): (ExtractedValue | null)[] {
     const matches: (ExtractedValue | null)[] = [];
-    properties.forEach((property) => {
-      const match = this.matchPropertyWithValue(property);
+    entities.forEach((entity) => {
+      const match = this.matchEntityWithValue(entity);
       matches.push(match);
     });
     return matches;

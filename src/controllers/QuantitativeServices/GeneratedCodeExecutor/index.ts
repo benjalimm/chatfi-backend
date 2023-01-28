@@ -1,7 +1,7 @@
-import LLMController from '../../schema/controllers/LLMController';
-import { ExtractedValue } from '../../schema/ExtractedValue';
-import { Formula } from '../../schema/FormulaType';
-import { extractJSONFromString } from '../DataTraversalControllers/Utils';
+import LLMController from '../../../schema/controllers/LLMController';
+import { ExtractedValue } from '../../../schema/ExtractedValue';
+import { Formula } from '../../../schema/FormulaType';
+import { extractJSONFromString } from '../../DataTraversalControllers/Utils';
 import { GEN_CODE_EXECUTOR_GENERATION_PROMPT } from './prompts';
 
 export default class GeneratedCodeExecutor {
@@ -12,14 +12,14 @@ export default class GeneratedCodeExecutor {
   }
 
   async outputExecutable(
-    formulaString: string,
+    formulas: string[],
     extractedValues: ExtractedValue[],
-    dateOrRange: string
+    query: string
   ): Promise<string> {
     const PROMPT = GEN_CODE_EXECUTOR_GENERATION_PROMPT(
       extractedValues,
-      formulaString,
-      dateOrRange
+      formulas,
+      query
     );
     const result = await this.llmController.executePrompt(PROMPT);
     const object = extractJSONFromString(result) as { output: string };
