@@ -1,6 +1,6 @@
 export const GEN_ENTITY_EXTRACTION_FROM_QUERY_PROMPT = (query: string) => {
   return `
-  For the following query ("${query}"), extract any quantitative entities and output them in the following JSON:
+  The following query is a user asking question about some financial reports ("${query}"), extract any entities that represent financial entities you would find or calculate in financial statements (e.g. Quick ratio, net income, current assets, taxes). Output them in the following JSON:
   ${OUTPUT_JSON}
   Examples: "Calculate the quick ratio" -> Entities: ["quick ratio"]
   `;
@@ -20,7 +20,7 @@ export const GEN_ENTITY_EXTRACTION_FROM_FORMULAS_PROMPT = (
 
 const OUTPUT_JSON = `
  { 
-    "entities": ["Current assets", "Current liabilities"]
+    "entities": string[] // e.g. ["Current assets", "Current liabilities"]
  }
 
 `;

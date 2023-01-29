@@ -16,6 +16,7 @@ export default class GeneratedCodeExecutor {
     extractedValues: ExtractedValue[],
     query: string
   ): Promise<string> {
+    console.log(`Attempting to generate executable code`);
     const PROMPT = GEN_CODE_EXECUTOR_GENERATION_PROMPT(
       extractedValues,
       formulas,

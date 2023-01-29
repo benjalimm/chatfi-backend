@@ -24,13 +24,15 @@ export default class QuantitativeQueryProcessor {
 
   async processQuery(query: string): Promise<number> {
     // 1. Extract entities
+    console.log('Extracting resolved entities');
     const resolvedEntities =
       await this.entityExtractionService.extractEntitiesFromQuery(query);
+    console.log(`Successfully extracted ${resolvedEntities.length} entities`);
 
     // 2. Split resolved entities into extracted values and formulas
     const formulas: Formula[] = [];
     const extractedValues: ExtractedValue[] = [];
-
+    console.log(`Attempting to split extracted values and formulas`);
     for (const resolvedEntity of resolvedEntities) {
       if (resolvedEntity.type === 'formula') {
         formulas.push(resolvedEntity.formula);
@@ -39,6 +41,10 @@ export default class QuantitativeQueryProcessor {
       }
     }
 
+    console.log(
+      `Successfully split extracted values (Count: ${extractedValues.length}) and formulas. (Count: ${formulas.length})`
+    );
+
     // 3. Generate executable code
     const executable = await this.generatedCodeExecutor.outputExecutable(
       formulas.map((f) => f.formula),
@@ -46,9 +52,12 @@ export default class QuantitativeQueryProcessor {
       query
     );
 
+    console.log(`Generated executable code: ${executable}`);
+
     // 4. Execute value
     const getFinalValue = new Function(executable);
     const value = getFinalValue() as number;
+    console.log(`Final value: ${value}`);
     return value;
   }
 }

@@ -2,7 +2,23 @@ import { ExtractedValue } from '../../schema/ExtractedValue';
 import * as ss from 'string-similarity';
 export default class ExtractedValueMatchService {
   private matchThreshold = 0.95;
-  private extractedValues: ExtractedValue[] = [];
+  private extractedValues: ExtractedValue[] = [
+    {
+      name: 'Current asset',
+      type: 'INSTANT',
+      values: [{ value: 1000000, unit: '$', date: '2022-09-30' }]
+    },
+    {
+      name: 'Current liabilities',
+      type: 'INSTANT',
+      values: [{ value: 500000, unit: '$', date: '2022-09-30' }]
+    },
+    {
+      name: 'Inventory',
+      type: 'INSTANT',
+      values: [{ value: 200000, unit: '$', date: '2022-09-30' }]
+    }
+  ];
 
   matchEntityWithValue(entityName: string): ExtractedValue | null {
     const matches: { value: ExtractedValue; similarity: number }[] = [];
