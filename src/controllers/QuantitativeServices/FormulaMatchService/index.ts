@@ -12,6 +12,44 @@ export default class FormulaMatchService {
         synonyms: [],
         formula: 'Current assets / Current liabilities',
         properties: ['Current assets', 'Current liabilities']
+      },
+      {
+        name: 'Unlevered free cash flow',
+        synonyms: ['UFCF'],
+        formula:
+          'EBITDA - Capital Expenditure - Change in working capital - Taxes',
+        properties: [
+          'EBITDA',
+          'Capital expenditure',
+          'Working capital',
+          'Taxes'
+        ]
+      },
+      {
+        name: 'EBITDA',
+        synonyms: [
+          'Earnings before interest taxes depreciation and amortization'
+        ],
+        formula:
+          'Total revenue - total cost of sales - total operating expenses + depreciation and amortization',
+        properties: [
+          'Total revenue',
+          'Total cost of sales',
+          'Total operating expenses',
+          'Depreciation and amortization'
+        ]
+      },
+      {
+        name: 'Change in working capital',
+        synonyms: [],
+        formula:
+          '(Current asset 2 - current liabilities 2) - (Current asset 1 - Current liabilities 1)',
+        properties: [
+          'Current asset 1',
+          'Current liabilities 1',
+          'Current asset 2',
+          'Current liabilities 2'
+        ]
       }
     ];
   }

@@ -30,26 +30,6 @@ export default class QuantEntityExtractionService {
     //2.  Attempt to match entities
     const resolvedEntities = this.entityMatchingService.matchEntities(entities);
 
-    // 3. Split resolved entities into extracted values and formulas
-    const formulas: Formula[] = [];
-    const extractedValues: ExtractedValue[] = [];
-
-    for (const resolvedEntity of resolvedEntities) {
-      if (resolvedEntity.type === 'formula') {
-        formulas.push(resolvedEntity.formula);
-      } else {
-        extractedValues.push(resolvedEntity.value);
-      }
-    }
-
-    // 4. If there are formulas, extract entities from formulas
-
-    // TODO: Add recursive entity extraction from formulas. We only go one level deep for simplicity
-    if (formulas.length > 0) {
-      const entitiesFromFormulas = formulas.flatMap((f) => f.properties);
-      const combinedEntities = [...entities, ...entitiesFromFormulas];
-      return this.entityMatchingService.matchEntities(combinedEntities);
-    }
     return resolvedEntities;
   }
 

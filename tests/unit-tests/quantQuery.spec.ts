@@ -45,7 +45,7 @@ describe('Testing quantitative query', () => {
     jest.setTimeout(20000);
     const processor = new QuantitativeQueryProcessor(new OpenAIController());
     const result = await processor.processQuery(
-      'What is the quick ratio for 2022?'
+      'What is the unlevered free cash flow for 2022?'
     );
     expect(result).toBe(2);
   });

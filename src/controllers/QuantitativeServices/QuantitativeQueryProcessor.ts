@@ -35,11 +35,13 @@ export default class QuantitativeQueryProcessor {
     console.log(`Attempting to split extracted values and formulas`);
     for (const resolvedEntity of resolvedEntities) {
       if (resolvedEntity.type === 'formula') {
-        formulas.push(resolvedEntity.formula);
+        formulas.push(resolvedEntity.entity);
       } else {
-        extractedValues.push(resolvedEntity.value);
+        extractedValues.push(resolvedEntity.entity);
       }
     }
+
+    console.log(`Resolved entities: ${JSON.stringify(resolvedEntities)}`);
 
     console.log(
       `Successfully split extracted values (Count: ${extractedValues.length}) and formulas. (Count: ${formulas.length})`
