@@ -1,27 +1,19 @@
-import { ExtractedValue } from '../../schema/ExtractedValue';
+import { FirstOrderValue } from '../../schema/FirstOrderValue';
 import * as ss from 'string-similarity';
+import { readJSON } from '../DataTraversalControllers/Utils';
 export default class ExtractedValueMatchService {
   private matchThreshold = 0.95;
-  private extractedValues: ExtractedValue[] = [
-    {
-      name: 'Current asset',
-      type: 'INSTANT',
-      values: [{ value: 1000000, unit: '$', date: '2022-09-30' }]
-    },
-    {
-      name: 'Current liabilities',
-      type: 'INSTANT',
-      values: [{ value: 500000, unit: '$', date: '2022-09-30' }]
-    },
-    {
-      name: 'Inventory',
-      type: 'INSTANT',
-      values: [{ value: 200000, unit: '$', date: '2022-09-30' }]
-    }
-  ];
+  private extractedValues: FirstOrderValue[];
 
-  matchEntityWithValue(entityName: string): ExtractedValue | null {
-    const matches: { value: ExtractedValue; similarity: number }[] = [];
+  constructor() {
+    const { data } = readJSON('../../../extractions/firstOrderValues.json') as {
+      data: FirstOrderValue[];
+    };
+    this.extractedValues = data;
+  }
+
+  matchEntityWithValue(entityName: string): FirstOrderValue | null {
+    const matches: { value: FirstOrderValue; similarity: number }[] = [];
 
     // Find properties with similarity over threshold;
     this.extractedValues.forEach((value) => {
@@ -38,8 +30,8 @@ export default class ExtractedValueMatchService {
     return matches[0].value;
   }
 
-  matchEntitiesWithValues(entities: string[]): (ExtractedValue | null)[] {
-    const matches: (ExtractedValue | null)[] = [];
+  matchEntitiesWithValues(entities: string[]): (FirstOrderValue | null)[] {
+    const matches: (FirstOrderValue | null)[] = [];
     entities.forEach((entity) => {
       const match = this.matchEntityWithValue(entity);
       matches.push(match);

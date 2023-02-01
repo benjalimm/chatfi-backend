@@ -1,4 +1,4 @@
-import { ExtractedValue } from '../../schema/ExtractedValue';
+import { FirstOrderValue } from '../../schema/FirstOrderValue';
 import { Formula } from '../../schema/FormulaType';
 import { ResolvedEntity } from '../../schema/ResolvedEntities';
 import ExtractedValueMatchService from './ExtractedValueMatchService';
@@ -18,6 +18,8 @@ export default class QuantEntityMatchingService {
     previouslyResolvedEntities?: ResolvedEntity[]
   ): ResolvedEntity[] {
     const resolvedEntities: ResolvedEntity[] = [];
+
+    // For each entity, attempt to match entity with value or formula.
     for (const entity of entities) {
       // 1. Attempt to match with extracted value
       const value =
@@ -47,13 +49,9 @@ export default class QuantEntityMatchingService {
         }
       }
 
-      // 4. If there are formulas, extract entities from formulas
-
-      // TODO: Add recursive entity extraction from formulas. We only go one level deep for simplicity
+      // 4. If there are formulas, recursively extract entities from formulas until we arrive at every first order value
       if (formulas.length > 0) {
-        // 5. If there are formulas, we need to ensure that all the first order values have been resolved.
-
-        // 5.1 Check if first order values have been previously resolved
+        // 4.1 Check if first order values have been previously resolved
         const entitiesFromFormulas = formulas.flatMap((f) => f.properties);
 
         // Take into consideration previously resolved entities
@@ -61,6 +59,7 @@ export default class QuantEntityMatchingService {
           resolvedEntities.push(...previouslyResolvedEntities);
         }
 
+        // Filter out entities that have not yet been extracted (to avoid duplicates)
         const entitiesNotYetExtracted = entitiesFromFormulas.filter(
           (e) =>
             !resolvedEntities?.find((r) => {
@@ -69,9 +68,12 @@ export default class QuantEntityMatchingService {
         );
 
         if (entitiesNotYetExtracted.length > 0) {
-          return this.matchEntities(entitiesNotYetExtracted, resolvedEntities);
+          const re = this.matchEntities(
+            entitiesNotYetExtracted,
+            resolvedEntities
+          );
+          resolvedEntities.push(...re);
         }
-        return resolvedEntities;
       }
     }
     return resolvedEntities;

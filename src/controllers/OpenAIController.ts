@@ -10,7 +10,7 @@ export default class OpenAIController
 
   constructor() {
     const configuration = new Configuration({
-      apiKey: `${process.env.OPENAI_API_KEY}`
+      apiKey: `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`
     });
     this.api = new OpenAIApi(configuration);
   }

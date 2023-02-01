@@ -1,1 +1,1 @@
-{"decimals":"-3","unitRef":"usd","period":{"startDate":"2021-02-08","endDate":"2021-02-08"},"segment":{"dimension":"us-gaap:BusinessAcquisitionAxis","value":"coin:BisonTrailsCoMember"},"value":"28365000"}
+{"BusinessCombinationReplacementOfAcquireeOptions":{"decimals":"-3","unitRef":"usd","period":{"startDate":"2021-02-08","endDate":"2021-02-08"},"segment":{"dimension":"us-gaap:BusinessAcquisitionAxis","value":"coin:BisonTrailsCoMember"},"value":"28365000"}}

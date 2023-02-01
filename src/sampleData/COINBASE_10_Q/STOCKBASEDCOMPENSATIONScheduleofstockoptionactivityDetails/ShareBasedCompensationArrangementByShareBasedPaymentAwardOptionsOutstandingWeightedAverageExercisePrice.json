@@ -1,1 +1,1 @@
-[{"decimals":"2","unitRef":"usdPerShare","period":{"instant":"2021-12-31"},"value":"18.60"},{"decimals":"2","unitRef":"usdPerShare","period":{"instant":"2022-09-30"},"value":"23.30"}]
+{"ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingWeightedAverageExercisePrice":[{"decimals":"2","unitRef":"usdPerShare","period":{"instant":"2021-12-31"},"value":"18.60"},{"decimals":"2","unitRef":"usdPerShare","period":{"instant":"2022-09-30"},"value":"23.30"}]}

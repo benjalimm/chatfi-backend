@@ -1,7 +1,7 @@
-import { ExtractedValue } from '../../../schema/ExtractedValue';
+import { FirstOrderValue } from '../../../schema/FirstOrderValue';
 
 export const GEN_CODE_EXECUTOR_GENERATION_PROMPT = (
-  extractedValues: ExtractedValue[],
+  extractedValues: FirstOrderValue[],
   formulas: string[],
   query: string
 ) => {
@@ -21,7 +21,7 @@ const OUTPUT_JSON = `
 }
 `;
 
-function stringifyExtractedValue(extractedValues: ExtractedValue[]): string {
+function stringifyExtractedValue(extractedValues: FirstOrderValue[]): string {
   let stringifiedValues = ``;
   for (const extractedValue of extractedValues) {
     stringifiedValues =

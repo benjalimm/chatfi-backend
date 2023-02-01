@@ -1,5 +1,5 @@
 import LLMController from '../../../schema/controllers/LLMController';
-import { ExtractedValue } from '../../../schema/ExtractedValue';
+import { FirstOrderValue } from '../../../schema/FirstOrderValue';
 import { Formula } from '../../../schema/FormulaType';
 import { extractJSONFromString } from '../../DataTraversalControllers/Utils';
 import { GEN_CODE_EXECUTOR_GENERATION_PROMPT } from './prompts';
@@ -13,7 +13,7 @@ export default class GeneratedCodeExecutor {
 
   async outputExecutable(
     formulas: string[],
-    extractedValues: ExtractedValue[],
+    extractedValues: FirstOrderValue[],
     query: string
   ): Promise<string> {
     console.log(`Attempting to generate executable code`);

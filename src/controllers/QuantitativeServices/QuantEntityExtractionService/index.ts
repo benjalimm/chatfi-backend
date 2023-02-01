@@ -1,5 +1,5 @@
 import LLMController from '../../../schema/controllers/LLMController';
-import { ExtractedValue } from '../../../schema/ExtractedValue';
+import { FirstOrderValue } from '../../../schema/FirstOrderValue';
 import { Formula } from '../../../schema/FormulaType';
 import { ResolvedEntity } from '../../../schema/ResolvedEntities';
 import { extractJSONFromString } from '../../DataTraversalControllers/Utils';

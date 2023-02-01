@@ -1,5 +1,5 @@
 import LLMController from '../../schema/controllers/LLMController';
-import { ExtractedValue } from '../../schema/ExtractedValue';
+import { FirstOrderValue } from '../../schema/FirstOrderValue';
 import { Formula } from '../../schema/FormulaType';
 import ExtractedValueMatchService from './ExtractedValueMatchService';
 import FormulaMatchService from './FormulaMatchService';
@@ -31,7 +31,7 @@ export default class QuantitativeQueryProcessor {
 
     // 2. Split resolved entities into extracted values and formulas
     const formulas: Formula[] = [];
-    const extractedValues: ExtractedValue[] = [];
+    const extractedValues: FirstOrderValue[] = [];
     console.log(`Attempting to split extracted values and formulas`);
     for (const resolvedEntity of resolvedEntities) {
       if (resolvedEntity.type === 'formula') {
