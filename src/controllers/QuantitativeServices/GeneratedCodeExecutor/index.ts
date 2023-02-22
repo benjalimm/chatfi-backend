@@ -12,7 +12,7 @@ export default class GeneratedCodeExecutor {
   }
 
   async outputExecutable(
-    formulas: string[],
+    formulas: Formula[],
     extractedValues: FirstOrderValue[],
     query: string
   ): Promise<string> {

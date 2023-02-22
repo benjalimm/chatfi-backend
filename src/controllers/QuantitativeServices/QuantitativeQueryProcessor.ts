@@ -49,7 +49,7 @@ export default class QuantitativeQueryProcessor {
 
     // 3. Generate executable code
     const executable = await this.generatedCodeExecutor.outputExecutable(
-      formulas.map((f) => f.formula),
+      formulas,
       extractedValues,
       query
     );

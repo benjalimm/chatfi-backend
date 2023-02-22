@@ -46,6 +46,10 @@ export default class FirstOrderValueIndexer {
     }
     for (const instruction of this.instructions) {
       try {
+        if (data.find((obj) => obj.name === instruction.name)) {
+          console.log(`Skipping ${instruction.name} as it already exists`);
+          continue;
+        }
         const values = await this.extractValueWithInstruction(instruction);
         this.persistValues(instruction, values);
       } catch (e) {
@@ -98,6 +102,8 @@ export default class FirstOrderValueIndexer {
     instruction: FOVExtractionInstruction,
     segments: string[]
   ): Promise<string> {
+    if (segments.length === 0)
+      throw new Error(`Segments array cannot be empty`);
     const PROMPT = GEN_FOV_SEGMENT_EXTRACTION_PROMPT(instruction, segments);
 
     const response = await this.llmController.executePrompt(PROMPT);
@@ -115,13 +121,7 @@ export default class FirstOrderValueIndexer {
     const inputs = [instruction.name, ...instruction.synonyms];
 
     for (const input of inputs) {
-      segments.forEach((seg) => {
-        if (ss.compareTwoStrings(seg, input) >= 0.7) {
-          if (!matches.includes(seg)) {
-            matches.push(seg);
-          }
-        }
-      });
+      matches.push(this.findBestMatch(input, segments));
     }
     return matches;
   }

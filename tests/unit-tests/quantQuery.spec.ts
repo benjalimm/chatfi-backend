@@ -12,24 +12,27 @@ import instructions from '../../extractions/instructions';
 
 describe('Testing quantitative query', () => {
   const openAIController = new OpenAIController();
+  jest.setTimeout(200000);
 
-  // test('Test', async () => {
-  //   jest.setTimeout(20000);
-  //   const processor = new QuantitativeQueryProcessor(openAIController);
-  //   const result = await processor.processQuery(
-  //     'What is quick ratio for three months ending Sept 2022?'
-  //   );
-  //   console.log(`Result: ${result}`);
-  //   expect(result).toBe(1.05);
-  // });
-  jest.setTimeout(20000);
-  test('First order value indexing', async () => {
-    const indexer = new FirstOrderValueIndexer(
-      '../../sampleData/COINBASE_10_Q',
-      '',
-      instructions,
-      openAIController
+  test('Test', async () => {
+    jest.setTimeout(20000);
+    const processor = new QuantitativeQueryProcessor(openAIController);
+    const result = await processor.processQuery(
+      'What is the quick ratio for 9 months ending 2022?'
     );
-    await indexer.beginIndexing();
+    console.log(`Result: ${result}`);
+    expect(result).toBe(1.05);
   });
+
+  // test('First order value indexing', async () => {
+  //   jest.setTimeout(200000);
+
+  //   const indexer = new FirstOrderValueIndexer(
+  //     '../../sampleData/COINBASE_10_Q',
+  //     '',
+  //     instructions,
+  //     openAIController
+  //   );
+  //   await indexer.beginIndexing();
+  // });
 });

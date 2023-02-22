@@ -37,7 +37,8 @@ export default class QuantEntityMatchingService {
         } else {
           // TODO: Find value instead of throwing error
           /// This is temp to keep things simple
-          throw new Error(`No matches for entity "${entity}"`);
+          console.log(`No matches for entity "${entity}"`);
+          continue;
         }
       }
       // 3. Split resolved entities formulas
@@ -52,7 +53,14 @@ export default class QuantEntityMatchingService {
       // 4. If there are formulas, recursively extract entities from formulas until we arrive at every first order value
       if (formulas.length > 0) {
         // 4.1 Check if first order values have been previously resolved
-        const entitiesFromFormulas = formulas.flatMap((f) => f.properties);
+        const flattenedEntitiesFromFormulas = formulas.flatMap(
+          (f) => f.properties
+        );
+
+        // Filter out duplicates
+        const entitiesFromFormulas = flattenedEntitiesFromFormulas.filter(
+          (item, index) => flattenedEntitiesFromFormulas.indexOf(item) === index
+        );
 
         // Take into consideration previously resolved entities
         if (previouslyResolvedEntities) {
@@ -76,6 +84,16 @@ export default class QuantEntityMatchingService {
         }
       }
     }
-    return resolvedEntities;
+
+    // Remove duplicates
+    const filteredResolvedEntities = resolvedEntities.filter(
+      (item, index, self) => {
+        return (
+          self.findIndex((obj) => obj.entity.name === item.entity.name) ===
+          index
+        );
+      }
+    );
+    return filteredResolvedEntities;
   }
 }

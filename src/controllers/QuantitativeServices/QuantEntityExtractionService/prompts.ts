@@ -20,7 +20,7 @@ export const GEN_ENTITY_EXTRACTION_FROM_FORMULAS_PROMPT = (
 
 const OUTPUT_JSON = `
  { 
-    "entities": string[] // e.g. ["Current assets", "Current liabilities"]
+    "entities": string[] // e.g. ["Current assets", "Current liabilities", "Change in working capital"]
  }
 
 `;
