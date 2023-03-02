@@ -1,8 +1,1 @@
-{
-  "segments": [
-    "FinancingReceivableExcludingAccruedInterestAfterAllowanceForCreditLossCurrent.json",
-    "InterestReceivable.json",
-    "FinancingReceivableAllowanceForCreditLossExcludingAccruedInterestCurrent.json",
-    "FinancingReceivableExcludingAccruedInterestBeforeAllowanceForCreditLoss.json"
-  ]
-}
+{"segments":["FinancingReceivableExcludingAccruedInterestAfterAllowanceForCreditLossCurrent.json","InterestReceivable.json","FinancingReceivableAllowanceForCreditLossExcludingAccruedInterestCurrent.json","FinancingReceivableExcludingAccruedInterestBeforeAllowanceForCreditLoss.json"]}

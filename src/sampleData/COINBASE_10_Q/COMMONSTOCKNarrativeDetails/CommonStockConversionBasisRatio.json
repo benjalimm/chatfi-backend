@@ -1,1 +1,1 @@
-{"decimals":"0","unitRef":"number","period":{"startDate":"2021-04-01","endDate":"2021-04-01"},"segment":{"dimension":"us-gaap:StatementClassOfStockAxis","value":"us-gaap:CommonClassBMember"},"value":"1"}
+{"CommonStockConversionBasisRatio":{"decimals":"0","unitRef":"number","period":{"startDate":"2021-04-01","endDate":"2021-04-01"},"segment":{"dimension":"us-gaap:StatementClassOfStockAxis","value":"us-gaap:CommonClassBMember"},"value":"1"}}

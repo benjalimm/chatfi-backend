@@ -31,13 +31,15 @@
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/index.js\"",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "indexData": "npx tsc && node dist/extractions/indexData.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/string-similarity": "^4.0.0",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -46,6 +48,7 @@
     "fs": "^0.0.1-security",
     "openai": "^3.1.0",
     "path": "^0.12.7",
-    "socket.io": "^4.5.4"
+    "socket.io": "^4.5.4",
+    "string-similarity": "^4.0.4"
   }
 }

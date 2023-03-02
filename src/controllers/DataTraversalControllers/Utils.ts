@@ -33,3 +33,8 @@ export function readTxt(filePath: string): string {
   const objectivePath = path.resolve(__dirname, filePath);
   return fs.readFileSync(objectivePath, 'utf8');
 }
+
+export function writeData(filePath: string, data: string) {
+  const objectivePath = path.resolve(__dirname, filePath);
+  fs.writeFileSync(objectivePath, data);
+}

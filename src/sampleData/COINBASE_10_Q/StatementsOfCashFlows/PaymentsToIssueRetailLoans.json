@@ -1,1 +1,1 @@
-[{"decimals":"-3","unitRef":"usd","period":{"startDate":"2022-01-01","endDate":"2022-09-30"},"value":"189137000"},{"decimals":"-3","unitRef":"usd","period":{"startDate":"2021-01-01","endDate":"2021-09-30"},"value":"169325000"}]
+{"PaymentsToIssueRetailLoans":[{"decimals":"-3","unitRef":"usd","period":{"startDate":"2022-01-01","endDate":"2022-09-30"},"value":"189137000"},{"decimals":"-3","unitRef":"usd","period":{"startDate":"2021-01-01","endDate":"2021-09-30"},"value":"169325000"}]}

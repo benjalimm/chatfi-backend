@@ -1,1 +1,1 @@
-[{"decimals":"-3","unitRef":"usd","period":{"instant":"2022-09-30"},"value":"277044000"},{"decimals":"-3","unitRef":"usd","period":{"instant":"2021-12-31"},"value":"135849000"}]
+{"PrepaidExpenseAndOtherAssetsCurrent":[{"decimals":"-3","unitRef":"usd","period":{"instant":"2022-09-30"},"value":"277044000"},{"decimals":"-3","unitRef":"usd","period":{"instant":"2021-12-31"},"value":"135849000"}]}

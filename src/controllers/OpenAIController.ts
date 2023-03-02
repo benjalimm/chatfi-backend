@@ -1,12 +1,16 @@
 import { Configuration, OpenAIApi } from 'openai';
+import EmbeddingsController from '../schema/controllers/EmbeddingController';
 import LLMController from '../schema/controllers/LLMController';
+import { EmbeddingData } from '../schema/EmbeddingTypes';
 
-export default class OpenAIController implements LLMController {
+export default class OpenAIController
+  implements LLMController, EmbeddingsController
+{
   private api: OpenAIApi;
 
   constructor() {
     const configuration = new Configuration({
-      apiKey: `${process.env.OPENAI_API_KEY}`
+      apiKey: process.env.OPENAI_API_KEY
     });
     this.api = new OpenAIApi(configuration);
   }
@@ -25,5 +29,16 @@ export default class OpenAIController implements LLMController {
     const output = completion.data.choices[0].text ?? '';
     console.log(`---\nOUTPUT: ${output}\n_____________`);
     return output;
+  }
+
+  async getEmbedding(input: string): Promise<EmbeddingData> {
+    const {
+      data: { data: choiceEmbeddings }
+    } = await this.api.createEmbedding({
+      model: 'text-embedding-ada-002',
+      input
+    });
+
+    return choiceEmbeddings[0] as EmbeddingData;
   }
 }
