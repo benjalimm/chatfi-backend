@@ -12,7 +12,7 @@ export const GEN_STATEMENT_EXTRACTION_PROMPT = (
 ) => {
   return `
   List of statements: [${statements}]\n
-    Above are the financial statements that are available for a given company.  Imagine you are an accountant or a banker. Which financial statements would you look at if you were to adequately answer the following query ("${query}")? You can only select a maximum of ${maxStatements} statements.
+    Above are the financial statements that are available for a given company.  Imagine you are an accountant or a banker. Which of the financial statements listed above would you look at if you were to adequately answer the following query ("${query}")? You can only select a maximum of ${maxStatements} statements.
     Format the answers with the following JSON format:
     { "statements": string[] }
     The output array should be ordered from most to least relevant statement. The statement strings should not be altered in any way when outputted. (e.g. Do not capitalize, uncapitalize, add or remove any characters)
