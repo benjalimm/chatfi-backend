@@ -20,13 +20,11 @@ export default class OpenAIController
     console.log(
       `Executing prompt with estimated token count ${estimatedTokenCount}... \n_____________\nPROMPT: ${text}`
     );
-    const completion = await this.api.createCompletion({
-      model: 'text-davinci-003',
-      prompt: text,
-      temperature: 0,
-      max_tokens: 2049
+    const completion = await this.api.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: [{ role: 'user', content: text }]
     });
-    const output = completion.data.choices[0].text ?? '';
+    const output = completion.data.choices[0].message?.content ?? '';
     console.log(`---\nOUTPUT: ${output}\n_____________`);
     return output;
   }
