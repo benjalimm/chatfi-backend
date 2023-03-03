@@ -1,4 +1,4 @@
-import { Formula } from '../src/schema/FormulaType.js';
+import { Formula } from '../src/schema/FormulaType';
 
 const formulas: Formula[] = [
   {

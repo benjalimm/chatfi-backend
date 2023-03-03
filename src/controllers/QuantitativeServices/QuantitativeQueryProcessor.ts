@@ -1,11 +1,11 @@
-import LLMController from '../../schema/controllers/LLMController.js';
-import { FirstOrderValue } from '../../schema/FirstOrderValue.js';
-import { Formula } from '../../schema/FormulaType.js';
-import ExtractedValueMatchService from './ExtractedValueMatchService.js';
-import FormulaMatchService from './FormulaMatchService/index.js';
-import GeneratedCodeExecutor from './GeneratedCodeExecutor/index.js';
-import QuantEntityExtractionService from './QuantEntityExtractionService/index.js';
-import QuantEntityMatchingService from './QuantEntityMatchingService.js';
+import LLMController from '../../schema/controllers/LLMController';
+import { FirstOrderValue } from '../../schema/FirstOrderValue';
+import { Formula } from '../../schema/FormulaType';
+import ExtractedValueMatchService from './ExtractedValueMatchService';
+import FormulaMatchService from './FormulaMatchService';
+import GeneratedCodeExecutor from './GeneratedCodeExecutor';
+import QuantEntityExtractionService from './QuantEntityExtractionService';
+import QuantEntityMatchingService from './QuantEntityMatchingService';
 
 export default class QuantitativeQueryProcessor {
   private llmController: LLMController;

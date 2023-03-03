@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai';
-import EmbeddingsController from '../schema/controllers/EmbeddingController.js';
-import LLMController from '../schema/controllers/LLMController.js';
-import { EmbeddingData } from '../schema/EmbeddingTypes.js';
+import EmbeddingsController from '../schema/controllers/EmbeddingController';
+import LLMController from '../schema/controllers/LLMController';
+import { EmbeddingData } from '../schema/EmbeddingTypes';
 
 export default class OpenAIController
   implements LLMController, EmbeddingsController

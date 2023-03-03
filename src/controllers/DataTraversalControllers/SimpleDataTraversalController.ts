@@ -1,15 +1,15 @@
-import LLMController from '../../schema/controllers/LLMController.js';
-import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController.js';
-import { DataTraversalResult } from '../../schema/DataTraversalResult.js';
-import { ExtractedData } from '../../schema/ExtractedData.js';
-import { StatementMetadata } from '../../schema/Metadata.js';
-import { QueryUpdate } from '../../schema/QueryUpdate.js';
-import BaseDataTraversalContoller from './BaseDataTraversalContoller.js';
+import LLMController from '../../schema/controllers/LLMController';
+import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
+import { DataTraversalResult } from '../../schema/DataTraversalResult';
+import { ExtractedData } from '../../schema/ExtractedData';
+import { StatementMetadata } from '../../schema/Metadata';
+import { QueryUpdate } from '../../schema/QueryUpdate';
+import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_STANDARD_STATEMENT_EXTRACTION_PROMPT
-} from './Prompts.js';
-import { extractJSONFromString, readJSON } from './Utils.js';
+} from './Prompts';
+import { extractJSONFromString, readJSON } from './Utils';
 
 type StandardStatementResponse = {
   statements: string[];

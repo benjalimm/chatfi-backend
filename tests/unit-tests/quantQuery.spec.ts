@@ -1,14 +1,14 @@
 import { text } from 'body-parser';
 import 'jest';
-import GeneratedCodeExecutor from '../../src/controllers/QuantitativeServices/GeneratedCodeExecutor/index.js';
-import OpenAIController from '../../src/controllers/OpenAIController.js';
+import GeneratedCodeExecutor from '../../src/controllers/QuantitativeServices/GeneratedCodeExecutor';
+import OpenAIController from '../../src/controllers/OpenAIController';
 import {
   FirstOrderValue,
   FOVExtractionInstruction
-} from '../../src/schema/FirstOrderValue.js';
-import QuantitativeQueryProcessor from '../../src/controllers/QuantitativeServices/QuantitativeQueryProcessor.js';
-import FirstOrderValueIndexer from '../../src/controllers/FirstOrderValueIndexer/index.js';
-import instructions from '../../extractions/instructions.js';
+} from '../../src/schema/FirstOrderValue';
+import QuantitativeQueryProcessor from '../../src/controllers/QuantitativeServices/QuantitativeQueryProcessor';
+import FirstOrderValueIndexer from '../../src/controllers/FirstOrderValueIndexer';
+import instructions from '../../extractions/instructions';
 
 describe('Testing quantitative query', () => {
   const openAIController = new OpenAIController();

@@ -22,8 +22,7 @@
   },
   "name": "explicate-backend",
   "version": "1.0.0",
-  "type": "module",
-  "export": "./dist/src/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "test": "npx tsc && jest --coverage",
     "test:watch": "jest --watch",

@@ -1,13 +1,13 @@
-import LLMController from '../../../schema/controllers/LLMController.js';
-import { FirstOrderValue } from '../../../schema/FirstOrderValue.js';
-import { Formula } from '../../../schema/FormulaType.js';
-import { ResolvedEntity } from '../../../schema/ResolvedEntities.js';
-import { extractJSONFromString } from '../../DataTraversalControllers/Utils.js';
-import QuantEntityMatchingService from '../QuantEntityMatchingService.js';
+import LLMController from '../../../schema/controllers/LLMController';
+import { FirstOrderValue } from '../../../schema/FirstOrderValue';
+import { Formula } from '../../../schema/FormulaType';
+import { ResolvedEntity } from '../../../schema/ResolvedEntities';
+import { extractJSONFromString } from '../../DataTraversalControllers/Utils';
+import QuantEntityMatchingService from '../QuantEntityMatchingService';
 import {
   GEN_ENTITY_EXTRACTION_FROM_FORMULAS_PROMPT,
   GEN_ENTITY_EXTRACTION_FROM_QUERY_PROMPT
-} from './prompts.js';
+} from './prompts';
 
 export default class QuantEntityExtractionService {
   private llmController: LLMController;
