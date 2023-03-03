@@ -1,4 +1,4 @@
-import { ExtractedData } from './ExtractedData';
+import { ExtractedData } from './ExtractedData.js';
 
 export type DataTraversalResult = {
   listOfExtractedData: ExtractedData[];

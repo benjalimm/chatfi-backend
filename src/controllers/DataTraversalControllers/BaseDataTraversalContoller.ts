@@ -1,14 +1,14 @@
-import LLMController from '../../schema/controllers/LLMController';
-import { ExtractedData } from '../../schema/ExtractedData';
-import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse';
-import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
+import LLMController from '../../schema/controllers/LLMController.js';
+import { ExtractedData } from '../../schema/ExtractedData.js';
+import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse.js';
+import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata.js';
 import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT,
   GEN_STATEMENT_EXTRACTION_PROMPT
-} from './Prompts';
-import { extractJSONFromString, readJSON, readTxt } from './Utils';
+} from './Prompts.js';
+import { extractJSONFromString, readJSON, readTxt } from './Utils.js';
 import path from 'path';
 import * as fs from 'fs';
 

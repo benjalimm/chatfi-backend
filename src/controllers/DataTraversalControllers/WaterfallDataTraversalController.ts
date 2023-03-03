@@ -1,19 +1,18 @@
-import LLMController from '../../schema/controllers/LLMController';
-import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
-import BaseDataTraversalContoller from './BaseDataTraversalContoller';
-import { ExtractedData } from '../../schema/ExtractedData';
-import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
+import LLMController from '../../schema/controllers/LLMController.js';
+import BaseDataTraversalContoller from './BaseDataTraversalContoller.js';
+import { ExtractedData } from '../../schema/ExtractedData.js';
+import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata.js';
 import {
   GEN_EXTRACT_OR_MOVE_ON_PROMPT,
   GEN_RANK_SEGMENTS_PROMPT,
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT
-} from './Prompts';
-import { extractJSONFromString, readJSON, readTxt } from './Utils';
+} from './Prompts.js';
+import { extractJSONFromString, readJSON, readTxt } from './Utils.js';
 import path from 'path';
-import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
-import { DataTraversalResult } from '../../schema/DataTraversalResult';
+import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController.js';
+import { DataTraversalResult } from '../../schema/DataTraversalResult.js';
 
 const MAX_STATEMENT_TO_TRAVERSE = 3;
 const MAX_SEGMENTS_TO_TRAVERSE = 3;

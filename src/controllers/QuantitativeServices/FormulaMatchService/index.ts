@@ -1,7 +1,7 @@
-import LLMController from '../../../schema/controllers/LLMController';
-import { Formula } from '../../../schema/FormulaType';
+import LLMController from '../../../schema/controllers/LLMController.js';
+import { Formula } from '../../../schema/FormulaType.js';
 import * as ss from 'string-similarity';
-import formulas from '../../../../extractions/formulas';
+import formulas from '../../../../extractions/formulas.js';
 
 export default class FormulaMatchService {
   private formulas: Formula[];

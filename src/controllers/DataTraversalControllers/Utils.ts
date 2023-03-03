@@ -1,6 +1,7 @@
 import { strict } from 'assert';
 import * as fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 export function extractJSONFromString<T>(str: string): T | null {
   if (!(str.includes('{') && str.includes('}'))) {
@@ -18,6 +19,9 @@ export function extractJSONFromString<T>(str: string): T | null {
 }
 
 export function readJSON(subjFilePath: string): any {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
   const objectivePath = path.resolve(__dirname, subjFilePath);
   const buffer = fs.readFileSync(objectivePath);
   const trimmedJsonString = buffer.toString().trim();
