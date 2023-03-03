@@ -1,5 +1,5 @@
-import { FinalOutputJSON, Value } from '../schema/FinalPromptJSON';
-import formatCurrencyNumber from './formatCurrencyNumber';
+import { FinalOutputJSON, Value } from '../schema/FinalPromptJSON.js';
+import formatCurrencyNumber from './formatCurrencyNumber.js';
 
 export default function convertFinalOutputJSONToString(
   finalOutputJSON: FinalOutputJSON

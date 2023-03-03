@@ -1,4 +1,4 @@
-import LLMController from '../schema/controllers/LLMController';
+import LLMController from '../schema/controllers/LLMController.js';
 
 type QueryType = 'QUANTITATIVE' | 'QUALITATIVE' | 'BOTH';
 export default class QueryTypeController {

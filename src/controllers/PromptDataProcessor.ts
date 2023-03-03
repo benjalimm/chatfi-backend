@@ -1,14 +1,17 @@
-import { GEN_OUTPUT_PROMPT, GEN_SUMMARIZE_DATA_PROMPT } from '../prompts';
-import LLMController from '../schema/controllers/LLMController';
-import { ExtractedData } from '../schema/ExtractedData';
+import {
+  GEN_OUTPUT_PROMPT,
+  GEN_SUMMARIZE_DATA_PROMPT
+} from '../prompts/index.js';
+import LLMController from '../schema/controllers/LLMController.js';
+import { ExtractedData } from '../schema/ExtractedData.js';
 import {
   FinalOutputJSON,
   FinalOutputJSON_EXAMPLE,
   Value,
   Value_EXAMPLE
-} from '../schema/FinalPromptJSON';
-import { validateBody } from '../utils/validateObject';
-import { extractJSONFromString } from './DataTraversalControllers/Utils';
+} from '../schema/FinalPromptJSON.js';
+import { validateBody } from '../utils/validateObject.js';
+import { extractJSONFromString } from './DataTraversalControllers/Utils.js';
 
 const MAX_TOKENS_PER_PROMPT = 1000;
 export default class PromptDataProcessor {
