@@ -1,10 +1,10 @@
-import LLMController from '../../schema/controllers/LLMController.js';
-import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json' assert { type: 'json' };
-import { ExtractedData } from '../../schema/ExtractedData.js';
-import BaseDataTraversalContoller from './BaseDataTraversalContoller.js';
-import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController.js';
-import { DataTraversalResult } from '../../schema/DataTraversalResult.js';
-import { QueryUpdate } from '../../schema/QueryUpdate.js';
+import LLMController from '../../schema/controllers/LLMController';
+import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
+import { ExtractedData } from '../../schema/ExtractedData';
+import BaseDataTraversalContoller from './BaseDataTraversalContoller';
+import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
+import { DataTraversalResult } from '../../schema/DataTraversalResult';
+import { QueryUpdate } from '../../schema/QueryUpdate';
 
 const MAX_STATEMENTS = 6;
 const MAX_SEGMENTS = 6;

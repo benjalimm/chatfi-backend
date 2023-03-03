@@ -1,8 +1,8 @@
-import { FirstOrderValue } from '../../schema/FirstOrderValue.js';
-import { Formula } from '../../schema/FormulaType.js';
-import { ResolvedEntity } from '../../schema/ResolvedEntities.js';
-import ExtractedValueMatchService from './ExtractedValueMatchService.js';
-import FormulaMatchService from './FormulaMatchService/index.js';
+import { FirstOrderValue } from '../../schema/FirstOrderValue';
+import { Formula } from '../../schema/FormulaType';
+import { ResolvedEntity } from '../../schema/ResolvedEntities';
+import ExtractedValueMatchService from './ExtractedValueMatchService';
+import FormulaMatchService from './FormulaMatchService';
 import * as ss from 'string-similarity';
 
 export default class QuantEntityMatchingService {

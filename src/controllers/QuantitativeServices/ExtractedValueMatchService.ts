@@ -1,6 +1,6 @@
-import { FirstOrderValue } from '../../schema/FirstOrderValue.js';
+import { FirstOrderValue } from '../../schema/FirstOrderValue';
 import * as ss from 'string-similarity';
-import { readJSON } from '../DataTraversalControllers/Utils.js';
+import { readJSON } from '../DataTraversalControllers/Utils';
 export default class ExtractedValueMatchService {
   private matchThreshold = 0.95;
   private extractedValues: FirstOrderValue[];

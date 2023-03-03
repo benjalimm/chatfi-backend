@@ -1,4 +1,4 @@
-import { FOVExtractionInstruction } from '../src/schema/FirstOrderValue.js';
+import { FOVExtractionInstruction } from '../src/schema/FirstOrderValue';
 
 const instructions: FOVExtractionInstruction[] = [
   {

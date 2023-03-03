@@ -1,0 +1,162 @@
+{
+  "data": [
+    {
+      "name": "Capital expenditure",
+      "type": "RANGE",
+      "values": [
+        {
+          "value": 3747000,
+          "unit": "usd",
+          "startDate": "2022-01-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": 1628000,
+          "unit": "usd",
+          "startDate": "2021-01-01",
+          "endDate": "2021-09-30"
+        }
+      ]
+    },
+    {
+      "name": "Total revenue",
+      "type": "RANGE",
+      "values": [
+        {
+          "value": 590339000,
+          "unit": "usd",
+          "startDate": "2022-07-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": 1311908000,
+          "unit": "usd",
+          "startDate": "2021-07-01",
+          "endDate": "2021-09-30"
+        },
+        {
+          "value": 2565100000,
+          "unit": "usd",
+          "startDate": "2022-01-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": 5340981000,
+          "unit": "usd",
+          "startDate": "2021-01-01",
+          "endDate": "2021-09-30"
+        }
+      ]
+    },
+    {
+      "name": "Current asset",
+      "type": "INSTANT",
+      "values": [
+        {
+          "value": 107679967000,
+          "unit": "usd",
+          "date": "2022-09-30"
+        },
+        {
+          "value": 18373863000,
+          "unit": "usd",
+          "date": "2021-12-31"
+        }
+      ]
+    },
+    {
+      "name": "Current liabilities",
+      "type": "INSTANT",
+      "values": [
+        {
+          "value": 102073099000,
+          "unit": "usd",
+          "date": "2022-09-30"
+        },
+        {
+          "value": 11419035000,
+          "unit": "usd",
+          "date": "2021-12-31"
+        }
+      ]
+    },
+    {
+      "name": "Depreciation and amortization",
+      "type": "RANGE",
+      "values": [
+        {
+          "value": 113721000,
+          "unit": "usd",
+          "startDate": "2022-01-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": 40633000,
+          "unit": "usd",
+          "startDate": "2021-01-01",
+          "endDate": "2021-09-30"
+        }
+      ]
+    },
+    {
+      "name": "Operating expenses",
+      "type": "RANGE",
+      "values": [
+        {
+          "value": 1146823000,
+          "unit": "usd",
+          "startDate": "2022-07-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": 1020100000,
+          "unit": "usd",
+          "startDate": "2021-07-01",
+          "endDate": "2021-09-30"
+        },
+        {
+          "value": 4720436000,
+          "unit": "usd",
+          "startDate": "2022-01-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": 3186735000,
+          "unit": "usd",
+          "startDate": "2021-01-01",
+          "endDate": "2021-09-30"
+        }
+      ]
+    },
+    {
+      "name": "Taxes",
+      "type": "RANGE",
+      "values": [
+        {
+          "value": -99055000,
+          "unit": "usd",
+          "startDate": "2022-07-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": -135240000,
+          "unit": "usd",
+          "startDate": "2021-07-01",
+          "endDate": "2021-09-30"
+        },
+        {
+          "value": -425756000,
+          "unit": "usd",
+          "startDate": "2022-01-01",
+          "endDate": "2022-09-30"
+        },
+        {
+          "value": -647505000,
+          "unit": "usd",
+          "startDate": "2021-01-01",
+          "endDate": "2021-09-30"
+        }
+      ]
+    }
+  ]
+}

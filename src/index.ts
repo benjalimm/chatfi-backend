@@ -1,16 +1,17 @@
 import express, { Express, Request, Response } from 'express';
-import bodyParser from 'body-parser';
+import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as socketio from 'socket.io';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import OpenAIController from './controllers/OpenAIController.js';
-import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController.js';
-import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController.js';
-import convertFinalOutputJSONToString from './utils/convertFinalOutput.js';
-import PromptDataProcessor from './controllers/PromptDataProcessor.js';
-import { QueryUpdate } from './schema/QueryUpdate.js';
-import { DataTraversalResult } from './schema/DataTraversalResult.js';
+import OpenAIController from './controllers/OpenAIController';
+import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
+import WaterfallDataTraversalController from './controllers/DataTraversalControllers/WaterfallDataTraversalController';
+import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
+import convertFinalOutputJSONToString from './utils/convertFinalOutput';
+import PromptDataProcessor from './controllers/PromptDataProcessor';
+import { QueryUpdate } from './schema/QueryUpdate';
+import { DataTraversalResult } from './schema/DataTraversalResult';
 
 dotenv.config();
 

@@ -1,21 +1,21 @@
-import LLMController from '../../schema/controllers/LLMController.js';
+import LLMController from '../../schema/controllers/LLMController';
 import {
   FirstOrderValue,
   FOVExtractionInstruction,
   InstantValue,
   RangeValue
-} from '../../schema/FirstOrderValue.js';
-import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata.js';
+} from '../../schema/FirstOrderValue';
+import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
 import {
   extractJSONFromString,
   readJSON,
   writeData
-} from '../DataTraversalControllers/Utils.js';
+} from '../DataTraversalControllers/Utils';
 import * as ss from 'string-similarity';
 import {
   GEN_FOV_EXTRACTION_PROMPT,
   GEN_FOV_SEGMENT_EXTRACTION_PROMPT
-} from './prompts.js';
+} from './prompts';
 
 export default class FirstOrderValueIndexer {
   private dataFilePath: string;
