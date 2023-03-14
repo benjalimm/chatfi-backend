@@ -15,7 +15,7 @@ export default function convertFinalOutputJSONToString(
 }
 
 function sanitizeNumberString(number: string): string {
-  return number.replace(/,/g, '');
+  return number.replace(/,/g, '').replace(/$/g, '');
 }
 
 export function outputValueString(value: Value): string {

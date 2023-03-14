@@ -5,6 +5,8 @@ import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { QueryUpdate } from '../../schema/QueryUpdate';
+import { timeStamp } from 'console';
+import { isFulfilled } from '../../utils/PromiseExtensions';
 
 const MAX_STATEMENTS = 6;
 const MAX_SEGMENTS = 6;
@@ -29,37 +31,19 @@ export default class LinearDataTraversalController
     console.log('DOCUMENT TYPE RESPONSE: ');
     console.log(extractedStatementsResponse);
 
-    // 1.1 - We store extracted pertinent info in this array
-    const extractedData: ExtractedData[] = [];
+    // 1.1 - We store the pr
+    const unresolvedExtractedDataPromise: Promise<ExtractedData[]>[] = [];
 
     for (const statementFile of extractedStatementsResponse.statements) {
       onExtractionUpdate?.({ type: 'STATEMENT', name: statementFile });
       try {
-        const extractedSegmentsMetadata =
-          await this.extractRelevantSectionsFromStatement(
-            MAX_SEGMENTS,
-            statementFile,
-            query
-          );
-
-        // 5. For each segment, get the data and ask LLM to extract the pertinent data
-        for (const segment of extractedSegmentsMetadata.segments) {
-          onExtractionUpdate?.({ type: 'SECTION', name: segment });
-
-          try {
-            const extractedDataFromSegment = await this.extractDataFromSegment(
-              segment,
-              statementFile,
-              query
-            );
-            extractedData.push(extractedDataFromSegment);
-          } catch (e) {
-            console.log(
-              `Caught error at segment level: ${e}\n...Continuing loop`
-            );
-            continue;
-          }
-        }
+        const dataExtractionPromise = this.extractSectionsAndThenData(
+          statementFile,
+          MAX_SEGMENTS,
+          query,
+          onExtractionUpdate
+        );
+        unresolvedExtractedDataPromise.push(dataExtractionPromise);
       } catch (e) {
         console.log(
           `Caught error at statement level: ${e}\n...Continuing loop`
@@ -67,6 +51,52 @@ export default class LinearDataTraversalController
       }
     }
 
+    // Resolve asynchronously
+    const listOfExtractedData = await Promise.all(
+      unresolvedExtractedDataPromise
+    );
+
+    const extractedData = listOfExtractedData.flatMap((v) => {
+      return v;
+    });
+
     return { listOfExtractedData: extractedData, metadata: null };
+  }
+
+  private async extractSectionsAndThenData(
+    statementFile: string,
+    maxSegments: number,
+    query: string,
+    onExtractionUpdate?: (update: QueryUpdate) => void
+  ): Promise<ExtractedData[]> {
+    // Step 1 - Extract relevant sections from statement
+    const extractedSegmentsMetadata =
+      await this.extractRelevantSectionsFromStatement(
+        maxSegments,
+        statementFile,
+        query
+      );
+
+    const unresolvedExtractedDataPromises: Promise<ExtractedData>[] = [];
+
+    // 2. For each segment, get the data and ask LLM to extract the pertinent data
+    extractedSegmentsMetadata.segments.forEach((segment) => {
+      unresolvedExtractedDataPromises.push(
+        this.extractDataFromSegment(segment, statementFile, query)
+      );
+    });
+
+    onExtractionUpdate?.({ type: 'SECTION', name: statementFile });
+
+    // 3. Process data asyncronously
+
+    const settledResults = await Promise.allSettled(
+      unresolvedExtractedDataPromises
+    );
+
+    const fulfilledValues = settledResults
+      .filter(isFulfilled)
+      .map((p) => p.value);
+    return fulfilledValues;
   }
 }

@@ -3,8 +3,8 @@ const OUTPUT_JSON = `
     "answer": " Company X has cash and cash equivalents of @cashOnHand. This is sourced from the balance sheet as of @date.",
     "values": [
       { 
-        "key": "cashOnHand", 
-        "value": "1000000" | "2,945" | "25th Dec 2022"
+        "key": "cashOnHand", // type: string
+        "value": "1000000" | "2,945" | "25th Dec 2022" // type: string 
         "unit": "DOLLARS" | "PERCENTAGE" | "DATE" | "NONE"
         "title": "Cash and cash equivalents"
         "statementSource": "BalanceSheets" // Find statementSource for this value
@@ -15,7 +15,7 @@ const OUTPUT_JSON = `
   }
 `;
 
-const OUTPUT_DETAILS = `Output the answer in a structured JSON, where the property "answer" contains a summary of the answer and how it was calculated, while the values are interpolated within the string and can be referenced in array called "values". In the answer, be detailed with dates, where the data was sourced and how the answer was calculated.  All interpolated values should be preceded with an @ symbol and camel cased. (e.g. cash should be @cash) Make sure not to add any extraneous letters or symbols that would prevent us from interpolating the values. We should be  All values in the answer should be listed in the values array. Ensure the JSON is valid and the properties have quotes on them (e.g. "answer" / "values"). If a property within the value is not relevant to it, simply leave it as an empty string.`;
+const OUTPUT_DETAILS = `Output the answer in a structured JSON, where the property "answer" contains a summary of the answer and how it was calculated, while the values are interpolated within the string and can be referenced in array called "values". In the answer, be detailed with dates, where the data was sourced and how the answer was calculated. Reference as many values provided in the context as possible.  All interpolated values should be preceded with an @ symbol and camel cased. (e.g. cash should be @cash) Make sure not to add any extraneous letters or symbols that would prevent us from interpolating the values. We should be  All values in the answer should be listed in the values array. Ensure the JSON is valid and the properties have quotes on them (e.g. "answer" / "values"). If a property within the value is not relevant to it, simply leave it as an empty string.`;
 
 const OUTPUT_PRECAUTIONS = `When calculating / comparing values, make sure they fall within the same dates / periods. If a value has a multiplier attached to it (e.g. IN_THOUSANDS), apply the multiplier to it. 
 `;
