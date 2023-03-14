@@ -55,7 +55,7 @@ export const GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
   ${stringifiedJSON}
-  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the relevant data from the data listed above and output the data in a structured JSON. Throw away unnecessary data that is not needed. Only extract what you need and no more, do so in the most concise way possible.
+  \n Listed above is a JSON for the segment ${segment}. Based on the following query, extract the relevant data from the data listed above and output the data in a structured JSON. Throw away unnecessary data that is not needed. Only extract what you need and no more, do so in the most concise way possible. If there is no relevant data, simply output an empty JSON (e.g. {}). Absolutely do not respond in chat format (e.g. "Sorry, but the given financial information does not provide any data...")
   \n Query: ${query}
   `;
 };
@@ -74,7 +74,7 @@ export const GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT = (
 ) => {
   return `
     ${txtData}
-    \n Listed above is text from the segment ${segment}. It likely contains numbers and text that was copy and pasted straight from a table in a PDF. Based on the following query ("${query}"), extract the relevant data in a structured JSON. Numeric values listed might be in thousands, which means that the number stated is 1/1000th of the actual value. If so, list the multiplier effect in a property called "multiplier". When extracting values, simply extract the string and do not manipulate it at all (e.g. Don't remove commas). DO NOT REPLACE COMMAS WITH FULL STOPS). Throw away unnecessary data that is not needed. Be detailed with dates when labelling data. Here is an example output JSON: 
+    \n Listed above is text from the segment ${segment}. It likely contains numbers and text that was copy and pasted straight from a table in a PDF. Based on the following query ("${query}"), extract the relevant data in a structured JSON. Numeric values listed might be in thousands, which means that the number stated is 1/1000th of the actual value. If so, list the multiplier effect in a property called "multiplier". When extracting values, simply extract the string and do not manipulate it at all (e.g. Don't remove commas). DO NOT REPLACE COMMAS WITH FULL STOPS). Throw away unnecessary data that is not needed. Be detailed with dates when labelling data. If there is no relevant data, simply output an empty JSON ({}). Absolutely do not respond in chat format (e.g. "Sorry, but the given financial information does not provide any data..."). Here is an example output JSON: 
     { data: Data // Relevant output data here
       multipler: "IN_HUNDREDS" | "IN_THOUSANDS" | "IN_MILLIONS"
     }

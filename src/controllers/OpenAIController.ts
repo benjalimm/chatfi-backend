@@ -22,7 +22,8 @@ export default class OpenAIController
     );
     const completion = await this.api.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: text }]
+      messages: [{ role: 'user', content: text }],
+      temperature: 0
     });
     const output = completion.data.choices[0].message?.content ?? '';
     console.log(`---\nOUTPUT: ${output}\n_____________`);

@@ -5,7 +5,7 @@ import formulas from '../../../../extractions/formulas';
 
 export default class FormulaMatchService {
   private formulas: Formula[];
-  private matchThreshold = 0.95;
+  private matchThreshold = 0.85;
   constructor() {
     this.formulas = formulas;
   }

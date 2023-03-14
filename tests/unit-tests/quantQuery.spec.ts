@@ -18,7 +18,7 @@ describe('Testing quantitative query', () => {
     jest.setTimeout(20000);
     const processor = new QuantitativeQueryProcessor(openAIController);
     const result = await processor.processQuery(
-      'What is the quick ratio for 9 months ending 2022?'
+      'What is the EBITDA for 9 months ending 2022?'
     );
     console.log(`Result: ${result}`);
     expect(result).toBe(1.05);

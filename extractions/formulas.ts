@@ -2,7 +2,7 @@ import { Formula } from '../src/schema/FormulaType';
 
 const formulas: Formula[] = [
   {
-    name: 'Quick ratio',
+    name: 'quick ratio',
     synonyms: [],
     formula: 'Current assets / Current liabilities',
     properties: ['Current assets', 'Current liabilities']

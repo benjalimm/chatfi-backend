@@ -132,10 +132,12 @@ export default class BaseDataTraversalContoller {
     const dataExtractionJsonString = await this.llmController.executePrompt(
       DATA_EXTRACTION_PROMPT
     );
+
+    const extractedJSON = extractJSONFromString(dataExtractionJsonString);
     return {
       statement: statementFile,
       segment,
-      data: dataExtractionJsonString
+      data: `${JSON.stringify(extractedJSON)}}`
     };
   }
 
