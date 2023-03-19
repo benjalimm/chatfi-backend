@@ -1,11 +1,13 @@
+import { PREVENT_HALLUCINATION } from './reusables';
+
 const OUTPUT_JSON = `
 { 
-    "answer": " Company X has cash and cash equivalents of @cashOnHand. This is sourced from the balance sheet as of @date.",
+    "answer": " Company X has cash and cash equivalents of @cashOnHand. This is sourced from the balance sheet",
     "values": [
       { 
         "key": "cashOnHand", // type: string
-        "value": "1000000" | "2,945" | "25th Dec 2022" // type: string 
-        "unit": "DOLLARS" | "PERCENTAGE" | "DATE" | "NONE"
+        "value": "1000000" | "2,945"  // type: string 
+        "unit": "DOLLARS" | "PERCENTAGE" | "NONE"
         "title": "Cash and cash equivalents"
         "statementSource": "BalanceSheets" // Find statementSource for this value
         "sectionSource": "CashAndCashEquivalentsAtCarryingValue.json" // Find sectionSource for this value
@@ -22,10 +24,18 @@ const OUTPUT_PRECAUTIONS = `When calculating / comparing values, make sure they 
 
 export const GEN_OUTPUT_PROMPT = (dataPrompt: string, query: string) => {
   return `
+  Listed below is some data of financial information.
+
   Context:\n
-  ${dataPrompt}\n Listed above is some data of financial information. Based on this data, execute the following query("${query}"). 
+  ${dataPrompt}\n 
+
+  Based on only data provided in the context, answer the following query ("${query}").
+
   ${OUTPUT_PRECAUTIONS}
   ${OUTPUT_DETAILS} 
+  ${PREVENT_HALLUCINATION(
+    `Say: "There is not enough data to answer this question"`
+  )}
   Here is an example JSON:
   ${OUTPUT_JSON}
   `;

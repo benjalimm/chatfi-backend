@@ -10,7 +10,7 @@ import {
 import { validateBody } from '../utils/validateObject';
 import { extractJSONFromString } from './DataTraversalControllers/Utils';
 
-const MAX_TOKENS_PER_PROMPT = 3000;
+const MAX_TOKENS_PER_PROMPT = 7000;
 export default class PromptDataProcessor {
   private llmController: LLMController;
 

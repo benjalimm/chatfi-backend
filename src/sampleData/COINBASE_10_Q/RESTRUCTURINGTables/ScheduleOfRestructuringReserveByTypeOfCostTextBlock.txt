@@ -1,8 +1,0 @@
-"
-The following table summarizes the balance of the restructuring reserve and the changes in the reserve as of and for the nine
-months ended September 30, 2022 (in thousands):
-
-Expenses IncurredPaymentsAdjustment to Other Personnel CostsAccrued Balance as of September 30, 2022Separation
-pay$39,259 $(37,940)$— $1,319 Other personnel costs3,194 (1,480)(1,232)482 Total$42,453 $(39,420)$(1,232)$1,801 
-
-"

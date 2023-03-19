@@ -5,11 +5,10 @@ import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { QueryUpdate } from '../../schema/QueryUpdate';
-import { timeStamp } from 'console';
 import { isFulfilled } from '../../utils/PromiseExtensions';
 
 const MAX_STATEMENTS = 6;
-const MAX_SEGMENTS = 6;
+const MAX_SEGMENTS = 10;
 
 export default class LinearDataTraversalController
   extends BaseDataTraversalContoller
@@ -52,9 +51,13 @@ export default class LinearDataTraversalController
     }
 
     // Resolve asynchronously
-    const listOfExtractedData = await Promise.all(
+    const settledResults = await Promise.allSettled(
       unresolvedExtractedDataPromise
     );
+
+    const listOfExtractedData = settledResults
+      .filter(isFulfilled)
+      .map((p) => p.value);
 
     const extractedData = listOfExtractedData.flatMap((v) => {
       return v;
@@ -89,7 +92,6 @@ export default class LinearDataTraversalController
     onExtractionUpdate?.({ type: 'SECTION', name: statementFile });
 
     // 3. Process data asyncronously
-
     const settledResults = await Promise.allSettled(
       unresolvedExtractedDataPromises
     );

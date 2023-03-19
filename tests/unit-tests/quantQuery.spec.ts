@@ -1,7 +1,7 @@
 import { text } from 'body-parser';
 import 'jest';
 import GeneratedCodeExecutor from '../../src/controllers/QuantitativeServices/GeneratedCodeExecutor';
-import OpenAIController from '../../src/controllers/OpenAIController';
+import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
 import {
   FirstOrderValue,
   FOVExtractionInstruction

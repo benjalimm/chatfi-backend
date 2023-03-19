@@ -1,5 +1,5 @@
 import FirstOrderValueIndexer from '../src/controllers/FirstOrderValueIndexer';
-import OpenAIController from '../src/controllers/OpenAIController';
+import OpenAIController from '../src/controllers/LLMControllers/OpenAIController';
 import instructions from './instructions';
 
 export async function indexData() {

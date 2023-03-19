@@ -4,7 +4,7 @@ import * as http from 'http';
 import * as socketio from 'socket.io';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import OpenAIController from './controllers/OpenAIController';
+import OpenAIController from './controllers/LLMControllers/OpenAIController';
 import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
 import WaterfallDataTraversalController from './controllers/DataTraversalControllers/WaterfallDataTraversalController';
 import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
@@ -12,6 +12,7 @@ import convertFinalOutputJSONToString from './utils/convertFinalOutput';
 import PromptDataProcessor from './controllers/PromptDataProcessor';
 import { QueryUpdate } from './schema/QueryUpdate';
 import { DataTraversalResult } from './schema/DataTraversalResult';
+import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
 
 dotenv.config();
 
@@ -20,18 +21,20 @@ const port = process.env.PORT || 3000;
 
 // Inject controllers
 const openAIController = new OpenAIController();
+const gpt4Controller = new GPT4Controller();
 
+const fileInput = '../../sampleData/ZOOM_10_K';
 const simpleDataTraversalController = new SimpleDataTraversalController(
   openAIController,
-  '../../sampleData/COINBASE_10_Q' // This file path needs to be subjective to it's folder location
+  fileInput // This file path needs to be subjective to it's folder location
 );
 
 const linearDataTraversalController = new LinearDataTraversalController(
   openAIController,
-  '../../sampleData/COINBASE_10_Q' // This file path needs to be subjective to it's folder location
+  fileInput // This file path needs to be subjective to it's folder location
 );
 
-const promptDataProcessor = new PromptDataProcessor(openAIController);
+const promptDataProcessor = new PromptDataProcessor(gpt4Controller);
 
 // Body parser middleware
 app.use(cors());

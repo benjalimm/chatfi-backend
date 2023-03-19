@@ -1,9 +1,0 @@
-"
-The following potentially dilutive shares were not included in the calculation of diluted shares outstanding as the effect would
-have been anti-dilutive (in thousands):
-
-Three Months Ended September 30Nine Months Ended September 302022 202120222021Stock
-options33,411 6,134 33,411 6,134 RSUs6,854 107 6,854 107 Convertible notes3,880 — 3,880 — Restricted common
-stock1,740 65 1,740 65 ESPP1,030 284 1,030 284 Contingent consideration76 — — — Total46,991 6,590 46,915 6,590 
-
-"

@@ -1,9 +1,0 @@
-"
-Activity of options outstanding are as follows (in thousands, except per share and years data):
-
-Options OutstandingWeighted Average Exercise Price per ShareWeighted Average Remaining Contractual Life (Years)Aggregate Intrinsic
-ValueBalance at January 1, 202237,208 $18.60 7.83$8,698,078 Issued937 177.79 Exercised(3,012)13.59 Forfeited and
-cancelled(1,722)22.79 Balance at September 30, 202233,411 23.30 7.191,481,640 Vested and exercisable at September 30,
-202218,506 18.19 6.70882,457 Vested and expected to vest at September 30, 202227,277 23.26 7.041,229,963 
-
-"

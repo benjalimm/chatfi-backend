@@ -1,9 +1,0 @@
-"
-Stock-based compensation is included in the following components of expenses on the accompanying condensed consolidated statements
-of operations (in thousands):
-
-Three Months Ended September 30,Nine Months Ended September 30,2022202120222021Technology and
-development$275,817 $176,785 $793,573 $381,030 Sales and marketing18,461 10,095 52,813 20,299 General and
-administrative97,163 77,314 288,692 156,828 Total$391,441 $264,194 $1,135,078 $558,157 
-
-"
