@@ -6,7 +6,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAIController from './controllers/LLMControllers/OpenAIController';
 import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
-import WaterfallDataTraversalController from './controllers/DataTraversalControllers/WaterfallDataTraversalController';
 import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
 import convertFinalOutputJSONToString from './utils/convertFinalOutput';
 import PromptDataProcessor from './controllers/PromptDataProcessor';
