@@ -1,5 +1,4 @@
 import LLMController from '../../schema/controllers/LLMController';
-import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import { ExtractedData } from '../../schema/ExtractedData';
 import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
@@ -29,7 +28,6 @@ export default class WaterfallDataTraversalController
     const documentMetadata = readJSON(
       dataFilePath + '/metadata.json'
     ) as DocumentMetadata;
-    this.listOfStatements = documentMetadata.statements;
   }
 
   async extractRelevantData(query: string): Promise<DataTraversalResult> {

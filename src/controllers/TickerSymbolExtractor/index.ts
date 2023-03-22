@@ -2,7 +2,7 @@ import LLMController from '../../schema/controllers/LLMController';
 import { extractJSONFromString } from '../DataTraversalControllers/Utils';
 import { GEN_TICKER_EXTRACTION_PROMPT } from './prompts';
 
-type TickerData = {
+export type TickerData = {
   company: string;
   ticker: string;
 };
