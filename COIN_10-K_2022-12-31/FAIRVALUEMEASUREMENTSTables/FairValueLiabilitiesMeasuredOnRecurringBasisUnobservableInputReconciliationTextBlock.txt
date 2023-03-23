@@ -1,8 +1,0 @@
-"
-The following table presents a reconciliation of the contingent consideration arrangement measured at fair value on a recurring
-basis using significant unobservable inputs (in thousands):
-
-Year Ended December 31,20222021Balance, beginning of period$14,828$—Fair value recorded in connection with
-acquisition—15,752Change in fair value(8,312)(924)Settlement(4,661)—Balance, end of period$1,855$14,828
-
-"

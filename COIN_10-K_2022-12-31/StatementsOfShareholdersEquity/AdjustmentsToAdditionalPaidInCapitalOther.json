@@ -1,1 +1,0 @@
-{"AdjustmentsToAdditionalPaidInCapitalOther":[{"decimals":"-3","unitRef":"usd","period":{"startDate":"2022-01-01","endDate":"2022-12-31"},"segment":{"dimension":"us-gaap:StatementEquityComponentsAxis","value":"us-gaap:AdditionalPaidInCapitalMember"},"value":"3679000"},{"decimals":"-3","unitRef":"usd","period":{"startDate":"2022-01-01","endDate":"2022-12-31"},"value":"3679000"}]}

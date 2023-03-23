@@ -1,9 +1,0 @@
-"
-Cash and cash equivalents
-Cash and cash equivalents include cash and interest-bearing highly liquid investments held at financial institutions, cash on hand
-that is not restricted as to withdrawal or use with an initial maturity of three months or less, and cash held in accounts at
-crypto trading venues. Crypto asset and fiat wallet service trading venues include other crypto asset trading platforms that hold
-money transmitter licenses, and where the Company holds funds in its accounts with those trading platforms. Cash and cash
-equivalents excludes customer legal tender, which is reported separately as customer custodial funds on the accompanying
-consolidated balance sheets. Refer to Customer custodial funds and customer custodial cash liabilities below for further details.
-"

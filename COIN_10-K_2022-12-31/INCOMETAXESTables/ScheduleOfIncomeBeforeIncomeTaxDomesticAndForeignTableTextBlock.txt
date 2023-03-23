@@ -1,6 +1,0 @@
-"
-The components of income (loss) before income taxes were attributable to the following regions (in thousands):
-
-Year Ended December 31,202220212020Domestic$(3,071,951)$2,977,406$396,709Foreign7,36949,54112,490$(3,064,582)$3,026,947$409,199
-
-"

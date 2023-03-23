@@ -1,8 +1,0 @@
-"
-The following potentially dilutive shares were not included in the calculation of diluted shares outstanding as the effect would
-have been anti-dilutive (in thousands):
-Year Ended December 31,
-2022 20212020Stock options31,795 6,134 12,831 RSUs5,329 151 3,766 Convertible notes3,880 — — Restricted common
-stock1,602 5 — ESPP1,945 295 — Total44,551 6,585 16,597 
-
-"

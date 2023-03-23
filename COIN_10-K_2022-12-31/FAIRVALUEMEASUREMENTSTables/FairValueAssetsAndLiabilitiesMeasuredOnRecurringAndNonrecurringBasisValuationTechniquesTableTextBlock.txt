@@ -1,7 +1,0 @@
-"The following significant unobservable inputs were used:
-
-Year Ended December 31,20222021Discount rate30.0 %30.0 %Volatility of forecasted revenues
-100.0% - 129.0%
-146.1 %
-
-"

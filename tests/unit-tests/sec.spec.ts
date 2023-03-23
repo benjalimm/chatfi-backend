@@ -56,6 +56,4 @@ describe('Testing SEC data extraction and api', () => {
     reportJSONProcessor = new ReportJSONProcessor('../../dist');
     reportFilePath = reportJSONProcessor.processJSONAndWriteToDisc(result);
   });
-
-  test('');
 });

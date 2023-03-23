@@ -1,1 +1,0 @@
-{"AssetsPledgedAsCollateralUnits":[{"decimals":"0","unitRef":"unit","period":{"instant":"2022-12-31"},"segment":{"dimension":"coin:CryptoAssetAxis","value":"coin:USDCMember"},"value":"47633897"},{"decimals":"0","unitRef":"unit","period":{"instant":"2022-12-31"},"segment":{"dimension":"coin:CryptoAssetAxis","value":"coin:BitcoinMember"},"value":"650"}]}

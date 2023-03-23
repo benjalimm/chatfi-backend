@@ -1,1 +1,0 @@
-{"DebtInstrumentRedemptionPricePercentageOfPrincipalAmountRedeemed":{"decimals":"INF","unitRef":"number","period":{"startDate":"2021-09-01","endDate":"2021-09-30"},"segment":[{"dimension":"us-gaap:DebtInstrumentAxis","value":"coin:SeniorNotesDue2028And2031Member"},{"dimension":"us-gaap:LongtermDebtTypeAxis","value":"us-gaap:SeniorNotesMember"}],"value":"0.40"}}

@@ -1,1 +1,0 @@
-{"ShareBasedCompensationArrangementByShareBasedPaymentAwardPercentageOfOutstandingStockMaximum":{"decimals":"2","unitRef":"number","period":{"startDate":"2022-01-01","endDate":"2022-12-31"},"segment":{"dimension":"us-gaap:AwardTypeAxis","value":"us-gaap:EmployeeStockMember"},"value":"0.01"}}

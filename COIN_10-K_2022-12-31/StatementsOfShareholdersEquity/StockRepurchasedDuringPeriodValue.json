@@ -1,1 +1,0 @@
-{"StockRepurchasedDuringPeriodValue":[{"decimals":"-3","unitRef":"usd","period":{"startDate":"2020-01-01","endDate":"2020-12-31"},"segment":{"dimension":"us-gaap:StatementEquityComponentsAxis","value":"us-gaap:AdditionalPaidInCapitalMember"},"value":"1930000"},{"decimals":"-3","unitRef":"usd","period":{"startDate":"2020-01-01","endDate":"2020-12-31"},"value":"1930000"}]}

@@ -1,8 +1,0 @@
-"
-(Benefit from) provision for income taxes consisted of the following (in thousands):
-
-Year Ended December 31,202220212020CurrentFederal$1,654$(51,942)$65,269State3,9854,45618,162Foreign22,7638,6422,977Total
-current28,402(38,844)86,408DeferredFederal(361,056)(438,810)1,373State(126,713)(93,959)(514)Foreign19,734(25,560)(385)Total
-deferred(468,035)(558,329)474Total (benefit from) provision for income taxes$(439,633)$(597,173)$86,882
-
-"

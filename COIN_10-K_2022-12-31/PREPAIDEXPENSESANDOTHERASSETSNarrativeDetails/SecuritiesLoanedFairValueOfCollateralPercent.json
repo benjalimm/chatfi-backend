@@ -1,1 +1,0 @@
-{"SecuritiesLoanedFairValueOfCollateralPercent":[{"decimals":"2","unitRef":"number","period":{"instant":"2022-12-31"},"segment":{"dimension":"us-gaap:CollateralAxis","value":"coin:USDCMember"},"value":"1"},{"decimals":"2","unitRef":"number","period":{"instant":"2022-12-31"},"segment":{"dimension":"us-gaap:CollateralAxis","value":"coin:BitcoinMember"},"value":"1.10"}]}

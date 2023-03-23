@@ -1,8 +1,0 @@
-"
-Customer crypto assets and liabilities
-Customer crypto assets and liabilities represent the Company’s obligation to safeguard customers’ crypto assets in digital wallets
-on the Company’s platform. The Company safeguards these assets for customers and is obligated to safeguard them from loss, theft,
-or other misuse. The Company recognizes customer crypto liabilities and corresponding customer crypto assets, on initial
-recognition and at each reporting date, at fair value of the crypto assets. Any loss, theft, or other misuse would impact the
-measurement of customer crypto assets.
-"
