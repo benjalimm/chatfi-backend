@@ -1,0 +1,10 @@
+"
+Other operating expense, net
+Other operating expense, net includes the cost of the Company’s crypto assets used to fulfill customer accommodation transactions.
+Periodically, as an accommodation to customers, the Company may fulfill customer transactions using its own crypto assets. The
+Company has custody and control of the crypto assets prior to the sale to the customer. Accordingly, the Company records the total
+value of the sale in other revenue and the cost of the crypto asset in other operating expense, net.
+Other operating expense, net also includes impairment and realized gains on the sale of crypto assets, realized gains and losses
+resulting from the settlement of derivative instruments, and fair value gains and losses related to derivatives and derivatives
+designated in qualifying fair value hedge accounting relationships.
+"

@@ -1,0 +1,29 @@
+"
+Recent accounting pronouncements
+Recently adopted accounting pronouncements
+On October 28, 2021, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update No. 2021-08, Accounting
+for Contract Assets and Contract Liabilities from Contracts with Customers (“ASU 2021-08”). ASU 2021-08 amends Accounting
+Standards Codification 805 (“ASC 805”) to require acquiring entities to apply Topic 606 - Revenue from Contracts with Customers to
+recognize and measure contract assets and contract liabilities in a business combination. The Company early adopted the standard
+on January 1, 2022. The adoption of the standard did not have a material impact on the Company’s consolidated financial
+statements.
+On March 31, 2022, the Securities and Exchange Commission (the “SEC”) issued Staff Accounting Bulletin No. 121 (“SAB 121”). SAB
+121 sets out interpretive guidance from the staff of the SEC regarding the accounting for obligations to safeguard crypto assets
+that an entity holds for its customers. Safeguarding is defined as taking actions to secure customer crypto assets and the
+associated cryptographic key information and protecting them from loss, theft, or other misuse. The guidance requires an entity to
+recognize a liability for the obligation to safeguard the users’ assets, and recognize an associated asset for the crypto assets
+safeguarded. Both the liability and asset should be measured initially and subsequently at the fair value of the crypto assets
+being safeguarded. The guidance also requires additional disclosures related to the nature and amount of crypto assets that the
+entity is responsible for holding for its customers, with separate disclosure for each significant crypto asset, and the
+vulnerabilities the entity has due to any concentration in such activities. The Company has adopted this guidance as of June 30,
+2022 with retrospective application as of January 1, 2022. The balances as of January 1, 2022 for the customer crypto assets and
+customer crypto liabilities were both $267.6 billion.
+Accounting pronouncements pending adoptionOn June 30, 2022, FASB issued Accounting Standards Update No. 2022-03, Fair Value
+Measurement of Equity Securities Subject to Contractual Sale Restrictions (“ASU 2022-03”). ASU 2022-03 clarifies that a
+contractual sale restriction prohibiting the sale of an equity security is a characteristic of the reporting entity holding the
+equity security and is not included in the equity security's unit of account. The standard requires specific disclosures related
+to equity securities that are subject to contractual sale restrictions, including (1) the fair value of such equity securities
+reflected in the balance sheet, (2) the nature and remaining duration of the corresponding restrictions, and (3) any circumstances
+that could cause a lapse in the restrictions. The new standard is effective for the Company for its fiscal year beginning January
+1, 2024, with early adoption permitted. The Company is currently evaluating the impact of adopting the standard on the Company’s
+consolidated financial statements."

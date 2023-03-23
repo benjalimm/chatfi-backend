@@ -1,0 +1,33 @@
+"NET (LOSS) INCOME PER SHARE
+The computation of net (loss) income per share is as follows (in thousands, except per share amounts):
+Year Ended December 31,
+202220212020Basic net (loss) income per share:NumeratorNet (loss) income$(2,624,949)$3,624,120 $322,317 Less: Income allocated to
+participating securities— (527,162)(214,061)Net (loss) income attributable to common stockholders,
+basic$(2,624,949)$3,096,958 $108,256 DenominatorWeighted-average shares of common stock used to compute net (loss) income per
+share attributable to common stockholders, basic222,314 177,319 68,671 Net (loss) income per share attributable to common
+stockholders, basic$(11.81)$17.47 $1.58 Diluted net (loss) income per share:NumeratorNet (loss)
+income$(2,624,949)$3,624,120 $322,317 Less: Income allocated to participating securities— (439,229)(194,846)Add: Interest on
+convertible notes, net of tax— 6,208 — Less: Fair value gain on contingent consideration arrangement, net of tax (6,230)(695)— Net
+(loss) income attributable to common stockholders, diluted$(2,631,179)$3,190,404 $127,471 DenominatorWeighted-average shares of
+common stock used to compute net (loss) income per share attributable to common stockholders,
+basic222,314 177,319 68,671 Weighted-average effect of potentially dilutive securities:Stock
+options— 36,396 22,146 RSUs— 3,773 — Restricted common stock— 9 — Warrants— 72 392 Convertible notes— 2,388 — Contingent
+consideration24 8 — Weighted-average shares of common stock used to compute net (loss) income per share attributable to common
+stockholders, diluted222,338 219,965 91,209 Net (loss) income per share attributable to common stockholders,
+diluted$(11.83)$14.50 $1.40 
+
+
+Certain shares of the Company’s restricted Class A common stock granted as consideration in acquisitions and the Company’s
+convertible preferred stock outstanding during 2021 are participating securities. These participating securities do not
+contractually require the holders of such shares to participate in the Company’s losses.
+The rights, including the liquidation and dividend rights, of the holders of Class A common stock and Class B common stock are
+identical, except with respect to voting. As a result, the undistributed earnings are allocated on a proportionate basis and the
+resulting income (loss) per share will, therefore, be the same for both Class A common stock and Class B common stock on an
+individual or combined basis.
+The following potentially dilutive shares were not included in the calculation of diluted shares outstanding as the effect would
+have been anti-dilutive (in thousands):
+Year Ended December 31,
+2022 20212020Stock options31,795 6,134 12,831 RSUs5,329 151 3,766 Convertible notes3,880 — — Restricted common
+stock1,602 5 — ESPP1,945 295 — Total44,551 6,585 16,597 
+
+"

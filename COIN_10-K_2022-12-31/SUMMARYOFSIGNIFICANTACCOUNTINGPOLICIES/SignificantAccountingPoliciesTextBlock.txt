@@ -1,0 +1,399 @@
+"SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES
+Basis of presentation and principles of consolidation
+The accompanying consolidated financial statements have been prepared in accordance with United States generally accepted
+accounting principles (“GAAP”), and include the accounts of the Company and its subsidiaries. The Company’s subsidiaries are
+entities in which the Company holds, directly or indirectly, more than 50% of the voting rights, or where it exercises control.
+Certain subsidiaries of the Company have a basis of presentation different from GAAP. For the purposes of the consolidated
+financial statements, the basis of presentation of such subsidiaries is converted to GAAP. All intercompany accounts and
+transactions have been eliminated in consolidation.
+Reclassifications
+Certain prior period amounts have been reclassified in order to conform with the current period presentation. These
+reclassifications have no impact on the Company’s previously reported consolidated net income.
+Changes in presentation
+During the fourth quarter of 2022, the Company elected to change its presentation for deposits in transit from payment processors
+and financial institutions, which are related to customer transactions. Under the new presentation, these funds are included in
+customer custodial funds, whereas previously they were presented within the accounts and loans receivable, net of allowance
+financial statement line item. The change allows the Company to present cash and deposits in transit as customer custodial funds
+held for the exclusive benefit of customers, which the Company holds to meet its obligations for customer deposits at period end.
+Additionally, the Company made a change in its presentation of customer custodial cash liabilities from operating activities, to
+present them as financing activities within its consolidated statements of cash flows.
+Comparative amounts have been recast to conform to current period presentation. These recasts had no impact on the consolidated
+statements of operations, consolidated statements of comprehensive income or consolidated statements of changes in convertible
+preferred stock and stockholders' equity.
+The following tables present the effects of the changes in presentation within the consolidated balance sheets and statements of
+cash flows (in thousands):
+As of and for the Year Ended December 31, 2021
+As Previously Reported
+AdjustmentAs Adjusted
+Consolidated Balance Sheets
+Customer custodial funds$10,526,233 $91,319 $10,617,552 Accounts and loans receivable, net of
+allowance396,025 (91,319)304,706 Consolidated Statements of Cash FlowsCash flows from operating activitiesAccounts and loans
+receivable$(8,016)$36,527 $28,511 Deposits in transit— (36,527)(36,527)Customer custodial cash
+liabilities6,691,859 (6,691,859)— Net cash provided by operating activities10,730,031 (6,691,859)4,038,172 Cash flows from
+financing activitiesCustomer custodial cash liabilities$— $6,691,859 $6,691,859 Net cash provided by financing
+activities3,284,225 6,691,859 9,976,084 
+
+For the Year Ended December 31, 2020
+As Previously Reported
+AdjustmentAs AdjustedConsolidated Statements of Cash FlowsCash flows from operating activitiesAccounts and loans
+receivable$(157,156)$39,989 $(117,167)Deposits in transit— (39,989)(39,989)Customer custodial cash
+liabilities2,710,522 (2,710,522)— Net cash provided by operating activities3,004,070 (2,710,522)293,548 Cash flows from financing
+activitiesCustomer custodial cash liabilities$— $2,710,522 $2,710,522 Net cash provided by financing
+activities18,801 2,710,522 2,729,323 
+
+Use of estimates
+The preparation of the consolidated financial statements in accordance with GAAP requires management to make estimates and
+assumptions in the Company’s consolidated financial statements and notes thereto.
+Significant estimates and assumptions include the determination of the recognition, measurement, and valuation of current and
+deferred income taxes; the fair value of stock-based awards issued; the useful lives of long-lived assets; the impairment of
+long-lived assets; the valuation of privately-held strategic investments, including impairments; the Company’s incremental
+borrowing rate; the fair value of customer crypto assets and liabilities; the fair value of assets acquired and liabilities
+assumed in business combinations, including contingent consideration arrangements; the fair value of derivatives and related
+hedges; the fair value of long-term debt; assessing the likelihood of adverse outcomes from claims and disputes; and loss
+provisions.
+Actual results and outcomes may differ from management’s estimates and assumptions due to risks and uncertainties. To the extent
+that there are material differences between these estimates and actual results, the Company’s consolidated financial statements
+will be affected. The Company bases its estimates on historical experience and on various other assumptions that are believed to
+be reasonable, the result of which forms the basis for making judgments about the carrying values of assets and
+liabilities.Foreign currency transactionsThe Company’s functional currency is the U.S. dollar. The Company has exposure to foreign
+currency translation gains and losses arising from the Company’s net investment in foreign subsidiaries. The revenues, expenses,
+and financial results of these foreign subsidiaries are recorded in their respective functional currencies. The financial
+statements of these subsidiaries are translated into U.S. dollars using a current rate of exchange, with gains or losses, net of
+tax as applicable, included in accumulated other comprehensive income (loss) (“AOCI”) within the consolidated statements of
+changes in convertible preferred stock and stockholders’ equity. Cumulative translation adjustments are released from AOCI and
+recorded in the consolidated statements of operations when the Company disposes or loses control of a consolidated subsidiary.
+Gains and losses resulting from remeasurement are recorded in other expense (income), net within the consolidated statements of
+operations.
+Business combinations
+The results of businesses acquired in a business combination are included in the Company’s consolidated financial statements from
+the date of the acquisition. Purchase accounting results in assets and liabilities of an acquired business being recorded at their
+estimated fair values on the acquisition date. Any excess consideration over the fair value of assets acquired and liabilities
+assumed is recognized as goodwill. Acquisition-related costs incurred by the Company are recognized as an expense in general and
+administrative expenses within the consolidated statements of operations.
+The Company uses its best estimates and assumptions to assign fair value to the tangible and intangible assets acquired and
+liabilities assumed at the acquisition date. The Company’s estimates are inherently uncertain and subject to refinement.
+During the measurement period, which may be up to one year from the acquisition date, and to the extent that the value was not
+previously finalized, the Company may record adjustments to the fair value of these tangible and intangible assets acquired and
+liabilities assumed, with the corresponding offset to goodwill. In addition, uncertain tax positions and tax-related valuation
+allowances are initially recorded in connection with a business combination as of the acquisition date. The Company continues to
+collect information about facts and circumstance that existed at the date of acquisition and reevaluates these estimates and
+assumptions quarterly and records any adjustments to the Company’s preliminary estimates to goodwill, provided that the Company is
+within the measurement period. Upon the conclusion of the measurement period or final determination of the fair value of assets
+acquired or liabilities assumed, whichever comes first, any subsequent adjustments are recorded to the Company’s consolidated
+statements of operations.
+
+Fair value measurements
+The Company measures certain assets and liabilities at fair value. The Company defines fair value as the price that would be
+received from selling an asset or paid to transfer a liability in an orderly transaction between market participants at the
+measurement date. Fair value is estimated by applying the following hierarchy, which prioritizes the inputs used to measure fair
+value into three levels and bases the categorization within the hierarchy upon the lowest level of input that is available and
+significant to the fair value measurement:
+•Level 1: Unadjusted quoted prices in active markets that are accessible at the measurement date for identical, unrestricted
+assets or liabilities.
+•Level 2: Observable inputs other than quoted prices in active markets for identical assets and liabilities, quoted prices for
+identical or similar assets or liabilities in inactive markets, or other inputs that are observable or can be corroborated by
+observable market data for substantially the full term of the assets or liabilities.
+•Level 3: Inputs that are generally unobservable and typically reflect management’s estimate of assumptions that market
+participants would use in pricing the asset or liability.
+Cash and cash equivalents
+Cash and cash equivalents include cash and interest-bearing highly liquid investments held at financial institutions, cash on hand
+that is not restricted as to withdrawal or use with an initial maturity of three months or less, and cash held in accounts at
+crypto trading venues. Crypto asset and fiat wallet service trading venues include other crypto asset trading platforms that hold
+money transmitter licenses, and where the Company holds funds in its accounts with those trading platforms. Cash and cash
+equivalents excludes customer legal tender, which is reported separately as customer custodial funds on the accompanying
+consolidated balance sheets. Refer to Customer custodial funds and customer custodial cash liabilities below for further details.
+Restricted cash
+The Company has restricted cash deposits at financial institutions related to operational restricted deposits and a standby letter
+of credit.
+Customer custodial funds and customer custodial cash liabilities
+Customer custodial funds represents restricted cash and cash equivalents maintained in segregated Company bank accounts that are
+held for the exclusive benefit of customers and deposits in transit from payment processors and financial institutions. Customer
+custodial cash liabilities represents the obligation to return cash deposits held by customers in their fiat wallets and unsettled
+fiat deposits and withdrawals. Deposits in transit represent settlements from third-party payment processors and banks for
+customer transactions. Deposits in transit are received within five business days of the transaction date. The Company establishes
+withdrawal-based limits in order to mitigate potential losses by preventing customers from withdrawing the crypto asset to an
+external blockchain address until the deposit settles. In certain jurisdictions, deposits in transit qualify as eligible liquid
+assets to meet regulatory requirements to fulfill the Company’s direct obligations under customer custodial cash liabilities. The
+Company restricts the use of the assets underlying the customer custodial funds to meet regulatory requirements and classifies the
+assets as current based on their purpose and availability to fulfill the Company’s direct obligation under customer custodial cash
+liabilities.
+Certain jurisdictions where the Company operates require the Company to hold eligible liquid assets, as defined by applicable
+regulatory requirements and commercial law in these jurisdictions, equal to at least 100% of the aggregate amount of all customer
+custodial cash liabilities. Depending on the jurisdiction, eligible liquid assets can include cash and cash equivalents, customer
+custodial funds, and certain other customer receivables. As of December 31, 2022 and 2021, the Company’s eligible liquid assets
+were greater than the aggregate amount of customer custodial cash liabilities.
+USDCUSD Coin (“USDC”) is accounted for as a financial instrument; one USDC can be redeemed for one U.S. dollar on demand from the
+issuer.
+Accounts and loans receivable and allowance for doubtful accounts
+Accounts and loans receivables are contractual rights to receive cash or crypto assets either on demand or on fixed or
+determinable dates, and are recognized as an asset on the consolidated balance sheets. Accounts and loans receivable consists of
+trade finance receivables, custodial fee revenue receivable, loans receivable, crypto asset loan receivables, interest receivable,
+and other receivables.
+Trade finance receivables represent funds due for crypto assets delivered to credit eligible customers and are typically received
+within three business days from the transaction date. Trade finance receivables enable customers to instantly invest in crypto
+assets without pre-funding their trade.
+Custodial fee revenue receivable represents the fee earned and receivable by the Company for providing a dedicated secure cold
+storage solution to customers. The fee is based on a contractual percentage of the daily value of assets under custody and is
+generally collected on a monthly basis. Such custodial fee revenue income is included in the net revenue in the consolidated
+statements of operations.
+Loans receivable represent cash loans made to consumers and institutions. These loans are collateralized with crypto assets held
+by those users in their crypto asset wallets on the Company’s platform. Loans receivable are subsequently measured at amortized
+cost.
+Crypto asset loan receivables represent crypto asset loans made to institutions. These loans are collateralized with fiat, USDC,
+or crypto assets held by those users in their crypto asset wallet on the Company’s platform. Crypto asset loan receivables are
+initially and subsequently measured at the fair value of the underlying crypto asset lent and adjusted for expected credit losses.
+The Company recognizes an allowance for doubtful accounts for receivables based on expected credit losses. In determining expected
+credit losses, the Company considers historical loss experience, the aging of its receivable balance, and the fair value of any
+collateral held. For loans receivable and crypto asset loan receivables, the Company applies the collateral maintenance provision
+practical expedient. The Company would recognize credit losses on these loans if there is a collateral shortfall and it is not
+reasonably expected that the borrower will replenish such a shortfall.
+Concentration of credit risk
+The Company’s cash and cash equivalents, restricted cash, customer custodial funds, and accounts and loans receivable are
+potentially subject to concentration of credit risk. Cash and cash equivalents, restricted cash, and customer custodial funds are
+primarily placed with financial institutions which are of high credit quality. The Company invests cash and cash equivalents, and
+customer custodial funds primarily in highly liquid, highly rated instruments which are uninsured. The Company may also have
+corporate deposit balances with financial institutions which exceed the Federal Deposit Insurance Corporation insurance limit of
+$250,000. The Company has not experienced losses on these accounts and does not believe it is exposed to any significant credit
+risk with respect to these accounts. The Company also holds cash at crypto trading venues and performs a regular assessment of
+these crypto trading venues as part of its risk management process.
+The Company held $861.1 million and $100.1 million of USDC as of December 31, 2022 and 2021, respectively. The issuer of USDC
+reported that, as of December 31, 2022, underlying reserves were held in cash and short-duration U.S. Treasuries within segregated
+accounts for the benefit of USDC holders.
+As of December 31, 2022 and 2021, the Company had one counterparty and no counterparties, respectively, who accounted for more
+than 10% of the Company’s accounts and loans receivable, net. In January and February 2023, the Company received payments from
+this counterparty which accounted for their total receivable balance.
+During the years ended December 31, 2022 and 2021, no counterparty accounted for more than 10% of total revenue.
+Crypto assets held
+The crypto assets held by the Company, with no qualifying fair value hedge, are accounted for as intangible assets with indefinite
+useful lives, and are initially measured at cost. Crypto assets accounted for as intangible assets are subject to impairment
+losses if the fair value of crypto assets decreases below the carrying value at any time during the period. The fair value is
+measured using the quoted price of the crypto asset at the time its fair value is being measured in the Company’s principal
+market. Impairment expense is reflected in other operating expense, net in the consolidated statements of operations. The Company
+assigns costs to transactions on a first-in, first-out basis.
+Crypto assets held as the hedged item in qualifying fair value hedges are initially measured at cost. Subsequent changes in fair
+value attributable to the hedged risk are adjusted to the carrying amount of these crypto assets, with changes in fair value
+recorded in other operating expense, net in the consolidated statements of operations.
+The Company recognizes crypto assets received through airdrops or forks if the crypto asset is expected to generate probable
+future benefit and if the Company is able to support the trading, custody, or withdrawal of these assets. The Company records the
+crypto assets received through airdrops or forks at their cost.
+Leases
+The Company determines if an arrangement is a lease at inception. Operating leases are included in lease right-of-use (“ROU”)
+assets and lease liabilities on the consolidated balance sheets. ROU assets represent the Company’s right to use an underlying
+asset for the lease term and lease liabilities represent the Company’s obligation to make lease payments arising from the lease.
+Operating lease ROU assets and liabilities are recognized at commencement date based on the present value of future minimum lease
+payments over the lease term. Most leases do not provide an implicit rate, so the Company uses its incremental borrowing rate. The
+operating lease ROU assets also include any lease payments made before commencement and exclude lease incentives.
+The Company’s lease terms may include options to extend or terminate the lease when it is reasonably certain that those options
+will be exercised. Lease expense for lease payments is recognized on a straight-line basis over the lease term. The Company has
+made the policy election to account for short-term leases by recognizing the lease payments in profit or loss on a straight-line
+basis over the lease term and not recognizing these leases on the consolidated balance sheets. Variable lease payments are
+recognized in profit or loss in the period in which the obligation for those payments is incurred. The Company has real estate
+lease agreements with lease and non-lease components for which the Company has made the accounting policy election to account for
+these agreements as a single lease component.
+Property and equipment
+Property and equipment is stated at cost less accumulated depreciation. Depreciation is computed using the straight-line method
+over the lesser of the estimated useful life of the asset or the remaining lease term. The estimated useful lives of the Company’s
+property, equipment, and software are generally as follows:
+
+Property and EquipmentUseful LifeFurniture and fixtures
+Three to five years
+Computer equipment
+Two to five years
+Leasehold improvements
+Lesser of useful life or remaining lease term
+Capitalized software
+One to three years
+
+
+Construction-in-progress represents costs incurred on the construction of leasehold improvements that have not been completed or
+placed in service as of the end of the year, and accordingly, no depreciation expense has been recorded.
+Capitalized software consists of costs incurred during the application development stage of internal-use software or
+implementation of a hosting arrangement that is a service contract. Capitalized costs consist of salaries and compensation costs
+for employees, fees paid to third-party consultants who are directly involved in development efforts, and costs incurred for
+upgrades and enhancements to add functionality of the software. Other costs that do not meet the capitalization criteria are
+expensed as incurred.
+Long-lived assets, including ROU assets, goodwill, and acquired intangible assets
+The Company evaluates the recoverability of long-lived assets on an annual basis, or more frequently whenever circumstances
+indicate a long-lived asset may be impaired. When indicators of impairment exist, the Company estimates future undiscounted cash
+flows attributable to such assets. In the event future undiscounted cash flows do not exceed the carrying amount of the assets,
+the asset would be considered impaired. The impairment loss is measured based upon the difference between the carrying amount and
+the fair value of the assets.
+Goodwill represents the excess of the purchase price over the fair value of the net tangible and intangible assets acquired in a
+business combination. Goodwill is tested for impairment at the reporting unit level on an annual basis (October 1 for the Company)
+and between annual tests if an event occurs or circumstances change that would more likely than not reduce the fair value of a
+reporting unit below its carrying value. For the periods presented, the Company did not have any goodwill impairment charges.
+Acquired intangible assets with a definite useful life are amortized over their estimated useful lives on a straight-line basis.
+Each period, the Company evaluates the estimated remaining useful life of its intangible assets and whether events or changes in
+circumstances warrant a revision to the remaining period of amortization. Intangible assets assessed as having indefinite lives
+are not amortized, but are assessed for indicators that the useful life is no longer indefinite or for indicators of impairment
+each period.
+Investments
+The Company holds the following categories of investments, which are included in other non-current assets on the consolidated
+balance sheets.
+Equity method investments
+The Company holds equity investments in privately held companies. The Company applies the equity method of accounting for
+investments in other entities when it holds between 20% and 50% of the common stock or in-substance common stock in the entity, or
+when it exercises significant influence over the entity. Under the equity method, the Company’s share of each entity’s profit or
+loss is reflected in other expense (income), net in the consolidated statements of operations.
+Strategic investments
+The Company’s strategic investments primarily include investments in equity instruments where the Company (1) holds less than 20%
+ownership in the entity, and (2) does not exercise significant influence. These investments are recorded at cost and adjusted for
+observable transactions for same or similar investments of the same issuer (referred to as the measurement alternative) or
+impairment.
+Crypto asset borrowings
+The Company borrows crypto assets from third parties on an unsecured basis. Such crypto assets borrowed by the Company are
+reported in crypto assets held on the consolidated balance sheets.
+The borrowings are accounted for as hybrid instruments, with a liability host contract that contains an embedded derivative based
+on the changes in the fair value of the underlying crypto asset. The host contract is not accounted for as a debt instrument
+because it is not a financial liability, is carried at the fair value of the assets acquired and reported in crypto asset
+borrowings on the consolidated balance sheets. The embedded derivative is accounted for at fair value, with changes in fair value
+recognized in other operating expense, net in the consolidated statements of operations. The embedded derivatives are included in
+crypto asset borrowings on the consolidated balance sheets.
+The term of these borrowings can either be for a fixed term of less than one year or can be open-ended and repayable at the option
+of the Company or the lender. These borrowings bear a fee payable by the Company to the lender, which is based on a percentage of
+the amount borrowed and is denominated in the related crypto asset borrowed. The borrowing fee is recognized on an accrual basis
+and is included in other operating expense, net in the consolidated statements of operations.
+Derivative contracts
+Derivative contracts derive their value from underlying asset prices, other inputs or a combination of these factors. Derivative
+contracts are recognized as either assets or liabilities on the consolidated balance sheets at fair value, with changes in fair
+value recognized in other operating expense, net.
+The Company enters into arrangements that result in obtaining the right to receive or obligation to deliver a fixed amount of
+crypto assets in the future. These are hybrid instruments, consisting of a debt host contract that is initially measured at the
+fair value of the underlying crypto assets and is subsequently carried at amortized cost, and an embedded forward feature based on
+the changes in the fair value of the underlying crypto asset. The embedded forward is bifurcated from the host contract, and is
+subsequently measured at fair value.
+The Company also enters into foreign exchange forward contracts that act as economic hedges against the impact of changes in Euro
+on the Company’s intercompany transactions. The Company records changes in fair value of the forward contracts as part of other
+expense (income), net in the consolidated statements of operations.
+Derivatives designated as hedges
+The Company applies hedge accounting to certain derivatives executed for risk management purposes. To qualify for hedge
+accounting, a derivative must be highly effective at reducing the risk associated with the exposure being hedged. The Company uses
+fair value hedges primarily to hedge the fair value exposure of crypto asset prices. For qualifying fair value hedges, the changes
+in the fair value of the derivative and the fair value of the hedged item are recognized in current-period earnings in other
+operating expense, net in the consolidated statements of operations. Derivative amounts affecting earnings are recognized in the
+same line item as the earnings effect of the hedged item.
+Customer crypto assets and liabilities
+Customer crypto assets and liabilities represent the Company’s obligation to safeguard customers’ crypto assets in digital wallets
+on the Company’s platform. The Company safeguards these assets for customers and is obligated to safeguard them from loss, theft,
+or other misuse. The Company recognizes customer crypto liabilities and corresponding customer crypto assets, on initial
+recognition and at each reporting date, at fair value of the crypto assets. Any loss, theft, or other misuse would impact the
+measurement of customer crypto assets.
+Revenue recognition
+See Note 5. Revenue, for information on the Company’s accounting policies for revenue recognition.
+Contract acquisition costs
+The Company has elected to apply the practical expedient to recognize the incremental costs of obtaining a contract as an expense
+when incurred if the amortization period of the asset that would otherwise have been recognized is one year or less.
+Transaction expense
+Transaction expense includes costs incurred to operate the Company’s platform, process crypto asset trades, and perform wallet
+services. These costs include account verification fees, miner fees to process transactions on blockchain networks, fees paid to
+payment processors and other financial institutions for customer transaction activity, and crypto asset losses due to transaction
+reversals. Transaction expense also includes rewards paid to users for staking activities conducted by the Company. Fixed-fee
+costs are expensed over the term of the contract and transaction-level costs are expensed as incurred.
+Technology and development
+Technology and development expenses include personnel-related expenses incurred in operating, maintaining, and enhancing the
+Company’s platform. These costs also include website hosting, infrastructure expenses, costs incurred in developing new products
+and services and the amortization of acquired developed technology.
+Sales and marketing
+Sales and marketing expenses primarily include costs related to customer acquisition, advertising and marketing programs, and
+personnel-related expenses. Sales and marketing costs are expensed as incurred.
+General and administrative
+General and administrative expenses include personnel-related expenses incurred to support the Company’s business, including
+legal, finance, compliance, human resources, customer support, executive, and other support operations. These costs also include
+software subscriptions for support services, facilities and equipment costs, depreciation, amortization of acquired customer
+relationship intangible assets, gains and losses on disposal of fixed assets, legal reserves and settlements, and other general
+overhead. General and administrative costs are expensed as incurred.
+Other operating expense, net
+Other operating expense, net includes the cost of the Company’s crypto assets used to fulfill customer accommodation transactions.
+Periodically, as an accommodation to customers, the Company may fulfill customer transactions using its own crypto assets. The
+Company has custody and control of the crypto assets prior to the sale to the customer. Accordingly, the Company records the total
+value of the sale in other revenue and the cost of the crypto asset in other operating expense, net.
+Other operating expense, net also includes impairment and realized gains on the sale of crypto assets, realized gains and losses
+resulting from the settlement of derivative instruments, and fair value gains and losses related to derivatives and derivatives
+designated in qualifying fair value hedge accounting relationships.
+Stock-based compensation
+The Company recognizes stock-based compensation expense using a fair-value based method for costs related to all equity awards
+granted under its equity incentive plans to employees, directors and non-employees of the Company including restricted stock,
+RSUs, stock options and purchase rights granted under the ESPP.
+The fair value of restricted stock and RSUs is estimated based on the fair value of the Company’s common stock on the date of
+grant.
+The Company estimates the fair value of stock options with only service-based conditions and purchase rights under the ESPP on the
+date of grant using the Black-Scholes-Merton Option-Pricing Model. The model requires management to make a number of assumptions,
+including the fair value and expected volatility of the Company’s underlying common stock price, expected life of the option,
+risk-free interest rate, and expected dividend yield. The fair value of the underlying stock is the fair value of the Company’s
+common stock on the date of grant. The expected stock price volatility assumption for the Company’s stock is determined by using a
+weighted average of the historical stock price volatility of comparable companies from a representative peer group, as sufficient
+trading history for the Company’s common stock is not available. The Company uses historical exercise information and contractual
+terms of options to estimate the expected term. The risk-free interest rate for periods within the expected life of the option is
+based on the U.S. Treasury zero coupon bonds with terms consistent with the expected term of the award at the time of grant. The
+expected dividend yield assumption is based on the Company’s history and expectation of no dividend payouts.
+Prior to the Direct Listing, the fair value of the underlying common stock was determined using the probability weighted expected
+return method, with a discounted cash flow model or a market multiples method used for each expected outcome. Following the Direct
+Listing, the fair value of the underlying common stock is the closing price of the Company’s Class A common stock as reported on
+the Nasdaq Global Select Market on the grant date.
+Stock-based compensation expense is recorded on a straight-line basis over the requisite service period. The Company has elected
+to account for forfeitures of awards as they occur, with previously recognized compensation reversed in the period that the awards
+are forfeited.
+Income taxes
+The Company accounts for income taxes using the asset and liability method whereby deferred tax asset and liability account
+balances are determined based on temporary differences between the financial statement and tax bases of assets and liabilities
+using enacted tax rates in effect for the year in which the differences are expected to affect taxable income. A valuation
+allowance is established when management estimates that it is more likely than not that deferred tax assets will not be realized.
+Realization of deferred tax assets is dependent upon future pre-tax earnings, the reversal of temporary differences between book
+and tax income, and the expected tax rates in future periods.
+The Company is required to evaluate the tax positions taken in the course of preparing its tax returns to determine whether tax
+positions are more likely than not of being sustained by the applicable tax authority. Tax benefits of positions not deemed to
+meet the “more-likely-than-not” threshold would be recorded as a tax expense in the current year. The amount recognized is subject
+to estimate and management judgment with respect to the likely outcome of each uncertain tax position. The amount that is
+ultimately sustained for an individual uncertain tax position or for all uncertain tax positions in the aggregate could differ
+from the amount that is initially recognized. It is the Company’s practice to recognize interest and penalties related to income
+tax matters in income tax expense.
+For U.S. federal tax purposes, crypto asset transactions are treated on the same tax principles as property transactions. The
+Company recognizes a gain or loss when crypto assets are exchanged for other property, in the amount of the difference between the
+fair market value of the property received and the tax basis of the exchanged crypto assets. Receipts of crypto assets in exchange
+for goods or services are included in taxable income at the fair market value on the date of receipt.
+Net income (loss) per share
+The Company computes net income (loss) per share using the two-class method required for participating securities. The two-class
+method requires income available to common stockholders for the period to be allocated between common stock and participating
+securities based upon their respective rights to receive dividends as if all income for the period had been distributed. The
+Company’s convertible preferred stock and certain of its restricted common stock were deemed participating securities. These
+participating securities do not contractually require the holders of such shares to participate in the Company’s losses.
+Basic net income (loss) per share is computed using the weighted-average number of outstanding shares of common stock during the
+period. Diluted net income (loss) per share is computed using the weighted-average number of outstanding shares of common stock
+and, when dilutive, potential shares of common stock outstanding during the period. Potential shares of common stock consist of
+incremental shares issuable upon the assumed exercise of stock options and warrants, vesting of RSUs, vesting of restricted common
+stock, conversion of the Company’s convertible preferred stock and convertible notes, and settlement of contingent consideration.
+Segment reporting
+Operating segments are defined as components of an entity for which separate financial information is available and that is
+regularly reviewed by the Chief Operating Decision Maker (the “CODM”) in deciding how to allocate resources to an individual
+segment and in assessing performance. The Company’s Chief Executive Officer is the Company’s CODM. The CODM reviews financial
+information presented on a global consolidated basis for purposes of making operating decisions, allocating resources, and
+evaluating financial performance. As such, the Company has determined that it operates as one operating segment and one reportable
+segment.
+Recent accounting pronouncements
+Recently adopted accounting pronouncements
+On October 28, 2021, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update No. 2021-08, Accounting
+for Contract Assets and Contract Liabilities from Contracts with Customers (“ASU 2021-08”). ASU 2021-08 amends Accounting
+Standards Codification 805 (“ASC 805”) to require acquiring entities to apply Topic 606 - Revenue from Contracts with Customers to
+recognize and measure contract assets and contract liabilities in a business combination. The Company early adopted the standard
+on January 1, 2022. The adoption of the standard did not have a material impact on the Company’s consolidated financial
+statements.
+On March 31, 2022, the Securities and Exchange Commission (the “SEC”) issued Staff Accounting Bulletin No. 121 (“SAB 121”). SAB
+121 sets out interpretive guidance from the staff of the SEC regarding the accounting for obligations to safeguard crypto assets
+that an entity holds for its customers. Safeguarding is defined as taking actions to secure customer crypto assets and the
+associated cryptographic key information and protecting them from loss, theft, or other misuse. The guidance requires an entity to
+recognize a liability for the obligation to safeguard the users’ assets, and recognize an associated asset for the crypto assets
+safeguarded. Both the liability and asset should be measured initially and subsequently at the fair value of the crypto assets
+being safeguarded. The guidance also requires additional disclosures related to the nature and amount of crypto assets that the
+entity is responsible for holding for its customers, with separate disclosure for each significant crypto asset, and the
+vulnerabilities the entity has due to any concentration in such activities. The Company has adopted this guidance as of June 30,
+2022 with retrospective application as of January 1, 2022. The balances as of January 1, 2022 for the customer crypto assets and
+customer crypto liabilities were both $267.6 billion.
+Accounting pronouncements pending adoptionOn June 30, 2022, FASB issued Accounting Standards Update No. 2022-03, Fair Value
+Measurement of Equity Securities Subject to Contractual Sale Restrictions (“ASU 2022-03”). ASU 2022-03 clarifies that a
+contractual sale restriction prohibiting the sale of an equity security is a characteristic of the reporting entity holding the
+equity security and is not included in the equity security's unit of account. The standard requires specific disclosures related
+to equity securities that are subject to contractual sale restrictions, including (1) the fair value of such equity securities
+reflected in the balance sheet, (2) the nature and remaining duration of the corresponding restrictions, and (3) any circumstances
+that could cause a lapse in the restrictions. The new standard is effective for the Company for its fiscal year beginning January
+1, 2024, with early adoption permitted. The Company is currently evaluating the impact of adopting the standard on the Company’s
+consolidated financial statements."

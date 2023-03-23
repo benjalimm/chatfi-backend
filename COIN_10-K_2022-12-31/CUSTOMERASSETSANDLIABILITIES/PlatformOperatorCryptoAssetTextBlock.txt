@@ -1,0 +1,56 @@
+"CUSTOMER ASSETS AND LIABILITIES
+The following table presents customers’ cash and crypto positions (in thousands):
+
+December 31,20222021Customer custodial funds$5,041,119 $10,617,552 
+Customer crypto assets(1)
+75,413,188 — Total customer assets80,454,307 10,617,552 Customer custodial cash liabilities$4,829,587 $10,480,612 
+Customer crypto liabilities(1)
+75,413,188 — Total customer liabilities80,242,775 10,480,612 
+
+__________________
+(1)The Company adopted SAB 121 as of January 1, 2022. Prior to 2022, the Company did not record customer crypto assets and
+liabilities on its consolidated balance sheets.
+
+
+The Company safeguards crypto assets for customers in digital wallets and portions of cryptographic keys necessary to access
+crypto assets on the Company’s platform. The Company safeguards these assets and/or keys and is obligated to safeguard them from
+loss, theft, or other misuse. The Company records customer crypto assets as well as corresponding customer crypto liabilities, in
+accordance with recently adopted guidance, SAB 121. The Company maintains a record of all assets in digital wallets held on the
+Company’s platform as well as the full or a portion of private keys including backup keys, which are maintained on behalf of
+customers. For crypto assets where the Company does not maintain a private key or the ability to recover a customer’s private key,
+these balances are not recorded, as there is no related safeguarding obligation in accordance with SAB 121. The Company records
+the assets and liabilities, on the initial recognition and at each reporting date, at the fair value of the crypto assets which it
+safeguards for its customers.
+
+
+The Company has committed to securely store all crypto assets and cryptographic keys (or portions thereof) it holds on behalf of
+customers, and the value of these assets have been recorded as customer crypto liabilities and corresponding customer crypto
+assets. As such, the Company may be liable to its customers for losses arising from theft or loss of private keys. The Company has
+no reason to believe it will incur any expense associated with such potential liability because (i) it has no known or historical
+experience of claims to use as a basis of measurement, (ii) it accounts for and continually verifies the amount of crypto assets
+on its platform, and (iii) it has established security around private key management to minimize the risk of theft or loss. The
+Company has adopted a number of measures to safeguard crypto assets it secures including, but not limited to, holding customer
+crypto assets on a 1:1 basis and strategically storing custodied assets offline using Coinbase’s cold storage process. The Company
+also does not reuse or rehypothecate customer crypto assets nor grant security interests in customer crypto assets, in each case
+unless required by law or expressly agreed to by the customer. Any loss or theft would impact the measurement of the customer
+crypto assets. During the year ended December 31, 2022, no losses have been incurred in connection with customer crypto assets.
+As of December 31, 2022, customer crypto assets and customer crypto liabilities safeguarded for related parties were $3.5 billion.
+As of December 31, 2022, customer custodial cash liabilities due to related party customers were $14.2 million. As of December 31,
+2021, customer custodial cash liabilities due to related party customers were immaterial.
+The following table sets forth the fair value of customer crypto assets, as shown on the consolidated balance sheets, as customer
+crypto assets and customer crypto liabilities, as of December 31, 2022 (in billions):
+
+Fair Value
+Percentage of Total(1)
+Bitcoin$32.5 43.1 %
+Ethereum(2)
+20.8 27.6 %USDC1.1 1.4 %Other crypto assets21.0 27.9 %Total customer crypto assets$75.4 100.0 %
+
+__________________
+(1)As of December 31, 2022, no assets other than Bitcoin and Ethereum individually represented more than 5% of total customer
+crypto assets.
+(2)As of December 31, 2022, Ethereum included $3.0 billion of Ethereum 2.
+
+
+See Note 15. Fair Value Measurements, for additional details regarding the customer crypto assets and customer crypto liabilities.
+"

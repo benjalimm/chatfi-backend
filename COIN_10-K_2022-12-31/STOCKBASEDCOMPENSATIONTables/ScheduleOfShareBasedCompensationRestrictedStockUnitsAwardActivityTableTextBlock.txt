@@ -1,0 +1,8 @@
+"
+Activity of RSUs outstanding are as follows (in thousands, except per share data):
+
+Number of SharesWeighted-Average Grant Date Fair Value per ShareBalance at January 1,
+20227,482 $157.22 Granted11,867 112.35 Vested(12,107)125.75 Forfeited and cancelled(1,913)159.25 Balance at December 31,
+20225,329 $127.85 
+
+"

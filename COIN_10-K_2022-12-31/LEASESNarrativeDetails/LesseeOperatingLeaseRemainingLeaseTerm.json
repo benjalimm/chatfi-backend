@@ -1,0 +1,1 @@
+{"LesseeOperatingLeaseRemainingLeaseTerm":[{"period":{"instant":"2022-12-31"},"segment":{"dimension":"srt:RangeAxis","value":"srt:MinimumMember"},"value":"P1Y"},{"period":{"instant":"2022-12-31"},"segment":{"dimension":"srt:RangeAxis","value":"srt:MaximumMember"},"value":"P4Y"}]}

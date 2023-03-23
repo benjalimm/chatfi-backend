@@ -1,0 +1,28 @@
+"
+Gains (losses) on derivative instruments recognized in the Company’s consolidated statements of operations were as follows (in
+thousands):
+
+Year Ended December 31, 2022Year Ended December 31, 2021DerivativesHedged ItemsIncome Statement ImpactDerivativesHedged
+ItemsIncome Statement ImpactDesignated as fair value hedging instruments
+Crypto asset borrowings with embedded derivatives(1)
+$359,240 $(359,528)$(288)$87,730 $(70,577)$17,153 
+Crypto asset futures(1)
+13,571 (12,994)577 — — — Not designated as hedging instruments
+Crypto asset borrowings with embedded derivatives(1)
+11,242 — 11,242 — — — 
+Accounts and loans receivable denominated in crypto assets(1)
+(24,969)— (24,969)— — — 
+Other payables denominated in crypto assets(1)
+5,271 — 5,271 — — — 
+Crypto asset futures(1)
+1,735 — 1,735 — — — 
+Foreign currency forward contracts(2)
+(59,063)— (59,063)— — — 
+Crypto assets pledged as collateral(1)
+(2,360)— (2,360)— — — Total$304,667 $(372,522)$(67,855)$87,730 $(70,577)$17,153 
+
+_______________
+(1)Changes in fair value are recognized in other operating expense, net in the consolidated statements of operations.
+(2)Changes in fair value are recognized in other expense (income), net. The forward contracts were closed out during the fourth
+quarter of 2022, and as of December 31, 2022, the Company does not have any open contracts for foreign exchange forwards.
+"

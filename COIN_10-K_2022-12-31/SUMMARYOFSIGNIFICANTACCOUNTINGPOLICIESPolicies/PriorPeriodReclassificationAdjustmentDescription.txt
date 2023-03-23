@@ -1,0 +1,15 @@
+"
+Reclassifications
+Certain prior period amounts have been reclassified in order to conform with the current period presentation. These
+reclassifications have no impact on the Company’s previously reported consolidated net income.
+Changes in presentation
+During the fourth quarter of 2022, the Company elected to change its presentation for deposits in transit from payment processors
+and financial institutions, which are related to customer transactions. Under the new presentation, these funds are included in
+customer custodial funds, whereas previously they were presented within the accounts and loans receivable, net of allowance
+financial statement line item. The change allows the Company to present cash and deposits in transit as customer custodial funds
+held for the exclusive benefit of customers, which the Company holds to meet its obligations for customer deposits at period end.
+Additionally, the Company made a change in its presentation of customer custodial cash liabilities from operating activities, to
+present them as financing activities within its consolidated statements of cash flows.
+Comparative amounts have been recast to conform to current period presentation. These recasts had no impact on the consolidated
+statements of operations, consolidated statements of comprehensive income or consolidated statements of changes in convertible
+preferred stock and stockholders' equity."

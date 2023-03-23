@@ -1,0 +1,19 @@
+"
+Business combinations
+The results of businesses acquired in a business combination are included in the Company’s consolidated financial statements from
+the date of the acquisition. Purchase accounting results in assets and liabilities of an acquired business being recorded at their
+estimated fair values on the acquisition date. Any excess consideration over the fair value of assets acquired and liabilities
+assumed is recognized as goodwill. Acquisition-related costs incurred by the Company are recognized as an expense in general and
+administrative expenses within the consolidated statements of operations.
+The Company uses its best estimates and assumptions to assign fair value to the tangible and intangible assets acquired and
+liabilities assumed at the acquisition date. The Company’s estimates are inherently uncertain and subject to refinement.
+During the measurement period, which may be up to one year from the acquisition date, and to the extent that the value was not
+previously finalized, the Company may record adjustments to the fair value of these tangible and intangible assets acquired and
+liabilities assumed, with the corresponding offset to goodwill. In addition, uncertain tax positions and tax-related valuation
+allowances are initially recorded in connection with a business combination as of the acquisition date. The Company continues to
+collect information about facts and circumstance that existed at the date of acquisition and reevaluates these estimates and
+assumptions quarterly and records any adjustments to the Company’s preliminary estimates to goodwill, provided that the Company is
+within the measurement period. Upon the conclusion of the measurement period or final determination of the fair value of assets
+acquired or liabilities assumed, whichever comes first, any subsequent adjustments are recorded to the Company’s consolidated
+statements of operations.
+"

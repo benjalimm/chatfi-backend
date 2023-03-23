@@ -1,0 +1,1 @@
+{"BusinessAcquisitionNumberOfSharesIssuedToRelatedParty":{"decimals":"INF","unitRef":"shares","period":{"startDate":"2020-07-31","endDate":"2020-07-31"},"segment":[{"dimension":"us-gaap:BusinessAcquisitionAxis","value":"coin:TagomiHoldingsIncMember"},{"dimension":"us-gaap:StatementClassOfStockAxis","value":"us-gaap:CommonClassAMember"}],"value":"264527"}}

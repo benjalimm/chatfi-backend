@@ -1,0 +1,57 @@
+"
+The following table summarizes the notional amounts of derivative instruments outstanding, measured in U.S. dollar equivalents (in
+thousands):
+
+December 31,20222021Designated as hedging instrument
+Crypto asset borrowings with embedded derivatives
+$80,999 $669,445 
+Crypto asset futures(1)
+136,230 — Not designated as hedging instrument
+Crypto asset borrowings with embedded derivatives
+70,462 — Accounts and loans receivable denominated in crypto assets101,598 17,415 Other payables denominated in crypto
+assets4,267 — 
+Crypto asset futures(1)
+12,462 — Crypto assets pledged as collateral13,103 — 
+
+__________________
+(1)    Derivative transactions are measured in terms of the notional amount; however, this amount is not recorded on the
+consolidated balance sheets and is not, when viewed in isolation, a meaningful measure of the risk profile of the derivative
+instruments. The notional amount is generally not exchanged, but is used only as the underlying basis on which the value of
+exchange payments or settlement under these contracts are determined.
+The following tables summarize information on derivative assets and liabilities that are reflected on the Company’s consolidated
+balance sheets, by accounting designation (in thousands):
+
+Gross Derivative AssetsGross Derivative LiabilitiesDecember 31, 2022Not Designated as HedgesDesignated as HedgesTotal Derivative
+AssetsNot Designated as HedgesDesignated as HedgesTotal Derivative Liabilities
+Crypto asset borrowings with embedded derivatives(1)
+$2,266 $— $2,266 $657 $1,653 $2,310 Accounts and loans receivable denominated in crypto assets302 — 302 9,146 — 9,146 Other
+payables denominated in crypto assets1,270 — 1,270 5,767 — 5,767 Crypto assets pledged as collateral— — — 2,360 — 2,360 Total fair
+value of derivative assets and liabilities$3,838 $— $3,838 $17,930 $1,653 $19,583 
+
+
+
+
+Gross Derivative AssetsGross Derivative LiabilitiesDecember 31, 2021Not Designated as HedgesDesignated as HedgesTotal Derivative
+AssetsNot Designated as HedgesDesignated as HedgesTotal Derivative Liabilities
+Crypto asset borrowings with embedded derivatives(1)
+$— $336,396 $336,396 $— $93,616 $93,616 Accounts receivable denominated in crypto assets9,033 — 9,033 — — — Total fair value of
+derivative assets and liabilities$9,033 $336,396 $345,429 $— $93,616 $93,616 
+
+__________________
+(1)    During the years ended December 31, 2022 and 2021, the fees on these borrowings ranged from 0.0% to 9.0% and 0.0% to 10.0%,
+respectively. During the years ended December 31, 2022 and 2021, the Company incurred $6.7 million and $11.8 million,
+respectively, of borrowing fees in crypto assets. Borrowing fees are included in other operating expense, net in the consolidated
+statements of operations.
+The following amounts were recorded on the consolidated balance sheets related to certain cumulative fair value hedge basis
+adjustments that are expected to reverse through the consolidated statements of operations in future periods as an adjustment to
+other operating expense, net (in thousands):
+
+Cumulative Amount of Fair Value Hedging Adjustments Included in the Carrying Amount of Hedged ItemsDecember 31, 2022Carrying
+Amount of the Hedged ItemsActive Hedging RelationshipsDiscontinued Hedging RelationshipsTotalCrypto assets
+held$201,565 $(562)$670 $108 
+
+Cumulative Amount of Fair Value Hedging Adjustments Included in the Carrying Amount of Hedged ItemsDecember 31, 2021Carrying
+Amount of the Hedged ItemsActive Hedging RelationshipsDiscontinued Hedging RelationshipsTotalCrypto assets
+held$421,685 $(240,771)$— $(240,771)
+
+"

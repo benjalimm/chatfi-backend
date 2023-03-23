@@ -1,0 +1,11 @@
+"
+The effective income tax rate differs from the statutory federal income tax rate as follows:
+
+Year Ended December 31,202220212020Provision for income taxes at U.S. statutory rate21.00 %21.00 %21.00 %State income taxes, net
+of federal benefit5.04 (4.67)3.39 Foreign rate differential(0.02)(1.09)(0.24)Non-deductible compensation(1.34)0.83 0.99 Equity
+compensation(3.43)(31.95)0.27 Adjustment to prior year provision(0.23)0.14 (0.11)Research and development
+credits1.40 (9.60)(1.86)Change in valuation allowance(6.37)1.65 — Foreign tax credit— — (0.05)Subpart F income— — 0.09 Foreign
+Derived Intangible Income (“FDII”)— — (1.50)Global Intangible Low Taxed Income (“GILTI”)(0.94)— 0.06 Uncertain tax
+positions(0.60)3.07 0.46 CARES Act - NOL Carryback— — (1.20)Other(0.16)0.89 (0.07)14.35 %(19.73)%21.23 %
+
+"

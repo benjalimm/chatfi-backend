@@ -1,0 +1,11 @@
+"
+The following table reflects the changes in the carrying amount of goodwill (in thousands):
+
+Year Ended December 31,20222021Balance, beginning of period$625,758 $77,212 Additions due to business combinations454,417 548,546 
+Measurement period adjustments(1)
+(6,269)— Balance, end of period$1,073,906 $625,758 
+
+__________________
+(1)     The measurement period adjustments consisted of $4.1 million, $0.3 million and $1.9 million related to the Unbound
+acquisition, FairX acquisition and certain other acquisitions that were material when aggregated, respectively, and which were
+associated with the changes in deferred tax assets as a result of changes in estimates."

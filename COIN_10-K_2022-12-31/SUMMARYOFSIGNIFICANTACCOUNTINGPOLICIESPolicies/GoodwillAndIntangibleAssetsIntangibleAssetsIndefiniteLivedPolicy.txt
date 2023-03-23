@@ -1,0 +1,15 @@
+"
+Crypto assets held
+The crypto assets held by the Company, with no qualifying fair value hedge, are accounted for as intangible assets with indefinite
+useful lives, and are initially measured at cost. Crypto assets accounted for as intangible assets are subject to impairment
+losses if the fair value of crypto assets decreases below the carrying value at any time during the period. The fair value is
+measured using the quoted price of the crypto asset at the time its fair value is being measured in the Company’s principal
+market. Impairment expense is reflected in other operating expense, net in the consolidated statements of operations. The Company
+assigns costs to transactions on a first-in, first-out basis.
+Crypto assets held as the hedged item in qualifying fair value hedges are initially measured at cost. Subsequent changes in fair
+value attributable to the hedged risk are adjusted to the carrying amount of these crypto assets, with changes in fair value
+recorded in other operating expense, net in the consolidated statements of operations.
+The Company recognizes crypto assets received through airdrops or forks if the crypto asset is expected to generate probable
+future benefit and if the Company is able to support the trading, custody, or withdrawal of these assets. The Company records the
+crypto assets received through airdrops or forks at their cost.
+"

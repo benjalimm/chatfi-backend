@@ -1,0 +1,25 @@
+"
+Stock-based compensation
+The Company recognizes stock-based compensation expense using a fair-value based method for costs related to all equity awards
+granted under its equity incentive plans to employees, directors and non-employees of the Company including restricted stock,
+RSUs, stock options and purchase rights granted under the ESPP.
+The fair value of restricted stock and RSUs is estimated based on the fair value of the Company’s common stock on the date of
+grant.
+The Company estimates the fair value of stock options with only service-based conditions and purchase rights under the ESPP on the
+date of grant using the Black-Scholes-Merton Option-Pricing Model. The model requires management to make a number of assumptions,
+including the fair value and expected volatility of the Company’s underlying common stock price, expected life of the option,
+risk-free interest rate, and expected dividend yield. The fair value of the underlying stock is the fair value of the Company’s
+common stock on the date of grant. The expected stock price volatility assumption for the Company’s stock is determined by using a
+weighted average of the historical stock price volatility of comparable companies from a representative peer group, as sufficient
+trading history for the Company’s common stock is not available. The Company uses historical exercise information and contractual
+terms of options to estimate the expected term. The risk-free interest rate for periods within the expected life of the option is
+based on the U.S. Treasury zero coupon bonds with terms consistent with the expected term of the award at the time of grant. The
+expected dividend yield assumption is based on the Company’s history and expectation of no dividend payouts.
+Prior to the Direct Listing, the fair value of the underlying common stock was determined using the probability weighted expected
+return method, with a discounted cash flow model or a market multiples method used for each expected outcome. Following the Direct
+Listing, the fair value of the underlying common stock is the closing price of the Company’s Class A common stock as reported on
+the Nasdaq Global Select Market on the grant date.
+Stock-based compensation expense is recorded on a straight-line basis over the requisite service period. The Company has elected
+to account for forfeitures of awards as they occur, with previously recognized compensation reversed in the period that the awards
+are forfeited.
+"

@@ -1,0 +1,1 @@
+{"ShareBasedCompensationArrangementByShareBasedPaymentAwardDiscountFromMarketPricePurchaseDate":{"decimals":"2","unitRef":"number","period":{"startDate":"2021-02-01","endDate":"2021-02-28"},"segment":[{"dimension":"us-gaap:AwardTypeAxis","value":"us-gaap:EmployeeStockMember"},{"dimension":"us-gaap:StatementClassOfStockAxis","value":"us-gaap:CommonClassAMember"}],"value":"0.15"}}

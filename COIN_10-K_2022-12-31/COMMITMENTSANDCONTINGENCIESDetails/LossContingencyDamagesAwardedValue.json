@@ -1,0 +1,1 @@
+{"LossContingencyDamagesAwardedValue":[{"decimals":"-6","unitRef":"usd","period":{"startDate":"2023-01-01","endDate":"2023-01-31"},"segment":{"dimension":"us-gaap:SubsequentEventTypeAxis","value":"us-gaap:SubsequentEventMember"},"value":"50000000"},{"decimals":"-6","unitRef":"usd","period":{"startDate":"2022-01-01","endDate":"2022-12-31"},"value":"50000000"}]}

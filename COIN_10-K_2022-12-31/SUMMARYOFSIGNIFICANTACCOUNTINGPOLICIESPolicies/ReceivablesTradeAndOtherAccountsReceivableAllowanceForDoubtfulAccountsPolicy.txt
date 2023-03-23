@@ -1,0 +1,25 @@
+"
+Accounts and loans receivable and allowance for doubtful accounts
+Accounts and loans receivables are contractual rights to receive cash or crypto assets either on demand or on fixed or
+determinable dates, and are recognized as an asset on the consolidated balance sheets. Accounts and loans receivable consists of
+trade finance receivables, custodial fee revenue receivable, loans receivable, crypto asset loan receivables, interest receivable,
+and other receivables.
+Trade finance receivables represent funds due for crypto assets delivered to credit eligible customers and are typically received
+within three business days from the transaction date. Trade finance receivables enable customers to instantly invest in crypto
+assets without pre-funding their trade.
+Custodial fee revenue receivable represents the fee earned and receivable by the Company for providing a dedicated secure cold
+storage solution to customers. The fee is based on a contractual percentage of the daily value of assets under custody and is
+generally collected on a monthly basis. Such custodial fee revenue income is included in the net revenue in the consolidated
+statements of operations.
+Loans receivable represent cash loans made to consumers and institutions. These loans are collateralized with crypto assets held
+by those users in their crypto asset wallets on the Company’s platform. Loans receivable are subsequently measured at amortized
+cost.
+Crypto asset loan receivables represent crypto asset loans made to institutions. These loans are collateralized with fiat, USDC,
+or crypto assets held by those users in their crypto asset wallet on the Company’s platform. Crypto asset loan receivables are
+initially and subsequently measured at the fair value of the underlying crypto asset lent and adjusted for expected credit losses.
+The Company recognizes an allowance for doubtful accounts for receivables based on expected credit losses. In determining expected
+credit losses, the Company considers historical loss experience, the aging of its receivable balance, and the fair value of any
+collateral held. For loans receivable and crypto asset loan receivables, the Company applies the collateral maintenance provision
+practical expedient. The Company would recognize credit losses on these loans if there is a collateral shortfall and it is not
+reasonably expected that the borrower will replenish such a shortfall.
+"

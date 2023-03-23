@@ -1,0 +1,13 @@
+"
+The following table presents customers’ cash and crypto positions (in thousands):
+
+December 31,20222021Customer custodial funds$5,041,119 $10,617,552 
+Customer crypto assets(1)
+75,413,188 — Total customer assets80,454,307 10,617,552 Customer custodial cash liabilities$4,829,587 $10,480,612 
+Customer crypto liabilities(1)
+75,413,188 — Total customer liabilities80,242,775 10,480,612 
+
+__________________
+(1)The Company adopted SAB 121 as of January 1, 2022. Prior to 2022, the Company did not record customer crypto assets and
+liabilities on its consolidated balance sheets.
+"

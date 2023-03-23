@@ -1,0 +1,1 @@
+{"RestructuringAndRelatedCostExpectedNumberOfPositionsEliminated":{"decimals":"0","unitRef":"employees","period":{"startDate":"2023-01-10","endDate":"2023-01-10"},"segment":[{"dimension":"us-gaap:RestructuringPlanAxis","value":"coin:RestructuringPlanMember"},{"dimension":"us-gaap:SubsequentEventTypeAxis","value":"us-gaap:SubsequentEventMember"}],"value":"950"}}

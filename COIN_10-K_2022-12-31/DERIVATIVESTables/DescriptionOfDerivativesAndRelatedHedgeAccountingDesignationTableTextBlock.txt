@@ -1,0 +1,30 @@
+"
+The following outlines the Company’s derivatives and the related hedge accounting designation, as applicable.
+
+Type of DerivativeDescription of DerivativeLocation of Host Contract and Derivative on Balance Sheets
+Crypto asset borrowings(1)
+The Company borrowed crypto assets that resulted in the obligation to deliver a fixed amount of crypto assets in the future.
+Crypto asset borrowings
+Accounts and loans receivable denominated in crypto assetsAccounts receivable denominated in crypto assets: The Company provided
+services for which, under the contract, the customer pays in crypto assets. The amount of crypto assets are fixed at the time of
+invoicing.
+Crypto asset loans receivable: The Company lends crypto assets to institutions. The amount of crypto assets are fixed at the time
+of loan origination.
+In both of the above cases, the right to receive fixed amounts of crypto assets consists of a receivable host contract and an
+embedded forward contract to purchase crypto assets.Accounts and loans receivable, net of allowanceOther payables denominated in
+crypto assetsThe Company entered into arrangements that result in the obligation to deliver a fixed amount of crypto assets in the
+future.Accrued expenses and other current liabilities
+Crypto asset futures(1)
+The Company entered into short positions on futures contracts to minimize the exposure on the change in the fair value price of
+crypto assets held.
+Accounts and loans receivable, net of allowance
+Crypto assets pledged as collateral
+The Company derecognizes the collateral that has been pledged and recognizes a right to receive a fixed amount of crypto assets
+pledged as collateral if the lender has the right to use the collateral. The Company has pledged Bitcoin that serves exclusively
+as collateral for fiat loans.
+Prepaid expenses and other current assets
+
+__________________
+(1)     For risk management purposes, the Company applies hedge accounting using these derivative instruments in qualifying fair
+value hedges to primarily hedge the fair value exposure of crypto asset prices.
+"

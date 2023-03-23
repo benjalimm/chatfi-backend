@@ -1,0 +1,1 @@
+{"SubleaseRemainingLeaseTerm":[{"period":{"startDate":"2022-01-01","endDate":"2022-12-31"},"segment":{"dimension":"srt:RangeAxis","value":"srt:MinimumMember"},"value":"P13M"},{"period":{"startDate":"2022-01-01","endDate":"2022-12-31"},"segment":{"dimension":"srt:RangeAxis","value":"srt:MaximumMember"},"value":"P2Y"}]}

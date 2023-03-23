@@ -1,0 +1,34 @@
+"LEASES
+The Company has operating leases for corporate offices. The leases have remaining lease terms of less than one year to four years.
+The leases generally contain options to extend or terminate the lease. However, these were not included in determining the lease
+terms as the Company is not reasonably certain to exercise those options. The Company rents or subleases certain of these
+corporate offices to third parties. The Company recognized sublease income of $5.3 million, $6.7 million and $6.6 million for the
+years ended December 31, 2022, 2021 and 2020, respectively. The remaining terms of these subleases range from thirteen months to
+two years.
+The components of lease cost were as follows (in thousands):
+
+Year Ended December 31,202220212020Operating lease cost$36,724 $34,074 $30,231 Short-term lease cost707 374 358 Total lease
+cost$37,431 $34,448 $30,589 
+
+Other information related to leases was as follows as of:
+
+December 31,20222021Weighted-average remaining lease term (in years)1.22.0Weighted-average discount rate3.01 %3.02 %
+
+The interest rate used to determine the present value of the future lease payments is the Company’s incremental borrowing rate
+because the interest rate implicit in the leases is not readily determinable. The Company’s incremental borrowing rate is
+estimated to approximate the interest rate on a collateralized basis with similar terms and payments, and in economic environments
+where the leased asset is located.
+Maturities of lease liabilities were as follows (in thousands):
+
+2023$36,259 202433,607 20258,820 2026792 Thereafter— Total lease payments79,478 Less imputed interest(3,700)Total$75,778 
+
+430 California office space
+In September 2020, the Company renegotiated the terms of its office space lease in San Francisco, California, which included a
+partial give back of space for which the lease had not yet commenced. The terms of the agreement provided that the Company would
+pay a cancellation fee of $7.9 million and commit to enter into leases at the lessor’s other properties, with a minimum committed
+spend of $15.5 million spread over the period from September 2020 to December 2025.
+In February 2023, the Company entered into an early termination agreement for its remaining office space lease in San Francisco,
+California, which will now terminate on March 31, 2023. The Company will pay a termination fee of $25.0 million and commit to
+spend an additional $2.0 million at the lessor’s other properties by March 31, 2025. The Company’s estimated lease liability as of
+March 31, 2023 and prior to the termination was expected to be $43.7 million.
+"

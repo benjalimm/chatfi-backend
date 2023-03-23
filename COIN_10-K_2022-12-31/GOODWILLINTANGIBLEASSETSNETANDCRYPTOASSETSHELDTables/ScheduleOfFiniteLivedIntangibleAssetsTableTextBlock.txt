@@ -1,0 +1,37 @@
+"
+Intangible assets, net consisted of the following (in thousands, except years data):
+
+As of December 31, 2022Gross Carrying AmountAccumulated AmortizationIntangible Assets, NetWeighted Average Remaining Useful Life
+(in Years)Amortizing intangible assetsAcquired developed technology$126,692 $(81,172)$45,520 2.3User
+base2,997 (2,154)843 0.8Customer relationships86,691 (45,717)40,974 2.6Non-compete agreement2,402 (1,641)761 1.6Assembled
+workforce60,800 (44,857)15,943 0.4Trade Relationships3,400 (1,039)2,361 2.1
+In-process research and development(1)
+1,877 — 1,877 N/AIndefinite-lived intangible assetsDomain
+name250 — 250 N/ALicenses26,900 — 26,900 N/ATotal$312,009 $(176,580)$135,429 
+
+__________________
+(1)Amortization begins once the technology is placed in service. IPR&D is expected to have a useful life of three years once
+placed in service.
+
+As of December 31, 2021Gross Carrying AmountAccumulated AmortizationIntangible Assets, NetWeighted Average Remaining Useful Life
+(in Years)Amortizing intangible assetsAcquired developed technology$100,908 $(34,865)$66,043 2.0User
+base2,997 (1,020)1,977 1.8Customer relationships79,491 (27,789)51,702 3.7Non-compete agreement2,402 (1,161)1,241 2.6Assembled
+workforce60,800 (8,324)52,476 1.4
+In-process research and development(1)
+3,000 — 3,000 N/AIndefinite-lived intangible assetsDomain name250— 250N/ATotal$249,848 $(73,159)$176,689 
+
+__________________
+(1)Amortization begins once the technology is placed in service. IPR&D is expected to have a useful life of three years once
+placed in service.
+Crypto assets held consisted of the following (in thousands):
+
+December 31,20222021Recorded at impaired costCrypto assets held as investments$155,251 $209,415 
+Crypto assets held for operating purposes
+67,577 357,093 Total crypto assets held recorded at impaired cost222,828 566,508 
+Recorded at fair value(1)
+Crypto assets held as investments133,416 — Crypto assets borrowed68,149 421,685 Total crypto assets held recorded at fair
+value201,565 421,685 Total crypto assets held$424,393 $988,193 
+
+__________________
+(1)Recorded at fair value as these crypto assets are held as the hedged item in qualifying fair value hedges.
+"

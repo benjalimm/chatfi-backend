@@ -1,0 +1,23 @@
+"
+Property and equipment
+Property and equipment is stated at cost less accumulated depreciation. Depreciation is computed using the straight-line method
+over the lesser of the estimated useful life of the asset or the remaining lease term. The estimated useful lives of the Company’s
+property, equipment, and software are generally as follows:
+
+Property and EquipmentUseful LifeFurniture and fixtures
+Three to five years
+Computer equipment
+Two to five years
+Leasehold improvements
+Lesser of useful life or remaining lease term
+Capitalized software
+One to three years
+
+
+Construction-in-progress represents costs incurred on the construction of leasehold improvements that have not been completed or
+placed in service as of the end of the year, and accordingly, no depreciation expense has been recorded.
+Capitalized software consists of costs incurred during the application development stage of internal-use software or
+implementation of a hosting arrangement that is a service contract. Capitalized costs consist of salaries and compensation costs
+for employees, fees paid to third-party consultants who are directly involved in development efforts, and costs incurred for
+upgrades and enhancements to add functionality of the software. Other costs that do not meet the capitalization criteria are
+expensed as incurred."

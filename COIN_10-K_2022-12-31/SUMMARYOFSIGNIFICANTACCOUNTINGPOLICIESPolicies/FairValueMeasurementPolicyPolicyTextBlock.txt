@@ -1,0 +1,15 @@
+"
+Fair value measurements
+The Company measures certain assets and liabilities at fair value. The Company defines fair value as the price that would be
+received from selling an asset or paid to transfer a liability in an orderly transaction between market participants at the
+measurement date. Fair value is estimated by applying the following hierarchy, which prioritizes the inputs used to measure fair
+value into three levels and bases the categorization within the hierarchy upon the lowest level of input that is available and
+significant to the fair value measurement:
+•Level 1: Unadjusted quoted prices in active markets that are accessible at the measurement date for identical, unrestricted
+assets or liabilities.
+•Level 2: Observable inputs other than quoted prices in active markets for identical assets and liabilities, quoted prices for
+identical or similar assets or liabilities in inactive markets, or other inputs that are observable or can be corroborated by
+observable market data for substantially the full term of the assets or liabilities.
+•Level 3: Inputs that are generally unobservable and typically reflect management’s estimate of assumptions that market
+participants would use in pricing the asset or liability.
+"

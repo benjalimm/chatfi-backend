@@ -1,0 +1,19 @@
+"
+The computation of net (loss) income per share is as follows (in thousands, except per share amounts):
+Year Ended December 31,
+202220212020Basic net (loss) income per share:NumeratorNet (loss) income$(2,624,949)$3,624,120 $322,317 Less: Income allocated to
+participating securities— (527,162)(214,061)Net (loss) income attributable to common stockholders,
+basic$(2,624,949)$3,096,958 $108,256 DenominatorWeighted-average shares of common stock used to compute net (loss) income per
+share attributable to common stockholders, basic222,314 177,319 68,671 Net (loss) income per share attributable to common
+stockholders, basic$(11.81)$17.47 $1.58 Diluted net (loss) income per share:NumeratorNet (loss)
+income$(2,624,949)$3,624,120 $322,317 Less: Income allocated to participating securities— (439,229)(194,846)Add: Interest on
+convertible notes, net of tax— 6,208 — Less: Fair value gain on contingent consideration arrangement, net of tax (6,230)(695)— Net
+(loss) income attributable to common stockholders, diluted$(2,631,179)$3,190,404 $127,471 DenominatorWeighted-average shares of
+common stock used to compute net (loss) income per share attributable to common stockholders,
+basic222,314 177,319 68,671 Weighted-average effect of potentially dilutive securities:Stock
+options— 36,396 22,146 RSUs— 3,773 — Restricted common stock— 9 — Warrants— 72 392 Convertible notes— 2,388 — Contingent
+consideration24 8 — Weighted-average shares of common stock used to compute net (loss) income per share attributable to common
+stockholders, diluted222,338 219,965 91,209 Net (loss) income per share attributable to common stockholders,
+diluted$(11.83)$14.50 $1.40 
+
+"

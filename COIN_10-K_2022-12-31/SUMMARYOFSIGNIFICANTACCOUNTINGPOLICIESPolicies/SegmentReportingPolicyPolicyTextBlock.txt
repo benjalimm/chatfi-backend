@@ -1,0 +1,9 @@
+"
+Segment reporting
+Operating segments are defined as components of an entity for which separate financial information is available and that is
+regularly reviewed by the Chief Operating Decision Maker (the “CODM”) in deciding how to allocate resources to an individual
+segment and in assessing performance. The Company’s Chief Executive Officer is the Company’s CODM. The CODM reviews financial
+information presented on a global consolidated basis for purposes of making operating decisions, allocating resources, and
+evaluating financial performance. As such, the Company has determined that it operates as one operating segment and one reportable
+segment.
+"

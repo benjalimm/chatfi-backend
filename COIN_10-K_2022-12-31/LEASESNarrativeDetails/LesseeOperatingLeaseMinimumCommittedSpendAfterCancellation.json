@@ -1,0 +1,1 @@
+{"LesseeOperatingLeaseMinimumCommittedSpendAfterCancellation":[{"decimals":"-5","unitRef":"usd","period":{"instant":"2020-09-30"},"value":"15500000"},{"decimals":"-5","unitRef":"usd","period":{"instant":"2023-02-21"},"segment":{"dimension":"us-gaap:SubsequentEventTypeAxis","value":"us-gaap:SubsequentEventMember"},"value":"2000000"}]}

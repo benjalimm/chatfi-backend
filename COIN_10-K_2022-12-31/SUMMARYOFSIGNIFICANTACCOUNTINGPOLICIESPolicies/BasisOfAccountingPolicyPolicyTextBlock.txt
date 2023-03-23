@@ -1,0 +1,9 @@
+"
+Basis of presentation and principles of consolidation
+The accompanying consolidated financial statements have been prepared in accordance with United States generally accepted
+accounting principles (“GAAP”), and include the accounts of the Company and its subsidiaries. The Company’s subsidiaries are
+entities in which the Company holds, directly or indirectly, more than 50% of the voting rights, or where it exercises control.
+Certain subsidiaries of the Company have a basis of presentation different from GAAP. For the purposes of the consolidated
+financial statements, the basis of presentation of such subsidiaries is converted to GAAP. All intercompany accounts and
+transactions have been eliminated in consolidation.
+"

@@ -1,0 +1,15 @@
+"
+Investments
+The Company holds the following categories of investments, which are included in other non-current assets on the consolidated
+balance sheets.
+Equity method investments
+The Company holds equity investments in privately held companies. The Company applies the equity method of accounting for
+investments in other entities when it holds between 20% and 50% of the common stock or in-substance common stock in the entity, or
+when it exercises significant influence over the entity. Under the equity method, the Company’s share of each entity’s profit or
+loss is reflected in other expense (income), net in the consolidated statements of operations.
+Strategic investments
+The Company’s strategic investments primarily include investments in equity instruments where the Company (1) holds less than 20%
+ownership in the entity, and (2) does not exercise significant influence. These investments are recorded at cost and adjusted for
+observable transactions for same or similar investments of the same issuer (referred to as the measurement alternative) or
+impairment.
+"

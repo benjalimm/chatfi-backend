@@ -1,0 +1,93 @@
+"
+Revenue recognition
+See Note 5. Revenue, for information on the Company’s accounting policies for revenue recognition.
+Revenue recognition
+The Company determines revenue recognition from contracts with customers through the following steps:
+•identification of the contract, or contracts, with the customer;
+•identification of the performance obligations in the contract;
+•determination of the transaction price;
+•allocation of the transaction price to the performance obligations in the contract; and
+•recognition of the revenue when, or as, the Company satisfies a performance obligation.
+Revenue is recognized when control of the promised goods or services is transferred to the customers, in an amount that reflects
+the consideration the Company expects to be entitled to in exchange for those goods or services. The Company primarily generates
+revenue through transaction fees charged on the platform.
+Transaction revenue
+Consumer transaction revenue represents transaction fees earned from customers that are primarily individuals, while institutional
+transaction revenue represents transaction fees earned from institutional customers, such as hedge funds, family offices,
+principal trading firms, and financial institutions. Institutional clients can trade spot via the Coinbase Spot Market and
+derivatives via the Coinbase Derivatives Exchange, or utilize Coinbase Prime services depending on their needs. High-frequency
+trading firms, such as market makers and principal traders, benefit from lower latency by connecting through the Coinbase Spot
+Market and Coinbase Derivatives Exchange, while corporations and family offices can access an integrated suite of investment
+services through Coinbase Prime.
+The Company’s service is comprised of a single performance obligation to provide a crypto asset matching service when customers
+buy, sell, or convert crypto assets. That is, the Company is an agent in transactions between customers and presents revenue for
+the fees earned on a net basis.
+Judgment is required in determining whether the Company is the principal or the agent in transactions between customers. The
+Company evaluates the presentation of revenue on a gross or net basis based on whether it controls the crypto asset provided
+before it is transferred to the customer (gross) or whether it acts as an agent by arranging for other customers to provide the
+crypto asset to the customer (net). The Company does not control the crypto asset being provided before it is transferred to the
+buyer, does not have inventory risk related to the crypto asset, and is not responsible for the fulfillment of the crypto asset.
+The Company also does not set the price for the crypto asset as the price is a market rate established by users of the platform.
+As a result, the Company acts as an agent in facilitating the ability for a customer to purchase crypto assets from another
+customer.
+The Company considers its performance obligation satisfied, and recognizes revenue, at the point in time the transaction is
+processed. Contracts with customers are usually open-ended and can be terminated by either party without a termination penalty.
+Therefore, contracts are defined at the transaction level and do not extend beyond the service already provided.
+The Company charges a fee at the transaction level. The transaction price, represented by the trading fee, is calculated based on
+volume and varies depending on payment type and the value of the transaction. Crypto asset purchase or sale transactions executed
+by a customer on the Company’s platform is based on tiered pricing that is driven primarily by transaction volume processed for a
+specific historical period. The Company has concluded that this volume-based pricing approach does not constitute a future
+material right since the discount is within a range typically offered to a class of customers with similar volume. The transaction
+fee is collected from the customer at the time the transaction is executed. In certain instances, the transaction fee can be
+collected in crypto assets, with revenue measured based on the amount of crypto assets received and the fair value of the crypto
+assets at the time of the transaction.
+The transaction price includes estimates for reductions in revenue from transaction fee reversals that may not be recovered from
+customers. Such reversals occur when the customer disputes a transaction processed on their credit card or their bank account for
+a variety of reasons and seeks to have the charge reversed after the Company has processed the transaction. These amounts are
+estimated based upon the most likely amount of consideration to which the Company will be entitled. All estimates are based on
+historical experience and the Company’s best judgment at the time to the extent it is probable that a significant reversal of
+revenue recognized will not occur. All estimates of variable consideration are reassessed periodically. The total transaction
+price is allocated to the single performance obligation. While the Company recognizes transaction fee reversals as a reduction of
+net revenue, crypto asset losses related to those same transaction reversals are included in transaction expense.
+Blockchain rewards
+Blockchain rewards are primarily comprised of staking revenue in which the Company participates in networks with proof-of-stake
+consensus algorithms, through creating or validating blocks on the network using the staking validators that it controls.
+Blockchain protocols, or the participants that form the protocol networks, reward users for performing various activities on the
+blockchain. The most common form today is participating in proof-of-stake networks, however, there are other consensus algorithms.
+The Company considers itself the principal in transactions with the blockchain networks, and therefore presents such blockchain
+rewards earned on a gross basis. In exchange for participating in the consensus mechanism of these networks, the Company earns
+rewards in the form of the native token of the network. Each block creation or validation is a performance obligation. Revenue is
+recognized at the point when the block creation or validation is complete and the rewards are transferred into a digital wallet
+that the Company controls. Revenue is measured based on the number of tokens received and the fair value of the token at contract
+inception. Blockchain services offered as part of Coinbase Cloud’s blockchain infrastructure solutions are included in other
+subscription and services revenue. The Company’s staking revenue is included within blockchain rewards.
+Custodial fee revenueThe Company provides a dedicated secure cold storage solution to customers and earns a fee, which is based on
+a contractual percentage of the daily value of assets under custody. The fee is collected on a monthly basis. These contracts
+typically have one performance obligation which is provided and satisfied over the term of the contracts as customers
+simultaneously receive and consume the benefits of the services. The contract may be terminated by a customer at any time, without
+incurring a penalty. Customers are billed on the last day of the month during which services were provided, with the amounts being
+due within thirty days of receipt of the invoice.
+Interest income and corporate interest and other income
+The Company earns income on fiat funds under a revenue sharing arrangement with the issuer of USDC, pursuant to which the Company
+shares any interest income generated from USDC reserves pro rata based on (i) the amount of USDC distributed by each respective
+party and (ii) the amount of USDC held on each respective party’s platform. The Company’s income is dependent on the balance of
+such fiat funds and the prevailing interest rate environment. The Company also earns interest income on loans issued to its
+consumers and institutional users. Additionally, the Company holds customer custodial funds and cash and cash equivalents at
+certain third-party banks which earn interest. Interest income earned from customer custodial funds, cash and cash equivalents and
+loans is calculated using the interest method and is not within the scope of Topic 606 – Revenue from Contracts with Customers.
+Interest earned on revenue sharing, customer custodial funds, and loans is included in interest income within subscription and
+services revenue. Interest earned on cash and cash equivalents is included in corporate interest and other income, within other
+revenue.
+Other subscription and services revenue
+Other subscription and services revenue primarily includes revenue from Coinbase Cloud, which includes staking application,
+delegation, and infrastructure services, Coinbase One, Learning Rewards, and other subscription licenses. Generally, revenue from
+other subscription and services contains one performance obligation, may have variable and non-cash consideration, and is
+recognized at a point in time or over the period that services are provided.
+Other revenue
+Other revenue includes the sale of crypto assets and corporate interest and other income. Periodically, as an accommodation to
+customers, the Company may fulfill customer transactions using the Company’s own crypto assets held for operating purposes. The
+Company has custody and control of the crypto assets prior to the sale to the customer and records revenue at the point in time
+when the sale to the customer is processed. Accordingly, the Company records the total value of the sale in other revenue and the
+cost of the crypto assets in other operating expense, net within the consolidated statements of operations.Related party
+transactionsCertain of the Company’s directors, executive officers, and principal owners, including immediate family members, are
+users of the Company’s platform."

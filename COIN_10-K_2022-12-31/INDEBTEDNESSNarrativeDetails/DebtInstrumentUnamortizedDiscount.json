@@ -1,0 +1,1 @@
+{"DebtInstrumentUnamortizedDiscount":{"decimals":"-5","unitRef":"usd","period":{"instant":"2021-05-31"},"segment":[{"dimension":"us-gaap:DebtInstrumentAxis","value":"coin:ConvertibleSeniorNotesDue2026Member"},{"dimension":"us-gaap:LongtermDebtTypeAxis","value":"us-gaap:ConvertibleDebtMember"}],"value":"14400000"}}

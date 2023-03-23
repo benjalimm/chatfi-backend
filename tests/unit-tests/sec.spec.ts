@@ -1,6 +1,6 @@
-import { application } from 'express';
 import 'jest';
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
+import ReportJSONProcessor from '../../src/controllers/ReportJSONProcessor';
 import SECStore from '../../src/controllers/SECStore';
 import TickerSymbolExtractor, {
   TickerData
@@ -8,10 +8,10 @@ import TickerSymbolExtractor, {
 import TickerToCIKStore from '../../src/controllers/TickerToCIKStore';
 
 describe('Testing SEC data extraction and api', () => {
-  // 1. Initialize services
   const controller = new OpenAIController();
-
   const query = "What was Coinbase's net revenue in 2022?";
+
+  // 1. Test ticker extraction
   let tickerSymbolExtractor: TickerSymbolExtractor;
   let tickerData: TickerData | null = null;
   test('Test company ticker extraction', async () => {
@@ -23,6 +23,7 @@ describe('Testing SEC data extraction and api', () => {
     expect(result?.ticker).toBe('COIN');
   });
 
+  // 2. Test ticker to CIK resolve
   let tickerToCikStore: TickerToCIKStore;
   let cik: string | null = null;
   test('Test cik extraction', () => {
@@ -35,14 +36,26 @@ describe('Testing SEC data extraction and api', () => {
     expect(cik).toBe('1679788');
   });
 
+  // 3. Test pulling latest 10-K from cik number
   let secStore: SECStore;
+  let result: any;
   test('Test pulling latest 10-K from cik number', async () => {
     if (!cik) {
       throw new Error('CIK is null');
     }
 
     secStore = new SECStore();
-    const result = await secStore.getLatestReportDataFromCompany(cik, '10-K');
+    result = await secStore.getLatestReportDataFromCompany(cik, '10-K');
     expect(result.CoverPage.TradingSymbol).toBe('COIN');
   });
+  let reportJSONProcessor: ReportJSONProcessor;
+  let reportFilePath: string;
+
+  // 4. Test writing 10-K json to disc
+  test('Test writing 10-K json to disc', () => {
+    reportJSONProcessor = new ReportJSONProcessor('../../dist');
+    reportFilePath = reportJSONProcessor.processJSONAndWriteToDisc(result);
+  });
+
+  test('');
 });

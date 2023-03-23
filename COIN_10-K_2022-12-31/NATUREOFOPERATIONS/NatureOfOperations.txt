@@ -1,0 +1,11 @@
+"NATURE OF OPERATIONS
+Coinbase, Inc. was founded in 2012. In April 2014, in connection with a corporate reorganization, Coinbase, Inc. became a
+wholly-owned subsidiary of Coinbase Global, Inc. (together with its consolidated subsidiaries, the “Company”).
+The Company operates globally and is a leading provider of end-to-end financial infrastructure and technology for the
+cryptoeconomy. The Company offers consumers the primary financial account for the cryptoeconomy, institutions a state of the art
+marketplace with a deep pool of liquidity for transacting in crypto assets, and developers technology and services that enable
+them to build crypto-based applications and securely accept crypto assets as payment.
+The Company is a remote-first company. Accordingly, the Company does not maintain a headquarters.
+On April 14, 2021, the Company completed the direct listing of its Class A common stock on the Nasdaq Global Select Market (the
+“Direct Listing”).
+"

@@ -1,0 +1,8 @@
+"
+The assumptions used under the Black-Scholes-Merton Option-Pricing Model and the weighted average calculated value of the options
+granted to employees were as follows:
+
+Year Ended December 31,20222021Dividend yield0.0 %0.0 %Expected volatility59.3 %44.0 %Expected term (in years)5.84.8Risk-free
+interest rate2.1 %0.5 %
+
+"
