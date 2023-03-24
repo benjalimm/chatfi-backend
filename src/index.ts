@@ -12,6 +12,7 @@ import PromptDataProcessor from './controllers/PromptDataProcessor';
 import { QueryUpdate } from './schema/QueryUpdate';
 import { DataTraversalResult } from './schema/DataTraversalResult';
 import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
+import InputReportDataGenerator from './controllers/InputReportDataGenerator';
 
 dotenv.config();
 
@@ -21,17 +22,18 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 const gpt4Controller = new GPT4Controller();
+const inputReportDataGenerator = new InputReportDataGenerator(openAIController);
 
-const fileInput = '../../sampleData/ZOOM_10_K';
-const simpleDataTraversalController = new SimpleDataTraversalController(
-  openAIController,
-  fileInput // This file path needs to be subjective to it's folder location
-);
+// const fileInput = '../../sampleData/ZOOM_10_K';
+// const simpleDataTraversalController = new SimpleDataTraversalController(
+//   openAIController,
+//   fileInput // This file path needs to be subjective to it's folder location
+// );
 
-const linearDataTraversalController = new LinearDataTraversalController(
-  openAIController,
-  fileInput // This file path needs to be subjective to it's folder location
-);
+// const linearDataTraversalController = new LinearDataTraversalController(
+//   openAIController,
+//   fileInput // This file path needs to be subjective to it's folder location
+// );
 
 const promptDataProcessor = new PromptDataProcessor(gpt4Controller);
 
@@ -117,6 +119,15 @@ async function executeQuery(
   if (query === undefined) {
     throw new Error('Query is undefined');
   }
+
+  // 1. Get report data
+  const reportFilePath = await inputReportDataGenerator.processInput(query);
+
+  const simpleDataTraversalController = new SimpleDataTraversalController(
+    openAIController,
+    reportFilePath
+  );
+
   let result: DataTraversalResult;
   result = await simpleDataTraversalController.extractRelevantData(
     query,
@@ -125,6 +136,10 @@ async function executeQuery(
 
   if (result.metadata.requiresNotes === true) {
     console.log('Query requires notes, moving to linear data traversal');
+    const linearDataTraversalController = new LinearDataTraversalController(
+      openAIController,
+      reportFilePath
+    );
     // 1. We extract all the relevant data from the document
     result = await linearDataTraversalController.extractRelevantData(
       query,

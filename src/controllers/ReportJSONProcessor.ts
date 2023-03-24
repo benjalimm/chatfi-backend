@@ -4,7 +4,7 @@ import { convert } from 'html-to-text';
 export default class ReportJSONProcessor {
   private tmpFilePath: string;
   constructor(tmpFilePath: string) {
-    this.tmpFilePath = '../../dist';
+    this.tmpFilePath = '../..';
   }
 
   processJSONAndWriteToDisc(json: any): string {

@@ -28,6 +28,8 @@ export default class BaseDataTraversalContoller {
   constructor(llmController: LLMController, dataFilePath: string) {
     this._llmController = llmController;
     this._dataFilePath = dataFilePath;
+    const json = readJSON(`${dataFilePath}/metadata.json`) as DocumentMetadata;
+    this.listOfStatements = json.statements;
   }
 
   async extractRelevantStatementsFromQuery(
