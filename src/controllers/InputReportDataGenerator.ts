@@ -1,4 +1,5 @@
 import LLMController from '../schema/controllers/LLMController';
+import { Report } from '../schema/ReportData';
 import ReportJSONProcessor from './ReportJSONProcessor';
 import SECStore from './SECStore';
 import TickerSymbolExtractor from './TickerSymbolExtractor';
@@ -9,17 +10,15 @@ export default class InputReportDataGenerator {
   private tsExtractor: TickerSymbolExtractor;
   private tickerToCIKStore: TickerToCIKStore;
   private secStore: SECStore;
-  private reportJSONProcessor: ReportJSONProcessor;
 
   constructor(llmController: LLMController) {
     this.llmController = llmController;
     this.tsExtractor = new TickerSymbolExtractor(llmController);
     this.tickerToCIKStore = new TickerToCIKStore();
     this.secStore = new SECStore();
-    this.reportJSONProcessor = new ReportJSONProcessor('../..');
   }
 
-  async processInput(input: string): Promise<string> {
+  async processInput(input: string): Promise<Report> {
     // 1. Extract ticker data
     const tickerData = await this.tsExtractor.extractTickerSymbolFromQuery(
       input
@@ -43,6 +42,6 @@ export default class InputReportDataGenerator {
     );
 
     // 4. Process and persist JSON to disc
-    return this.reportJSONProcessor.processJSONAndWriteToDisc(reportJSON);
+    return ReportJSONProcessor.processJSON(reportJSON);
   }
 }

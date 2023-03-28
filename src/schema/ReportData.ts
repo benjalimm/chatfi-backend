@@ -1,10 +1,10 @@
 export type Report = {
   id: string;
-  listOfDocs: string[];
-  documents: { [key: string]: Document };
+  listOfStatements: string[];
+  statements: { [key: string]: Statement };
 };
 
-export type Document = {
+export type Statement = {
   name: string;
   listOfSections: string[];
   sections: { [key: string]: Section };

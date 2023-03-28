@@ -121,11 +121,11 @@ async function executeQuery(
   }
 
   // 1. Get report data
-  const reportFilePath = await inputReportDataGenerator.processInput(query);
+  const report = await inputReportDataGenerator.processInput(query);
 
   const simpleDataTraversalController = new SimpleDataTraversalController(
     openAIController,
-    reportFilePath
+    report
   );
 
   let result: DataTraversalResult;
@@ -138,7 +138,7 @@ async function executeQuery(
     console.log('Query requires notes, moving to linear data traversal');
     const linearDataTraversalController = new LinearDataTraversalController(
       openAIController,
-      reportFilePath
+      report
     );
     // 1. We extract all the relevant data from the document
     result = await linearDataTraversalController.extractRelevantData(

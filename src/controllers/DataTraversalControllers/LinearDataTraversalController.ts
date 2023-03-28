@@ -5,6 +5,7 @@ import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversa
 import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { QueryUpdate } from '../../schema/QueryUpdate';
 import { isFulfilled } from '../../utils/PromiseExtensions';
+import { Report } from '../../schema/ReportData';
 
 const MAX_STATEMENTS = 6;
 const MAX_SEGMENTS = 10;
@@ -13,8 +14,8 @@ export default class LinearDataTraversalController
   extends BaseDataTraversalContoller
   implements LLMDataTraversalController
 {
-  constructor(llmController: LLMController, dataFilePath: string) {
-    super(llmController, dataFilePath);
+  constructor(llmController: LLMController, report: Report) {
+    super(llmController, report);
   }
 
   async extractRelevantData(

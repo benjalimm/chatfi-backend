@@ -6,6 +6,7 @@ import TickerSymbolExtractor, {
   TickerData
 } from '../../src/controllers/TickerSymbolExtractor';
 import TickerToCIKStore from '../../src/controllers/TickerToCIKStore';
+import { Report } from '../../src/schema/ReportData';
 
 describe('Testing SEC data extraction and api', () => {
   const controller = new OpenAIController();
@@ -49,13 +50,11 @@ describe('Testing SEC data extraction and api', () => {
     expect(result.CoverPage.TradingSymbol).toBe('COIN');
   });
   let reportJSONProcessor: ReportJSONProcessor;
-  let reportFilePath: string;
+  let report: Report;
 
   // 4. Test writing 10-K json to disc
-  test('Test writing 10-K json to disc', async () => {
+  test('Test parsing 10-K json as structurd object', async () => {
     reportJSONProcessor = new ReportJSONProcessor('../../dist');
-    reportFilePath = await reportJSONProcessor.processJSONAndWriteToDisc(
-      result
-    );
+    report = await reportJSONProcessor.processJSON(result);
   });
 });

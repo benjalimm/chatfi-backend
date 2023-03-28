@@ -8,28 +8,20 @@ import {
   GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT,
   GEN_STATEMENT_EXTRACTION_PROMPT
 } from './Prompts';
-import { extractJSONFromString, readJSON, readTxt } from './Utils';
-import path from 'path';
-import * as fs from 'fs';
+import { extractJSONFromString } from './Utils';
+import { Report } from '../../schema/ReportData';
 
+const MAX_SECTION_LENGTH = 3000;
 export default class BaseDataTraversalContoller {
   private _llmController: LLMController;
+  private report: Report;
   get llmController(): LLMController {
     return this._llmController;
   }
 
-  private _dataFilePath: string;
-  get dataFilePath(): string {
-    return this._dataFilePath;
-  }
-
-  listOfStatements: string[] = [];
-
-  constructor(llmController: LLMController, dataFilePath: string) {
+  constructor(llmController: LLMController, report: Report) {
     this._llmController = llmController;
-    this._dataFilePath = dataFilePath;
-    const json = readJSON(`${dataFilePath}/metadata.json`) as DocumentMetadata;
-    this.listOfStatements = json.statements;
+    this.report = report;
   }
 
   async extractRelevantStatementsFromQuery(
@@ -38,7 +30,7 @@ export default class BaseDataTraversalContoller {
   ): Promise<ExtractedStatementsReponse> {
     const prompt = GEN_STATEMENT_EXTRACTION_PROMPT(
       maxStatements,
-      this.listOfStatements,
+      this.report.listOfStatements,
       query
     );
     const jsonString = await this.llmController.executePrompt(prompt);
@@ -67,16 +59,11 @@ export default class BaseDataTraversalContoller {
     console.log(`Extracting relevant sections from statement ${statement}`);
     // 1. For each document get metadata and ask LLM which segments it would look at
 
-    // 1.1 - Get metadata for statement
-    const statementMetadata = readJSON(
-      `${this.dataFilePath}/${statement}/metadata.json`
-    ) as StatementMetadata;
-
     // 2. Ask LLM which segments it would look at
     const SEGMENT_PROMPT = GEN_SEGMENT_EXTRACTION_PROMPT(
       maxSections,
       statement,
-      statementMetadata.segments,
+      this.report.statements[statement].listOfSections,
       query
     );
 
@@ -98,35 +85,30 @@ export default class BaseDataTraversalContoller {
     statementFile: string,
     query: string
   ): Promise<ExtractedData> {
-    const segmentFilePath = `${this.dataFilePath}/${statementFile}/${segment}`;
-    const extension = path.extname(segment);
     let DATA_EXTRACTION_PROMPT = '';
+    const section = this.report.statements[statementFile].sections[segment];
 
     // 6. Check if segment is a txt or a json file
-    if (extension === '.json') {
-      const data = readJSON(segmentFilePath);
-      const stringifiedData = JSON.stringify(data);
-
+    if (section.filetype === 'json') {
       // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
-      if (stringifiedData.length < 1500) {
+      if (section.data.length < MAX_SECTION_LENGTH) {
         return {
           statement: statementFile,
           segment,
-          data: stringifiedData
+          data: section.data
         };
       }
 
       DATA_EXTRACTION_PROMPT = GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT(
         segment,
-        stringifiedData,
+        section.data,
         query
       );
     } else {
       /// We assume it's a .txt file if it's not a JSON file.
-      const txtData = readTxt(segmentFilePath);
       DATA_EXTRACTION_PROMPT = GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT(
         segment,
-        txtData,
+        section.data,
         query
       );
     }
@@ -153,19 +135,5 @@ export default class BaseDataTraversalContoller {
       `;
     });
     return combinedString;
-  }
-
-  doesFileExist(filePath: string): boolean {
-    const fullPath = path.join(this.dataFilePath, filePath);
-    return fs.existsSync(fullPath);
-  }
-
-  filterFiles(filePaths: string[]): string[] {
-    return filePaths.filter((filePath) => {
-      const exists = this.doesFileExist(filePath);
-      if (!exists)
-        console.log(`File ${filePath} does not exist, filtering out`);
-      return exists;
-    });
   }
 }
