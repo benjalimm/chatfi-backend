@@ -13,6 +13,7 @@ import { QueryUpdate } from './schema/QueryUpdate';
 import { DataTraversalResult } from './schema/DataTraversalResult';
 import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
 import InputReportDataGenerator from './controllers/InputReportDataGenerator';
+import ChatController from './controllers/ChatController';
 
 dotenv.config();
 
@@ -23,17 +24,6 @@ const port = process.env.PORT || 3000;
 const openAIController = new OpenAIController();
 const gpt4Controller = new GPT4Controller();
 const inputReportDataGenerator = new InputReportDataGenerator(openAIController);
-
-// const fileInput = '../../sampleData/ZOOM_10_K';
-// const simpleDataTraversalController = new SimpleDataTraversalController(
-//   openAIController,
-//   fileInput // This file path needs to be subjective to it's folder location
-// );
-
-// const linearDataTraversalController = new LinearDataTraversalController(
-//   openAIController,
-//   fileInput // This file path needs to be subjective to it's folder location
-// );
 
 const promptDataProcessor = new PromptDataProcessor(gpt4Controller);
 
@@ -46,72 +36,34 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const server = http.createServer(app);
 const io = new socketio.Server(server, { cors: { origin: '*' } });
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
-});
-
-app.post('/', async (req: Request, res: Response) => {
-  const query = req.body.query;
-  console.log('BODY:');
-  console.log(req.body);
-
-  try {
-    const { answer, metadata } = await executeQuery(query);
-
-    res.json({
-      success: true,
-      query,
-      answer,
-      metadata
-    });
-  } catch (error) {
-    console.log(`Error: ${error}`);
-    res.status(500).json({ success: false, error: `${error}` });
-  }
-});
-
 server.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
 
 io.on('connection', async (socket) => {
   socket.emit('Connected');
+
   socket.on('query', async (data) => {
+    const chatController = new ChatController(socket);
     console.log('RECEIVED QUERY ', data);
     const query = data.query as string;
-    emitLoading(socket, true);
+    chatController.setLoading(true);
 
     try {
-      const response = await executeQuery(query, (update) => {
-        switch (update.type) {
-          case 'STATEMENT':
-            emitMsgOnly(socket, `Looking through document "${update.name}"`);
-            break;
-          case 'SECTION': {
-            break;
-          }
-
-          case 'FINAL':
-            emitMsgOnly(
-              socket,
-              `I've gathered the relevant information. Organizing the data and preparing a summary for you now...`
-            );
-            break;
-        }
-      });
-      emitLoading(socket, false);
-      emit(socket, 'message', response);
+      const response = await executeQuery(query, chatController);
+      chatController.setLoading(false);
+      chatController.sendMsgAndValues(response.answer, response.metadata);
     } catch (e) {
       console.log(e);
-      emitLoading(socket, false);
-      emitMsgOnly(socket, `Oops, an error occurred. Error message: ${e}`);
+      chatController.setLoading(false);
+      chatController.sendMsg(`Oops, an error occurred. Error message: ${e}`);
     }
   });
 });
 
 async function executeQuery(
   query: string,
-  onExtractionUpdate?: (statement: QueryUpdate) => void
+  chatController?: ChatController
 ): Promise<{
   answer: string;
   metadata: unknown;
@@ -121,12 +73,32 @@ async function executeQuery(
   }
 
   // 1. Get report data
-  const report = await inputReportDataGenerator.processInput(query);
+  const report = await inputReportDataGenerator.processInput(
+    query,
+    chatController
+  );
 
   const simpleDataTraversalController = new SimpleDataTraversalController(
     openAIController,
     report
   );
+
+  const onExtractionUpdate = (update: QueryUpdate) => {
+    switch (update.type) {
+      case 'STATEMENT':
+        chatController?.sendMsg(`Looking through document "${update.name}"`);
+        break;
+      case 'SECTION': {
+        break;
+      }
+
+      case 'FINAL':
+        chatController?.sendMsg(
+          `I've gathered the relevant information. Organizing the data and preparing a summary for you now...`
+        );
+        break;
+    }
+  };
 
   let result: DataTraversalResult;
   result = await simpleDataTraversalController.extractRelevantData(
@@ -160,20 +132,4 @@ async function executeQuery(
     answer,
     metadata: { values: finalOutputJSON.values }
   };
-}
-
-function emit(
-  socket: socketio.Socket,
-  event: 'message' | 'loading',
-  data: any
-) {
-  socket.emit(event, JSON.stringify({ data }));
-}
-
-function emitMsgOnly(socket: socketio.Socket, message: string) {
-  emit(socket, 'message', { answer: message });
-}
-
-function emitLoading(socket: socketio.Socket, loading: boolean) {
-  emit(socket, 'loading', { loading });
 }

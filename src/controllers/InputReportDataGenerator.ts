@@ -1,5 +1,6 @@
 import LLMController from '../schema/controllers/LLMController';
 import { Report } from '../schema/ReportData';
+import ChatController from './ChatController';
 import ReportJSONProcessor from './ReportJSONProcessor';
 import SECStore from './SECStore';
 import TickerSymbolExtractor from './TickerSymbolExtractor';
@@ -18,7 +19,10 @@ export default class InputReportDataGenerator {
     this.secStore = new SECStore();
   }
 
-  async processInput(input: string): Promise<Report> {
+  async processInput(
+    input: string,
+    chatController?: ChatController
+  ): Promise<Report> {
     // 1. Extract ticker data
     const tickerData = await this.tsExtractor.extractTickerSymbolFromQuery(
       input
@@ -27,6 +31,10 @@ export default class InputReportDataGenerator {
     if (!tickerData?.ticker) {
       throw new Error('Ticker data is null');
     }
+
+    chatController?.sendMsg(
+      `Pulling info for ${tickerData.company} ($${tickerData.ticker})`
+    );
 
     // 2. Get CIK from ticker
     const cik = this.tickerToCIKStore.getCIKFromTicker(tickerData.ticker);
