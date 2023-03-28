@@ -3,7 +3,7 @@ import path from 'path';
 
 export default class TickerToCIKStore {
   private tickerToCIKMap: Map<string, string> = new Map();
-  private filePath = '../../data/tickerToCik.txt';
+  private filePath = '../../../data/tickerToCik.txt'; // Relative to dist folder
 
   constructor() {
     this.loadTickerToCIKMap();

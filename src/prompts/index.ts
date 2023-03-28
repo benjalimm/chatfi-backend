@@ -12,6 +12,7 @@ const OUTPUT_JSON = `
         "statementSource": "BalanceSheets" // Find statementSource for this value
         "sectionSource": "CashAndCashEquivalentsAtCarryingValue.json" // Find sectionSource for this value
         "multiplier": "NONE" | "IN_HUNDREDS" | "IN_THOUSANDS" | "IN_MILLIONS" | 
+        "valueType": "REFERENCED" | "COMPUTED" // Was value computed or referenced from a source
       }
     ]
   }

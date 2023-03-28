@@ -52,8 +52,10 @@ describe('Testing SEC data extraction and api', () => {
   let reportFilePath: string;
 
   // 4. Test writing 10-K json to disc
-  test('Test writing 10-K json to disc', () => {
+  test('Test writing 10-K json to disc', async () => {
     reportJSONProcessor = new ReportJSONProcessor('../../dist');
-    reportFilePath = reportJSONProcessor.processJSONAndWriteToDisc(result);
+    reportFilePath = await reportJSONProcessor.processJSONAndWriteToDisc(
+      result
+    );
   });
 });
