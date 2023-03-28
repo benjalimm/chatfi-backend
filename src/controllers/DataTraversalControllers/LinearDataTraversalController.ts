@@ -1,11 +1,11 @@
 import LLMController from '../../schema/controllers/LLMController';
-import reportMetadata from '../../sampleData/COINBASE_10_Q/metadata.json';
 import { ExtractedData } from '../../schema/ExtractedData';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
 import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { QueryUpdate } from '../../schema/QueryUpdate';
 import { isFulfilled } from '../../utils/PromiseExtensions';
+import { Report } from '../../schema/ReportData';
 
 const MAX_STATEMENTS = 6;
 const MAX_SEGMENTS = 10;
@@ -14,9 +14,8 @@ export default class LinearDataTraversalController
   extends BaseDataTraversalContoller
   implements LLMDataTraversalController
 {
-  constructor(llmController: LLMController, dataFilePath: string) {
-    super(llmController, dataFilePath);
-    this.listOfStatements = reportMetadata.statements;
+  constructor(llmController: LLMController, report: Report) {
+    super(llmController, report);
   }
 
   async extractRelevantData(

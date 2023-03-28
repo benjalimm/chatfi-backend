@@ -11,6 +11,7 @@ export type Value = {
   statementSource: string;
   sectionSource: string;
   multiplier: 'NONE' | 'IN_THOUSANDS' | 'IN_MILLIONS';
+  valueType: 'REFERENCED' | 'COMPUTED';
 };
 
 export const Value_EXAMPLE: Value = {
@@ -20,7 +21,8 @@ export const Value_EXAMPLE: Value = {
   title: 'title',
   statementSource: 'statementSource',
   sectionSource: 'sectionSource',
-  multiplier: 'NONE'
+  multiplier: 'NONE',
+  valueType: 'REFERENCED'
 };
 
 export const FinalOutputJSON_EXAMPLE: FinalOutputJSON = {

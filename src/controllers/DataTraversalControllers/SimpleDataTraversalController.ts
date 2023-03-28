@@ -4,6 +4,7 @@ import { DataTraversalResult } from '../../schema/DataTraversalResult';
 import { ExtractedData } from '../../schema/ExtractedData';
 import { StatementMetadata } from '../../schema/Metadata';
 import { QueryUpdate } from '../../schema/QueryUpdate';
+import { Report } from '../../schema/ReportData';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
@@ -26,8 +27,8 @@ export default class SimpleDataTraversalController
     'StatementsOfIncome',
     'StatementsOfShareholdersEquity'
   ];
-  constructor(llmController: LLMController, dataFilePath: string) {
-    super(llmController, dataFilePath);
+  constructor(llmController: LLMController, report: Report) {
+    super(llmController, report);
   }
 
   async determineInitialStandardStatements(
