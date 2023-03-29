@@ -1,5 +1,6 @@
 import 'jest';
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
+import ReportPersistenceService from '../../src/controllers/persistence/ReportPersistenceService';
 import ReportJSONProcessor from '../../src/controllers/ReportJSONProcessor';
 import SECStore from '../../src/controllers/SECStore';
 import TickerSymbolExtractor, {
@@ -9,6 +10,8 @@ import TickerToCIKStore from '../../src/controllers/TickerToCIKStore';
 import { Report } from '../../src/schema/ReportData';
 
 describe('Testing SEC data extraction and api', () => {
+  jest.setTimeout(100000);
+
   const controller = new OpenAIController();
   const query = "What was Coinbase's net revenue in 2022?";
 
@@ -49,12 +52,20 @@ describe('Testing SEC data extraction and api', () => {
     result = await secStore.getLatestReportDataFromCompany(cik, '10-K');
     expect(result.CoverPage.TradingSymbol).toBe('COIN');
   });
-  let reportJSONProcessor: ReportJSONProcessor;
   let report: Report;
 
   // 4. Test writing 10-K json to disc
   test('Test parsing 10-K json as structurd object', async () => {
-    reportJSONProcessor = new ReportJSONProcessor('../../dist');
-    report = await reportJSONProcessor.processJSON(result);
+    report = await ReportJSONProcessor.processJSON(result);
+  });
+
+  // 5. Test storing in S3
+  test('Test storing in S3', async () => {
+    const reportPersistenceService = new ReportPersistenceService();
+    await reportPersistenceService.putReport(report);
+
+    const pulledReport = await reportPersistenceService.getReport(report.id);
+
+    expect(pulledReport).toEqual(report);
   });
 });

@@ -18,4 +18,17 @@ export default class ReportPersistenceService {
       Buffer.from(JSON.stringify(report))
     );
   }
+
+  async getReport(reportId: string): Promise<Report> {
+    if (!process.env.BUCKETEER_BUCKET_NAME) {
+      throw new Error('BUCKET NAME is not empty in env file');
+    }
+
+    const reportJSON = await this.storageService.getObject(
+      process.env.BUCKETEER_BUCKET_NAME,
+      reportId
+    );
+
+    return JSON.parse(reportJSON);
+  }
 }

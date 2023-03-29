@@ -28,7 +28,7 @@
   "scripts": {
     "test": "npx tsc && jest --coverage",
     "test:watch": "jest --watch",
-    "build": "npx tsc && rm -rf dist/src/sampleData && cp -R src/sampleData dist/src",
+    "build": "npx tsc && cp -rf data dist/data",
     "start": "node dist/src/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/index.js\"",
     "lint": "eslint . --ext .ts",
