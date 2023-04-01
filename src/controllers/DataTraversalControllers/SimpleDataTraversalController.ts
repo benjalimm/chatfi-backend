@@ -4,7 +4,7 @@ import { DataTraversalResult } from '../../schema/dataTraversal/DataTraversalRes
 import { ExtractedData } from '../../schema/dataTraversal/ExtractedData';
 import { StatementMetadata } from '../../schema/dataTraversal/Metadata';
 import { QueryUpdate } from '../../schema/dataTraversal/QueryUpdate';
-import { Filing } from '../../schema/sec/FilingData';
+import { FilingData } from '../../schema/sec/FilingData';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
@@ -27,7 +27,7 @@ export default class SimpleDataTraversalController
     'StatementsOfIncome',
     'StatementsOfShareholdersEquity'
   ];
-  constructor(llmController: LLMController, report: Filing) {
+  constructor(llmController: LLMController, report: FilingData) {
     super(llmController, report);
   }
 

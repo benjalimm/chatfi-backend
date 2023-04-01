@@ -1,5 +1,5 @@
 import LLMController from '../schema/controllers/LLMController';
-import { Filing } from '../schema/sec/FilingData';
+import { FilingData } from '../schema/sec/FilingData';
 import ChatController from './ChatController';
 import FilingJSONProcessor from './FilingJSONProcessor';
 import SECStore from './SECStore';
@@ -24,7 +24,7 @@ export default class InputToFilingProcessor {
   async processInput(
     input: string,
     chatController?: ChatController
-  ): Promise<Filing> {
+  ): Promise<FilingData> {
     // 1. Extract ticker data
     const tickerData = await this.tsExtractor.extractTickerSymbolFromQuery(
       input

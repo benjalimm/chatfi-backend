@@ -1,13 +1,13 @@
 import 'jest';
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
-import ReportPersistenceService from '../../src/controllers/persistence/ReportPersistenceService';
+import ReportPersistenceService from '../../src/controllers/persistence/storage/ReportPersistenceService';
 import FilingJSONProcessor from '../../src/controllers/FilingJSONProcessor';
 import SECStore from '../../src/controllers/SECStore';
 import TickerSymbolExtractor, {
   TickerData
 } from '../../src/controllers/TickerSymbolExtractor';
 import TickerToCIKStore from '../../src/controllers/TickerToCIKStore';
-import { Filing } from '../../src/schema/sec/FilingData';
+import { FilingData } from '../../src/schema/sec/FilingData';
 
 describe('Testing SEC data extraction and api', () => {
   jest.setTimeout(100000);
@@ -52,7 +52,7 @@ describe('Testing SEC data extraction and api', () => {
     result = await secStore.getLatestReportDataFromCompany(cik, '10-K');
     expect(result.CoverPage.TradingSymbol).toBe('COIN');
   });
-  let report: Filing;
+  let report: FilingData;
 
   // 4. Test writing 10-K json to disc
   test('Test parsing 10-K json as structurd object', async () => {

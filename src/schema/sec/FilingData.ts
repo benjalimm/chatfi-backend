@@ -1,16 +1,16 @@
-export type Filing = {
+export type FilingData = {
   id: string;
   listOfStatements: string[];
-  statements: { [key: string]: Statement };
+  statements: { [key: string]: StatementData };
 };
 
-export type Statement = {
+export type StatementData = {
   name: string;
   listOfSections: string[];
-  sections: { [key: string]: Section };
+  sections: { [key: string]: SectionData };
 };
 
-export type Section = {
+export type SectionData = {
   name: string;
   filetype: 'txt' | 'json';
   data: string;

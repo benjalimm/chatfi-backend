@@ -24,11 +24,11 @@ enum FilingType {
 }
 
 model Filing {
-  id         String     @id @unique
-  cik        String
-  filingDate DateTime
-  filingType FilingType
-  filingLink String
-  filingText String
-  Company    Company    @relation(fields: [cik], references: [cik])
+  id                  String     @id @unique
+  cik                 String
+  filingDate          DateTime
+  filingType          FilingType
+  linkToHtml          String
+  linkToFilingDetails String
+  Company             Company    @relation(fields: [cik], references: [cik])
 }
