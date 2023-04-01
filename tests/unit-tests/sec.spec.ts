@@ -1,6 +1,6 @@
 import 'jest';
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
-import ReportPersistenceService from '../../src/controllers/persistence/storage/ReportPersistenceService';
+import ReportPersistenceService from '../../src/persistence/storage/ReportPersistenceService';
 import FilingJSONProcessor from '../../src/controllers/FilingJSONProcessor';
 import SECStore from '../../src/controllers/SECStore';
 import TickerSymbolExtractor, {

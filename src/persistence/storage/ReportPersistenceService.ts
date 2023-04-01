@@ -1,4 +1,4 @@
-import { FilingData } from '../../../schema/sec/FilingData';
+import { FilingData } from '../../schema/sec/FilingData';
 import StoragePersistenceService from './StoragePersistenceService';
 
 export default class ReportPersistenceService {

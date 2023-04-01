@@ -1,5 +1,7 @@
 import { S3 } from 'aws-sdk';
+import { Service } from 'typedi';
 
+@Service()
 export default class StoragePersistenceService {
   private s3: S3;
   constructor() {

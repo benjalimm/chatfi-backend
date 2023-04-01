@@ -55,7 +55,9 @@
     "killport": "^1.0.2",
     "openai": "3.2.1",
     "path": "^0.12.7",
+    "reflect-metadata": "^0.1.13",
     "socket.io": "^4.5.4",
-    "string-similarity": "^4.0.4"
+    "string-similarity": "^4.0.4",
+    "typedi": "^0.10.0"
   }
 }

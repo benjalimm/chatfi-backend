@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FilingResponse } from '../schema/SECApiTypes';
+import { FilingResponse } from '../schema/sec/SECApiTypes';
 
 type ReportType = '10-K' | '10-Q';
 export default class SECStore {

@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express';
+import 'reflect-metadata';
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as socketio from 'socket.io';
@@ -12,7 +13,7 @@ import PromptDataProcessor from './controllers/PromptDataProcessor';
 import { QueryUpdate } from './schema/dataTraversal/QueryUpdate';
 import { DataTraversalResult } from './schema/dataTraversal/DataTraversalResult';
 import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
-import InputToFilingProcessor from './controllers/FilingDataGenerator';
+import InputToFilingProcessor from './controllers/InputToFilingProcessor';
 import ChatController from './controllers/ChatController';
 
 dotenv.config();

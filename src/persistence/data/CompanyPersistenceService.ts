@@ -1,6 +1,8 @@
-import { SECFiling } from '../../../schema/sec/SECApiTypes';
+import { SECFiling } from '../../schema/sec/SECApiTypes';
 import BaseDataPersistenceService from './BaseDataPersistenceService';
+import { Service } from 'typedi';
 
+@Service()
 export default class CompanyPersistenceService extends BaseDataPersistenceService {
   async createOrGetCompanyFromFiling(filing: SECFiling) {
     return this.onMain(async () => {
