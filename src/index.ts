@@ -9,10 +9,10 @@ import LinearDataTraversalController from './controllers/DataTraversalController
 import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
 import convertFinalOutputJSONToString from './utils/convertFinalOutput';
 import PromptDataProcessor from './controllers/PromptDataProcessor';
-import { QueryUpdate } from './schema/QueryUpdate';
-import { DataTraversalResult } from './schema/DataTraversalResult';
+import { QueryUpdate } from './schema/dataTraversal/QueryUpdate';
+import { DataTraversalResult } from './schema/dataTraversal/DataTraversalResult';
 import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
-import InputReportDataGenerator from './controllers/InputReportDataGenerator';
+import FilingDataGenerator from './controllers/InputReportDataGenerator';
 import ChatController from './controllers/ChatController';
 
 dotenv.config();
@@ -23,7 +23,7 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 const gpt4Controller = new GPT4Controller();
-const inputReportDataGenerator = new InputReportDataGenerator(openAIController);
+const inputReportDataGenerator = new FilingDataGenerator(openAIController);
 
 const promptDataProcessor = new PromptDataProcessor(gpt4Controller);
 

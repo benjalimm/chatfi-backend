@@ -1,12 +1,12 @@
 import { GEN_OUTPUT_PROMPT, GEN_SUMMARIZE_DATA_PROMPT } from '../prompts';
 import LLMController from '../schema/controllers/LLMController';
-import { ExtractedData } from '../schema/ExtractedData';
+import { ExtractedData } from '../schema/dataTraversal/ExtractedData';
 import {
-  FinalOutputJSON,
+  FinalOutputData,
   FinalOutputJSON_EXAMPLE,
   Value,
   Value_EXAMPLE
-} from '../schema/FinalPromptJSON';
+} from '../schema/dataTraversal/FinalPromptData';
 import { validateBody } from '../utils/validateObject';
 import { extractJSONFromString } from './DataTraversalControllers/Utils';
 
@@ -20,7 +20,7 @@ export default class PromptDataProcessor {
   async processExtractedData(
     listOfExtractedData: ExtractedData[],
     query: string
-  ): Promise<FinalOutputJSON> {
+  ): Promise<FinalOutputData> {
     console.log(`Processing ${listOfExtractedData.length} extracted data`);
     const dataPrompts: string[] = [];
     let currentPrompt = '';
@@ -86,7 +86,7 @@ export default class PromptDataProcessor {
   private async processDataPrompt(
     dataPrompt: string,
     query: string
-  ): Promise<FinalOutputJSON> {
+  ): Promise<FinalOutputData> {
     const finalOutputPrompt = GEN_OUTPUT_PROMPT(dataPrompt, query);
     const resultString = await this.llmController.executePrompt(
       finalOutputPrompt
@@ -104,7 +104,7 @@ export default class PromptDataProcessor {
     return this.llmController.executePrompt(summarizeDataPrompt);
   }
 
-  private extractAndValidateFinalOutput(result: string): FinalOutputJSON {
+  private extractAndValidateFinalOutput(result: string): FinalOutputData {
     const extractedFinalOutput = extractJSONFromString(result);
     const isValidBody = validateBody(
       extractedFinalOutput,

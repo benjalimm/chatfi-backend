@@ -1,4 +1,4 @@
-import { Report } from '../../schema/ReportData';
+import { Filing } from '../../schema/sec/FilingData';
 import StoragePersistenceService from './StoragePersistenceService';
 
 export default class ReportPersistenceService {
@@ -7,7 +7,7 @@ export default class ReportPersistenceService {
     this.storageService = new StoragePersistenceService();
   }
 
-  async putReport(report: Report): Promise<void> {
+  async putReport(report: Filing): Promise<void> {
     if (!process.env.BUCKETEER_BUCKET_NAME) {
       throw new Error('BUCKET NAME is not empty in env file');
     }
@@ -19,7 +19,7 @@ export default class ReportPersistenceService {
     );
   }
 
-  async getReport(reportId: string): Promise<Report> {
+  async getReport(reportId: string): Promise<Filing> {
     if (!process.env.BUCKETEER_BUCKET_NAME) {
       throw new Error('BUCKET NAME is not empty in env file');
     }

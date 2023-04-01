@@ -1,4 +1,4 @@
-export interface FinalOutputJSON {
+export interface FinalOutputData {
   answer: string;
   values: Value[];
 }
@@ -25,7 +25,7 @@ export const Value_EXAMPLE: Value = {
   valueType: 'REFERENCED'
 };
 
-export const FinalOutputJSON_EXAMPLE: FinalOutputJSON = {
+export const FinalOutputJSON_EXAMPLE: FinalOutputData = {
   answer: 'answer',
   values: [Value_EXAMPLE]
 };

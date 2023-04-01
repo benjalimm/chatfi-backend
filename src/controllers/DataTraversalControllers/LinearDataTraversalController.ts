@@ -1,11 +1,11 @@
 import LLMController from '../../schema/controllers/LLMController';
-import { ExtractedData } from '../../schema/ExtractedData';
+import { ExtractedData } from '../../schema/dataTraversal/ExtractedData';
 import BaseDataTraversalContoller from './BaseDataTraversalContoller';
 import LLMDataTraversalController from '../../schema/controllers/LLMDataTraversalController';
-import { DataTraversalResult } from '../../schema/DataTraversalResult';
-import { QueryUpdate } from '../../schema/QueryUpdate';
+import { DataTraversalResult } from '../../schema/dataTraversal/DataTraversalResult';
+import { QueryUpdate } from '../../schema/dataTraversal/QueryUpdate';
 import { isFulfilled } from '../../utils/PromiseExtensions';
-import { Report } from '../../schema/ReportData';
+import { Filing } from '../../schema/sec/FilingData';
 
 const MAX_STATEMENTS = 6;
 const MAX_SEGMENTS = 10;
@@ -14,7 +14,7 @@ export default class LinearDataTraversalController
   extends BaseDataTraversalContoller
   implements LLMDataTraversalController
 {
-  constructor(llmController: LLMController, report: Report) {
+  constructor(llmController: LLMController, report: Filing) {
     super(llmController, report);
   }
 

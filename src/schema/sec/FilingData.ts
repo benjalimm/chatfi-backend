@@ -1,4 +1,4 @@
-export type Report = {
+export type Filing = {
   id: string;
   listOfStatements: string[];
   statements: { [key: string]: Statement };

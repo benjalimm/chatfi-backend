@@ -7,7 +7,7 @@ import TickerSymbolExtractor, {
   TickerData
 } from '../../src/controllers/TickerSymbolExtractor';
 import TickerToCIKStore from '../../src/controllers/TickerToCIKStore';
-import { Report } from '../../src/schema/ReportData';
+import { Filing } from '../../src/schema/sec/FilingData';
 
 describe('Testing SEC data extraction and api', () => {
   jest.setTimeout(100000);
@@ -52,7 +52,7 @@ describe('Testing SEC data extraction and api', () => {
     result = await secStore.getLatestReportDataFromCompany(cik, '10-K');
     expect(result.CoverPage.TradingSymbol).toBe('COIN');
   });
-  let report: Report;
+  let report: Filing;
 
   // 4. Test writing 10-K json to disc
   test('Test parsing 10-K json as structurd object', async () => {

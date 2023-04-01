@@ -1,5 +1,5 @@
 import LLMController from '../../../schema/controllers/LLMController';
-import { Formula } from '../../../schema/FormulaType';
+import { Formula } from '../../../schema/extraction/FormulaType';
 import * as ss from 'string-similarity';
 import formulas from '../../../../extractions/formulas';
 

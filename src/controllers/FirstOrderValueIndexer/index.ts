@@ -4,8 +4,8 @@ import {
   FOVExtractionInstruction,
   InstantValue,
   RangeValue
-} from '../../schema/FirstOrderValue';
-import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
+} from '../../schema/extraction/FirstOrderValue';
+import { DocumentMetadata, StatementMetadata } from '../../schema/dataTraversal/Metadata';
 import {
   extractJSONFromString,
   readJSON,

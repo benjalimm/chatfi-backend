@@ -1,12 +1,12 @@
 import LLMController from '../schema/controllers/LLMController';
-import { Report } from '../schema/ReportData';
+import { Filing } from '../schema/sec/FilingData';
 import ChatController from './ChatController';
 import ReportJSONProcessor from './ReportJSONProcessor';
 import SECStore from './SECStore';
 import TickerSymbolExtractor from './TickerSymbolExtractor';
 import TickerToCIKStore from './TickerToCIKStore';
 
-export default class InputReportDataGenerator {
+export default class FilingDataGenerator {
   private llmController: LLMController;
   private tsExtractor: TickerSymbolExtractor;
   private tickerToCIKStore: TickerToCIKStore;
@@ -22,7 +22,7 @@ export default class InputReportDataGenerator {
   async processInput(
     input: string,
     chatController?: ChatController
-  ): Promise<Report> {
+  ): Promise<Filing> {
     // 1. Extract ticker data
     const tickerData = await this.tsExtractor.extractTickerSymbolFromQuery(
       input
