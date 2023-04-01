@@ -1,7 +1,7 @@
 import 'jest';
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
 import ReportPersistenceService from '../../src/controllers/persistence/ReportPersistenceService';
-import ReportJSONProcessor from '../../src/controllers/ReportJSONProcessor';
+import FilingJSONProcessor from '../../src/controllers/FilingJSONProcessor';
 import SECStore from '../../src/controllers/SECStore';
 import TickerSymbolExtractor, {
   TickerData
@@ -56,7 +56,7 @@ describe('Testing SEC data extraction and api', () => {
 
   // 4. Test writing 10-K json to disc
   test('Test parsing 10-K json as structurd object', async () => {
-    report = await ReportJSONProcessor.processJSON(result);
+    report = await FilingJSONProcessor.processJSON(result);
   });
 
   // 5. Test storing in S3

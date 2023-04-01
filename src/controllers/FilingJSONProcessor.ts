@@ -2,7 +2,7 @@ import fs from 'fs';
 import path, { resolve } from 'path';
 import { convert } from 'html-to-text';
 import { Filing } from '../schema/sec/FilingData';
-export default class ReportJSONProcessor {
+export default class FilingJSONProcessor {
   static processJSON(json: any): Filing {
     // 1. Create new report object
     const { TradingSymbol, DocumentType, DocumentPeriodEndDate } =

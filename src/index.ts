@@ -12,7 +12,7 @@ import PromptDataProcessor from './controllers/PromptDataProcessor';
 import { QueryUpdate } from './schema/dataTraversal/QueryUpdate';
 import { DataTraversalResult } from './schema/dataTraversal/DataTraversalResult';
 import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
-import FilingDataGenerator from './controllers/InputReportDataGenerator';
+import InputToFilingProcessor from './controllers/FilingDataGenerator';
 import ChatController from './controllers/ChatController';
 
 dotenv.config();
@@ -23,7 +23,7 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 const gpt4Controller = new GPT4Controller();
-const inputReportDataGenerator = new FilingDataGenerator(openAIController);
+const inputReportDataGenerator = new InputToFilingProcessor(openAIController);
 
 const promptDataProcessor = new PromptDataProcessor(gpt4Controller);
 

@@ -1,12 +1,12 @@
 import LLMController from '../schema/controllers/LLMController';
 import { Filing } from '../schema/sec/FilingData';
 import ChatController from './ChatController';
-import ReportJSONProcessor from './ReportJSONProcessor';
+import FilingJSONProcessor from './FilingJSONProcessor';
 import SECStore from './SECStore';
 import TickerSymbolExtractor from './TickerSymbolExtractor';
 import TickerToCIKStore from './TickerToCIKStore';
 
-export default class FilingDataGenerator {
+export default class InputToFilingProcessor {
   private llmController: LLMController;
   private tsExtractor: TickerSymbolExtractor;
   private tickerToCIKStore: TickerToCIKStore;
@@ -14,6 +14,8 @@ export default class FilingDataGenerator {
 
   constructor(llmController: LLMController) {
     this.llmController = llmController;
+
+    // TODO: These should be injected not initialized here
     this.tsExtractor = new TickerSymbolExtractor(llmController);
     this.tickerToCIKStore = new TickerToCIKStore();
     this.secStore = new SECStore();
@@ -50,6 +52,6 @@ export default class FilingDataGenerator {
     );
 
     // 4. Process and persist JSON to disc
-    return ReportJSONProcessor.processJSON(reportJSON);
+    return FilingJSONProcessor.processJSON(reportJSON);
   }
 }
