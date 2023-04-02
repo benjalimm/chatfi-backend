@@ -1,6 +1,8 @@
 import { Configuration, OpenAIApi } from 'openai';
 import LLMController from '../../schema/controllers/LLMController';
+import { Service } from 'typedi';
 
+@Service()
 export default class GPT4Controller implements LLMController {
   private api: OpenAIApi;
 

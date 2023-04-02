@@ -7,7 +7,7 @@ export default class CompanyPersistenceService extends BaseDataPersistenceServic
   async createOrGetCompanyFromFiling(filing: SECFiling) {
     return this.onMain(async () => {
       const getCompany = await this.prisma.company.findUnique({
-        where: { cik: filing.cik, ticker: filing.ticker }
+        where: { cik: filing.cik }
       });
 
       if (getCompany) {

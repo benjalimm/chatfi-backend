@@ -19,7 +19,6 @@ export default class BaseDataPersistenceService {
         .catch(async (e) => {
           rej(e);
           await this.prisma.$disconnect();
-          process.exit(1);
         });
     });
   }

@@ -27,7 +27,7 @@ describe('Testing SEC data extraction and api', () => {
   let tickerSymbolExtractor: TickerSymbolExtractor;
   let tickerData: TickerData | null = null;
   test('Test company ticker extraction', async () => {
-    tickerSymbolExtractor = new TickerSymbolExtractor(controller);
+    tickerSymbolExtractor = new TickerSymbolExtractor();
     const result = await tickerSymbolExtractor.extractTickerSymbolFromQuery(
       query
     );

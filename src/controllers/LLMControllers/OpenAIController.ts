@@ -2,7 +2,11 @@ import { Configuration, OpenAIApi } from 'openai';
 import EmbeddingsController from '../../schema/controllers/EmbeddingController';
 import LLMController from '../../schema/controllers/LLMController';
 import { EmbeddingData } from '../../schema/EmbeddingTypes';
+import { Service } from 'typedi';
+import dotenv from 'dotenv';
 
+dotenv.config();
+@Service()
 export default class OpenAIController
   implements LLMController, EmbeddingsController
 {

@@ -9,13 +9,14 @@ import {
 } from '../schema/dataTraversal/FinalPromptData';
 import { validateBody } from '../utils/validateObject';
 import { extractJSONFromString } from './DataTraversalControllers/Utils';
+import LLMRoles from './LLMControllers/LLMRoles';
 
 const MAX_TOKENS_PER_PROMPT = 7000;
 export default class PromptDataProcessor {
   private llmController: LLMController;
 
-  constructor(llmController: LLMController) {
-    this.llmController = llmController;
+  constructor() {
+    this.llmController = LLMRoles.finalReasonLLM;
   }
   async processExtractedData(
     listOfExtractedData: ExtractedData[],

@@ -1,12 +1,15 @@
-import Container from 'typedi';
+import Container, { Service } from 'typedi';
 import LLMController from '../schema/controllers/LLMController';
 import { ProcessedFilingData } from '../schema/sec/FilingData';
+import { SECFiling } from '../schema/sec/SECApiTypes';
 import ChatController from './ChatController';
 import FilingJSONProcessor from './FilingJSONProcessor';
 import SECStore from './SECStore';
 import TickerSymbolExtractor from './TickerSymbolExtractor';
 import TickerToCIKStore from './TickerToCIKStore';
 
+type Response = { data: ProcessedFilingData; secFiling: SECFiling };
+@Service()
 export default class InputToFilingProcessor {
   private tsExtractor: TickerSymbolExtractor;
   private tickerToCIKStore: TickerToCIKStore;
@@ -25,7 +28,7 @@ export default class InputToFilingProcessor {
   async processInput(
     input: string,
     chatController?: ChatController
-  ): Promise<ProcessedFilingData> {
+  ): Promise<Response> {
     // 1. Extract ticker data
     const tickerData = await this.tsExtractor.extractTickerSymbolFromQuery(
       input
@@ -51,6 +54,10 @@ export default class InputToFilingProcessor {
       await this.secStore.getLatestReportDataFromCompany(cik, '10-K');
 
     // 4. Process and persist JSON to disc
-    return FilingJSONProcessor.processJSON(json);
+    const processedData = FilingJSONProcessor.processJSON(json);
+    return {
+      data: processedData,
+      secFiling
+    };
   }
 }

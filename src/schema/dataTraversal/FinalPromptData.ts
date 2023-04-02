@@ -14,6 +14,10 @@ export type Value = {
   valueType: 'REFERENCED' | 'COMPUTED';
 };
 
+export type CFValue = Value & {
+  cfFilingId: string;
+};
+
 export const Value_EXAMPLE: Value = {
   key: 'key',
   value: 'value',
