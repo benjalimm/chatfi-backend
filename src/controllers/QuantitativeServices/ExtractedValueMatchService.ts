@@ -1,4 +1,4 @@
-import { FirstOrderValue } from '../../schema/FirstOrderValue';
+import { FirstOrderValue } from '../../schema/extraction/FirstOrderValue';
 import * as ss from 'string-similarity';
 import { readJSON } from '../DataTraversalControllers/Utils';
 export default class ExtractedValueMatchService {

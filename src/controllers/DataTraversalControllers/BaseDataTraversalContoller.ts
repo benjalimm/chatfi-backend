@@ -1,7 +1,10 @@
 import LLMController from '../../schema/controllers/LLMController';
-import { ExtractedData } from '../../schema/ExtractedData';
-import ExtractedStatementsReponse from '../../schema/ExtractedStatementsResponse';
-import { DocumentMetadata, StatementMetadata } from '../../schema/Metadata';
+import { ExtractedData } from '../../schema/dataTraversal/ExtractedData';
+import ExtractedStatementsReponse from '../../schema/extraction/ExtractedStatementsResponse';
+import {
+  DocumentMetadata,
+  StatementMetadata
+} from '../../schema/dataTraversal/Metadata';
 import {
   GEN_SEGMENT_EXTRACTION_PROMPT,
   GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT,
@@ -9,17 +12,17 @@ import {
   GEN_STATEMENT_EXTRACTION_PROMPT
 } from './Prompts';
 import { extractJSONFromString } from './Utils';
-import { Report } from '../../schema/ReportData';
+import { ProcessedFilingData } from '../../schema/sec/FilingData';
 
 const MAX_SECTION_LENGTH = 3000;
 export default class BaseDataTraversalContoller {
   private _llmController: LLMController;
-  private report: Report;
+  private report: ProcessedFilingData;
   get llmController(): LLMController {
     return this._llmController;
   }
 
-  constructor(llmController: LLMController, report: Report) {
+  constructor(llmController: LLMController, report: ProcessedFilingData) {
     this._llmController = llmController;
     this.report = report;
   }

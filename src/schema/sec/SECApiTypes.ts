@@ -1,4 +1,4 @@
-export interface Filing {
+export interface SECFiling {
   id: string;
   accessionNo: string;
   cik: string;
@@ -12,11 +12,11 @@ export interface Filing {
   linkToHtml: string;
   linkToXbrl: string;
   linkToFilingDetails: string;
-  entities: Entity[];
+  entities: SECEntity[];
   documentFormatFiles: DocumentFormatFile[];
 }
 
-export interface Entity {
+export interface SECEntity {
   companyName: string;
   cik: string;
   irsNo: string;
@@ -46,5 +46,5 @@ export interface FilingResponse {
     from: number;
     size: number;
   };
-  filings: Filing[];
+  filings: SECFiling[];
 }

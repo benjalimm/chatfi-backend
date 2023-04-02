@@ -1,19 +1,25 @@
 import axios from 'axios';
-import { FilingResponse } from '../schema/SECApiTypes';
-
-type ReportType = '10-K' | '10-Q';
+import { FilingResponse, SECFiling } from '../schema/sec/SECApiTypes';
+import { Service } from 'typedi';
+type ReportType = '10-K' | '10-Q' | '8-K';
+type Response = { json: any; secFiling: SECFiling };
+@Service()
 export default class SECStore {
   private apiUrl = 'https://api.sec-api.io';
   async getLatestReportDataFromCompany(
     cik: string,
     type: ReportType
-  ): Promise<any> {
+  ): Promise<Response> {
     // 1. Get reports
     const filingData = await this.getReportsFromCompany(cik, type);
     console.log(filingData);
     if (filingData.filings.length > 0) {
-      const url = filingData.filings[0].linkToHtml;
-      return this.convertHtmlLinkToJSON(url, type);
+      const secFiling = filingData.filings[0];
+      const json = await this.convertHtmlLinkToJSON(secFiling.linkToHtml, type);
+      return {
+        json,
+        secFiling
+      };
     }
     throw new Error(`No ${type} reports found for ${cik}`);
   }

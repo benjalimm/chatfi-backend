@@ -1,28 +1,34 @@
+import Container, { Service } from 'typedi';
 import LLMController from '../schema/controllers/LLMController';
-import { Report } from '../schema/ReportData';
+import { ProcessedFilingData } from '../schema/sec/FilingData';
+import { SECFiling } from '../schema/sec/SECApiTypes';
 import ChatController from './ChatController';
-import ReportJSONProcessor from './ReportJSONProcessor';
+import FilingJSONProcessor from './FilingJSONProcessor';
 import SECStore from './SECStore';
 import TickerSymbolExtractor from './TickerSymbolExtractor';
 import TickerToCIKStore from './TickerToCIKStore';
 
-export default class InputReportDataGenerator {
-  private llmController: LLMController;
+type Response = { data: ProcessedFilingData; secFiling: SECFiling };
+@Service()
+export default class InputToFilingProcessor {
   private tsExtractor: TickerSymbolExtractor;
   private tickerToCIKStore: TickerToCIKStore;
   private secStore: SECStore;
 
-  constructor(llmController: LLMController) {
-    this.llmController = llmController;
-    this.tsExtractor = new TickerSymbolExtractor(llmController);
-    this.tickerToCIKStore = new TickerToCIKStore();
-    this.secStore = new SECStore();
+  constructor(
+    tsExtractor: TickerSymbolExtractor,
+    tickerToCIKStore: TickerToCIKStore,
+    secStore: SECStore
+  ) {
+    this.tsExtractor = tsExtractor;
+    this.tickerToCIKStore = tickerToCIKStore;
+    this.secStore = secStore;
   }
 
   async processInput(
     input: string,
     chatController?: ChatController
-  ): Promise<Report> {
+  ): Promise<Response> {
     // 1. Extract ticker data
     const tickerData = await this.tsExtractor.extractTickerSymbolFromQuery(
       input
@@ -44,12 +50,14 @@ export default class InputReportDataGenerator {
     }
 
     // 3. Get latest 10-K from CIK
-    const reportJSON = await this.secStore.getLatestReportDataFromCompany(
-      cik,
-      '10-K'
-    );
+    const { json, secFiling } =
+      await this.secStore.getLatestReportDataFromCompany(cik, '10-K');
 
     // 4. Process and persist JSON to disc
-    return ReportJSONProcessor.processJSON(reportJSON);
+    const processedData = FilingJSONProcessor.processJSON(json);
+    return {
+      data: processedData,
+      secFiling
+    };
   }
 }

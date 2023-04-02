@@ -1,4 +1,4 @@
-import { FOVExtractionInstruction } from '../../schema/FirstOrderValue';
+import { FOVExtractionInstruction } from '../../schema/extraction/FirstOrderValue';
 
 export const GEN_FOV_EXTRACTION_PROMPT = (
   instruction: FOVExtractionInstruction,

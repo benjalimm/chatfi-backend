@@ -1,6 +1,6 @@
 import LLMController from '../../schema/controllers/LLMController';
-import { FirstOrderValue } from '../../schema/FirstOrderValue';
-import { Formula } from '../../schema/FormulaType';
+import { FirstOrderValue } from '../../schema/extraction/FirstOrderValue';
+import { Formula } from '../../schema/extraction/FormulaType';
 import ExtractedValueMatchService from './ExtractedValueMatchService';
 import FormulaMatchService from './FormulaMatchService';
 import GeneratedCodeExecutor from './GeneratedCodeExecutor';

@@ -1,14 +1,14 @@
 import fs from 'fs';
 import path, { resolve } from 'path';
 import { convert } from 'html-to-text';
-import { Report } from '../schema/ReportData';
-export default class ReportJSONProcessor {
-  static processJSON(json: any): Report {
+import { ProcessedFilingData } from '../schema/sec/FilingData';
+export default class FilingJSONProcessor {
+  static processJSON(json: any): ProcessedFilingData {
     // 1. Create new report object
     const { TradingSymbol, DocumentType, DocumentPeriodEndDate } =
       json.CoverPage;
     const uniqueId = `${TradingSymbol}_${DocumentType}_${DocumentPeriodEndDate}`;
-    const report: Report = {
+    const report: ProcessedFilingData = {
       id: uniqueId,
       listOfStatements: [],
       statements: {}

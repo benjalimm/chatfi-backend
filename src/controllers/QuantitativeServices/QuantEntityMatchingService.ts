@@ -1,6 +1,6 @@
-import { FirstOrderValue } from '../../schema/FirstOrderValue';
-import { Formula } from '../../schema/FormulaType';
-import { ResolvedEntity } from '../../schema/ResolvedEntities';
+import { FirstOrderValue } from '../../schema/extraction/FirstOrderValue';
+import { Formula } from '../../schema/extraction/FormulaType';
+import { ResolvedEntity } from '../../schema/extraction/ResolvedEntities';
 import ExtractedValueMatchService from './ExtractedValueMatchService';
 import FormulaMatchService from './FormulaMatchService';
 import * as ss from 'string-similarity';

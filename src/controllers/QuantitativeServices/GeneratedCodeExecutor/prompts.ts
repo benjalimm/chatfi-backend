@@ -1,5 +1,5 @@
-import { FirstOrderValue } from '../../../schema/FirstOrderValue';
-import { Formula } from '../../../schema/FormulaType';
+import { FirstOrderValue } from '../../../schema/extraction/FirstOrderValue';
+import { Formula } from '../../../schema/extraction/FormulaType';
 
 export const GEN_CODE_EXECUTOR_GENERATION_PROMPT = (
   extractedValues: FirstOrderValue[],

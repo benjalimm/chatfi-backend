@@ -1,19 +1,20 @@
 import express, { Express, Request, Response } from 'express';
+import 'reflect-metadata';
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as socketio from 'socket.io';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import OpenAIController from './controllers/LLMControllers/OpenAIController';
 import LinearDataTraversalController from './controllers/DataTraversalControllers/LinearDataTraversalController';
 import SimpleDataTraversalController from './controllers/DataTraversalControllers/SimpleDataTraversalController';
 import convertFinalOutputJSONToString from './utils/convertFinalOutput';
 import PromptDataProcessor from './controllers/PromptDataProcessor';
-import { QueryUpdate } from './schema/QueryUpdate';
-import { DataTraversalResult } from './schema/DataTraversalResult';
-import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
-import InputReportDataGenerator from './controllers/InputReportDataGenerator';
+import { QueryUpdate } from './schema/dataTraversal/QueryUpdate';
+import { DataTraversalResult } from './schema/dataTraversal/DataTraversalResult';
+import InputToFilingProcessor from './controllers/InputToFilingProcessor';
 import ChatController from './controllers/ChatController';
+import Container from 'typedi';
+import FilingPersistenceService from './persistence/data/FilingPersistenceService';
 
 dotenv.config();
 
@@ -21,11 +22,9 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 
 // Inject controllers
-const openAIController = new OpenAIController();
-const gpt4Controller = new GPT4Controller();
-const inputReportDataGenerator = new InputReportDataGenerator(openAIController);
+const inputReportDataGenerator = Container.get(InputToFilingProcessor);
 
-const promptDataProcessor = new PromptDataProcessor(gpt4Controller);
+const promptDataProcessor = new PromptDataProcessor();
 
 // Body parser middleware
 app.use(cors());
@@ -73,14 +72,14 @@ async function executeQuery(
   }
 
   // 1. Get report data
-  const report = await inputReportDataGenerator.processInput(
-    query,
-    chatController
-  );
+  const { data: processedFilingData, secFiling } =
+    await inputReportDataGenerator.processInput(query, chatController);
+
+  const filingService = Container.get(FilingPersistenceService);
+  await filingService.createOrGetFiling(processedFilingData.id, secFiling);
 
   const simpleDataTraversalController = new SimpleDataTraversalController(
-    openAIController,
-    report
+    processedFilingData
   );
 
   const onExtractionUpdate = (update: QueryUpdate) => {
@@ -109,8 +108,7 @@ async function executeQuery(
   if (result.metadata.requiresNotes === true) {
     console.log('Query requires notes, moving to linear data traversal');
     const linearDataTraversalController = new LinearDataTraversalController(
-      openAIController,
-      report
+      processedFilingData
     );
     // 1. We extract all the relevant data from the document
     result = await linearDataTraversalController.extractRelevantData(

@@ -1,8 +1,8 @@
-import { FinalOutputJSON, Value } from '../schema/FinalPromptJSON';
+import { FinalOutputData, Value } from '../schema/dataTraversal/FinalPromptData';
 import formatCurrencyNumber from './formatCurrencyNumber';
 
 export default function convertFinalOutputJSONToString(
-  finalOutputJSON: FinalOutputJSON
+  finalOutputJSON: FinalOutputData
 ): string {
   let explanation = finalOutputJSON.answer;
   finalOutputJSON.values.forEach((value) => {
