@@ -3,7 +3,7 @@ import StoragePersistenceService from './StoragePersistenceService';
 import { Service, Container } from 'typedi';
 
 @Service()
-export default class ReportPersistenceService {
+export default class ProcessedFilingStorageService {
   constructor(storagePersistenceService: StoragePersistenceService) {
     this.storageService = storagePersistenceService;
   }

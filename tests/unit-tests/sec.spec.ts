@@ -2,7 +2,7 @@ import 'jest';
 import 'reflect-metadata';
 
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
-import ReportPersistenceService from '../../src/persistence/storage/ReportPersistenceService';
+import ProcessedFilingStorageService from '../../src/persistence/storage/ReportPersistenceService';
 import FilingJSONProcessor from '../../src/controllers/FilingJSONProcessor';
 import SECStore from '../../src/controllers/SECStore';
 import TickerSymbolExtractor, {
@@ -75,7 +75,7 @@ describe('Testing SEC data extraction and api', () => {
 
   // 5. Test storing in S3
   test('Test storing in S3', async () => {
-    const reportPersistenceService = new ReportPersistenceService(
+    const reportPersistenceService = new ProcessedFilingStorageService(
       new StoragePersistenceService()
     );
     await reportPersistenceService.putReport(report);
