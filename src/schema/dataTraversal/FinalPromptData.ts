@@ -10,12 +10,9 @@ export type Value = {
   title: string;
   statementSource: string;
   sectionSource: string;
+  filingId: string;
   multiplier: 'NONE' | 'IN_THOUSANDS' | 'IN_MILLIONS';
   valueType: 'REFERENCED' | 'COMPUTED';
-};
-
-export type CFValue = Value & {
-  cfFilingId: string;
 };
 
 export const Value_EXAMPLE: Value = {
@@ -23,6 +20,7 @@ export const Value_EXAMPLE: Value = {
   value: 'value',
   unit: 'unit',
   title: 'title',
+  filingId: 'cfFilingId',
   statementSource: 'statementSource',
   sectionSource: 'sectionSource',
   multiplier: 'NONE',

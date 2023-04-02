@@ -1,3 +1,4 @@
+import { Service } from 'typedi';
 import { GEN_OUTPUT_PROMPT, GEN_SUMMARIZE_DATA_PROMPT } from '../prompts';
 import LLMController from '../schema/controllers/LLMController';
 import { ExtractedData } from '../schema/dataTraversal/ExtractedData';
@@ -12,6 +13,8 @@ import { extractJSONFromString } from './DataTraversalControllers/Utils';
 import LLMRoles from './LLMControllers/LLMRoles';
 
 const MAX_TOKENS_PER_PROMPT = 7000;
+
+@Service()
 export default class PromptDataProcessor {
   private llmController: LLMController;
 
@@ -79,9 +82,7 @@ export default class PromptDataProcessor {
     return this.processDataPrompt(finalDataPrompt, query);
   }
   private convertExtractedDataToString(extractedData: ExtractedData): string {
-    return ` ----\n INFO - statementSource: ${extractedData.statement} // sectionSource: ${extractedData.segment}:
-      ${extractedData.data}\n----
-      `;
+    return `${JSON.stringify(extractedData)}`;
   }
 
   private async processDataPrompt(

@@ -2,7 +2,7 @@ import 'jest';
 import 'reflect-metadata';
 
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
-import ProcessedFilingStorageService from '../../src/persistence/storage/ReportPersistenceService';
+import ProcessedFilingStorageService from '../../src/persistence/storage/ProcessedFilingStorageService';
 import FilingJSONProcessor from '../../src/controllers/FilingJSONProcessor';
 import SECStore from '../../src/controllers/SECStore';
 import TickerSymbolExtractor, {

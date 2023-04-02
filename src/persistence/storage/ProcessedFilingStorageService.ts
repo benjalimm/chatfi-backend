@@ -1,6 +1,6 @@
 import { ProcessedFilingData } from '../../schema/sec/FilingData';
 import StoragePersistenceService from './StoragePersistenceService';
-import { Service, Container } from 'typedi';
+import { Service } from 'typedi';
 
 @Service()
 export default class ProcessedFilingStorageService {
@@ -10,26 +10,26 @@ export default class ProcessedFilingStorageService {
 
   private storageService: StoragePersistenceService;
 
-  async putReport(report: ProcessedFilingData): Promise<void> {
+  async putReport(filing: ProcessedFilingData): Promise<void> {
     if (!process.env.BUCKETEER_BUCKET_NAME) {
       throw new Error('BUCKET NAME is not empty in env file');
     }
 
     await this.storageService.putObject(
       process.env.BUCKETEER_BUCKET_NAME,
-      report.id,
-      Buffer.from(JSON.stringify(report))
+      filing.id,
+      Buffer.from(JSON.stringify(filing))
     );
   }
 
-  async getReport(reportId: string): Promise<ProcessedFilingData> {
+  async getReport(filingId: string): Promise<ProcessedFilingData> {
     if (!process.env.BUCKETEER_BUCKET_NAME) {
       throw new Error('BUCKET NAME is not empty in env file');
     }
 
     const reportJSON = await this.storageService.getObject(
       process.env.BUCKETEER_BUCKET_NAME,
-      reportId
+      filingId
     );
 
     return JSON.parse(reportJSON);
