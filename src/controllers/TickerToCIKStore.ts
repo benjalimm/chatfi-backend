@@ -1,5 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { Service } from 'typedi';
+
+@Service()
 export default class TickerToCIKStore {
   private tickerToCIKMap: Map<string, string> = new Map();
   private filePath = '../../data/tickerToCik.txt'; // Relative to dist folder

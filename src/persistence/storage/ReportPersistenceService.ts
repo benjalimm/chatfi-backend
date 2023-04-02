@@ -1,13 +1,16 @@
-import { FilingData } from '../../schema/sec/FilingData';
+import { ProcessedFilingData } from '../../schema/sec/FilingData';
 import StoragePersistenceService from './StoragePersistenceService';
+import { Service, Container } from 'typedi';
 
+@Service()
 export default class ReportPersistenceService {
-  private storageService: StoragePersistenceService;
-  constructor() {
-    this.storageService = new StoragePersistenceService();
+  constructor(storagePersistenceService: StoragePersistenceService) {
+    this.storageService = storagePersistenceService;
   }
 
-  async putReport(report: FilingData): Promise<void> {
+  private storageService: StoragePersistenceService;
+
+  async putReport(report: ProcessedFilingData): Promise<void> {
     if (!process.env.BUCKETEER_BUCKET_NAME) {
       throw new Error('BUCKET NAME is not empty in env file');
     }
@@ -19,7 +22,7 @@ export default class ReportPersistenceService {
     );
   }
 
-  async getReport(reportId: string): Promise<FilingData> {
+  async getReport(reportId: string): Promise<ProcessedFilingData> {
     if (!process.env.BUCKETEER_BUCKET_NAME) {
       throw new Error('BUCKET NAME is not empty in env file');
     }

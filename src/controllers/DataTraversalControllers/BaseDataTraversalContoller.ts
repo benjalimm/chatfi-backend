@@ -12,17 +12,17 @@ import {
   GEN_STATEMENT_EXTRACTION_PROMPT
 } from './Prompts';
 import { extractJSONFromString } from './Utils';
-import { FilingData } from '../../schema/sec/FilingData';
+import { ProcessedFilingData } from '../../schema/sec/FilingData';
 
 const MAX_SECTION_LENGTH = 3000;
 export default class BaseDataTraversalContoller {
   private _llmController: LLMController;
-  private report: FilingData;
+  private report: ProcessedFilingData;
   get llmController(): LLMController {
     return this._llmController;
   }
 
-  constructor(llmController: LLMController, report: FilingData) {
+  constructor(llmController: LLMController, report: ProcessedFilingData) {
     this._llmController = llmController;
     this.report = report;
   }

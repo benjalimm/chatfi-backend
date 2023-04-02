@@ -5,14 +5,44 @@ import CompanyPersistenceService from './CompanyPersistenceService';
 
 @Service()
 export default class FilingPersistenceService extends BaseDataPersistenceService {
-  private companyPersistenceService = Container.get(CompanyPersistenceService);
+  private companyPersistenceService: CompanyPersistenceService;
+  constructor(companyPersistenceService: CompanyPersistenceService) {
+    super();
+    this.companyPersistenceService = companyPersistenceService;
+  }
 
-  async createOrGetFilingFromFiling(filing: SECFiling) {
+  async getFiling(key: string) {
+    return this.prisma.filing.findUnique({ where: { id: key } });
+  }
+
+  async createOrGetFiling(key: string, secFiling: SECFiling) {
     return this.onMain(async () => {
-      // 1. Make sure company exists
-      await this.companyPersistenceService.createOrGetCompanyFromFiling(filing);
-      const { id, cik, filedAt, formType, linkToHtml, linkToFilingDetails } =
-        filing;
+      // 1. Check if filing exist
+      const filing = await this.getFiling(key);
+
+      if (filing) {
+        return filing;
+      }
+
+      // 2. Make sure company exist
+      await this.companyPersistenceService.createOrGetCompanyFromFiling(
+        secFiling
+      );
+      const { cik, filedAt, formType, linkToHtml, linkToFilingDetails } =
+        secFiling;
+      const filingType = formType === '10-K' ? 'TENQ' : 'TENK';
+
+      // 3. Create filing
+      return await this.prisma.filing.create({
+        data: {
+          id: key,
+          cik,
+          filingDate: filedAt,
+          filingType,
+          linkToHtml,
+          linkToFilingDetails
+        }
+      });
     });
   }
 }

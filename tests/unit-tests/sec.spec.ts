@@ -1,4 +1,6 @@
 import 'jest';
+import 'reflect-metadata';
+
 import OpenAIController from '../../src/controllers/LLMControllers/OpenAIController';
 import ReportPersistenceService from '../../src/persistence/storage/ReportPersistenceService';
 import FilingJSONProcessor from '../../src/controllers/FilingJSONProcessor';
@@ -7,7 +9,13 @@ import TickerSymbolExtractor, {
   TickerData
 } from '../../src/controllers/TickerSymbolExtractor';
 import TickerToCIKStore from '../../src/controllers/TickerToCIKStore';
-import { FilingData } from '../../src/schema/sec/FilingData';
+import { ProcessedFilingData } from '../../src/schema/sec/FilingData';
+import { json } from 'body-parser';
+import { SECFiling } from '../../src/schema/sec/SECApiTypes';
+import Container from 'typedi';
+import FilingPersistenceService from '../../src/persistence/data/FilingPersistenceService';
+import StoragePersistenceService from '../../src/persistence/storage/StoragePersistenceService';
+import CompanyPersistenceService from '../../src/persistence/data/CompanyPersistenceService';
 
 describe('Testing SEC data extraction and api', () => {
   jest.setTimeout(100000);
@@ -43,16 +51,22 @@ describe('Testing SEC data extraction and api', () => {
   // 3. Test pulling latest 10-K from cik number
   let secStore: SECStore;
   let result: any;
+  let filing: SECFiling;
   test('Test pulling latest 10-K from cik number', async () => {
     if (!cik) {
       throw new Error('CIK is null');
     }
 
     secStore = new SECStore();
-    result = await secStore.getLatestReportDataFromCompany(cik, '10-K');
+    const { json, secFiling } = await secStore.getLatestReportDataFromCompany(
+      cik,
+      '10-K'
+    );
+    result = json;
+    filing = secFiling;
     expect(result.CoverPage.TradingSymbol).toBe('COIN');
   });
-  let report: FilingData;
+  let report: ProcessedFilingData;
 
   // 4. Test writing 10-K json to disc
   test('Test parsing 10-K json as structurd object', async () => {
@@ -61,11 +75,20 @@ describe('Testing SEC data extraction and api', () => {
 
   // 5. Test storing in S3
   test('Test storing in S3', async () => {
-    const reportPersistenceService = new ReportPersistenceService();
+    const reportPersistenceService = new ReportPersistenceService(
+      new StoragePersistenceService()
+    );
     await reportPersistenceService.putReport(report);
 
     const pulledReport = await reportPersistenceService.getReport(report.id);
 
     expect(pulledReport).toEqual(report);
+  });
+
+  test('Storing in database', async () => {
+    const filingService = new FilingPersistenceService(
+      new CompanyPersistenceService()
+    );
+    await filingService.createOrGetFiling(report.id, filing);
   });
 });

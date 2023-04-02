@@ -15,6 +15,7 @@ import { DataTraversalResult } from './schema/dataTraversal/DataTraversalResult'
 import GPT4Controller from './controllers/LLMControllers/GPT4Controller';
 import InputToFilingProcessor from './controllers/InputToFilingProcessor';
 import ChatController from './controllers/ChatController';
+import Container from 'typedi';
 
 dotenv.config();
 
@@ -24,7 +25,7 @@ const port = process.env.PORT || 3000;
 // Inject controllers
 const openAIController = new OpenAIController();
 const gpt4Controller = new GPT4Controller();
-const inputReportDataGenerator = new InputToFilingProcessor(openAIController);
+const inputReportDataGenerator = Container.get(InputToFilingProcessor);
 
 const promptDataProcessor = new PromptDataProcessor(gpt4Controller);
 
