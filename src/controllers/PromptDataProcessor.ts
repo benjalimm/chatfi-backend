@@ -12,7 +12,7 @@ import { validateBody } from '../utils/validateObject';
 import { extractJSONFromString } from './DataTraversalControllers/Utils';
 import LLMRoles from './LLMControllers/LLMRoles';
 
-const MAX_TOKENS_PER_PROMPT = 7000;
+const MAX_TOKENS_PER_PROMPT = 4000;
 
 @Service()
 export default class PromptDataProcessor {

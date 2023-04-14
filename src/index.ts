@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express, Router } from 'express';
 import 'reflect-metadata';
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
@@ -6,7 +6,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import Container from 'typedi';
 import SocketManager from './controllers/SocketManager';
-
+import router from './routers/main';
 dotenv.config();
 
 const app: Express = express();
@@ -16,6 +16,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api/', router);
 
 // Socket setup
 const server = http.createServer(app);

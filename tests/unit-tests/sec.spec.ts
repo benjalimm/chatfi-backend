@@ -38,6 +38,7 @@ describe('Testing SEC data extraction and api', () => {
   // 2. Test ticker to CIK resolve
   let tickerToCikStore: TickerToCIKStore;
   let cik: string | null = null;
+  let ticker: string;
   test('Test cik extraction', () => {
     tickerToCikStore = new TickerToCIKStore();
 
@@ -45,6 +46,7 @@ describe('Testing SEC data extraction and api', () => {
       throw new Error('Ticker data is null');
     }
     cik = tickerToCikStore.getCIKFromTicker(tickerData.ticker);
+    ticker = tickerData.ticker;
     expect(cik).toBe('1679788');
   });
 
@@ -70,7 +72,7 @@ describe('Testing SEC data extraction and api', () => {
 
   // 4. Test writing 10-K json to disc
   test('Test parsing 10-K json as structurd object', async () => {
-    report = await FilingJSONProcessor.processJSON(result);
+    report = await FilingJSONProcessor.processJSON(result, ticker);
   });
 
   // 5. Test storing in S3

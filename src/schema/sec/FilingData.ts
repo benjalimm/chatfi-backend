@@ -1,13 +1,21 @@
+export type ProcessedStatementsKeyValueStore = {
+  [key: string]: ProcessedStatementData;
+};
+
 export type ProcessedFilingData = {
   id: string;
   listOfStatements: string[];
-  statements: { [key: string]: ProcessedStatementData };
+  statements: ProcessedStatementsKeyValueStore;
+};
+
+export type ProcessedSectionsKeyValueStore = {
+  [key: string]: ProcessedSectionData;
 };
 
 export type ProcessedStatementData = {
   name: string;
   listOfSections: string[];
-  sections: { [key: string]: ProcessedSectionData };
+  sections: ProcessedSectionsKeyValueStore;
 };
 
 export type ProcessedSectionData = {

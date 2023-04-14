@@ -54,7 +54,10 @@ export default class InputToFilingProcessor {
       await this.secStore.getLatestReportDataFromCompany(cik, '10-K');
 
     // 4. Process and persist JSON to disc
-    const processedData = FilingJSONProcessor.processJSON(json);
+    const processedData = FilingJSONProcessor.processJSON(
+      tickerData.ticker,
+      json
+    );
     return {
       data: processedData,
       secFiling

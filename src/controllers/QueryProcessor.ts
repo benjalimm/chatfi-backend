@@ -1,8 +1,10 @@
 import { Socket } from 'socket.io';
 import { Service } from 'typedi';
 import FilingPersistenceService from '../persistence/data/FilingPersistenceService';
+import ProcessedFilingStorageService from '../persistence/storage/ProcessedFilingStorageService';
 import { DataTraversalResult } from '../schema/dataTraversal/DataTraversalResult';
 import { QueryUpdate } from '../schema/dataTraversal/QueryUpdate';
+import { ProcessedFilingData } from '../schema/sec/FilingData';
 import convertFinalOutputJSONToString from '../utils/convertFinalOutput';
 import ChatController from './ChatController';
 import LinearDataTraversalController from './DataTraversalControllers/LinearDataTraversalController';
@@ -15,15 +17,18 @@ export default class QueryProcessor {
   private inputToFilingProcessor: InputToFilingProcessor;
   private filingPersistenceService: FilingPersistenceService;
   private promptDataProcessor: PromptDataProcessor;
+  private processedFilingService: ProcessedFilingStorageService;
 
   constructor(
     inputToFilingProcessor: InputToFilingProcessor,
     filingPersistenceService: FilingPersistenceService,
-    promptDataProcessor: PromptDataProcessor
+    promptDataProcessor: PromptDataProcessor,
+    processedFilingService: ProcessedFilingStorageService
   ) {
     this.inputToFilingProcessor = inputToFilingProcessor;
     this.filingPersistenceService = filingPersistenceService;
     this.promptDataProcessor = promptDataProcessor;
+    this.processedFilingService = processedFilingService;
   }
   async processQuery(query: string, socket: Socket) {
     const chatController = new ChatController(socket);
@@ -32,6 +37,7 @@ export default class QueryProcessor {
       const response = await this.executeQuery(query, chatController);
       chatController.setLoading(false);
       chatController.sendMsgAndValues(response.answer, response.metadata);
+      await this.processedFilingService.putReport(response.processedFiling);
     } catch (e) {
       console.log(e);
       chatController.setLoading(false);
@@ -45,6 +51,7 @@ export default class QueryProcessor {
   ): Promise<{
     answer: string;
     metadata: unknown;
+    processedFiling: ProcessedFilingData;
   }> {
     if (query === undefined) {
       throw new Error('Query is undefined');
@@ -109,7 +116,8 @@ export default class QueryProcessor {
     const answer = convertFinalOutputJSONToString(finalOutputJSON);
     return {
       answer,
-      metadata: { values: finalOutputJSON.values }
+      metadata: { values: finalOutputJSON.values },
+      processedFiling: processedFilingData
     };
   }
 }

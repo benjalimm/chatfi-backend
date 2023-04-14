@@ -1,4 +1,7 @@
-import { FinalOutputData, Value } from '../schema/dataTraversal/FinalPromptData';
+import {
+  FinalOutputData,
+  Value
+} from '../schema/dataTraversal/FinalPromptData';
 import formatCurrencyNumber from './formatCurrencyNumber';
 
 export default function convertFinalOutputJSONToString(
