@@ -11,6 +11,7 @@ const OUTPUT_JSON = `
         "title": "Cash and cash equivalents"
         "statementSource": "BalanceSheets" // Find statementSource for this value
         "sectionSource": "CashAndCashEquivalentsAtCarryingValue.json" // Find sectionSource for this value
+        "filingId": "ZM_10K_2021-12-31" // Find filingId for this value
         "multiplier": "NONE" | "IN_HUNDREDS" | "IN_THOUSANDS" | "IN_MILLIONS" | 
         "valueType": "REFERENCED" | "COMPUTED" // Was value computed or referenced from a source
       }

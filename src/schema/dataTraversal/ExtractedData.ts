@@ -1,5 +1,6 @@
 export type ExtractedData = {
-  statement: string;
-  segment: string;
+  filingId: string;
+  statementSource: string;
+  sectionSource: string;
   data: string;
 };

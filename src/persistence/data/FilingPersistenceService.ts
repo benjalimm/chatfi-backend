@@ -30,7 +30,7 @@ export default class FilingPersistenceService extends BaseDataPersistenceService
       );
       const { cik, filedAt, formType, linkToHtml, linkToFilingDetails } =
         secFiling;
-      const filingType = formType === '10-K' ? 'TENQ' : 'TENK';
+      const filingType = formType === '10-K' ? 'TENK' : 'TENQ';
 
       // 3. Create filing
       return await this.prisma.filing.create({

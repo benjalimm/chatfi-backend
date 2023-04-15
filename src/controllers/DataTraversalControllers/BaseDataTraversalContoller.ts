@@ -43,7 +43,7 @@ export default class BaseDataTraversalContoller {
       throw new Error('No JSON data can be extracted from the statements data');
 
     try {
-      if (response.statements == undefined) {
+      if (response.statements === undefined) {
         throw new Error('Failed to properly parse LLM document type response');
       } else {
         return response as ExtractedStatementsReponse;
@@ -96,8 +96,9 @@ export default class BaseDataTraversalContoller {
       // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
       if (section.data.length < MAX_SECTION_LENGTH) {
         return {
-          statement: statementFile,
-          segment,
+          filingId: this.report.id,
+          statementSource: statementFile,
+          sectionSource: segment,
           data: section.data
         };
       }
@@ -122,8 +123,9 @@ export default class BaseDataTraversalContoller {
 
     const extractedJSON = extractJSONFromString(dataExtractionJsonString);
     return {
-      statement: statementFile,
-      segment,
+      filingId: this.report.id,
+      statementSource: statementFile,
+      sectionSource: segment,
       data: `${JSON.stringify(extractedJSON)}}`
     };
   }
@@ -133,7 +135,7 @@ export default class BaseDataTraversalContoller {
     extractedData.forEach((extractedData) => {
       combinedString =
         combinedString +
-        ` ----\n Info from ${extractedData.statement} in segment ${extractedData.segment}:
+        ` ----\n Info from ${extractedData.statementSource} in segment ${extractedData.sectionSource}:
       ${extractedData.data}\n----
       `;
     });
