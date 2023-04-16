@@ -3,9 +3,12 @@ import { Service } from 'typedi';
 import FilingPersistenceService from '../../persistence/data/FilingPersistenceService';
 import ProcessedFilingStorageService from '../../persistence/storage/ProcessedFilingStorageService';
 import { DataTraversalResult } from '../../schema/dataTraversal/DataTraversalResult';
+import { Value } from '../../schema/dataTraversal/FinalPromptData';
 import { QueryUpdate } from '../../schema/dataTraversal/QueryUpdate';
+import { StatementData } from '../../schema/response/StatementData';
 import { ProcessedFilingData } from '../../schema/sec/FilingData';
 import convertFinalOutputJSONToString from '../../utils/convertFinalOutput';
+import { convertProcessedSectionToCombinedLineItems } from '../../utils/convertProcessedFilings';
 import ChatController from '../ChatController';
 import LinearDataTraversalController from '../DataTraversalControllers/LinearDataTraversalController';
 import SimpleDataTraversalController from '../DataTraversalControllers/SimpleDataTraversalController';
@@ -33,11 +36,23 @@ export default class QueryProcessor {
 
   async processQuery(query: string, socket: Socket) {
     const chatController = new ChatController(socket);
+
+    // 1. Set chat loading to true
     chatController.setLoading(true);
     try {
+      // 2. Process query to generate answer + corresponding data
       const response = await this.executeQuery(query, chatController);
+
+      console.log(`ListOfStatementData: ${response.listOfStatementData}}`);
+
+      // 3.1 Stop loading + send answer and data
       chatController.setLoading(false);
-      chatController.sendMsgAndValues(response.answer, response.metadata);
+      chatController.sendMsgAndMetadata(response.answer, {
+        values: response.values,
+        listOfStatementData: response.listOfStatementData
+      });
+
+      // 4. Store processed filing in storage
       await this.processedFilingService.putReport(response.processedFiling);
     } catch (e) {
       console.log(e);
@@ -51,26 +66,26 @@ export default class QueryProcessor {
     chatController?: ChatController
   ): Promise<{
     answer: string;
-    metadata: unknown;
+    values: Value[];
     processedFiling: ProcessedFilingData;
+    listOfStatementData: StatementData[];
   }> {
     if (query === undefined) {
       throw new Error('Query is undefined');
     }
 
-    // 1. Get report data
+    // 1. Process query input to generated corresponding SEC filing and processed filing data
     const { data: processedFilingData, secFiling } =
       await this.inputToFilingProcessor.processInput(query, chatController);
 
+    // 2. Store filing in persistence
+    // TODO: Reassess putting this here as pFiling not yet persisted in storage
     await this.filingPersistenceService.createOrGetFiling(
       processedFilingData.id,
       secFiling
     );
 
-    const simpleDataTraversalController = new SimpleDataTraversalController(
-      processedFilingData
-    );
-
+    // Define a callback function to be called when extraction is updated
     const onExtractionUpdate = (update: QueryUpdate) => {
       switch (update.type) {
         case 'STATEMENT':
@@ -88,18 +103,23 @@ export default class QueryProcessor {
       }
     };
 
+    const simpleDataTraversalController = new SimpleDataTraversalController(
+      processedFilingData
+    );
+
     let result: DataTraversalResult;
+    // 3. Start by running the query through the simple data traversal controller
     result = await simpleDataTraversalController.extractRelevantData(
       query,
       onExtractionUpdate
     );
 
+    // 4. If the query requires more than simple data traveral, we run the query through the linear data traversal controller
     if (result.metadata.requiresNotes === true) {
       console.log('Query requires notes, moving to linear data traversal');
       const linearDataTraversalController = new LinearDataTraversalController(
         processedFilingData
       );
-      // 1. We extract all the relevant data from the document
       result = await linearDataTraversalController.extractRelevantData(
         query,
         onExtractionUpdate
@@ -107,18 +127,62 @@ export default class QueryProcessor {
       if (result.listOfExtractedData.length === 0)
         throw new Error(`No extracted data`);
     }
-    // 2. Get data processor to process the extracted data and output answer
     onExtractionUpdate?.({ type: 'FINAL', name: 'FINAL' });
+
+    // 5. Process the extracted data into a final output JSON
     const finalOutputJSON = await this.promptDataProcessor.processExtractedData(
       result.listOfExtractedData,
       query
     );
 
+    // 6. We extract out the statement data from the values
+    const listOfStatementData = this.getRelevantStatementDataFromValues(
+      finalOutputJSON.values,
+      processedFilingData
+    );
+
+    // 7. Convert final output JSON into answer string
     const answer = convertFinalOutputJSONToString(finalOutputJSON);
     return {
       answer,
-      metadata: { values: finalOutputJSON.values },
-      processedFiling: processedFilingData
+      values: finalOutputJSON.values,
+      processedFiling: processedFilingData,
+      listOfStatementData
     };
+  }
+
+  private getRelevantStatementDataFromValues(
+    values: Value[],
+    processedFiling: ProcessedFilingData
+  ): StatementData[] {
+    const statements: string[] = [];
+
+    // 1. Get all the statement sources
+    for (const value of values) {
+      const statementSource = value.statementSource;
+      if (!statements.includes(statementSource)) {
+        statements.push(statementSource);
+      }
+    }
+
+    // 2. Get all the statement data
+    const listOfStatementData: StatementData[] = [];
+    for (const statementKey of statements) {
+      const processedStatementData = processedFiling.statements[statementKey];
+
+      if (processedStatementData) {
+        const tableOfLineItems = convertProcessedSectionToCombinedLineItems(
+          processedStatementData.sections
+        );
+        listOfStatementData.push({
+          filingId: values[0].filingId,
+          statement: statementKey,
+          type: 'LINE_ITEMS',
+          data: JSON.stringify(tableOfLineItems)
+        });
+      }
+    }
+
+    return listOfStatementData;
   }
 }

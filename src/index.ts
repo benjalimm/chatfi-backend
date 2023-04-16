@@ -5,7 +5,7 @@ import * as http from 'http';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import Container from 'typedi';
-import SocketManager from './controllers/SocketManager/SocketManager';
+import SocketManager from './controllers/SocketManager';
 import router from './routers/main';
 dotenv.config();
 

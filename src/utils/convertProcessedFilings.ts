@@ -19,6 +19,20 @@ export function convertProcessedSectionToCombinedLineItems(
   return combinedLineItems;
 }
 
+export function convertProcessedSectionToCombinedText(
+  sectionsData: ProcessedSectionsKeyValueStore
+): string {
+  let combinedText = '';
+  for (const section in sectionsData) {
+    const sectionData = sectionsData[section];
+    if (sectionData.filetype === 'txt') {
+      combinedText += sectionData.data;
+    }
+  }
+  return combinedText;
+}
+
+// NOTE: REASSESS THIS FUNCTION - HOW TO DISTINGUISH BETWEEN TEXT AND LINEITEM?
 export function convertProcessedStatementToCombinedLineItems(
   statementData: ProcessedStatementsKeyValueStore
 ) {
