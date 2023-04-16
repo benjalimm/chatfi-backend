@@ -1,12 +1,12 @@
 import Container, { Service } from 'typedi';
-import LLMController from '../schema/controllers/LLMController';
-import { ProcessedFilingData } from '../schema/sec/FilingData';
-import { SECFiling } from '../schema/sec/SECApiTypes';
-import ChatController from './ChatController';
-import FilingJSONProcessor from './FilingJSONProcessor';
-import SECStore from './SECStore';
-import TickerSymbolExtractor from './TickerSymbolExtractor';
-import TickerToCIKStore from './TickerToCIKStore';
+import LLMController from '../../schema/controllers/LLMController';
+import { ProcessedFilingData } from '../../schema/sec/FilingData';
+import { SECFiling } from '../../schema/sec/SECApiTypes';
+import ChatController from '../ChatController';
+import FilingJSONProcessor from '../FilingJSONProcessor';
+import SECStore from '../SECStore';
+import TickerSymbolExtractor from '../TickerSymbolExtractor';
+import TickerToCIKStore from '../TickerToCIKStore';
 
 type Response = { data: ProcessedFilingData; secFiling: SECFiling };
 @Service()

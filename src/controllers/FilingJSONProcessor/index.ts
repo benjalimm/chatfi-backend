@@ -1,7 +1,5 @@
-import fs from 'fs';
-import path, { resolve } from 'path';
 import { convert } from 'html-to-text';
-import { ProcessedFilingData } from '../schema/sec/FilingData';
+import { ProcessedFilingData } from '../../schema/sec/FilingData';
 export default class FilingJSONProcessor {
   static processJSON(ticker: string, json: any): ProcessedFilingData {
     // 1. Create new report object

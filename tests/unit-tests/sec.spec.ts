@@ -20,7 +20,6 @@ import CompanyPersistenceService from '../../src/persistence/data/CompanyPersist
 describe('Testing SEC data extraction and api', () => {
   jest.setTimeout(100000);
 
-  const controller = new OpenAIController();
   const query = "What was Coinbase's net revenue in 2022?";
 
   // 1. Test ticker extraction

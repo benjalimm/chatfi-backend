@@ -1,16 +1,16 @@
 import { Socket } from 'socket.io';
 import { Service } from 'typedi';
-import FilingPersistenceService from '../persistence/data/FilingPersistenceService';
-import ProcessedFilingStorageService from '../persistence/storage/ProcessedFilingStorageService';
-import { DataTraversalResult } from '../schema/dataTraversal/DataTraversalResult';
-import { QueryUpdate } from '../schema/dataTraversal/QueryUpdate';
-import { ProcessedFilingData } from '../schema/sec/FilingData';
-import convertFinalOutputJSONToString from '../utils/convertFinalOutput';
-import ChatController from './ChatController';
-import LinearDataTraversalController from './DataTraversalControllers/LinearDataTraversalController';
-import SimpleDataTraversalController from './DataTraversalControllers/SimpleDataTraversalController';
-import InputToFilingProcessor from './InputToFilingProcessor';
-import PromptDataProcessor from './PromptDataProcessor';
+import FilingPersistenceService from '../../persistence/data/FilingPersistenceService';
+import ProcessedFilingStorageService from '../../persistence/storage/ProcessedFilingStorageService';
+import { DataTraversalResult } from '../../schema/dataTraversal/DataTraversalResult';
+import { QueryUpdate } from '../../schema/dataTraversal/QueryUpdate';
+import { ProcessedFilingData } from '../../schema/sec/FilingData';
+import convertFinalOutputJSONToString from '../../utils/convertFinalOutput';
+import ChatController from '../ChatController';
+import LinearDataTraversalController from '../DataTraversalControllers/LinearDataTraversalController';
+import SimpleDataTraversalController from '../DataTraversalControllers/SimpleDataTraversalController';
+import InputToFilingProcessor from '../InputToFilingProcessor';
+import PromptDataProcessor from '../PromptDataProcessor';
 
 @Service()
 export default class QueryProcessor {
@@ -30,6 +30,7 @@ export default class QueryProcessor {
     this.promptDataProcessor = promptDataProcessor;
     this.processedFilingService = processedFilingService;
   }
+
   async processQuery(query: string, socket: Socket) {
     const chatController = new ChatController(socket);
     chatController.setLoading(true);

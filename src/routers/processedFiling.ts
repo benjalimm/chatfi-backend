@@ -1,17 +1,14 @@
 import { Router } from 'express';
 import Container from 'typedi';
 import ProcessedFilingStorageService from '../persistence/storage/ProcessedFilingStorageService';
-import {
-  convertProcessedSectionToCombinedLineItems,
-  convertProcessedStatementToCombinedLineItems
-} from '../utils/convertProcessedFilings';
+import { convertProcessedSectionToCombinedLineItems } from '../utils/convertProcessedFilings';
 
 const pFilingRouter = Router();
 
 pFilingRouter.get('/:key/:statement', async (req, res) => {
   const key = req.params.key as string;
-  console.log(`key: ${key}`);
   const statement = req.params.statement as string;
+  console.log(`key: ${key} // statement: ${statement}}`);
   const filingService = Container.get(ProcessedFilingStorageService);
 
   try {

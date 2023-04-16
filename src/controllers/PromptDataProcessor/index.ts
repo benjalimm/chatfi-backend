@@ -1,16 +1,16 @@
 import { Service } from 'typedi';
-import { GEN_OUTPUT_PROMPT, GEN_SUMMARIZE_DATA_PROMPT } from '../prompts';
-import LLMController from '../schema/controllers/LLMController';
-import { ExtractedData } from '../schema/dataTraversal/ExtractedData';
+import { GEN_OUTPUT_PROMPT, GEN_SUMMARIZE_DATA_PROMPT } from '../../prompts';
+import LLMController from '../../schema/controllers/LLMController';
+import { ExtractedData } from '../../schema/dataTraversal/ExtractedData';
 import {
   FinalOutputData,
   FinalOutputJSON_EXAMPLE,
   Value,
   Value_EXAMPLE
-} from '../schema/dataTraversal/FinalPromptData';
-import { validateBody } from '../utils/validateObject';
-import { extractJSONFromString } from './DataTraversalControllers/Utils';
-import LLMRoles from './LLMControllers/LLMRoles';
+} from '../../schema/dataTraversal/FinalPromptData';
+import { validateBody } from '../../utils/validateObject';
+import { extractJSONFromString } from '../DataTraversalControllers/Utils';
+import LLMRoles from '../LLMControllers/LLMRoles';
 
 const MAX_TOKENS_PER_PROMPT = 4000;
 
