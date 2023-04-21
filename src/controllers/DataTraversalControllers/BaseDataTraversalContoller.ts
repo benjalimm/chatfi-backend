@@ -13,6 +13,7 @@ import {
 } from './Prompts';
 import { extractJSONFromString } from './Utils';
 import { ProcessedFilingData } from '../../schema/sec/FilingData';
+import { convertHtmlToText } from '../../utils/convertHtmlToText';
 
 const MAX_SECTION_LENGTH = 3000;
 export default class BaseDataTraversalContoller {
@@ -92,27 +93,28 @@ export default class BaseDataTraversalContoller {
     const section = this.report.statements[statementFile].sections[segment];
 
     // 6. Check if segment is a txt or a json file
-    if (section.filetype === 'json') {
+    if (section.fileType === 'json') {
       // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
-      if (section.data.length < MAX_SECTION_LENGTH) {
+      if (section.jsonData.length < MAX_SECTION_LENGTH) {
         return {
           filingId: this.report.id,
           statementSource: statementFile,
           sectionSource: segment,
-          data: section.data
+          data: section.jsonData
         };
       }
 
       DATA_EXTRACTION_PROMPT = GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT(
         segment,
-        section.data,
+        section.jsonData,
         query
       );
     } else {
       /// We assume it's a .txt file if it's not a JSON file.
+      const textData = convertHtmlToText(section.htmlData);
       DATA_EXTRACTION_PROMPT = GEN_SEGMENT_TXT_DATA_EXTRACTION_PROMPT(
         segment,
-        section.data,
+        textData,
         query
       );
     }

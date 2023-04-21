@@ -1,5 +1,4 @@
 import {
-  ProcessedFilingData,
   ProcessedSectionsKeyValueStore,
   ProcessedStatementsKeyValueStore
 } from '../schema/sec/FilingData';
@@ -11,25 +10,42 @@ export function convertProcessedSectionToCombinedLineItems(
   const combinedLineItems: { [key: string]: LineItem[] } = {};
   for (const section in sectionsData) {
     const sectionData = sectionsData[section];
-    if (sectionData.filetype === 'json') {
-      const data = JSON.parse(sectionData.data)[section];
+    if (sectionData.fileType === 'json') {
+      const data = JSON.parse(sectionData.jsonData)[section];
       combinedLineItems[section] = data;
     }
   }
   return combinedLineItems;
 }
 
-export function convertProcessedSectionToCombinedText(
+export function convertProcessedSectionToCombinedHtml(
   sectionsData: ProcessedSectionsKeyValueStore
 ): string {
-  let combinedText = '';
+  let combinedHtml = '';
   for (const section in sectionsData) {
     const sectionData = sectionsData[section];
-    if (sectionData.filetype === 'txt') {
-      combinedText += sectionData.data;
+    if (sectionData.fileType === 'html') {
+      combinedHtml += sectionData.htmlData;
     }
   }
-  return combinedText;
+  return combinedHtml;
+}
+
+export function convertProcessedSectionToCombinedTextOrLineItems(
+  sectionsData: ProcessedSectionsKeyValueStore
+): string | { [key: string]: LineItem[] } {
+  // 1. Determine whether the section is text or line items by looking at the first object in the sectionsData -> I know this is messy.
+  for (const section in sectionsData) {
+    const sectionData = sectionsData[section];
+    if (sectionData.fileType === 'json') {
+      // 2. If line items, convert to line items
+      return convertProcessedSectionToCombinedLineItems(sectionsData);
+    } else {
+      // 3. If text, convert to text
+      return convertProcessedSectionToCombinedHtml(sectionsData);
+    }
+  }
+  throw new Error('No section data found');
 }
 
 // NOTE: REASSESS THIS FUNCTION - HOW TO DISTINGUISH BETWEEN TEXT AND LINEITEM?

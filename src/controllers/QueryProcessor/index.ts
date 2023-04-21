@@ -8,7 +8,7 @@ import { QueryUpdate } from '../../schema/dataTraversal/QueryUpdate';
 import { StatementData } from '../../schema/response/StatementData';
 import { ProcessedFilingData } from '../../schema/sec/FilingData';
 import convertFinalOutputJSONToString from '../../utils/convertFinalOutput';
-import { convertProcessedSectionToCombinedLineItems } from '../../utils/convertProcessedFilings';
+import { convertProcessedSectionToCombinedTextOrLineItems } from '../../utils/convertProcessedFilings';
 import ChatController from '../ChatController';
 import LinearDataTraversalController from '../DataTraversalControllers/LinearDataTraversalController';
 import SimpleDataTraversalController from '../DataTraversalControllers/SimpleDataTraversalController';
@@ -171,14 +171,23 @@ export default class QueryProcessor {
       const processedStatementData = processedFiling.statements[statementKey];
 
       if (processedStatementData) {
-        const tableOfLineItems = convertProcessedSectionToCombinedLineItems(
+        // Distinguish between Line items and text
+        const sectionData = convertProcessedSectionToCombinedTextOrLineItems(
           processedStatementData.sections
         );
+        const dataType =
+          typeof sectionData === 'string' ? 'TEXT' : 'LINE_ITEMS';
+
+        const data =
+          dataType === 'TEXT'
+            ? (sectionData as string)
+            : JSON.stringify(sectionData);
+
         listOfStatementData.push({
           filingId: values[0].filingId,
           statement: statementKey,
-          type: 'LINE_ITEMS',
-          data: JSON.stringify(tableOfLineItems)
+          type: dataType,
+          data: data
         });
       }
     }
