@@ -36,7 +36,8 @@
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "indexData": "npx tsc && node dist/extractions/indexData.js"
+    "indexData": "npx tsc && node dist/extractions/indexData.js",
+    "guard": "npx tsc && node dist/scripts/generateSchemaGuards.js"
   },
   "keywords": [],
   "author": "",

@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as child_process from 'child_process';
 
-const srcDir = '../src/schema/';
+const srcDir = fs.realpathSync('src/schema/');
 
 // Get a list of all directories in the source directory
 const dirs = fs

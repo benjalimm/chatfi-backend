@@ -67,11 +67,12 @@ describe('Testing SEC data extraction and api', () => {
     filing = secFiling;
     expect(result.CoverPage.TradingSymbol).toBe('COIN');
   });
+  const filingJSONProcessor = new FilingJSONProcessor();
   let report: ProcessedFilingData;
 
   // 4. Test writing 10-K json to disc
   test('Test parsing 10-K json as structurd object', async () => {
-    report = await FilingJSONProcessor.processJSON(result, ticker);
+    report = await filingJSONProcessor.processJSON(result, ticker);
   });
 
   // 5. Test storing in S3

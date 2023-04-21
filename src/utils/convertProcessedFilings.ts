@@ -3,6 +3,10 @@ import {
   ProcessedStatementsKeyValueStore
 } from '../schema/sec/FilingData';
 import { LineItem } from '../schema/sec/TableOfLineItems';
+import {
+  isArrayOfLineItems,
+  isLineItem
+} from '../schema/sec/TableOfLineItems.guard';
 
 export function convertProcessedSectionToCombinedLineItems(
   sectionsData: ProcessedSectionsKeyValueStore
@@ -12,7 +16,12 @@ export function convertProcessedSectionToCombinedLineItems(
     const sectionData = sectionsData[section];
     if (sectionData.fileType === 'json') {
       const data = JSON.parse(sectionData.jsonData)[section];
-      combinedLineItems[section] = data;
+
+      if (isArrayOfLineItems(data)) {
+        combinedLineItems[section] = data;
+      } else if (isLineItem(data)) {
+        combinedLineItems[section] = [data];
+      }
     }
   }
   return combinedLineItems;
