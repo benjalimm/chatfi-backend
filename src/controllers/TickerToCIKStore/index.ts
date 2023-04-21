@@ -5,7 +5,7 @@ import { Service } from 'typedi';
 @Service()
 export default class TickerToCIKStore {
   private tickerToCIKMap: Map<string, string> = new Map();
-  private filePath = '../../data/tickerToCik.txt'; // Relative to dist folder
+  private filePath = '../../../data/tickerToCik.txt'; // Relative to dist folder
 
   constructor() {
     this.loadTickerToCIKMap();

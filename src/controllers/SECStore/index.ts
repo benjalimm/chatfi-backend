@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FilingResponse, SECFiling } from '../schema/sec/SECApiTypes';
+import { FilingResponse, SECFiling } from '../../schema/sec/SECApiTypes';
 import { Service } from 'typedi';
 type ReportType = '10-K' | '10-Q' | '8-K';
 type Response = { json: any; secFiling: SECFiling };

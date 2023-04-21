@@ -1,3 +1,4 @@
+/** @see {isSECFiling} ts-auto-guard:type-guard */
 export interface SECFiling {
   id: string;
   accessionNo: string;

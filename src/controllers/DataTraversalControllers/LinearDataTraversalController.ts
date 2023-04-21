@@ -8,8 +8,8 @@ import { isFulfilled } from '../../utils/PromiseExtensions';
 import { ProcessedFilingData } from '../../schema/sec/FilingData';
 import LLMRoles from '../LLMControllers/LLMRoles';
 
-const MAX_STATEMENTS = 6;
-const MAX_SEGMENTS = 10;
+const MAX_STATEMENTS = 4;
+const MAX_SEGMENTS = 8;
 
 export default class LinearDataTraversalController
   extends BaseDataTraversalContoller

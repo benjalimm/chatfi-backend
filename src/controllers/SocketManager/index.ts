@@ -1,7 +1,7 @@
 import { Server } from 'http';
 import { Server as SocketServer, Socket } from 'socket.io';
 import Container from 'typedi';
-import QueryProcessor from './QueryProcessor';
+import QueryProcessor from '../QueryProcessor';
 
 export default class SocketManager {
   private io: SocketServer;

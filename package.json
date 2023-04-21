@@ -19,6 +19,7 @@
     "prettier": "^2.8.2",
     "prisma": "^4.12.0",
     "supertest": "^6.3.3",
+    "ts-auto-guard": "^4.1.2",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
@@ -35,7 +36,8 @@
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "indexData": "npx tsc && node dist/extractions/indexData.js"
+    "indexData": "npx tsc && node dist/extractions/indexData.js",
+    "guard": "npx tsc && node dist/scripts/generateSchemaGuards.js"
   },
   "keywords": [],
   "author": "",

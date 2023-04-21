@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path, { resolve } from 'path';
-import { convert } from 'html-to-text';
-import { ProcessedFilingData } from '../schema/sec/FilingData';
+import { Service } from 'typedi';
+import { ProcessedFilingData } from '../../schema/sec/FilingData';
+
+@Service()
 export default class FilingJSONProcessor {
-  static processJSON(ticker: string, json: any): ProcessedFilingData {
+  processJSON(ticker: string, json: any): ProcessedFilingData {
     // 1. Create new report object
     const { DocumentType, DocumentPeriodEndDate } = json.CoverPage;
     const uniqueId = `${ticker}_${DocumentType}_${DocumentPeriodEndDate}`;
@@ -29,31 +29,28 @@ export default class FilingJSONProcessor {
       for (const subkey in json[key]) {
         report.statements[key].listOfSections.push(subkey);
         // We init a section for each subkey, default to json
-        report.statements[key].sections[subkey] = {
-          name: subkey,
-          filetype: 'json',
-          data: ''
-        };
-
         // 4. Check if data is html
-        let data = JSON.stringify(json[key][subkey]);
-        const isHtml = /<\/?[a-z][\s\S]*>/i.test(data);
+        const originalData = JSON.stringify(json[key][subkey]);
+        const isHtml = /<\/?[a-z][\s\S]*>/i.test(originalData);
 
         // 3.1 Keep track of list of documents
 
         // 5. If html, convert to text + save as txt
         if (isHtml) {
-          data = convert(data, {
-            wordwrap: 130
-          });
-          report.statements[key].sections[subkey].filetype = 'txt';
+          report.statements[key].sections[subkey] = {
+            fileType: 'html',
+            htmlData: originalData
+          };
         } else {
           const customObj: { [key: string]: unknown } = {};
-          customObj[subkey] = JSON.parse(data);
-          data = JSON.stringify(customObj);
-        }
+          customObj[subkey] = JSON.parse(originalData);
+          const jsonData = JSON.stringify(customObj);
 
-        report.statements[key].sections[subkey].data = data;
+          report.statements[key].sections[subkey] = {
+            fileType: 'json',
+            jsonData
+          };
+        }
       }
     }
     return report;

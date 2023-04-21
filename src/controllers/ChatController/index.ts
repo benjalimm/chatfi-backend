@@ -18,7 +18,11 @@ export default class ChatController {
     this.emit('loading', { loading });
   }
 
-  sendMsgAndValues(answer: string, metadata: unknown) {
+  sendMsgAndMetadata(answer: string, metadata: unknown) {
     this.emit('message', { answer, metadata });
+  }
+
+  sendMetadata(metadata: unknown) {
+    this.emit('message', { metadata });
   }
 }

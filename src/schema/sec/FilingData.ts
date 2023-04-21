@@ -18,8 +18,16 @@ export type ProcessedStatementData = {
   sections: ProcessedSectionsKeyValueStore;
 };
 
-export type ProcessedSectionData = {
-  name: string;
-  filetype: 'txt' | 'json';
-  data: string;
+export type ProcessedTextSectionData = {
+  fileType: 'html';
+  htmlData: string;
 };
+
+export type ProcessedLineItemSectionData = {
+  fileType: 'json';
+  jsonData: string;
+};
+
+export type ProcessedSectionData =
+  | ProcessedTextSectionData
+  | ProcessedLineItemSectionData;

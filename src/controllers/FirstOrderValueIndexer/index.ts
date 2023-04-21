@@ -5,7 +5,10 @@ import {
   InstantValue,
   RangeValue
 } from '../../schema/extraction/FirstOrderValue';
-import { DocumentMetadata, StatementMetadata } from '../../schema/dataTraversal/Metadata';
+import {
+  DocumentMetadata,
+  StatementMetadata
+} from '../../schema/dataTraversal/Metadata';
 import {
   extractJSONFromString,
   readJSON,
