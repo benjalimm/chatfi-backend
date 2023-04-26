@@ -9,10 +9,11 @@ export default function convertFinalOutputJSONToString(
 ): string {
   let explanation = finalOutputJSON.answer;
   finalOutputJSON.values.forEach((value) => {
-    explanation = explanation.replace(
-      `@${value.key}`,
-      outputValueString(value)
-    );
+    // Replace all instances of @key and @$key with the value
+    const valueString = outputValueString(value);
+    explanation = explanation
+      .replace(`@${value.key}`, valueString)
+      .replace(`@$${value.key}`, valueString);
   });
   return explanation;
 }
@@ -26,15 +27,13 @@ export function outputValueString(value: Value): string {
     const numericValue = parseFloat(sanitizeNumberString(value.value));
     let multiplier = 1;
 
-    if (value.sectionSource.toLowerCase().includes('.txt')) {
-      switch (value.multiplier) {
-        case 'IN_MILLIONS':
-          multiplier = 1000000;
-          break;
-        case 'IN_THOUSANDS':
-          multiplier = 1000;
-          break;
-      }
+    switch (value.multiplier) {
+      case 'IN_MILLIONS':
+        multiplier = 1000000;
+        break;
+      case 'IN_THOUSANDS':
+        multiplier = 1000;
+        break;
     }
     return formatCurrencyNumber(numericValue * multiplier);
   }

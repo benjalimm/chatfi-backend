@@ -10,7 +10,7 @@ interface LLMRolesInterface {
 
 const LLMRoles: LLMRolesInterface = {
   extractionLLM: Container.get(OpenAIController),
-  finalReasonLLM: Container.get(OpenAIController)
+  finalReasonLLM: Container.get(GPT4Controller)
 };
 
 export default LLMRoles;

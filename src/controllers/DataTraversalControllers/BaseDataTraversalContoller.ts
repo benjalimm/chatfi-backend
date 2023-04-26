@@ -95,14 +95,14 @@ export default class BaseDataTraversalContoller {
     // 6. Check if segment is a txt or a json file
     if (section.fileType === 'json') {
       // 6.1 - If JSON file is small enough, just add it to the answer list without using LLM to extract pertinent answer
-      if (section.jsonData.length < MAX_SECTION_LENGTH) {
-        return {
-          filingId: this.report.id,
-          statementSource: statementFile,
-          sectionSource: segment,
-          data: section.jsonData
-        };
-      }
+      // if (section.jsonData.length < MAX_SECTION_LENGTH) {
+      //   return {
+      //     filingId: this.report.id,
+      //     statementSource: statementFile,
+      //     sectionSource: segment,
+      //     data: section.jsonData
+      //   };
+      // }
 
       DATA_EXTRACTION_PROMPT = GEN_SEGMENT_JSON_DATA_EXTRACTION_PROMPT(
         segment,
